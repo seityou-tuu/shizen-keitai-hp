@@ -1,0 +1,502 @@
+/* Contact and mobile refinements; no policy text or existing legal data changes. */
+:root {
+  scroll-padding-top: 112px;
+}
+.program-renewal {
+  --renewal-gold: #806636;
+  --muted: #59675d;
+}
+[hidden] {
+  display: none !important;
+}
+.mobile-nav {
+  max-height: calc(100dvh - 94px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.program-renewal section[id] {
+  scroll-margin-top: 12px;
+}
+.program-renewal :is(a, button, input, select, textarea, summary):focus-visible,
+.home-footer a:focus-visible,
+.mobile-consult-bar a:focus-visible {
+  outline: 3px solid #bda465;
+  outline-offset: 4px;
+}
+.program-renewal .renewal-button {
+  min-height: 48px;
+}
+.program-renewal .renewal-text-link,
+.renewal-contact-link,
+.footer-contact-link {
+  min-height: 44px;
+}
+.program-renewal .hero-photograph {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+.program-renewal .hero-photo-word {
+  position: static;
+  margin-top: 18px;
+  padding: 14px 20px;
+  font-size: 21px;
+}
+.program-renewal .hero-photo-detail {
+  position: static;
+  margin-top: 12px;
+  max-width: none;
+}
+.program-renewal .hero-photograph::before {
+  inset-block-end: 95px;
+}
+.program-renewal .consultation-callout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-top: 35px;
+  padding: 27px;
+  background: #edf0e6;
+  border: 1px solid var(--line);
+}
+.consultation-callout > p {
+  font-size: 14px;
+  line-height: 2;
+}
+.consultation-callout .renewal-button {
+  flex-shrink: 0;
+}
+.program-renewal .renewal-roadmap .consultation-callout {
+  background: #244d40;
+  border-color: #648267;
+}
+.renewal-roadmap .consultation-callout .renewal-button {
+  border-color: #c8b47f;
+}
+.program-renewal .learning-cycle {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 45px 0 0;
+  padding: 0;
+  gap: 14px;
+}
+.learning-cycle li {
+  position: relative;
+  padding: 24px 20px;
+  border: 1px solid #b9c6b0;
+  background: #f3f4ed;
+}
+.learning-cycle li > span {
+  font:
+    15px Georgia,
+    serif;
+  color: #806636;
+}
+.learning-cycle li > p {
+  font-size: 15px;
+  margin-top: 10px;
+  padding-right: 7px;
+}
+.learning-cycle li > b {
+  position: absolute;
+  right: -12px;
+  top: 45%;
+  color: var(--green);
+  font-weight: 400;
+  background: #fdfdfa;
+  padding-inline: 3px;
+  z-index: 1;
+}
+.learning-cycle li:last-child > b {
+  right: 8px;
+  top: 12px;
+  background: transparent;
+  font-size: 22px;
+  color: #806636;
+}
+.cycle-caption {
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 18px;
+}
+.program-renewal .instructor-name {
+  font-size: 27px;
+  margin: 0 0 18px;
+}
+.program-renewal .training-atmosphere-story h3 {
+  font-size: clamp(22px, 2.3vw, 30px);
+}
+.program-renewal .contact-layout {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 60px;
+  align-items: start;
+  text-align: left;
+  margin-top: 42px;
+}
+.program-renewal .contact-by-phone {
+  padding: 26px 0;
+}
+.program-renewal .contact-by-phone h3 {
+  font-size: 24px;
+  color: #f6f2e8;
+}
+.contact-phone {
+  display: inline-block;
+  font:
+    35px/1.9 Georgia,
+    serif;
+  border-bottom: 1px solid #cfbc8c;
+  color: #f6f2e8;
+  white-space: nowrap;
+  margin: 15px 0;
+}
+.contact-by-phone > p {
+  font-size: 13px;
+  color: #d2dccb;
+}
+.program-renewal .contact-by-phone .renewal-note {
+  color: #bdcbb8;
+}
+.contact-form-panel {
+  padding: 34px;
+  background: #fdfdfa;
+  color: var(--ink);
+  min-width: 0;
+}
+.program-renewal .contact-form-panel h3 {
+  font-size: 25px;
+}
+.contact-form-panel h3 + p {
+  margin: 14px 0 24px;
+  font-size: 14px;
+  line-height: 2;
+}
+.contact-form-panel fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  min-width: 0;
+}
+.form-field {
+  margin: 20px 0;
+}
+.form-field > label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.form-field label span,
+.consent-field label > span {
+  color: #785f2d;
+  font-size: 11px;
+  margin-left: 8px;
+  border: 1px solid #a68b5870;
+  padding: 2px 5px;
+}
+.form-field label small {
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--muted);
+}
+.form-field input,
+.form-field select,
+.form-field textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 48px;
+  font:
+    16px/1.7 "Yu Gothic",
+    sans-serif;
+  border: 1px solid #929f8e;
+  border-radius: 3px;
+  background: #fff;
+  padding: 10px 12px;
+  color: #263c34;
+  box-shadow: none;
+}
+.form-field textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+.form-field [aria-invalid="true"] {
+  border: 2px solid #9d3535;
+}
+.form-field :disabled {
+  background: #f1f2ed;
+  color: #5c695e;
+  -webkit-text-fill-color: #5c695e;
+  opacity: 1;
+  cursor: not-allowed;
+}
+.form-unavailable {
+  padding: 16px;
+  border: 1px solid #b7a26f;
+  background: #f3f0e5;
+  font-size: 14px;
+  line-height: 2;
+}
+.form-unavailable a,
+.consent-field a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.form-hint {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #59675d;
+  margin-top: 10px;
+}
+.field-error {
+  margin-top: 8px;
+  color: #9d3535;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.contact-trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.consent-field {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 24px 0 10px;
+}
+.consent-field input {
+  margin: 5px 0 0;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  accent-color: var(--green);
+}
+.consent-field label {
+  font-size: 14px;
+  line-height: 2;
+  min-height: 44px;
+  cursor: pointer;
+}
+.form-submit {
+  margin-top: 24px;
+  width: 100%;
+  justify-content: center !important;
+  cursor: pointer;
+  font: inherit;
+}
+.program-renewal .form-submit:disabled {
+  background: #dce2d6;
+  border-color: #a4b09b;
+  color: #42533f;
+  cursor: not-allowed;
+}
+.form-result {
+  min-height: 1px;
+  font-size: 14px;
+  line-height: 2;
+}
+.form-result:not(:empty) {
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px solid var(--line);
+}
+.result-error {
+  color: #8d2d2d;
+  background: #fcf1ef;
+}
+.result-success {
+  color: #173f35;
+  background: #edf3e8;
+}
+.home-footer .company-info {
+  margin-right: 0;
+}
+.home-footer .footer-top {
+  gap: 30px;
+}
+.home-footer .company-info dd {
+  max-width: 280px;
+  overflow-wrap: anywhere;
+}
+.home-footer .company-info a {
+  display: inline-block;
+  min-height: 35px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.footer-contact-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
+  margin-top: 10px;
+}
+.home-footer .information-links a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.mobile-consult-bar {
+  display: none;
+}
+@media (max-width: 1100px) {
+  .mobile-nav {
+    max-height: calc(100dvh - 94px);
+  }
+  .site-header .menu-toggle {
+    min-width: 85px;
+    min-height: 44px;
+  }
+  .site-header .mobile-nav a {
+    min-height: 48px;
+  }
+  .program-renewal .contact-layout {
+    gap: 30px;
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+  .contact-form-panel {
+    padding: 25px;
+  }
+  .contact-phone {
+    font-size: 29px;
+  }
+}
+@media (max-width: 900px) {
+  .program-renewal .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .contact-by-phone {
+    max-width: 600px;
+  }
+  .program-renewal .learning-cycle {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .learning-cycle li > b {
+    display: none;
+  }
+  .learning-cycle li:last-child > b {
+    display: block;
+  }
+  .program-renewal .consultation-callout {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+@media (max-width: 850px) {
+  :root {
+    scroll-padding-top: 94px;
+  }
+}
+@media (max-width: 600px) {
+  :root {
+    scroll-padding-top: 90px;
+  }
+  .mobile-nav {
+    max-height: calc(100dvh - 74px);
+  }
+  .program-renewal .hero-photo-word {
+    margin-top: 14px;
+    font-size: 18px;
+    padding: 14px 16px;
+  }
+  .program-renewal .hero-photograph::before {
+    inset-block-end: 85px;
+  }
+  .program-renewal .renewal-button {
+    width: 100%;
+    font-size: 15px;
+  }
+  .program-renewal .renewal-text-link {
+    font-size: 14px;
+  }
+  .program-renewal .consultation-callout {
+    padding: 22px 20px;
+  }
+  .program-renewal .learning-cycle {
+    gap: 12px;
+    margin-top: 30px;
+  }
+  .learning-cycle li {
+    padding: 20px 14px;
+  }
+  .learning-cycle li > p {
+    font-size: 14px;
+  }
+  .contact-form-panel {
+    padding: 25px 20px;
+  }
+  .contact-phone {
+    font-size: 34px;
+  }
+  .contact-form-panel fieldset {
+    width: 100%;
+  }
+  .program-renewal .contact-layout {
+    margin-top: 25px;
+  }
+  .home-footer .footer-top {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .home-footer .company-info {
+    width: 100%;
+  }
+  .home-footer .back-top {
+    margin-left: 0;
+  }
+  .home-footer {
+    padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px));
+  }
+  .mobile-consult-bar {
+    position: fixed;
+    z-index: 35;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 8px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px));
+    background: #fdfdfaf5;
+    border-top: 1px solid var(--line);
+  }
+  .mobile-consult-bar a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 48px;
+    font-size: 13px;
+    border: 1px solid var(--green);
+    color: var(--green);
+  }
+  .mobile-consult-bar a:last-child {
+    background: var(--green);
+    color: white;
+  }
+  /* Keep focused fields and links above the fixed contact controls. */
+  .program-renewal :is(input, select, textarea, a, summary) {
+    scroll-margin-bottom: 110px;
+  }
+  .program-renewal .renewal-faq-list summary {
+    min-height: 56px;
+  }
+}
+@media (max-width: 360px) {
+  .contact-phone {
+    font-size: 29px;
+  }
+  .contact-form-panel {
+    padding: 20px 16px;
+  }
+  .mobile-consult-bar a {
+    font-size: 12px;
+  }
+}

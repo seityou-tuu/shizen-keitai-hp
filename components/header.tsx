@@ -1,14 +1,34 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 const links = [
   ["自然形体療法とは", "/#about"],
-  ["研修・学び方", "/#training"],
-  ["資格取得の道筋", "/#roadmap"],
-  ["コース・料金", "/#courses"],
+  ["研修内容", "/#training"],
+  ["資格取得コース", "/#roadmap"],
+  ["受講料金", "/#courses"],
   ["よくある質問", "/#faq"],
 ];
 export function Header() {
   const [open, setOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (!open) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    const desktop = window.matchMedia("(min-width: 1101px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) setOpen(false);
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => {
+      document.removeEventListener("keydown", closeOnEscape);
+      desktop.removeEventListener("change", closeOnDesktop);
+    };
+  }, [open]);
   return (
     <header className="site-header">
       <a
@@ -34,6 +54,8 @@ export function Header() {
         </a>
       </nav>
       <button
+        ref={toggleRef}
+        type="button"
         className="menu-toggle"
         aria-expanded={open}
         aria-controls="mobile-navigation"
@@ -42,20 +64,19 @@ export function Header() {
       >
         {open ? "閉じる −" : "メニュー ＋"}
       </button>
-      {open && (
-        <nav
-          id="mobile-navigation"
-          className="mobile-nav"
-          aria-label="モバイルナビゲーション"
-        >
-          {[...links, ["お問い合わせ", "/#contact"]].map(([label, href]) => (
-            <a key={href} href={href} onClick={() => setOpen(false)}>
-              {label}
-              <span>↗</span>
-            </a>
-          ))}
-        </nav>
-      )}
+      <nav
+        hidden={!open}
+        id="mobile-navigation"
+        className="mobile-nav"
+        aria-label="モバイルナビゲーション"
+      >
+        {[...links, ["お問い合わせ", "/#contact"]].map(([label, href]) => (
+          <a key={href} href={href} onClick={() => setOpen(false)}>
+            {label}
+            <span>↗</span>
+          </a>
+        ))}
+      </nav>
     </header>
   );
 }

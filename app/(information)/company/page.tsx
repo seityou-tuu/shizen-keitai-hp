@@ -1,16 +1,11 @@
-import type { Metadata } from "next";
+import { informationMetadata } from "@/lib/information-metadata";
 import { InformationPage } from "@/components/information-page";
 import { operator } from "@/lib/site-information";
-export const metadata: Metadata = {
-  title: "会社概要 | 自然形体療法 資格取得プログラム",
-  description:
-    "プログラムの運営会社についてご案内します。所在地・連絡先等は現在確認中です。",
-  openGraph: {
-    title: "会社概要 | 自然形体療法 資格取得プログラム",
-    description:
-      "プログラムの運営会社についてご案内します。所在地・連絡先等は現在確認中です。",
-  },
-};
+export const metadata = informationMetadata(
+  "会社概要 | 自然形体療法 資格取得プログラム",
+  "プログラムの運営会社についてご案内します。所在地・連絡先等は現在確認中です。",
+  "/company",
+);
 export default function Page() {
   return (
     <InformationPage

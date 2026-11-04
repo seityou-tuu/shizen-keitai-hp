@@ -1,25 +1,40 @@
 import type { Metadata } from "next";
+import {
+  SITE_URL,
+  SITE_NAME,
+  SITE_DESCRIPTION,
+  isSearchIndexingEnabled,
+} from "@/lib/site-config";
 import "./globals.css";
-import "./learning-experience.css";
-import "./public-training.css";
 import "./program-photos.css";
 import "./renewal.css";
+import "./contact.css";
 
-const title = "自然形体療法 資格取得プログラム | 株式会社TSUNAGi";
-const description =
-  "未経験者から施術経験者まで。自然形体療法を実技と理論で学ぶ、3段階の資格取得プログラム。各コース6ヶ月の研修内容・受講料金をご案内します。";
+const title = `${SITE_NAME} | 株式会社TSUNAGi`;
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title,
-  description,
+  description: SITE_DESCRIPTION,
+  alternates: { canonical: "/" },
   openGraph: {
     title,
-    description,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
     locale: "ja_JP",
     type: "website",
-    siteName: "自然形体療法 資格取得プログラム",
+    siteName: SITE_NAME,
+    images: [{ url: "/opengraph-image.png", alt: SITE_NAME }],
   },
-  twitter: { card: "summary_large_image", title, description },
-  robots: { index: false, follow: false },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description: SITE_DESCRIPTION,
+    images: ["/twitter-image.png"],
+  },
+  robots: {
+    index: isSearchIndexingEnabled(),
+    follow: isSearchIndexingEnabled(),
+  },
 };
 export default function RootLayout({
   children,
@@ -30,4 +45,3 @@ export default function RootLayout({
     </html>
   );
 }
-
