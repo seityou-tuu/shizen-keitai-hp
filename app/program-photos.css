@@ -1,0 +1,38 @@
+.program-photo {
+  margin: 0;
+  min-width: 0;
+}
+.program-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+}
+.program-photo figcaption {
+  padding: 10px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+.about-image .program-photo + .program-photo,
+.instructor-photos .program-photo + .program-photo,
+.learning-format-photo .program-photo + .program-photo {
+  margin-top: 24px;
+}
+.instructor-photos,
+.learning-format-photo,
+.about-image {
+  min-width: 0;
+}
+.training-atmosphere {
+  max-width: 720px;
+  margin: 48px auto;
+}
+@media (max-width: 600px) {
+  .instructor-photos {
+    order: 2;
+  }
+  .training-atmosphere {
+    margin: 30px 0;
+  }
+}
