@@ -17,7 +17,7 @@
 .program-renewal section[id] {
   scroll-margin-top: 12px;
 }
-.program-renewal :is(a, button, input, select, textarea, summary):focus-visible,
+.program-renewal :is(a, button, summary):focus-visible,
 .home-footer a:focus-visible,
 .mobile-consult-bar a:focus-visible {
   outline: 3px solid #bda465;
@@ -161,160 +161,6 @@
 .program-renewal .contact-by-phone .renewal-note {
   color: #bdcbb8;
 }
-.contact-form-panel {
-  padding: 34px;
-  background: #fdfdfa;
-  color: var(--ink);
-  min-width: 0;
-}
-.program-renewal .contact-form-panel h3 {
-  font-size: 25px;
-}
-.contact-form-panel h3 + p {
-  margin: 14px 0 24px;
-  font-size: 14px;
-  line-height: 2;
-}
-.contact-form-panel fieldset {
-  padding: 0;
-  margin: 0;
-  border: 0;
-  min-width: 0;
-}
-.form-field {
-  margin: 20px 0;
-}
-.form-field > label {
-  display: block;
-  font-size: 14px;
-  margin-bottom: 8px;
-  font-weight: 500;
-}
-.form-field label span,
-.consent-field label > span {
-  color: #785f2d;
-  font-size: 11px;
-  margin-left: 8px;
-  border: 1px solid #a68b5870;
-  padding: 2px 5px;
-}
-.form-field label small {
-  font-weight: 400;
-  font-size: 12px;
-  color: var(--muted);
-}
-.form-field input,
-.form-field select,
-.form-field textarea {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  min-height: 48px;
-  font:
-    16px/1.7 "Yu Gothic",
-    sans-serif;
-  border: 1px solid #929f8e;
-  border-radius: 3px;
-  background: #fff;
-  padding: 10px 12px;
-  color: #263c34;
-  box-shadow: none;
-}
-.form-field textarea {
-  resize: vertical;
-  min-height: 150px;
-}
-.form-field [aria-invalid="true"] {
-  border: 2px solid #9d3535;
-}
-.form-field :disabled {
-  background: #f1f2ed;
-  color: #5c695e;
-  -webkit-text-fill-color: #5c695e;
-  opacity: 1;
-  cursor: not-allowed;
-}
-.form-unavailable {
-  padding: 16px;
-  border: 1px solid #b7a26f;
-  background: #f3f0e5;
-  font-size: 14px;
-  line-height: 2;
-}
-.form-unavailable a,
-.consent-field a {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-.form-hint {
-  font-size: 12px;
-  line-height: 1.9;
-  color: #59675d;
-  margin-top: 10px;
-}
-.field-error {
-  margin-top: 8px;
-  color: #9d3535;
-  font-size: 13px;
-  line-height: 1.8;
-}
-.contact-trap {
-  position: absolute;
-  left: -10000px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-.consent-field {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin: 24px 0 10px;
-}
-.consent-field input {
-  margin: 5px 0 0;
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-  accent-color: var(--green);
-}
-.consent-field label {
-  font-size: 14px;
-  line-height: 2;
-  min-height: 44px;
-  cursor: pointer;
-}
-.form-submit {
-  margin-top: 24px;
-  width: 100%;
-  justify-content: center !important;
-  cursor: pointer;
-  font: inherit;
-}
-.program-renewal .form-submit:disabled {
-  background: #dce2d6;
-  border-color: #a4b09b;
-  color: #42533f;
-  cursor: not-allowed;
-}
-.form-result {
-  min-height: 1px;
-  font-size: 14px;
-  line-height: 2;
-}
-.form-result:not(:empty) {
-  margin-top: 20px;
-  padding: 16px;
-  border: 1px solid var(--line);
-}
-.result-error {
-  color: #8d2d2d;
-  background: #fcf1ef;
-}
-.result-success {
-  color: #173f35;
-  background: #edf3e8;
-}
 .home-footer .company-info {
   margin-right: 0;
 }
@@ -337,11 +183,6 @@
   font-size: 13px;
   margin-top: 10px;
 }
-.home-footer .information-links a {
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-}
 .mobile-consult-bar {
   display: none;
 }
@@ -359,9 +200,6 @@
   .program-renewal .contact-layout {
     gap: 30px;
     grid-template-columns: 0.8fr 1.2fr;
-  }
-  .contact-form-panel {
-    padding: 25px;
   }
   .contact-phone {
     font-size: 29px;
@@ -430,14 +268,8 @@
   .learning-cycle li > p {
     font-size: 14px;
   }
-  .contact-form-panel {
-    padding: 25px 20px;
-  }
   .contact-phone {
     font-size: 34px;
-  }
-  .contact-form-panel fieldset {
-    width: 100%;
   }
   .program-renewal .contact-layout {
     margin-top: 25px;
@@ -481,8 +313,8 @@
     background: var(--green);
     color: white;
   }
-  /* Keep focused fields and links above the fixed contact controls. */
-  .program-renewal :is(input, select, textarea, a, summary) {
+  /* Keep focused links above the fixed contact controls. */
+  .program-renewal :is(a, summary) {
     scroll-margin-bottom: 110px;
   }
   .program-renewal .renewal-faq-list summary {
@@ -493,10 +325,100 @@
   .contact-phone {
     font-size: 29px;
   }
-  .contact-form-panel {
-    padding: 20px 16px;
-  }
   .mobile-consult-bar a {
     font-size: 12px;
+  }
+}
+
+/* Shared phone/LINE actions; LINE links render only when configured. */
+.consultation-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.consultation-actions .renewal-button {
+  font-size: 14px;
+  gap: 12px;
+  padding: 17px 20px;
+}
+.line-consult-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 48px;
+  padding: 14px 20px;
+  border: 1px solid var(--green);
+  color: var(--green);
+  font-size: 14px;
+}
+.program-renewal .hero-statement > .line-consult-link {
+  margin-top: 14px;
+}
+.training-consultation {
+  padding-bottom: 54px;
+}
+.training-consultation .consultation-callout {
+  margin-top: 0;
+}
+.program-renewal .contact-layout {
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
+.contact-guidance {
+  min-width: 0;
+  text-align: left;
+  padding: 26px 0 26px 35px;
+  border-left: 1px solid #cfbc8c50;
+}
+.program-renewal .contact-guidance h3 {
+  color: #f6f2e8;
+  font-size: 23px;
+  margin-bottom: 20px;
+}
+.contact-guidance > p {
+  color: #d2dccb;
+  font-size: 14px;
+  line-height: 2;
+}
+.contact-guidance > p + p {
+  margin-top: 16px;
+}
+.program-renewal .contact-guidance .renewal-note {
+  color: #bdcbb8;
+}
+.contact-guidance .line-consult-link {
+  margin-top: 25px;
+}
+.renewal-contact .line-consult-link,
+.renewal-roadmap .line-consult-link {
+  border-color: #cfbc8c;
+  color: #f6f2e8;
+}
+@media (max-width: 900px) {
+  .program-renewal .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .contact-guidance {
+    border-left: 0;
+    border-top: 1px solid #cfbc8c50;
+    padding: 30px 0 0;
+  }
+}
+@media (max-width: 600px) {
+  .consultation-actions,
+  .consultation-actions .line-consult-link {
+    width: 100%;
+  }
+  .training-consultation {
+    padding-bottom: 35px;
+  }
+  .program-renewal .contact-by-phone h3 {
+    font-size: 23px;
+  }
+  .mobile-consult-bar a {
+    gap: 5px;
   }
 }

@@ -21,9 +21,12 @@ require.extensions[".ts"] = function (module, filename) {
         target: ts.ScriptTarget.ES2022,
         module: ts.ModuleKind.CommonJS,
         esModuleInterop: true,
+        jsx: ts.JsxEmit.ReactJSX,
       },
       fileName: filename,
     }).outputText,
     filename,
   );
 };
+
+require.extensions[".tsx"] = require.extensions[".ts"];

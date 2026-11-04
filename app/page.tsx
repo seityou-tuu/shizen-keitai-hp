@@ -1,6 +1,5 @@
-import { ContactForm } from "@/components/contact-form";
-import { getFormspreeEndpoint } from "@/lib/contact-config";
-import { CONTACT_PHONE, CONTACT_TEL } from "@/lib/contact-validation";
+import { CONTACT_PHONE, CONTACT_TEL, getOfficialLineUrl } from "@/lib/contact";
+import { LineConsultationLink } from "@/components/line-consultation-link";
 import { SITE_NAME, SITE_URL } from "@/lib/site-config";
 import { operator } from "@/lib/site-information";
 import { Header } from "@/components/header";
@@ -105,9 +104,12 @@ function ConsultationCallout({ text }: { text: string }) {
   return (
     <aside className="consultation-callout">
       <p>{text}</p>
-      <a className="renewal-button" href="#contact">
-        受講について相談する <span aria-hidden="true">↗</span>
-      </a>
+      <div className="consultation-actions">
+        <a className="renewal-button" href={CONTACT_TEL}>
+          受講について電話で相談する <span aria-hidden="true">↗</span>
+        </a>
+        <LineConsultationLink />
+      </div>
     </aside>
   );
 }
@@ -148,9 +150,10 @@ export default function Home() {
               <a className="renewal-button" href="#roadmap">
                 資格取得プログラムを見る <span aria-hidden="true">↗</span>
               </a>
-              <a className="renewal-text-link" href="#contact">
-                受講について相談する <span aria-hidden="true">↗</span>
+              <a className="renewal-text-link" href={CONTACT_TEL}>
+                受講について電話で相談する <span aria-hidden="true">↗</span>
               </a>
+              <LineConsultationLink />
             </div>
             <div className="hero-photograph">
               <span className="photo-overline">THE ART OF A GENTLE TOUCH</span>
@@ -481,6 +484,10 @@ export default function Home() {
           </div>
         </section>
 
+        <div className="renewal-wrap training-consultation">
+          <ConsultationCallout text="研修内容や学び方について、気になることをお電話でご相談ください。" />
+        </div>
+
         <section id="roadmap" className="story-section renewal-roadmap">
           <div className="renewal-wrap">
             <div className="section-intro-row">
@@ -739,19 +746,35 @@ export default function Home() {
             </p>
             <div className="contact-layout">
               <div className="contact-by-phone">
-                <h3>電話で受講相談</h3>
+                <h3>受講について電話で相談する</h3>
                 <a className="contact-phone" href={CONTACT_TEL}>
                   {CONTACT_PHONE}
                 </a>
-                <p>スマートフォンではタップして発信できます。</p>
+                <p>
+                  現在の正式なお問い合わせ窓口は、お電話です。スマートフォンではタップして発信できます。
+                </p>
                 <p className="renewal-note">
                   受付時間・休業日は確認後にご案内します。通話料はお客様のご負担となります。
                 </p>
+              </div>
+              <div className="contact-guidance">
+                <h3>ご相談の際に</h3>
+                <p>
+                  受講内容・研修の進め方・料金など、気になることをお聞かせください。
+                </p>
+                <p>
+                  お問い合わせだけで正式な受講申込みや決済が行われることはありません。
+                </p>
+                <LineConsultationLink />
+                {!getOfficialLineUrl() && (
+                  <p className="renewal-note line-preparing">
+                    公式LINEでのご相談は準備中です。
+                  </p>
+                )}
                 <a className="renewal-contact-link" href="#faq">
                   よくある質問を確認する <span aria-hidden="true">↗</span>
                 </a>
               </div>
-              <ContactForm configured={!!getFormspreeEndpoint()} />
             </div>
           </div>
         </section>
@@ -828,7 +851,11 @@ export default function Home() {
       </footer>
       <nav className="mobile-consult-bar" aria-label="スマートフォンの受講相談">
         <a href={CONTACT_TEL}>電話で相談する</a>
-        <a href="#contact">お問い合わせはこちら</a>
+        {getOfficialLineUrl() ? (
+          <LineConsultationLink className="mobile-line-link" />
+        ) : (
+          <a href="#contact">相談窓口を見る</a>
+        )}
       </nav>
     </>
   );
