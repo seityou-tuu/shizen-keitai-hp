@@ -19,6 +19,8 @@
 
 3コースすべてが必須か、認定基準、契約・解約・返金条件等は未確認です。確認済みの電話番号を会社概要・特商法にも共通反映し、古い問い合わせ案内を修正しました。所在地や契約・返金・個人情報などの未確認条件は補完していません。必要な確認事項は管理資料へ記録しています。
 
+プロフィールの確認済み原稿は`lib/instructor.ts`へ追加できます。空欄の正式氏名・経歴・資格・実績・メッセージは非表示です。現在は「永友先生」のみを設定しています。
+
 ## 開発・検証
 
 Vercelと同じNode.js 24.xを推奨します。
@@ -31,7 +33,7 @@ npm run typecheck
 npm run dev
 ```
 
-`npm test`では電話リンク、共通LINE設定、未設定・不正URLの扱い、プレビュー検索除外を確認します。外部のLINEアカウントを作成したり、メッセージを送ったりはしません。Lintは既存設定がありません。依存ライブラリは追加していません。ローカル本番ビルドをPlaywright/Chromiumの9画面幅で確認する任意の`npm run test:browser`も追加しています。実機・Vercel固有の確認とは区別します。
+`npm test`では電話リンク、共通LINE設定、未設定・不正URLの扱い、プレビュー検索除外を確認します。外部のLINEアカウントを作成したり、メッセージを送ったりはしません。Lintは既存設定がありません。依存ライブラリは追加していません。ローカル本番ビルドをPlaywright/Chromiumの10画面幅で確認する任意の`npm run test:browser`も追加しています。実機・Vercel固有の確認とは区別します。
 
 トップ画像は優先読み込み、残りの7枚は遅延読み込み。FAQ10項目は標準の`details/summary`で開閉します。LINEの表示切替はサーバー側で行い、追加のクライアントJavaScriptを使いません。
 
@@ -44,7 +46,8 @@ canonical・OGPは正式URLへ統一。favicon、robots.txt、sitemap.xmlを用�
 - [決済審査の確認リスト](docs/payment-review-checklist.md)
 - [永友先生への確認事項と、そのまま送れる短い確認文](docs/nagatomo-confirmation-list.md)
 - [公開前チェックリスト](docs/pre-launch-checklist.md)
-- [MacBook・Chrome向け運用マニュアル](docs/site-operation-guide.md)
+- [MacBook・Chrome向け運用マニュアル（プロフィール更新手順を含む）](docs/site-operation-guide.md)
+- [最終引継ぎ・残件3区分・公開判断](docs/final-handover.md)
 - [アクセス解析の導入設計（未接続）](docs/analytics-measurement-plan.md)
 
 これらは`docs/`内の管理資料で、HPのページや`public/`へは配置していません。ただし、GitHubリポジトリ自体が公開の場合は閲覧できます。機密情報・認証情報・相談者の個人情報は記載しないでください。

@@ -2,3 +2,5 @@
 require("./contact-links.test.cjs");
 require("./seo.test.cjs");
 require("./content.test.cjs");
+
+require("./instructor.test.cjs");

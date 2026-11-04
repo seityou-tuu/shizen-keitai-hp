@@ -1,3 +1,5 @@
+import { InstructorProfile } from "@/components/instructor-profile";
+import { instructorProfile } from "@/lib/instructor";
 import { CONTACT_PHONE, CONTACT_TEL, getOfficialLineUrl } from "@/lib/contact";
 import { LineConsultationLink } from "@/components/line-consultation-link";
 import { SITE_NAME, SITE_URL } from "@/lib/site-config";
@@ -535,22 +537,16 @@ export default function Home() {
                 <br />
                 向き合う。
               </SectionHeading>
-              <div className="renewal-prose">
-                <h3 className="instructor-name">永友先生</h3>
-                <p>自然形体療法の技術を、永友先生の施術を見ながら学ぶ。</p>
-                <p>
-                  細かな触れ方や身体の反応を確認しながら、技術への理解を深めていきます。
-                </p>
-                <p className="renewal-note">
-                  詳しいプロフィールは、確認が取れた内容から順次ご紹介します。
-                </p>
-              </div>
+              <InstructorProfile />
             </div>
             <div className="renewal-instructor-photos">
-              <ProgramPhoto name="instructor-portrait" caption="永友先生" />
+              <ProgramPhoto
+                name="instructor-portrait"
+                caption={instructorProfile.displayName}
+              />
               <ProgramPhoto
                 name="speaker-message"
-                caption="技術への考え方を伝える永友先生"
+                caption={`技術への考え方を伝える${instructorProfile.displayName}`}
               />
             </div>
           </div>

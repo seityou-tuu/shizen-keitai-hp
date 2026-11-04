@@ -482,3 +482,71 @@
   outline: 3px solid #806636;
   outline-offset: 4px;
 }
+
+/* Fixed number columns for long support/benefit headings on narrow screens. */
+.program-renewal .future-list li,
+.program-renewal .support-list li {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  align-items: baseline;
+  column-gap: 20px;
+}
+.program-renewal .future-list li > span,
+.program-renewal .support-list li > span {
+  inline-size: 2.25rem;
+  min-inline-size: 2.25rem;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.program-renewal .future-list li > div,
+.program-renewal .support-list li > div {
+  min-width: 0;
+}
+.program-renewal .section-heading .eyebrow > span {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+.program-renewal .learning-cycle li > span,
+.program-renewal .perspective-number,
+.program-renewal .renewal-flow li > .renewal-kicker {
+  white-space: nowrap;
+}
+.instructor-details {
+  margin: 25px 0 0;
+  font-size: 14px;
+}
+.instructor-details > div {
+  padding: 13px 0;
+  border-top: 1px solid var(--line);
+}
+.instructor-details dt {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+.instructor-details ul {
+  padding-left: 1.2em;
+  margin: 0;
+}
+.instructor-details dd,
+.instructor-message p {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+.instructor-message {
+  margin: 24px 0 0;
+  padding: 15px 20px;
+  border-left: 2px solid var(--gold);
+  background: var(--paper);
+}
+
+@media (max-width: 600px) {
+  .program-renewal .future-list h3,
+  .program-renewal .support-list h3 {
+    font-size: clamp(18px, 4.8vw, 20px);
+    text-wrap: balance;
+  }
+  .program-renewal .renewal-prose p {
+    text-wrap: pretty;
+  }
+}

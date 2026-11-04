@@ -29,7 +29,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
     errors: [],
   };
   try {
-    for (const width of [320, 360, 375, 390, 414, 430, 768, 1024, 1440]) {
+    for (const width of [320, 360, 375, 390, 400, 414, 430, 768, 1024, 1440]) {
       const context = await browser.newContext({
         viewport: { width, height: 900 },
         deviceScaleFactor: 1,
@@ -152,22 +152,122 @@ if (out) fs.mkdirSync(out, { recursive: true });
           await menu.evaluate((el) => el === document.activeElement),
           true,
         );
-        await menu.click();
-        await page
-          .getByRole("navigation", { name: "モバイルナビゲーション" })
-          .getByRole("link", { name: "研修内容", exact: true })
-          .click();
-        assert.ok(page.url().endsWith("#training"));
-        assert.equal(await menu.getAttribute("aria-expanded"), "false");
-        const positions = await page.evaluate(() => ({
-          top: document.querySelector("#training").getBoundingClientRect().top,
-          header: document.querySelector(".site-header").getBoundingClientRect()
-            .bottom,
-        }));
+      }
+      const nav =
+        width <= 1100
+          ? page.getByRole("navigation", { name: "モバイルナビゲーション" })
+          : page.getByRole("navigation", { name: "メインナビゲーション" });
+      for (const label of [
+        "自然形体療法とは",
+        "研修内容",
+        "資格取得コース",
+        "受講料金",
+        "よくある質問",
+        "お問い合わせ",
+      ]) {
+        if (width <= 1100)
+          await page.getByRole("button", { name: "メニューを開く" }).click();
+        const link = nav.getByRole("link", { name: label, exact: true });
+        const target = new URL(await link.getAttribute("href"), base).hash;
+        await link.click();
+        assert.ok(
+          page.url().endsWith(target),
+          `menu target ${label} at ${width}`,
+        );
+        const positions = await page.evaluate(
+          (selector) => ({
+            top: document.querySelector(selector).getBoundingClientRect().top,
+            header: document
+              .querySelector(".site-header")
+              .getBoundingClientRect().bottom,
+          }),
+          target,
+        );
         assert.ok(
           positions.top >= positions.header - 1,
-          `anchor hidden by header at ${width}`,
+          `menu hidden target ${target} at ${width}`,
         );
+        if (width <= 1100)
+          assert.equal(
+            await page
+              .getByRole("button", { name: "メニューを開く" })
+              .getAttribute("aria-expanded"),
+            "false",
+          );
+      }
+      const sections = [];
+      for (const section of await page.locator("#main > section").all()) {
+        await section.scrollIntoViewIfNeeded();
+        const audit = await section.evaluate((element) => {
+          const overflow = [
+            ...element.querySelectorAll("h1,h2,h3,p,dd,dt,li,img,a,button"),
+          ]
+            .filter((node) => {
+              if (!node.getClientRects().length) return false;
+              const rect = node.getBoundingClientRect();
+              return (
+                rect.left < -1 ||
+                rect.right > innerWidth + 1 ||
+                (node.matches("h1,h2,h3,p,dd,dt") &&
+                  node.scrollWidth > node.clientWidth + 2)
+              );
+            })
+            .map((node) => ({
+              tag: node.tagName,
+              text: node.textContent.slice(0, 60),
+            }));
+          return { id: element.id || "hero", overflow };
+        });
+        assert.deepEqual(
+          audit.overflow,
+          [],
+          `section overflow ${audit.id} at ${width}`,
+        );
+        sections.push(audit.id);
+      }
+      assert.equal(sections.length, 12);
+      const allNumbers = await page
+        .locator(
+          ".future-list li > span,.support-list li > span,.learning-cycle li > span,.section-heading .eyebrow > span,.perspective-number,.renewal-step-grid .renewal-kicker,.renewal-flow li > .renewal-kicker",
+        )
+        .evaluateAll((nodes) =>
+          nodes.map((node) => {
+            const range = document.createRange();
+            range.selectNodeContents(node);
+            return {
+              value: node.textContent,
+              lines: new Set(
+                [...range.getClientRects()].map((rect) => Math.round(rect.top)),
+              ).size,
+            };
+          }),
+        );
+      assert.ok(
+        allNumbers.every((number) => number.lines === 1),
+        `wrapped section numbers at ${width}`,
+      );
+      const links = await page
+        .locator("a[href]")
+        .evaluateAll((nodes) => nodes.map((node) => node.getAttribute("href")));
+      for (const href of links) {
+        if (href.startsWith("tel:")) continue;
+        const url = new URL(href, base);
+        assert.equal(url.origin, base.origin);
+        assert.ok(
+          ["/", "/company", "/legal", "/privacy", "/terms"].includes(
+            url.pathname,
+          ),
+        );
+        if (url.hash && url.pathname === "/")
+          assert.equal(await page.locator(url.hash).count(), 1, href);
+      }
+      if (out && [320, 375, 390, 400, 430, 1440].includes(width)) {
+        for (const id of ["support", "instructors", "future", "courses"]) {
+          await page.locator(`#${id}`).scrollIntoViewIfNeeded();
+          await page
+            .locator(`#${id}`)
+            .screenshot({ path: path.join(out, `${id}-${width}.png`) });
+        }
       }
       const phones = await page
         .locator('a[href^="tel:"]')
@@ -256,6 +356,9 @@ if (out) fs.mkdirSync(out, { recursive: true });
       report.widths.push({
         width,
         initialLcpMs: initial.lcp,
+        sectionsChecked: sections,
+        numberedItemsChecked: allNumbers.length,
+        menuLinksChecked: 6,
         initialCls: initial.cls,
         faqNumberLines: numbers.map((number) => number.lines),
         contrast: contrast.map((sample) => ({
