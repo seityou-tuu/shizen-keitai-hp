@@ -1,6 +1,11 @@
 import { InformationLinks } from "@/components/information-links";
 import { Header } from "@/components/header";
 import { ArrowLink, PhotoPlaceholder, SectionHeading } from "@/components/ui";
+import {
+  LearningQuestions,
+  TrainingExperience,
+  ProgramFacts,
+} from "@/components/learning-experience";
 
 const courses = [
   {
@@ -66,23 +71,28 @@ export default function Home() {
               未経験者・施術経験者のための資格取得プログラム
             </p>
             <h1 id="hero-title">
-              身体と向き合う。
+              施術を学ぶ、
               <br />
-              その学びを、
+              次の一歩を。
               <br />
-              <em>一生の力に。</em>
+              <em>実技と理論から。</em>
             </h1>
             <p className="hero-description">
-              自然形体療法を、実技と理論から。
+              初めて学ぶ方も、施術の経験がある方も。
               <br />
-              一つひとつの学びを重ね、
-              <br className="mobile-only" />
-              施術の道の、その先へ。
+              対面の実技とオンラインの理論を組み合わせ、
+              <br />
+              準師範から本部師範へ、段階的に学ぶプログラムです。
             </p>
-            <ArrowLink href="#contact">
-              プログラムについて問い合わせる
-            </ArrowLink>
-            <p className="small-note">お問い合わせ窓口は現在準備中です</p>
+            <div className="learning-hero-actions">
+              <ArrowLink href="#training">研修の内容・スタイルを見る</ArrowLink>
+              <a href="#courses" className="learning-secondary-link">
+                期間・料金を確認する ↓
+              </a>
+            </div>
+            <p className="small-note">
+              お問い合わせ窓口は準備中です。まずはプログラムをご確認ください。
+            </p>
           </div>
           <div
             className="hero-visual"
@@ -118,6 +128,8 @@ export default function Home() {
             3段階の学びを見る <span>↗</span>
           </a>
         </div>
+        <LearningQuestions />
+        <ProgramFacts />
         <section id="about" className="section about-section">
           <div className="container two-column">
             <div>
@@ -150,7 +162,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="section audience-section">
+        <section id="audience" className="section audience-section">
           <div className="container">
             <SectionHeading number="02" english="WHO IT IS FOR">
               それぞれの出発点から、
@@ -282,71 +294,7 @@ export default function Home() {
             </p>
           </div>
         </section>
-        <section id="training" className="section training-section">
-          <div className="container">
-            <SectionHeading number="05" english="HOW YOU LEARN">
-              対面で、確かめる。
-              <br />
-              理論で、深める。
-            </SectionHeading>
-            <div className="training-grid">
-              <article>
-                <div className="training-icon" aria-hidden="true">
-                  ↔
-                </div>
-                <span className="card-index">PRACTICAL TRAINING</span>
-                <h3>実技研修</h3>
-                <p className="training-subtitle">
-                  身体を通して学ぶ、対面の時間。
-                </p>
-                <dl>
-                  <div>
-                    <dt>開催頻度</dt>
-                    <dd>月1回</dd>
-                  </div>
-                  <div>
-                    <dt>受講形式</dt>
-                    <dd>オフライン（対面）</dd>
-                  </div>
-                  <div>
-                    <dt>研修時間</dt>
-                    <dd>9:00〜17:00</dd>
-                  </div>
-                </dl>
-                <p className="small-note">
-                  開催場所・具体的な日程は確認中です。
-                </p>
-              </article>
-              <article>
-                <div className="training-icon" aria-hidden="true">
-                  ◎
-                </div>
-                <span className="card-index">THEORETICAL TRAINING</span>
-                <h3>理論研修</h3>
-                <p className="training-subtitle">
-                  オンラインで重ねる、理解の時間。
-                </p>
-                <dl>
-                  <div>
-                    <dt>開催頻度</dt>
-                    <dd>月1回</dd>
-                  </div>
-                  <div>
-                    <dt>受講形式</dt>
-                    <dd>オンライン</dd>
-                  </div>
-                  <div>
-                    <dt>研修時間</dt>
-                    <dd>1回2時間</dd>
-                  </div>
-                </dl>
-                <p className="small-note">
-                  使用ツール・具体的な日程は確認中です。
-                </p>
-              </article>
-            </div>
-          </div>
-        </section>
+        <TrainingExperience />
         <section className="section schedule-section">
           <div className="container">
             <div className="section-top">
