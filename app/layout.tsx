@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./learning-experience.css";
 
 const title = "自然形体療法 資格取得プログラム | 株式会社TSUNAGi";
 const description =
