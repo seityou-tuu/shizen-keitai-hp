@@ -1,3 +1,5 @@
+import { PublicTreatment } from "@/components/public-treatment";
+import { MonthlyTraining } from "@/components/monthly-training";
 import { InformationLinks } from "@/components/information-links";
 import { Header } from "@/components/header";
 import { ArrowLink, PhotoPlaceholder, SectionHeading } from "@/components/ui";
@@ -294,6 +296,7 @@ export default function Home() {
             </p>
           </div>
         </section>
+        <PublicTreatment />
         <TrainingExperience />
         <section className="section schedule-section">
           <div className="container">
@@ -309,52 +312,7 @@ export default function Home() {
                 指導内容や実施順序を示すものではありません。
               </p>
             </div>
-            <div
-              className="schedule-scroll"
-              role="region"
-              aria-label="6ヶ月間の研修頻度表。横にスクロールできます"
-              tabIndex={0}
-            >
-              <table>
-                <caption className="sr-only">
-                  各月に対面実技研修1回とオンライン理論研修1回を実施するイメージ
-                </caption>
-                <thead>
-                  <tr>
-                    <th scope="col">研修スタイル</th>
-                    {[1, 2, 3, 4, 5, 6].map((n) => (
-                      <th scope="col" key={n}>
-                        <span>MONTH</span>0{n}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">
-                      実技研修<small>対面 / 9:00〜17:00</small>
-                    </th>
-                    {[1, 2, 3, 4, 5, 6].map((n) => (
-                      <td key={n}>
-                        <span className="schedule-dot" />
-                        1回
-                      </td>
-                    ))}
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      理論研修<small>オンライン / 2時間</small>
-                    </th>
-                    {[1, 2, 3, 4, 5, 6].map((n) => (
-                      <td key={n}>
-                        <span className="schedule-dot gold" />
-                        1回
-                      </td>
-                    ))}
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            <MonthlyTraining />
             <p className="editorial-note">
               ※
               研修イメージです。正式な年間日程、各月のカリキュラム、修了・認定の条件は確認後にご案内します。
