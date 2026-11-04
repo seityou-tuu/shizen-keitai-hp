@@ -1,3 +1,4 @@
+import { TrainingDay } from "@/components/training-day";
 import { PhotoPlaceholder, SectionHeading } from "@/components/ui";
 
 export function LearningQuestions() {
@@ -147,6 +148,7 @@ export function TrainingExperience() {
             </article>
           ))}
         </div>
+        <TrainingDay />
         <div className="learning-rhythm">
           <div>
             <p className="eyebrow">A MONTHLY RHYTHM</p>
