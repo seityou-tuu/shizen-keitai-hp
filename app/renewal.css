@@ -1,0 +1,360 @@
+/* Homepage styles are scoped so the company and policy pages retain their layout. */
+.program-renewal {
+  --renewal-soft: #eef1e9;
+  --renewal-gold: #8d723f;
+  padding-top: 94px;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+.renewal-wrap { width: min(1280px, calc(100% - 112px)); margin-inline: auto; }
+.program-renewal .story-section { padding: 116px 0; }
+.program-renewal h2 { font-size: clamp(32px, 3.3vw, 47px); line-height: 1.65; letter-spacing: .045em; }
+.program-renewal h3 { font-size: 25px; line-height: 1.75; letter-spacing: .035em; }
+.program-renewal .section-heading { margin-bottom: 32px; }
+.program-renewal .section-heading .eyebrow { font-size: 11px; color: var(--renewal-gold); margin-bottom: 25px; }
+.program-renewal .renewal-kicker { font: 11px/1.8 Arial, sans-serif; letter-spacing: .16em; color: var(--renewal-gold); }
+.program-renewal .renewal-prose { line-height: 2.15; }
+.renewal-prose p + p { margin-top: 22px; }
+.program-renewal .renewal-note { font-size: 12px; line-height: 1.9; color: var(--muted); margin-top: 22px; }
+.program-renewal .program-photo { margin: 0; min-width: 0; }
+.program-renewal .program-photo img { width: 100%; height: auto; display: block; border-radius: 0; }
+.program-renewal .program-photo figcaption { font-size: 11px; padding-top: 10px; color: var(--muted); letter-spacing: .025em; }
+.program-renewal .renewal-button { display: inline-flex; justify-content: space-between; align-items: center; gap: 30px; padding: 20px 25px; background: var(--green); color: #fff; border: 1px solid var(--green); font-size: 14px; }
+.renewal-button span { font-size: 22px; color: #d9c794; }
+.program-renewal .renewal-button:hover { background: #245546; }
+.program-renewal .renewal-text-link { display: inline-flex; align-items: center; gap: 20px; font-size: 13px; border-bottom: 1px solid #a68b5870; padding-bottom: 5px; }
+.renewal-text-link span { color: var(--renewal-gold); }
+.program-renewal .renewal-text-link:hover { border-color: var(--green); }
+.renewal-hero { background: linear-gradient(90deg, #fdfdfa 0%, #fdfdfa 58%, #eef1e9 58%); padding-top: 62px; }
+.hero-composition { display: grid; grid-template-columns: 1.03fr 1fr; gap: 36px; align-items: center; }
+.hero-statement { position: relative; z-index: 1; padding: 0 0 50px; }
+.hero-for { font-size: 12px; margin: 18px 0 21px; letter-spacing: .06em; }
+.program-renewal h1 { font-size: clamp(35px, 3.55vw, 54px); line-height: 1.65; letter-spacing: .025em; font-weight: 500; }
+.program-renewal h1 em { color: var(--renewal-gold); }
+.hero-break { display: none; }
+.hero-introduction { font-size: 14px; line-height: 2.1; max-width: 460px; margin: 27px 0; }
+.hero-introduction p + p { margin-top: 12px; }
+.hero-statement > .renewal-text-link { margin: 20px 0 0 22px; }
+.hero-photograph { position: relative; padding: 45px 0 92px; min-width: 0; }
+.photo-overline { position: absolute; top: 12px; left: 0; font: 10px Arial, sans-serif; letter-spacing: .18em; color: var(--renewal-gold); }
+.hero-photograph::before { content: ""; position: absolute; inset: 20px -20px 60px 20px; border: 1px solid #a68b5855; pointer-events: none; }
+.hero-photograph .program-photo { position: relative; }
+.hero-photo-word { position: absolute; right: -5px; bottom: 35px; padding: 20px 24px; background: var(--green); color: #f3f0e5; font: 24px/1.7 "Yu Mincho", serif; letter-spacing: .12em; }
+.hero-photo-detail { position: absolute; left: 0; bottom: 31px; max-width: 50%; font-size: 10px; letter-spacing: .07em; color: var(--renewal-gold); }
+.hero-facts { padding: 26px 0 30px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.hero-facts > p { font-size: 12px; color: var(--muted); line-height: 1.8; }
+.hero-facts strong { font-size: 15px; color: var(--green); font-weight: 500; }
+.hero-facts dl { display: flex; margin: 0; gap: 34px; }
+.hero-facts dl div { border-left: 1px solid var(--line); padding-left: 25px; }
+.hero-facts dt { font-size: 11px; color: var(--muted); margin-bottom: 3px; }
+.hero-facts dd { font-size: 13px; }
+.editorial-split { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: center; }
+.about-photograph { min-width: 0; }
+.photo-footnote { font: 9px/1.7 Arial, sans-serif; color: var(--renewal-gold); letter-spacing: .13em; padding-top: 22px; border-top: 1px solid var(--line); margin-top: 20px; }
+.renewal-features { background: var(--renewal-soft); }
+.section-intro-row { display: flex; justify-content: space-between; gap: 40px; align-items: flex-end; }
+.section-side-copy { color: var(--muted); font-size: 14px; line-height: 2; padding-bottom: 32px; }
+.perspective-grid { list-style: none; margin: 30px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); }
+.perspective-grid li { border-top: 1px solid #a68b5880; border-right: 1px solid #cbd3c4; position: relative; padding: 25px 28px 0; }
+.perspective-grid li:first-child { padding-left: 0; }
+.perspective-grid li:last-child { border-right: 0; }
+.perspective-number { font: 13px Georgia, serif; color: var(--renewal-gold); }
+.program-renewal .perspective-grid h3 { font-size: 21px; margin: 29px 0 14px; }
+.perspective-grid p { font-size: 14px; color: var(--muted); line-height: 2; }
+.perspective-mark { display: block; width: 64px; height: 55px; position: relative; margin: 25px 0 0; }
+.perspective-mark i { position: absolute; border: 1px solid #8a9f88; width: 40px; height: 40px; border-radius: 50%; left: 0; top: 5px; }
+.perspective-mark i:nth-child(2) { left: 12px; border-color: #a68b58; }
+.perspective-mark i:nth-child(3) { left: 24px; }
+.mark-2 i { width: 45px; height: 22px; transform: rotate(-30deg); }
+.mark-2 i:nth-child(2) { top: 15px; }
+.mark-2 i:nth-child(3) { top: 25px; }
+.mark-3 i { border-radius: 45% 55%; width: 28px; height: 46px; transform: rotate(20deg); }
+.mark-4 i { border-radius: 0; width: 28px; height: 28px; transform: rotate(45deg); }
+.renewal-audience .section-heading { max-width: 800px; }
+.renewal-audience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 45px; }
+.renewal-audience-grid article { padding: 42px; background: var(--green); color: #f7f6ef; border-top: 3px solid var(--gold); }
+.renewal-audience-grid article:nth-child(2) { background: var(--paper); color: var(--ink); }
+.program-renewal .renewal-audience-grid article:first-child .renewal-kicker { color: #d7c598; }
+.audience-subject { font-size: 12px; display: block; margin-top: 15px; opacity: .8; }
+.program-renewal .renewal-audience-grid h3 { font-size: 29px; margin: 24px 0; }
+.renewal-audience-grid article > p:last-child { font-size: 14px; line-height: 2.1; max-width: 440px; }
+.audience-closing { margin-top: 28px; text-align: center; font-size: 14px; color: var(--muted); }
+.renewal-support { border-top: 1px solid var(--line); }
+.support-composition { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; }
+.program-renewal .prose-lead { font-family: "Yu Mincho", serif; font-size: 23px; }
+.support-composition .renewal-text-link { margin-top: 30px; }
+.support-list, .future-list { list-style: none; margin: 0; padding: 0; }
+.support-list li { display: flex; align-items: baseline; gap: 25px; padding: 22px 0; border-top: 1px solid var(--line); }
+.support-list li > span, .future-list li > span { font: 15px Georgia, serif; color: var(--renewal-gold); }
+.program-renewal .support-list h3 { font-size: 21px; }
+.support-list p, .future-list p { margin-top: 9px; font-size: 14px; color: var(--muted); line-height: 2; }
+.program-renewal .support-note { padding-top: 20px; border-top: 1px solid var(--line); margin-top: 32px; }
+.renewal-training { background: #f3f4ed; }
+.training-story { display: grid; grid-template-columns: 1.35fr 1fr; gap: 65px; align-items: center; margin-top: 55px; }
+.training-story > *, .training-atmosphere-story > * { min-width: 0; }
+.program-renewal .training-story-copy h3 { font-size: 31px; margin: 17px 0 24px; }
+.training-details { margin: 28px 0 0; }
+.training-details div { display: grid; grid-template-columns: 85px 1fr; gap: 15px; border-bottom: 1px solid #d2dacc; padding: 11px 0; font-size: 13px; }
+.training-details dt { color: var(--muted); }
+.training-secondary-photo { width: 45%; margin: 18px 0 0 10%; }
+.theory-story { grid-template-columns: 1fr 1.35fr; margin-top: 80px; padding-top: 60px; border-top: 1px solid #d2dacc; }
+.training-atmosphere-story { display: grid; grid-template-columns: .85fr 1.15fr; gap: 65px; align-items: center; margin-top: 75px; padding: 36px; background: #e8ede2; }
+.program-renewal .training-atmosphere-story h3 { font-size: 30px; margin: 15px 0 24px; }
+.training-atmosphere-story > div > p:not([class]) { font-size: 14px; line-height: 2; }
+.renewal-roadmap { background: var(--green); color: #f5f2e7; }
+.program-renewal .renewal-roadmap .eyebrow, .program-renewal .renewal-roadmap .renewal-kicker { color: #cfbc8c; }
+.renewal-roadmap .section-side-copy { color: #ccd6c6; }
+.renewal-step-grid { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); }
+.renewal-step-grid li { padding: 33px 32px; border: 1px solid #738b7255; border-right: 0; position: relative; }
+.renewal-step-grid li:last-child { border-right: 1px solid #738b7255; }
+.renewal-step-grid li:not(:last-child)::after { content: "→"; position: absolute; right: -13px; top: 60px; padding: 0 3px; background: var(--green); color: #cfbc8c; font-size: 23px; z-index: 1; }
+.program-renewal .renewal-step-grid h3 { font-size: 27px; margin: 16px 0 6px; }
+.step-english { font: 9px/1.7 Arial, sans-serif; letter-spacing: .1em; color: #b9c8b7; }
+.step-description { font-size: 14px; line-height: 2; margin-top: 28px; color: #ccd6c6; }
+.step-period { font-size: 13px; margin-top: 27px; }
+.step-period strong { font: 42px/1.5 Georgia, serif; padding: 0 9px; color: #d6c392; }
+.roadmap-common { display: flex; flex-wrap: wrap; align-items: center; gap: 15px 30px; margin-top: 33px; padding-bottom: 26px; border-bottom: 1px solid #738b7255; font-size: 13px; }
+.roadmap-common > p { color: #cfbc8c; }
+.program-renewal .renewal-roadmap .renewal-note { color: #b9c8b7; }
+.instructor-introduction { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.instructor-introduction .renewal-prose { padding-top: 35px; }
+.renewal-instructor-photos { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 36px; margin-top: 32px; }
+.renewal-instructor-photos > :last-child { margin-top: 65px; }
+.renewal-future { background: #edf0e7; }
+.future-composition { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 90px; }
+.future-list li { display: flex; align-items: baseline; gap: 24px; padding: 22px 0; border-top: 1px solid #ccd4c3; }
+.program-renewal .future-list h3 { font-size: 21px; }
+.program-renewal .future-note { grid-column: 1 / -1; border-top: 1px solid #ccd4c3; padding-top: 22px; }
+.tuition-courses { margin-top: 25px; border-top: 1px solid var(--line); }
+.tuition-course { display: grid; grid-template-columns: 1.15fr 1fr .95fr; gap: 40px; align-items: center; border-bottom: 1px solid var(--line); padding: 33px 0; }
+.program-renewal .tuition-course h3 { margin: 12px 0; font-size: 25px; }
+.tuition-course > div:first-child > p:last-child { font-size: 13px; color: var(--muted); line-height: 2; }
+.tuition-course dl { margin: 0; }
+.tuition-course dl div { display: grid; grid-template-columns: 70px 1fr; gap: 15px; padding: 5px 0; font-size: 13px; }
+.tuition-course dt { color: var(--muted); }
+.tuition-amount { padding-left: 24px; border-left: 1px solid var(--line); }
+.tuition-amount > span { font-size: 12px; color: var(--muted); }
+.tuition-amount p { font: 33px/1.9 Georgia, serif; white-space: nowrap; }
+.tuition-amount small { font: 12px "Yu Gothic", sans-serif; margin-left: 5px; }
+.tuition-total { display: flex; justify-content: space-between; gap: 25px; align-items: center; margin-top: 28px; padding: 20px 24px; background: #f3f4ed; font-size: 14px; }
+.tuition-total strong { font-size: 18px; font-weight: 500; }
+.tuition-total span { display: block; font-size: 12px; color: var(--muted); }
+.payment-preparing { padding: 30px; border-left: 2px solid var(--gold); background: #f7f7f1; margin-top: 40px; }
+.program-renewal .payment-preparing h3 { font-size: 19px; margin: 10px 0; }
+.payment-preparing > p { font-size: 13px; line-height: 2; color: var(--muted); }
+.renewal-flow { margin-top: 75px; }
+.flow-title { display: flex; align-items: center; gap: 25px; margin-bottom: 30px; }
+.flow-title > span { border: 1px solid #a68b5870; color: var(--renewal-gold); font-size: 12px; padding: 4px 12px; }
+.renewal-flow ol { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; padding: 0; list-style: none; }
+.renewal-flow li { padding-top: 20px; border-top: 1px solid var(--gold); }
+.renewal-flow h4 { font-family: "Yu Mincho", serif; font-weight: 500; font-size: 19px; margin: 15px 0; }
+.renewal-flow li > p { font-size: 13px; color: var(--muted); line-height: 2; }
+.tuition-information { border-top: 1px solid var(--line); padding-top: 25px; margin-top: 38px; font-size: 13px; }
+.tuition-information > p { color: var(--muted); }
+.renewal-faq { background: #f3f4ed; }
+.renewal-faq-layout { display: grid; grid-template-columns: .9fr 1.3fr; gap: 60px; }
+.renewal-faq-list { border-top: 1px solid #cbd4c4; min-width: 0; }
+.renewal-faq-list details { border-bottom: 1px solid #cbd4c4; }
+.renewal-faq-list summary { list-style: none; display: flex; align-items: center; gap: 18px; padding: 24px 0; cursor: pointer; }
+.renewal-faq-list summary::-webkit-details-marker { display: none; }
+.renewal-faq-list summary > span:first-child { font: 13px Georgia, serif; color: var(--renewal-gold); }
+.program-renewal .renewal-faq-list h3 { font: 500 14px/1.9 "Yu Gothic", sans-serif; letter-spacing: 0; }
+.renewal-faq-toggle { width: 12px; height: 12px; position: relative; margin-left: auto; flex-shrink: 0; }
+.renewal-faq-toggle::before, .renewal-faq-toggle::after { content: ""; position: absolute; width: 12px; height: 1px; background: var(--renewal-gold); top: 5px; left: 0; }
+.renewal-faq-toggle::after { transform: rotate(90deg); }
+.renewal-faq-list details[open] .renewal-faq-toggle::after { transform: none; }
+.renewal-faq-list details > p { font-size: 14px; line-height: 2.1; padding: 0 20px 25px 43px; color: var(--muted); }
+.renewal-contact { background: #12372e; color: #f6f2e8; padding: 90px 0; text-align: center; }
+.program-renewal .renewal-contact .renewal-kicker { color: #cfbc8c; }
+.program-renewal .renewal-contact h2 { margin: 23px 0; }
+.renewal-contact h2 + p { font-size: 14px; line-height: 2.1; color: #d2dccb; }
+.contact-availability { display: inline-flex; justify-content: center; align-items: center; gap: 14px; border-top: 1px solid #cfbc8c60; border-bottom: 1px solid #cfbc8c60; margin-top: 35px; padding: 20px 12px; font-size: 14px; }
+.contact-availability > span { width: 6px; height: 6px; border-radius: 50%; background: #cfbc8c; flex-shrink: 0; }
+.program-renewal .renewal-contact .renewal-note { color: #bdcbb8; }
+.renewal-contact-link { display: inline-flex; gap: 25px; align-items: center; padding-bottom: 5px; border-bottom: 1px solid #a68b58; font-size: 13px; margin-top: 25px; }
+.renewal-contact-link span { color: #cfbc8c; }
+@media (max-width: 1200px) {
+  .renewal-wrap { width: calc(100% - 80px); }
+  .hero-composition { gap: 28px; }
+  .hero-statement > .renewal-text-link { display: flex; width: fit-content; margin-left: 0; }
+  .hero-facts { gap: 24px; }
+  .hero-facts dl { gap: 18px; }
+  .hero-facts dl div { padding-left: 18px; }
+  .editorial-split, .support-composition, .instructor-introduction, .future-composition { gap: 50px; }
+  .perspective-grid li { padding-inline: 20px; }
+  .program-renewal .perspective-grid h3 { font-size: 19px; }
+  .training-story, .training-atmosphere-story { gap: 40px; }
+  .tuition-course { gap: 25px; }
+  .tuition-amount { padding-left: 15px; }
+  .tuition-amount p { font-size: 29px; }
+}
+@media (max-width: 1100px) {
+  .site-header .desktop-nav { display: none; }
+  .site-header .menu-toggle { display: block; border: 0; background: none; color: var(--green); font-size: 12px; padding: 12px 0; }
+  .site-header .mobile-nav { position: absolute; top: 100%; left: 0; right: 0; background: #fdfdfa; padding: 10px 25px 25px; box-shadow: 0 20px 30px #163f3510; }
+  .site-header .mobile-nav a { display: flex; justify-content: space-between; border-bottom: 1px solid var(--line); padding: 16px 0; font-size: 13px; }
+  .site-header .mobile-nav a span { color: var(--gold); }
+  .hero-facts { align-items: flex-start; }
+  .hero-facts dl { flex-wrap: wrap; }
+  .hero-facts > p { flex-shrink: 0; }
+  .tuition-course { grid-template-columns: 1.1fr 1fr; }
+  .tuition-course > div:first-child { grid-row: span 2; }
+  .tuition-amount { border: 0; padding: 0; }
+  .renewal-flow ol { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 900px) {
+  .program-renewal { padding-top: 94px; }
+  .renewal-wrap { width: calc(100% - 56px); }
+  .program-renewal .story-section { padding: 85px 0; }
+  .renewal-hero { padding-top: 40px; background: linear-gradient(180deg, #fdfdfa 60%, #eef1e9 60%); }
+  .hero-composition { grid-template-columns: 1fr; gap: 0; }
+  .hero-statement { padding-bottom: 0; }
+  .program-renewal h1 { font-size: clamp(36px, 5.7vw, 50px); }
+  .hero-break { display: none; }
+  .hero-introduction { max-width: 580px; }
+  .hero-statement > .renewal-text-link { display: inline-flex; margin-left: 25px; }
+  .hero-photograph { padding: 50px 0 85px; margin-top: 25px; }
+  .hero-photograph::before { inset: 25px -12px 60px 18px; }
+  .photo-overline { top: 15px; }
+  .hero-photo-word { bottom: 25px; right: 15px; }
+  .hero-photo-detail { bottom: 25px; }
+  .hero-facts { padding-top: 25px; }
+  .hero-facts dl { gap: 16px; }
+  .hero-facts dd { font-size: 12px; }
+  .editorial-split { gap: 35px; }
+  .program-renewal h2 { font-size: 33px; }
+  .editorial-split .renewal-prose { font-size: 14px; }
+  .perspective-grid { grid-template-columns: 1fr 1fr; gap: 30px 0; }
+  .perspective-grid li { padding: 25px; }
+  .perspective-grid li:nth-child(odd) { padding-left: 0; }
+  .perspective-grid li:nth-child(even) { border-right: 0; }
+  .program-renewal .perspective-grid h3 { font-size: 23px; }
+  .section-intro-row { align-items: flex-start; }
+  .section-side-copy { max-width: 250px; }
+  .renewal-audience-grid article { padding: 30px; }
+  .program-renewal .renewal-audience-grid h3 { font-size: 25px; }
+  .support-composition { grid-template-columns: 1fr; gap: 40px; }
+  .support-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 30px; }
+  .training-story { grid-template-columns: 1fr; gap: 30px; }
+  .training-story-copy { max-width: 620px; }
+  .training-secondary-photo { width: 70%; margin: 30px 0 0 auto; }
+  .theory-story { gap: 30px; }
+  .theory-story > div:first-child { order: 2; }
+  .training-atmosphere-story { gap: 30px; padding: 28px; }
+  .renewal-step-grid li { padding: 25px 20px; }
+  .program-renewal .renewal-step-grid h3 { font-size: 23px; }
+  .step-description { font-size: 13px; }
+  .instructor-introduction { gap: 40px; }
+  .renewal-instructor-photos { gap: 25px; }
+  .future-composition { grid-template-columns: 1fr; gap: 40px; }
+  .future-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 30px; }
+  .renewal-faq-layout { grid-template-columns: 1fr; gap: 15px; }
+}
+@media (max-width: 850px) { .program-renewal { padding-top: 78px; } }
+@media (max-width: 600px) {
+  .program-renewal { padding-top: 74px; font-size: 14px; }
+  .renewal-wrap { width: calc(100% - 40px); }
+  .program-renewal .story-section { padding: 64px 0; }
+  .program-renewal h2 { font-size: clamp(26px, 6.6vw, 33px); letter-spacing: .02em; }
+  .program-renewal .section-heading { margin-bottom: 26px; }
+  .program-renewal .section-heading .eyebrow { font-size: 10px; margin-bottom: 20px; gap: 10px; }
+  .program-renewal .section-heading .eyebrow span { padding-right: 10px; }
+  .program-renewal .renewal-kicker { font-size: 10px; }
+  .program-renewal .renewal-note { font-size: 12px; }
+  .renewal-hero { padding-top: 30px; }
+  .hero-for { font-size: 11px; margin: 15px 0 20px; }
+  .program-renewal h1 { font-size: clamp(27px, 6.8vw, 39px); line-height: 1.8; letter-spacing: 0; }
+  .hero-introduction { font-size: 14px; margin: 23px 0; }
+  .hero-statement > .renewal-button { width: 100%; padding: 18px 20px; font-size: 14px; }
+  .hero-statement > .renewal-text-link { display: flex; width: fit-content; margin: 18px 0 0; }
+  .hero-photograph { padding-top: 40px; padding-bottom: 75px; margin-top: 20px; }
+  .hero-photograph::before { inset: 23px -7px 54px 13px; }
+  .photo-overline { top: 10px; font-size: 8px; }
+  .hero-photo-word { font-size: 18px; padding: 13px 18px; bottom: 18px; right: 0; }
+  .hero-photo-detail { font-size: 9px; max-width: 45%; bottom: 17px; }
+  .hero-facts { display: block; padding-top: 22px; padding-bottom: 23px; }
+  .hero-facts > p { font-size: 11px; }
+  .hero-facts > p br { display: none; }
+  .hero-facts strong { font-size: 13px; margin-left: 12px; }
+  .hero-facts dl { display: block; margin-top: 16px; }
+  .hero-facts dl div { display: grid; grid-template-columns: 65px 1fr; border: 0; padding-left: 0; margin-top: 7px; gap: 10px; }
+  .hero-facts dt { margin: 0; font-size: 12px; }
+  .hero-facts dd { font-size: 12px; }
+  .editorial-split { grid-template-columns: 1fr; gap: 30px; }
+  .about-photograph { order: 2; }
+  .photo-footnote { font-size: 8px; margin-top: 12px; padding-top: 15px; }
+  .section-intro-row { display: block; }
+  .section-side-copy { max-width: none; font-size: 13px; padding-bottom: 5px; }
+  .perspective-grid { margin-top: 30px; gap: 26px 0; }
+  .perspective-grid li { padding: 20px 0 0 18px; }
+  .perspective-grid li:nth-child(odd) { padding-right: 18px; }
+  .perspective-mark { transform: scale(.85); transform-origin: left; margin-top: 17px; }
+  .program-renewal .perspective-grid h3 { font-size: 18px; margin: 15px 0 10px; }
+  .perspective-grid p { font-size: 13px; }
+  .renewal-audience-grid { grid-template-columns: 1fr; margin-top: 30px; gap: 20px; }
+  .renewal-audience-grid article { padding: 28px; }
+  .program-renewal .renewal-audience-grid h3 { font-size: 26px; }
+  .audience-closing { text-align: left; font-size: 13px; }
+  .support-composition { gap: 30px; }
+  .program-renewal .prose-lead { font-size: 21px; }
+  .support-list { display: block; }
+  .support-list li { gap: 20px; }
+  .program-renewal .support-list h3 { font-size: 20px; }
+  .training-story { margin-top: 30px; gap: 24px; }
+  .program-renewal .training-story-copy h3 { font-size: 28px; }
+  .training-secondary-photo { width: 88%; margin-top: 32px; }
+  .theory-story { margin-top: 48px; padding-top: 38px; }
+  .training-atmosphere-story { grid-template-columns: 1fr; padding: 25px 20px; margin-top: 40px; gap: 25px; }
+  .program-renewal .training-atmosphere-story h3 { font-size: 27px; }
+  .renewal-step-grid { grid-template-columns: 1fr; margin-top: 25px; gap: 20px; }
+  .renewal-step-grid li { padding: 25px; border: 1px solid #738b7255; }
+  .renewal-step-grid li:not(:last-child)::after { content: "↓"; top: auto; bottom: -22px; right: 25px; font-size: 24px; padding-inline: 8px; }
+  .program-renewal .renewal-step-grid h3 { font-size: 27px; }
+  .step-description { margin-top: 20px; font-size: 14px; }
+  .step-period { margin-top: 20px; }
+  .roadmap-common { display: block; margin-top: 25px; }
+  .roadmap-common > * { display: block; margin-top: 9px; }
+  .instructor-introduction { grid-template-columns: 1fr; gap: 0; }
+  .instructor-introduction .renewal-prose { padding-top: 0; }
+  .renewal-instructor-photos { grid-template-columns: 1fr; gap: 27px; margin-top: 30px; }
+  .renewal-instructor-photos > :last-child { margin-top: 0; }
+  .future-composition { gap: 30px; }
+  .future-list { display: block; }
+  .future-list li { gap: 20px; }
+  .program-renewal .future-list h3 { font-size: 20px; }
+  .program-renewal .future-note { margin-top: 0; }
+  .tuition-courses { margin-top: 28px; }
+  .tuition-course { grid-template-columns: 1fr; gap: 23px; padding: 28px 0; }
+  .tuition-course > div:first-child { grid-row: auto; }
+  .tuition-course dl { padding: 15px 20px; background: var(--paper); }
+  .tuition-course dl div { grid-template-columns: 75px 1fr; }
+  .tuition-amount { padding: 0; }
+  .tuition-amount p { font-size: 36px; }
+  .tuition-amount small { font-size: 13px; }
+  .tuition-total { display: block; padding: 20px; }
+  .tuition-total > p:first-child { font-size: 13px; }
+  .tuition-total > p:last-child { margin-top: 12px; }
+  .tuition-total strong { font-size: 18px; }
+  .payment-preparing { padding: 23px 20px; margin-top: 30px; }
+  .program-renewal .payment-preparing h3 { font-size: 19px; }
+  .renewal-flow { margin-top: 45px; }
+  .flow-title { flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
+  .flow-title h3 { font-size: 23px; }
+  .renewal-flow ol { grid-template-columns: 1fr; gap: 18px; }
+  .renewal-flow h4 { font-size: 20px; margin: 9px 0; }
+  .renewal-faq-layout { gap: 5px; }
+  .renewal-faq-list summary { padding: 22px 0; gap: 12px; }
+  .renewal-faq-list summary > span:first-child { font-size: 12px; }
+  .program-renewal .renewal-faq-list h3 { font-size: 14px; }
+  .renewal-faq-list details > p { padding-left: 0; padding-right: 0; }
+  .renewal-contact { padding: 65px 0; }
+  .program-renewal .renewal-contact h2 { font-size: 32px; }
+  .renewal-contact h2 + p { font-size: 13px; }
+  .contact-availability { font-size: 13px; gap: 9px; padding-inline: 0; text-align: left; }
+}
+@media (max-width: 360px) {
+  .program-renewal h1 { font-size: 25px; }
+  .program-renewal .renewal-button { font-size: 13px; gap: 15px; }
+  .program-renewal .perspective-grid h3 { font-size: 17px; }
+  .tuition-amount p { font-size: 32px; }
+}

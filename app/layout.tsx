@@ -3,6 +3,7 @@ import "./globals.css";
 import "./learning-experience.css";
 import "./public-training.css";
 import "./program-photos.css";
+import "./renewal.css";
 
 const title = "自然形体療法 資格取得プログラム | 株式会社TSUNAGi";
 const description =

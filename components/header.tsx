@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 const links = [
-  ["プログラムについて", "/#about"],
+  ["自然形体療法とは", "/#about"],
+  ["研修・学び方", "/#training"],
   ["資格取得の道筋", "/#roadmap"],
   ["コース・料金", "/#courses"],
   ["よくある質問", "/#faq"],

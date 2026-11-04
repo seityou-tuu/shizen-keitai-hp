@@ -19,14 +19,16 @@ const photos = {
   "group-guidance": groupGuidance,
 };
 
-export function ProgramPhoto({ name, caption }: {
+export function ProgramPhoto({ name, caption, priority = false, sizes = "(max-width: 900px) calc(100vw - 40px), 600px" }: {
   name: keyof typeof photos;
   caption: string;
+  priority?: boolean;
+  sizes?: string;
 }) {
   return (
     <figure className="program-photo">
       <Image src={photos[name]} alt={caption}
-        sizes="(max-width: 600px) calc(100vw - 44px), (max-width: 850px) 50vw, 540px" />
+        sizes={sizes} priority={priority} />
       <figcaption>{caption}</figcaption>
     </figure>
   );
