@@ -1,5 +1,6 @@
+import { ProgramPhoto } from "@/components/program-photo";
 import { TrainingDay } from "@/components/training-day";
-import { PhotoPlaceholder, SectionHeading } from "@/components/ui";
+import { SectionHeading } from "@/components/ui";
 
 export function LearningQuestions() {
   return (
@@ -116,10 +117,19 @@ export function TrainingExperience() {
           {formats.map((item) => (
             <article className="learning-format" key={item.number}>
               <div className="learning-format-photo">
-                <PhotoPlaceholder label={item.english} caption={item.photo} />
-                <p className="learning-photo-note">
-                  研修写真は準備中です。実際の様子は、確認・許諾後に掲載します。
-                </p>
+                {item.number === "01" ? (
+                  <>
+                    <ProgramPhoto name="practical-hands-on" caption="実技研修の風景" />
+                    <ProgramPhoto name="practical-observation" caption="実技を見ながら学ぶ様子" />
+                  </>
+                ) : (
+                  <>
+                    <ProgramPhoto name="classroom-session" caption="座学・講義の風景" />
+                    <p className="learning-photo-note">
+                      写真は座学・講義の様子です。オンライン理論研修の画面ではありません。
+                    </p>
+                  </>
+                )}
               </div>
               <div className="learning-format-content">
                 <p className="eyebrow">
@@ -147,6 +157,9 @@ export function TrainingExperience() {
               </div>
             </article>
           ))}
+        </div>
+        <div className="training-atmosphere">
+          <ProgramPhoto name="group-guidance" caption="研修の雰囲気" />
         </div>
         <TrainingDay />
         <div className="learning-rhythm">
@@ -221,3 +234,4 @@ export function ProgramFacts() {
     </div>
   );
 }
+

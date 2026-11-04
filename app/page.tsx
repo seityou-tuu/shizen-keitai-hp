@@ -1,8 +1,9 @@
+import { ProgramPhoto } from "@/components/program-photo";
 import { PublicTreatment } from "@/components/public-treatment";
 import { MonthlyTraining } from "@/components/monthly-training";
 import { InformationLinks } from "@/components/information-links";
 import { Header } from "@/components/header";
-import { ArrowLink, PhotoPlaceholder, SectionHeading } from "@/components/ui";
+import { ArrowLink, SectionHeading } from "@/components/ui";
 import {
   LearningQuestions,
   TrainingExperience,
@@ -153,10 +154,8 @@ export default function Home() {
               </p>
             </div>
             <div className="about-image">
-              <PhotoPlaceholder
-                label="PRACTICE & LEARNING"
-                caption="実技研修の風景"
-              />
+              <ProgramPhoto name="treatment-main" caption="自然形体療法の施術風景" />
+              <ProgramPhoto name="treatment-detail" caption="施術の様子" />
               <div className="image-caption">
                 <span>01 — LEARNING THROUGH PRACTICE</span>
                 <span>学ぶ。確かめる。積み重ねる。</span>
@@ -321,7 +320,10 @@ export default function Home() {
         </section>
         <section id="instructors" className="section instructor-section">
           <div className="container two-column">
-            <PhotoPlaceholder label="INSTRUCTOR" caption="講師紹介写真" />
+            <div className="instructor-photos">
+              <ProgramPhoto name="instructor-portrait" caption="講師紹介" />
+              <ProgramPhoto name="speaker-message" caption="講師・メッセージ紹介" />
+            </div>
             <div>
               <SectionHeading number="07" english="INSTRUCTORS">
                 学びを支える、
@@ -466,3 +468,4 @@ export default function Home() {
     </>
   );
 }
+
