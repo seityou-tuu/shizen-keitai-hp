@@ -1,10 +1,10 @@
+import { Header } from "@/components/header";
+import { ArrowLink, PhotoPlaceholder, SectionHeading } from "@/components/ui";
 import {
   LearningQuestions,
   TrainingExperience,
   ProgramFacts,
 } from "@/components/learning-experience";
-import { Header } from "@/components/header";
-import { ArrowLink, PhotoPlaceholder, SectionHeading } from "@/components/ui";
 
 const courses = [
   {
