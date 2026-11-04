@@ -7,7 +7,8 @@
     "build": "next build --webpack",
     "start": "next start --hostname 0.0.0.0",
     "typecheck": "tsc --noEmit",
-    "test": "node tests/run.cjs"
+    "test": "node tests/run.cjs",
+    "test:browser": "node scripts/browser-check.cjs"
   },
   "dependencies": {
     "next": "^16.0.0",

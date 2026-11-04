@@ -20,7 +20,7 @@
 .program-renewal :is(a, button, summary):focus-visible,
 .home-footer a:focus-visible,
 .mobile-consult-bar a:focus-visible {
-  outline: 3px solid #bda465;
+  outline: 3px solid #806636;
   outline-offset: 4px;
 }
 .program-renewal .renewal-button {
@@ -421,4 +421,64 @@
   .mobile-consult-bar a {
     gap: 5px;
   }
+}
+
+/* Keep FAQ numbers on one line even when long questions wrap. */
+.program-renewal .renewal-faq-list summary {
+  display: grid;
+  grid-template-columns: 2.6rem minmax(0, 1fr) 12px;
+}
+.program-renewal .renewal-faq-list summary > span:first-child {
+  inline-size: 2.6rem;
+  min-inline-size: 2.6rem;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.5;
+}
+.program-renewal .renewal-faq-list summary h3 {
+  min-width: 0;
+}
+.program-renewal .renewal-faq-toggle {
+  margin-left: 0;
+}
+.site-header .brand,
+.home-footer .company-info a,
+.home-footer .back-top {
+  min-height: 44px;
+}
+.home-footer .eyebrow,
+.information-main .eyebrow {
+  color: #806636;
+}
+.information-contact .information-phone,
+.information-contact .text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.information-contact .information-phone {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+@media (max-width: 600px) {
+  html {
+    scroll-padding-bottom: calc(90px + env(safe-area-inset-bottom, 0px));
+  }
+  .mobile-consult-bar > a:first-child {
+    background: var(--green);
+    color: white;
+  }
+  .mobile-consult-bar > a:last-child {
+    background: #fdfdfa;
+    color: var(--green);
+  }
+}
+
+.program-renewal .renewal-contact a:focus-visible,
+.program-renewal .renewal-roadmap a:focus-visible {
+  outline-color: #e4ce93;
+}
+.information-main a:focus-visible {
+  outline: 3px solid #806636;
+  outline-offset: 4px;
 }

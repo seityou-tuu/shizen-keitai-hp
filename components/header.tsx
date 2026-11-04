@@ -50,7 +50,7 @@ export function Header() {
           </a>
         ))}
         <a className="header-contact" href="/#contact">
-          お問い合わせ <span>↗</span>
+          お問い合わせ <span aria-hidden="true">↗</span>
         </a>
       </nav>
       <button
@@ -73,7 +73,7 @@ export function Header() {
         {[...links, ["お問い合わせ", "/#contact"]].map(([label, href]) => (
           <a key={href} href={href} onClick={() => setOpen(false)}>
             {label}
-            <span>↗</span>
+            <span aria-hidden="true">↗</span>
           </a>
         ))}
       </nav>

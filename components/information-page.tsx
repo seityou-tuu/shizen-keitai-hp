@@ -1,3 +1,4 @@
+import { CONTACT_PHONE, CONTACT_TEL } from "@/lib/contact";
 import type { InformationRow } from "@/lib/site-information";
 export function InformationPage({
   title,
@@ -37,8 +38,12 @@ export function InformationPage({
       <div className="information-contact">
         <h2>お問い合わせについて</h2>
         <p>
-          正式な連絡先は現在準備中です。このサイトには送信フォーム・申込・決済機能はありません。
+          受講に関するご相談は、お電話で承ります。お問い合わせだけで正式な受講申込み・契約成立・決済になることはありません。
         </p>
+        <a href={CONTACT_TEL} className="information-phone">
+          電話で相談する：{CONTACT_PHONE}
+        </a>
+        <br />
         <a href="/#contact" className="text-link">
           トップページのお問い合わせ案内へ ↗
         </a>

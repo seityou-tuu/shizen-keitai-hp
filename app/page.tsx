@@ -850,11 +850,18 @@ export default function Home() {
         </div>
       </footer>
       <nav className="mobile-consult-bar" aria-label="スマートフォンの受講相談">
-        <a href={CONTACT_TEL}>電話で相談する</a>
+        <a
+          href={CONTACT_TEL}
+          aria-label={`電話で受講相談する（${CONTACT_PHONE}へ発信）`}
+        >
+          電話で相談する
+        </a>
         {getOfficialLineUrl() ? (
           <LineConsultationLink className="mobile-line-link" />
         ) : (
-          <a href="#contact">相談窓口を見る</a>
+          <a href="#contact" aria-label="受講相談の窓口案内へ移動">
+            窓口案内を見る <span aria-hidden="true">↓</span>
+          </a>
         )}
       </nav>
     </>
