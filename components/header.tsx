@@ -1,17 +1,17 @@
 "use client";
 import { useState } from "react";
 const links = [
-  ["プログラムについて", "#about"],
-  ["資格取得の道筋", "#roadmap"],
-  ["コース・料金", "#courses"],
-  ["よくある質問", "#faq"],
+  ["プログラムについて", "/#about"],
+  ["資格取得の道筋", "/#roadmap"],
+  ["コース・料金", "/#courses"],
+  ["よくある質問", "/#faq"],
 ];
 export function Header() {
   const [open, setOpen] = useState(false);
   return (
     <header className="site-header">
       <a
-        href="#"
+        href="/"
         className="brand"
         aria-label="自然形体療法 資格取得プログラム トップ"
       >
@@ -28,7 +28,7 @@ export function Header() {
             {label}
           </a>
         ))}
-        <a className="header-contact" href="#contact">
+        <a className="header-contact" href="/#contact">
           お問い合わせ <span>↗</span>
         </a>
       </nav>
@@ -47,7 +47,7 @@ export function Header() {
           className="mobile-nav"
           aria-label="モバイルナビゲーション"
         >
-          {[...links, ["お問い合わせ", "#contact"]].map(([label, href]) => (
+          {[...links, ["お問い合わせ", "/#contact"]].map(([label, href]) => (
             <a key={href} href={href} onClick={() => setOpen(false)}>
               {label}
               <span>↗</span>
