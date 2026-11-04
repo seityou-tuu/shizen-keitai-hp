@@ -1,3 +1,4 @@
+import { InformationLinks } from "@/components/information-links";
 import { Header } from "@/components/header";
 import { ArrowLink, PhotoPlaceholder, SectionHeading } from "@/components/ui";
 
@@ -32,7 +33,7 @@ const faqs = [
   ],
   [
     "受講期間と費用を教えてください。",
-    "各コース6ヶ月、受講料は各900,000円（税抜）です。3コースすべての受講料合計は2,700,000円（税抜）。各コースの受講期間の合算は18ヶ月ですが、連続開講時期は未確認のため、18ヶ月での資格取得を保証するものではありません。",
+    "各コース6ヶ月、受講料は各990,000円（税込）／900,000円（税抜）です。3コースすべての受講料合計は2,970,000円（税込）／2,700,000円（税抜）（消費税10％前提）。各コースの受講期間の合算は18ヶ月ですが、連続開講時期は未確認のため、18ヶ月での資格取得を保証するものではありません。",
   ],
   [
     "研修はどこで、どのくらいの頻度で行いますか？",
@@ -245,19 +246,23 @@ export default function Home() {
                     </div>
                     <div>
                       <dt>実技研修</dt>
-                      <dd>月1回・対面</dd>
+                      <dd>月1回・対面 9:00〜17:00</dd>
                     </div>
                     <div>
                       <dt>理論研修</dt>
-                      <dd>月1回・オンライン</dd>
+                      <dd>月1回・オンライン2時間</dd>
+                    </div>
+                    <div>
+                      <dt>回数の目安</dt>
+                      <dd>実技6回・理論6回※</dd>
                     </div>
                   </dl>
                   <div className="course-price">
                     <span>受講料</span>
                     <p>
-                      900,000<small>円</small>
+                      990,000<small>円（税込）</small>
                     </p>
-                    <span>税抜 / 1コース</span>
+                    <span>税抜900,000円 / 1コース</span>
                   </div>
                 </article>
               ))}
@@ -268,12 +273,12 @@ export default function Home() {
                 <h3>3コースすべての受講料合計</h3>
               </div>
               <p>
-                2,700,000<small>円（税抜）</small>
+                2,970,000<small>円（税込）</small>
               </p>
             </div>
             <p className="editorial-note">
               ※
-              各コースの詳しいカリキュラム・認定基準は確認中です。支払い方法、教材費・交通費等の受講料以外の費用の有無、キャンセル規定は、正式な募集案内でご確認ください。
+              税込額は消費税10％前提です。3コースの税抜合計は2,700,000円です。※研修回数は月1回×6ヶ月で算出した目安です。正式な開催日程・振替等は確認中です。各コースの詳しいカリキュラム・認定基準は確認中です。支払い方法、教材費・交通費等の受講料以外の費用の有無、キャンセル規定は、正式な募集案内でご確認ください。
             </p>
           </div>
         </section>
@@ -545,6 +550,7 @@ export default function Home() {
               PAGE TOP <span>↑</span>
             </a>
           </div>
+          <InformationLinks />
           <div className="footer-bottom">
             <p>© {new Date().getFullYear()} TSUNAGi Co., Ltd.</p>
             <p>デザイン試作版 · 掲載内容には確認中の情報が含まれます</p>
