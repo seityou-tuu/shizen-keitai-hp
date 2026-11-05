@@ -208,6 +208,18 @@ if (out) fs.mkdirSync(out, { recursive: true });
             "false",
           );
       }
+      const trainingLayout = await page.locator("#training").evaluate(el => {
+        const rect = selector => { const r = el.querySelector(selector).getBoundingClientRect(); return {left:r.left,right:r.right,top:r.top,bottom:r.bottom}; };
+        return {heading:rect(".training-practical-details .section-heading"),photo:rect(".training-main-photo > .program-photo"),copy:rect(".training-practical-details > .training-story-copy"),secondary:rect(".training-secondary-photo")};
+      });
+      if (width > 900) {
+        assert.ok(trainingLayout.photo.right < trainingLayout.heading.left, `training must be side by side at ${width}`);
+        assert.ok(Math.abs(trainingLayout.photo.top - trainingLayout.heading.top) < 2, `training heading/photo top alignment at ${width}`);
+      } else {
+        assert.ok(trainingLayout.heading.bottom <= trainingLayout.photo.top + 1, `training heading before photo at ${width}`);
+        assert.ok(trainingLayout.photo.bottom <= trainingLayout.copy.top + 1, `training copy after photo at ${width}`);
+        assert.ok(trainingLayout.copy.bottom <= trainingLayout.secondary.top + 1, `training secondary after copy at ${width}`);
+      }
       const sections = [];
       for (const section of await page.locator("#main > section").all()) {
         await section.scrollIntoViewIfNeeded();
@@ -346,7 +358,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
         }));
         assert.ok(
           Math.abs(ratio.natural - ratio.displayed) < 0.015 ||
-          (ratio.fit === "cover" && ["treatment-main", "instructor-portrait"].includes(ratio.name)),
+          (ratio.fit === "cover" && ["treatment-main", "instructor-portrait", "practical-hands-on"].includes(ratio.name)),
           `image distortion or unintended cropping at ${width}`,
         );
       }

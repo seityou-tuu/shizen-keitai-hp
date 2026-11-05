@@ -371,20 +371,13 @@ export default function Home() {
 
         <section id="training" className="story-section renewal-training">
           <div className="renewal-wrap">
-            <SectionHeading number="06" english="INSIDE THE TRAINING">
-              技術を、目で見て、
-              <br />
-              手で感じる。
-            </SectionHeading>
             <article className="training-story">
-              <div className="training-main-photo">
-                <ProgramPhoto
-                  name="practical-hands-on"
-                  caption="講師の技術を間近で学ぶ実技研修"
-                  sizes="(max-width: 900px) calc(100vw - 40px), (max-width: 1392px) calc(100vw - 112px), 1280px"
-                />
-              </div>
               <div className="training-practical-details">
+                <SectionHeading number="06" english="INSIDE THE TRAINING">
+                  技術を、目で見て、
+                  <br />
+                  手で感じる。
+                </SectionHeading>
                 <div className="training-story-copy">
                   <p className="renewal-kicker">PRACTICAL TRAINING</p>
                   <h3>
@@ -416,6 +409,13 @@ export default function Home() {
                     会場・開催日・具体的な指導内容、休憩時間を含む時間配分は確認中です。
                   </p>
                 </div>
+              </div>
+              <div className="training-main-photo">
+                <ProgramPhoto
+                  name="practical-hands-on"
+                  caption="講師の技術を間近で学ぶ実技研修"
+                  sizes="(max-width: 900px) calc(100vw - 40px), (max-width: 1392px) 50vw, 680px"
+                />
                 <div className="training-secondary-photo">
                   <ProgramPhoto
                     name="practical-observation"

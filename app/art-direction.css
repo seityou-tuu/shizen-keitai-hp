@@ -75,13 +75,13 @@
 .cinematic-program .renewal-features .eyebrow { color: var(--light-gold); }
 .cinematic-program .renewal-features .section-side-copy { color: #c9d6cb; }
 .cinematic-program .perspective-grid { gap: 0; margin-top: 52px; }
-.cinematic-program .perspective-grid li { padding: 32px 28px; border: 0; border-top: 1px solid #dbc89a70; border-right: 1px solid #dbc89a40; background: transparent; }
+.cinematic-program .perspective-grid li { padding: 36px 28px; border: 0; border-top: 1px solid #dbc89a70; border-right: 1px solid #dbc89a40; background: transparent; }
 .cinematic-program .perspective-grid li:first-child { padding-left: 0; }
 .cinematic-program .perspective-grid li:last-child { border-right: 0; }
 .cinematic-program .perspective-number { font: 64px/1.1 Georgia, serif; color: var(--light-gold); }
 .cinematic-program .perspective-mark { display: none; }
-.cinematic-program .perspective-grid h3 { font-size: 22px; margin: 34px 0 18px; }
-.cinematic-program .perspective-grid p { color: #c9d6cb; font-size: 14px; }
+.cinematic-program .perspective-grid h3 { font-size: 22px; margin: 28px 0 18px; line-height: 1.8; }
+.cinematic-program .perspective-grid p { color: #c9d6cb; font-size: 15px; line-height: 2; }
 
 /* 04 — Open editorial rows, rather than another set of matching cards. */
 .cinematic-program .renewal-audience { background: #eeeae0; }
@@ -111,11 +111,15 @@
 
 /* 06 — Training is the visual centrepiece, with all four real photographs. */
 .cinematic-program .renewal-training { background: #eeeae0; }
-.cinematic-program .training-story:not(.theory-story) { display: block; margin-top: 44px; }
-.cinematic-program .training-main-photo { width: 100%; }
-.cinematic-program .training-practical-details { display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; align-items: start; margin-top: 40px; }
-.cinematic-program .training-practical-details > .training-story-copy { grid-column: 2; grid-row: 1; background: #f8f7f2; padding: 40px; }
-.cinematic-program .training-secondary-photo { grid-column: 1; grid-row: 1; width: 100%; margin: 0; }
+.cinematic-program .training-story:not(.theory-story) { display: grid; grid-template-columns: 1.12fr 1fr; gap: clamp(36px, 5vw, 64px); align-items: start; margin-top: 0; }
+.cinematic-program .training-main-photo { grid-column: 1; grid-row: 1; width: 100%; }
+.cinematic-program .training-main-photo > .program-photo img { aspect-ratio: 3 / 2; object-fit: cover; object-position: 50% 55%; }
+.cinematic-program .training-practical-details { grid-column: 2; grid-row: 1; display: block; margin: 0; }
+.cinematic-program .training-practical-details .section-heading { margin-bottom: 28px; }
+.cinematic-program .training-practical-details .section-heading h2 { font-size: clamp(30px, 3vw, 42px); line-height: 1.55; }
+.cinematic-program .training-practical-details > .training-story-copy { background: transparent; padding: 0; }
+.cinematic-program .training-practical-details .training-story-copy h3 { font-size: 26px; margin-block: 18px; }
+.cinematic-program .training-secondary-photo { width: 74%; margin: 28px 0 0 auto; }
 .cinematic-program .training-story-copy h3 { font-size: clamp(29px, 3vw, 42px); margin-block: 18px 26px; }
 .cinematic-program .training-details div { padding-block: 14px; border-color: #c1c7b8; font-size: 14px; }
 .cinematic-program .theory-story { grid-template-columns: .85fr 1.15fr; gap: 72px; padding-top: 64px; margin-top: 72px; }
@@ -132,15 +136,15 @@
 /* 07 — A connected, three-stage learning path. */
 .cinematic-program .renewal-roadmap { background: #173f35; }
 .cinematic-program .renewal-step-grid { display: block; margin-top: 48px; }
-.cinematic-program .renewal-step-grid li { display: grid; grid-template-columns: 1fr 1fr 150px; gap: 8px 40px; padding: 36px 0 36px 36px; border: 0; border-left: 1px solid #dbc89a80; border-top: 1px solid #dbc89a50; background: transparent; }
+.cinematic-program .renewal-step-grid li { display: grid; grid-template-columns: 1fr 1fr 150px; gap: 8px 40px; padding: 36px 0 36px 36px; border: 0; border-left: 1px solid #dbc89a80; border-top: 1px solid #dbc89a80; background: transparent; }
 .cinematic-program .renewal-step-grid li:last-child { border-right: 0; border-bottom: 1px solid #dbc89a50; }
 .cinematic-program .renewal-step-grid li::before { content: ""; position: absolute; width: 9px; height: 9px; background: #dbc89a; left: -5px; top: 44px; border-radius: 50%; }
 .cinematic-program .renewal-step-grid li:not(:last-child)::after { display: none; }
 .cinematic-program .renewal-step-grid li > .renewal-kicker { grid-column: 1; font-size: 12px; }
-.cinematic-program .renewal-step-grid h3 { grid-column: 1; font-size: 32px; margin: 10px 0 6px; }
+.cinematic-program .renewal-step-grid h3 { grid-column: 1; font-size: 34px; margin: 10px 0 6px; }
 .cinematic-program .step-english { grid-column: 1; }
 .cinematic-program .step-description { grid-column: 2; grid-row: 1 / span 3; margin: 0; align-self: center; font-size: 15px; }
-.cinematic-program .step-period { grid-column: 3; grid-row: 1 / span 3; margin: 0; align-self: center; font-size: 13px; }
+.cinematic-program .step-period { grid-column: 3; grid-row: 1 / span 3; margin: 0; align-self: center; font-size: 14px; white-space: nowrap; }
 .cinematic-program .step-period strong { font-size: 56px; }
 .cinematic-program .roadmap-common { margin-top: 32px; }
 .cinematic-program .renewal-roadmap .consultation-callout { background: #214c3f; border-color: #829776; }
@@ -206,7 +210,9 @@
 .cinematic-program .renewal-contact h2 { color: #fff; font-size: clamp(38px, 5vw, 72px); margin: 32px 0; }
 .cinematic-program .contact-layout { margin-top: 56px; gap: 64px; border-top: 1px solid #dbc89a50; padding-top: 32px; }
 .cinematic-program .contact-phone { font-size: clamp(32px, 3.8vw, 52px); color: var(--light-gold); font-variant-numeric: tabular-nums; }
-.cinematic-program .contact-guidance { padding-left: 36px; }
+.cinematic-program .contact-guidance { padding-left: 40px; }
+.cinematic-program .contact-by-phone > p, .cinematic-program .contact-guidance > p { max-width: 36em; line-height: 2; }
+.cinematic-program .contact-guidance > p + p { margin-top: 22px; }
 .home-footer { background: #f8f7f2; }
 .home-footer .information-links a { padding-block: 9px; }
 .mobile-consult-bar { box-shadow: 0 -6px 24px #102f2810; }
@@ -281,8 +287,12 @@
   .cinematic-program .perspective-grid li:nth-child(even) { border-right: 0; }
   .cinematic-program .support-composition { grid-template-columns: 1fr; gap: 32px; }
   .cinematic-program .support-list { grid-template-columns: 1fr 1fr; gap: 0 28px; }
-  .cinematic-program .training-practical-details { gap: 28px; grid-template-columns: .8fr 1.2fr; }
-  .cinematic-program .training-practical-details > .training-story-copy { padding: 28px; }
+  .cinematic-program .training-story:not(.theory-story) { grid-template-columns: 1fr; gap: 0; }
+  .cinematic-program .training-practical-details, .cinematic-program .training-main-photo { display: contents; }
+  .cinematic-program .training-practical-details .section-heading { grid-row: 1; }
+  .cinematic-program .training-main-photo > .program-photo { grid-row: 2; }
+  .cinematic-program .training-practical-details > .training-story-copy { grid-row: 3; padding: 0; margin-top: 28px; }
+  .cinematic-program .training-secondary-photo { grid-row: 4; width: 74%; margin-top: 28px; }
   .cinematic-program .theory-story { grid-template-columns: 1fr; gap: 32px; }
   .cinematic-program .theory-story > .training-story-copy { order: 0; }
   .cinematic-program .training-atmosphere-story { grid-template-columns: 1fr; gap: 28px; padding: 32px; }
@@ -340,7 +350,7 @@
   .cinematic-program .perspective-grid li:last-child { padding: 24px 0 30px; border-right: 0; }
   .cinematic-program .perspective-number { font-size: 46px; }
   .cinematic-program .perspective-grid h3 { font-size: 19px; margin-block: 22px 12px; }
-  .cinematic-program .perspective-grid p { font-size: 14px; }
+  .cinematic-program .perspective-grid p { font-size: 15px; }
   .cinematic-program .renewal-audience-grid { margin-top: 32px; }
   .cinematic-program .renewal-audience-grid article { display: block; padding-block: 30px; }
   .cinematic-program .audience-subject { display: block; font-size: 12px; }
@@ -351,8 +361,8 @@
   .cinematic-program .learning-cycle li { padding: 22px 18px; border-bottom: 1px solid #dbc89a40; }
   .cinematic-program .learning-cycle li:nth-child(2) { border-right: 0; }
   .cinematic-program .learning-cycle li > p { font-size: 14px; margin-top: 12px; }
-  .cinematic-program .training-practical-details { display: flex; flex-direction: column; gap: 28px; margin-top: 24px; }
-  .cinematic-program .training-practical-details > .training-story-copy { padding: 24px 20px; width: 100%; }
+  .cinematic-program .training-practical-details > .training-story-copy { padding: 0; width: 100%; }
+  .cinematic-program .training-practical-details .section-heading h2 { font-size: clamp(27px, 7vw, 34px); }
   .cinematic-program .training-secondary-photo { width: 85%; align-self: flex-start; }
   .cinematic-program .training-story-copy h3 { font-size: 30px; }
   .cinematic-program .theory-story { margin-top: 48px; padding-top: 40px; }
