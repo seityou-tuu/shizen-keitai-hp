@@ -58,6 +58,10 @@ if (out) fs.mkdirSync(out, { recursive: true });
       assert.equal(response.status(), 200);
       assert.match(response.headers()["x-robots-tag"], /noindex/);
       await page.waitForTimeout(150);
+      const profileText = await page.locator("#instructors .instructor-details").innerText();
+      for (const fact of ["柔道整復師（2012年取得）", "2017年 ながとも整骨院開院", "15年", "自然形体療法 理事", "YouTube総再生回数220万回", "2024年 FANCHANNEL グランプリ"]) {
+        assert.equal(profileText.split(fact).length - 1, 1, `profile fact at ${width}: ${fact}`);
+      }
       const initial = await page.evaluate(() => ({
         ...window.__qaMetrics,
         scroll: document.documentElement.scrollWidth,
