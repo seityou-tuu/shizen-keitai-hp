@@ -1,0 +1,433 @@
+/* Full art direction. The underlying facts, routes and contact settings are unchanged. */
+.cinematic-program {
+  --renewal-gold: #806636;
+  --muted: #58675e;
+  --canvas: #f8f7f2;
+  --night: #102f28;
+  --light-gold: #dbc89a;
+  background: var(--canvas);
+}
+.cinematic-program .renewal-wrap { width: min(1280px, calc(100% - 112px)); }
+.cinematic-program .story-section { padding-block: clamp(88px, 9vw, 144px); }
+.cinematic-program h2 { font-size: clamp(34px, 4.2vw, 60px); line-height: 1.5; letter-spacing: .03em; text-wrap: balance; }
+.cinematic-program h3 { text-wrap: balance; }
+.cinematic-program .section-heading { margin-bottom: 40px; }
+.cinematic-program .section-heading .eyebrow { margin-bottom: 24px; font-size: 10px; letter-spacing: .16em; }
+.cinematic-program .renewal-prose { font-size: 15px; line-height: 2.1; }
+.cinematic-program .renewal-note { font-size: 13px; line-height: 1.95; }
+.cinematic-program .program-photo figcaption { font-size: 12px; padding-top: 12px; line-height: 1.8; }
+.cinematic-program .program-photo { overflow: clip; }
+.cinematic-program .renewal-button {
+  padding: 20px 26px; min-height: 58px; gap: 24px; border: 1px solid var(--green);
+  background: var(--green); color: #fff; font-weight: 500;
+  transition: background-color .2s, color .2s, border-color .2s;
+}
+.cinematic-program .renewal-button > span { transition: transform .2s ease; }
+.cinematic-program .renewal-text-link { min-height: 44px; text-underline-offset: 6px; }
+.site-header { -webkit-backdrop-filter: blur(15px); }
+.mobile-nav { padding-bottom: max(20px, env(safe-area-inset-bottom, 0px)); }
+@media (hover: hover) {
+  .cinematic-program .renewal-button:hover { background: #2b5747; border-color: #2b5747; }
+  .cinematic-program .renewal-button:hover > span { transform: translate(3px, -3px); }
+  .desktop-nav > a:not(.header-contact):hover { color: #806636; }
+}
+
+/* 01 — An immersive photographic opening, with a solid reading surface. */
+.cinematic-program .renewal-hero { padding: 0; background: var(--night); color: #fff; }
+.cinematic-program .hero-composition { position: relative; isolation: isolate; display: block; width: 100%; min-height: 740px; }
+.cinematic-program .hero-statement {
+  position: relative; z-index: 2; width: min(58%, 850px); margin-left: max(56px, calc((100vw - 1280px) / 2));
+  padding: 64px 0 72px; min-width: 0;
+}
+.cinematic-program .hero-statement > .renewal-kicker { color: var(--light-gold); font-size: 10px; letter-spacing: .18em; }
+.cinematic-program .hero-for { color: #e0e8db; font-size: 15px; letter-spacing: .12em; margin: 18px 0 38px; }
+.cinematic-program h1 { font-size: clamp(38px, 3.8vw, 58px); line-height: 1.6; letter-spacing: .015em; font-weight: 500; }
+.cinematic-program h1 .hero-break { display: block; }
+.cinematic-program h1 em { color: var(--light-gold); font-style: normal; }
+.cinematic-program .hero-introduction { max-width: 470px; font-size: 14px; color: #e0e8db; margin: 32px 0; line-height: 2; }
+.cinematic-program .hero-introduction p + p { margin-top: 9px; }
+.cinematic-program .hero-statement > .renewal-button { background: var(--light-gold); color: var(--night); border-color: var(--light-gold); }
+.cinematic-program .hero-statement > .renewal-button > span { color: var(--night); }
+.cinematic-program .hero-statement > .renewal-text-link { color: #fff; margin: 20px 0 0 20px; border-color: #dbc89a80; }
+.cinematic-program .hero-statement > .renewal-text-link span { color: var(--light-gold); }
+.cinematic-program .hero-photograph { position: absolute; z-index: -1; inset: 0 0 0 auto; width: 65%; margin: 0; padding: 0; display: block; }
+.cinematic-program .hero-photograph::before { display: none; }
+.cinematic-program .hero-photograph::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #102f28 0%, #102f28eb 18%, #102f2870 48%, #102f2810 85%); pointer-events: none; }
+.cinematic-program .hero-photograph .program-photo { width: 100%; height: 100%; }
+.cinematic-program .hero-photograph .program-photo img { width: 100%; height: 100%; object-fit: cover; object-position: left center; }
+.cinematic-program .hero-photograph figcaption { position: absolute; right: 28px; bottom: 24px; padding: 6px 10px; background: #102f28e8; color: #fff; z-index: 1; }
+.cinematic-program .hero-photograph :is(.photo-overline,.hero-photo-word,.hero-photo-detail) { display: none; }
+.cinematic-program .hero-facts { width: 100%; margin: 0; padding: 26px max(56px, calc((100vw - 1280px) / 2)); border-top: 1px solid #dbc89a40; background: #102f28; gap: 32px; }
+.cinematic-program .hero-facts > p, .cinematic-program .hero-facts dt { color: #c9d6cb; }
+.cinematic-program .hero-facts strong, .cinematic-program .hero-facts dd { color: #fff; }
+.cinematic-program .hero-facts dl div { border-color: #dbc89a50; }
+
+/* 02 — A photographic editorial spread. */
+.cinematic-program .renewal-about { background: #f8f7f2; }
+.cinematic-program .editorial-split { grid-template-columns: 1.15fr 1fr; gap: clamp(40px, 6vw, 88px); align-items: center; }
+.cinematic-program .about-photograph { padding-bottom: 44px; position: relative; }
+.cinematic-program .about-photograph::after { content: ""; position: absolute; inset: 38px 28px 0 -20px; border: 1px solid #a68b5860; z-index: 0; pointer-events: none; }
+.cinematic-program .about-photograph .program-photo { position: relative; z-index: 1; }
+.cinematic-program .photo-footnote { margin: 20px 0 0 24px; padding: 0; border: 0; }
+
+/* 03 — Four principles, expressed as oversized typographic columns. */
+.cinematic-program .renewal-features { background: var(--night); color: #fff; }
+.cinematic-program .renewal-features .eyebrow { color: var(--light-gold); }
+.cinematic-program .renewal-features .section-side-copy { color: #c9d6cb; }
+.cinematic-program .perspective-grid { gap: 0; margin-top: 52px; }
+.cinematic-program .perspective-grid li { padding: 36px 28px; border: 0; border-top: 1px solid #dbc89a70; border-right: 1px solid #dbc89a40; background: transparent; }
+.cinematic-program .perspective-grid li:first-child { padding-left: 0; }
+.cinematic-program .perspective-grid li:last-child { border-right: 0; }
+.cinematic-program .perspective-number { font: 64px/1.1 Georgia, serif; color: var(--light-gold); }
+.cinematic-program .perspective-mark { display: none; }
+.cinematic-program .perspective-grid h3 { font-size: 22px; margin: 28px 0 18px; line-height: 1.8; }
+.cinematic-program .perspective-grid p { color: #c9d6cb; font-size: 15px; line-height: 2; }
+
+/* 04 — Open editorial rows, rather than another set of matching cards. */
+.cinematic-program .renewal-audience { background: #eeeae0; }
+.cinematic-program .renewal-audience-grid { grid-template-columns: 1fr; gap: 0; margin-top: 48px; }
+.cinematic-program .renewal-audience-grid article { display: grid; grid-template-columns: .8fr 1.2fr; column-gap: 72px; padding: 40px 0; border: 0; border-top: 1px solid #bcbba9; background: transparent; color: var(--ink); }
+.cinematic-program .renewal-audience-grid article:nth-child(2) { background: transparent; }
+.cinematic-program .renewal-audience-grid article:first-child .renewal-kicker { color: #806636; }
+.cinematic-program .audience-subject { grid-column: 1; margin-top: 12px; align-self: start; color: #58675e; opacity: 1; }
+.cinematic-program .renewal-audience-grid h3 { grid-column: 2; grid-row: 1 / span 2; font-size: clamp(27px, 3vw, 40px); margin: 0 0 20px; }
+.cinematic-program .renewal-audience-grid article > p:last-child { grid-column: 2; max-width: 540px; }
+.cinematic-program .audience-closing { text-align: left; border-top: 1px solid #bcbba9; padding-top: 28px; margin-top: 0; }
+
+/* 05 — A clear support index and a continuous learning cycle. */
+.cinematic-program .renewal-support { background: #fff; border: 0; }
+.cinematic-program .support-composition { grid-template-columns: 1fr 1fr; gap: 72px; }
+.cinematic-program .support-list { display: grid; grid-template-columns: 1fr; }
+.cinematic-program .support-list li { column-gap: 24px; padding-block: 24px; }
+.cinematic-program .support-list li > span { font-size: 28px; line-height: 1.2; }
+.cinematic-program .support-list h3 { font-size: 23px; }
+.cinematic-program .learning-cycle { margin-top: 56px; background: var(--night); gap: 0; }
+.cinematic-program .learning-cycle li { background: transparent; padding: 28px; border: 0; border-right: 1px solid #dbc89a40; }
+.cinematic-program .learning-cycle li:last-child { border-right: 0; }
+.cinematic-program .learning-cycle li > span { color: var(--light-gold); font-size: 24px; }
+.cinematic-program .learning-cycle li > p { color: #fff; line-height: 1.8; margin-top: 18px; }
+.cinematic-program .learning-cycle li > b { color: var(--light-gold); background: var(--night); right: -10px; }
+.cinematic-program .learning-cycle li:last-child > b { color: var(--light-gold); background: transparent; right: 12px; }
+
+/* 06 — Training is the visual centrepiece, with all four real photographs. */
+.cinematic-program .renewal-training { background: #eeeae0; }
+.cinematic-program .training-story:not(.theory-story) { display: grid; grid-template-columns: 1.12fr 1fr; gap: clamp(36px, 5vw, 64px); align-items: start; margin-top: 0; }
+.cinematic-program .training-main-photo { grid-column: 1; grid-row: 1; width: 100%; }
+.cinematic-program .training-main-photo > .program-photo img { aspect-ratio: 3 / 2; object-fit: cover; object-position: 50% 55%; }
+.cinematic-program .training-practical-details { grid-column: 2; grid-row: 1; display: block; margin: 0; }
+.cinematic-program .training-practical-details .section-heading { margin-bottom: 28px; }
+.cinematic-program .training-practical-details .section-heading h2 { font-size: clamp(30px, 3vw, 42px); line-height: 1.55; }
+.cinematic-program .training-practical-details > .training-story-copy { background: transparent; padding: 0; }
+.cinematic-program .training-practical-details .training-story-copy h3 { font-size: 26px; margin-block: 18px; }
+.cinematic-program .training-secondary-photo { width: 74%; margin: 28px 0 0 auto; }
+.cinematic-program .training-story-copy h3 { font-size: clamp(29px, 3vw, 42px); margin-block: 18px 26px; }
+.cinematic-program .training-details div { padding-block: 14px; border-color: #c1c7b8; font-size: 14px; }
+.cinematic-program .theory-story { grid-template-columns: .85fr 1.15fr; gap: 72px; padding-top: 64px; margin-top: 72px; }
+.cinematic-program .training-atmosphere-story { grid-template-columns: 1fr 1.2fr; gap: 48px; background: var(--night); color: #fff; padding: 40px; margin-top: 72px; }
+.cinematic-program .training-atmosphere-story .renewal-kicker { color: var(--light-gold); }
+.cinematic-program .training-atmosphere-story h3 { font-size: clamp(25px, 2.2vw, 30px); }
+.cinematic-program .thought-phrase { display: inline-block; }
+.cinematic-program .training-atmosphere-story .renewal-note,
+.cinematic-program .training-atmosphere-story figcaption { color: #c9d6cb; }
+.training-consultation { padding-block: 0 64px; }
+.cinematic-program .consultation-callout { border: 1px solid #c7cbbd; border-left: 3px solid #a68b58; padding: 30px 34px; gap: 28px; background: #f8f7f2; }
+.cinematic-program .consultation-callout > p { font-size: 15px; max-width: 34em; }
+
+/* 07 — A connected, three-stage learning path. */
+.cinematic-program .renewal-roadmap { background: #173f35; }
+.cinematic-program .renewal-step-grid { display: block; margin-top: 48px; }
+.cinematic-program .renewal-step-grid li { display: grid; grid-template-columns: 1fr 1fr 150px; gap: 8px 40px; padding: 36px 0 36px 36px; border: 0; border-left: 1px solid #dbc89a80; border-top: 1px solid #dbc89a80; background: transparent; }
+.cinematic-program .renewal-step-grid li:last-child { border-right: 0; border-bottom: 1px solid #dbc89a50; }
+.cinematic-program .renewal-step-grid li::before { content: ""; position: absolute; width: 9px; height: 9px; background: #dbc89a; left: -5px; top: 44px; border-radius: 50%; }
+.cinematic-program .renewal-step-grid li:not(:last-child)::after { display: none; }
+.cinematic-program .renewal-step-grid li > .renewal-kicker { grid-column: 1; font-size: 12px; }
+.cinematic-program .renewal-step-grid h3 { grid-column: 1; font-size: 34px; margin: 10px 0 6px; }
+.cinematic-program .step-english { grid-column: 1; }
+.cinematic-program .step-description { grid-column: 2; grid-row: 1 / span 3; margin: 0; align-self: center; font-size: 15px; }
+.cinematic-program .step-period { grid-column: 3; grid-row: 1 / span 3; margin: 0; align-self: center; font-size: 14px; white-space: nowrap; }
+.cinematic-program .step-period strong { font-size: 56px; }
+.cinematic-program .roadmap-common { margin-top: 32px; }
+.cinematic-program .renewal-roadmap .consultation-callout { background: #214c3f; border-color: #829776; }
+.cinematic-program .renewal-roadmap .renewal-button { border-color: #dbc89a; }
+
+/* 08 — An asymmetric portrait spread with the confirmed profile alongside. */
+.cinematic-program .renewal-instructors { background: #f8f7f2; }
+.cinematic-program .renewal-instructors > .renewal-wrap > .section-heading { margin-bottom: 52px; }
+.cinematic-program .instructor-introduction { grid-template-columns: 1.1fr 1fr; gap: 48px 72px; margin-top: 0; align-items: start; }
+.cinematic-program .instructor-introduction > .renewal-prose { grid-column: 2; grid-row: 1; padding-top: 20px; }
+.cinematic-program .renewal-instructor-photos { display: contents; }
+.cinematic-program .renewal-instructor-photos > :first-child { grid-column: 1; grid-row: 1 / span 2; width: 100%; }
+.cinematic-program .renewal-instructor-photos > :first-child img { aspect-ratio: 4 / 5; object-fit: cover; object-position: center; }
+.cinematic-program .renewal-instructor-photos > :last-child { grid-column: 2; grid-row: 2; width: 82%; justify-self: end; margin: 0; }
+.cinematic-program .instructor-name { font-size: 36px; margin-bottom: 24px; }
+.cinematic-program .instructor-details > div { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 16px; padding: 18px 0; }
+.cinematic-program .instructor-details dt { color: #806636; font-size: 12px; padding-top: 2px; }
+.cinematic-program .instructor-details ul { padding: 0; list-style: none; }
+.cinematic-program .instructor-details li + li { margin-top: 6px; }
+
+/* 09 — An open horizon rather than another grid of boxes. */
+.cinematic-program .renewal-future { background: #e5e8dc; }
+.cinematic-program .future-composition { grid-template-columns: 1fr; gap: 48px; }
+.cinematic-program .future-composition > div:first-child { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.cinematic-program .future-composition .section-heading { margin: 0; }
+.cinematic-program .future-list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; }
+.cinematic-program .future-list li { display: block; padding: 24px 0 0; border-color: #a5b19c; }
+.cinematic-program .future-list li > span { display: block; width: auto; font-size: 42px; margin-bottom: 24px; }
+.cinematic-program .future-list h3 { font-size: 21px; }
+.cinematic-program .future-list p { font-size: 14px; }
+.cinematic-program .future-note { margin-top: 0; border-color: #a5b19c; }
+
+/* 10 — Three distinct fee panels, aligned for transparent comparison. */
+.cinematic-program .renewal-tuition { background: #fff; }
+.cinematic-program .tuition-courses { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border: 1px solid var(--line); margin-top: 40px; }
+.cinematic-program .tuition-course { display: flex; flex-direction: column; align-items: stretch; gap: 28px; padding: 36px 30px; border: 0; background: #f8f7f2; }
+.cinematic-program .tuition-course + .tuition-course { border-left: 1px solid var(--line); }
+.cinematic-program .tuition-course:nth-child(2) { background: #e9eee4; }
+.cinematic-program .tuition-course .renewal-kicker { display: inline-flex; border-bottom: 1px solid #a68b58; padding-bottom: 12px; }
+.cinematic-program .tuition-course h3 { margin: 22px 0 0; font-size: 27px; }
+.cinematic-program .tuition-course dl { margin: 0; padding: 0; background: transparent; border-top: 1px solid #b8c2b0; }
+.cinematic-program .tuition-course dl div { grid-template-columns: 70px minmax(0, 1fr); padding-block: 14px; border-bottom: 1px solid #b8c2b0; font-size: 14px; }
+.cinematic-program .tuition-amount { padding: 0; border: 0; margin-top: auto; }
+.cinematic-program .tuition-amount p { font-size: 38px; line-height: 1.8; }
+.cinematic-program .tuition-amount small { font-size: 12px; }
+.cinematic-program .tuition-total { background: transparent; border: 0; border-bottom: 1px solid var(--line); padding: 28px 0; margin: 0; }
+.cinematic-program .payment-preparing { margin-top: 32px; }
+.cinematic-program .renewal-flow { margin-top: 64px; }
+
+/* 11 — Large, legible questions with a calm reading surface. */
+.cinematic-program .renewal-faq { background: #f8f7f2; }
+.cinematic-program .renewal-faq-layout { grid-template-columns: .85fr 1.15fr; gap: 64px; }
+.cinematic-program .renewal-faq-list summary { padding: 26px 0; gap: 18px; }
+.cinematic-program .renewal-faq-list h3 { font-size: 16px; line-height: 1.85; }
+.cinematic-program .renewal-faq-list summary > span:first-child { color: #806636; font-size: 16px; }
+.cinematic-program .renewal-faq-list details[open] { background: #efeee6; }
+.cinematic-program .renewal-faq-list details > p { padding: 0 20px 28px 60px; font-size: 15px; }
+.cinematic-program .faq-consultation { margin-top: 30px; font-size: 14px; }
+.cinematic-program .faq-consultation .renewal-text-link { margin-top: 10px; }
+
+/* 12 — A strong, unambiguous final invitation. */
+.cinematic-program .renewal-contact { background: var(--night); padding-block: 112px; }
+.cinematic-program .renewal-contact h2 { color: #fff; font-size: clamp(38px, 5vw, 72px); margin: 32px 0; }
+.cinematic-program .contact-layout { margin-top: 56px; gap: 64px; border-top: 1px solid #dbc89a50; padding-top: 32px; }
+.cinematic-program .contact-phone { font-size: clamp(32px, 3.8vw, 52px); color: var(--light-gold); font-variant-numeric: tabular-nums; }
+.cinematic-program .contact-guidance { padding-left: 40px; }
+.cinematic-program .contact-by-phone > p, .cinematic-program .contact-guidance > p { max-width: 36em; line-height: 2; }
+.cinematic-program .contact-guidance > p + p { margin-top: 22px; }
+.home-footer { background: #f8f7f2; }
+.home-footer .information-links a { padding-block: 9px; }
+.mobile-consult-bar { box-shadow: 0 -6px 24px #102f2810; }
+.mobile-consult-bar .phone-icon { width: 18px; height: 18px; flex: 0 0 auto; }
+.mobile-consult-bar .phone-action { display: flex; flex-direction: column; line-height: 1.5; }
+.mobile-consult-bar .phone-action small { font-size: 10px; font-variant-numeric: tabular-nums; }
+
+/* Preserve PR 7's information-page presentation without changing legal content. */
+.information-main { max-width: 1000px; padding-bottom: 88px; }
+.information-main h1 { padding-bottom: 24px; border-bottom: 1px solid var(--line); text-wrap: balance; }
+.information-back { min-height: 44px; display: inline-flex; align-items: center; margin-bottom: 28px; }
+.information-lead { font-size: 15px; line-height: 2; }
+.information-notice { padding: 24px 28px; margin-block: 32px; }
+.information-table > div { grid-template-columns: 200px minmax(0, 1fr); gap: 32px; padding-block: 26px; }
+.information-table dt { color: var(--green); font-size: 14px; }
+.information-table dd { font-size: 14px; line-height: 2; }
+.information-note { font-size: 13px; }
+.information-contact { border-top: 2px solid #a68b58; padding: 32px; }
+.information-contact p { font-size: 14px; }
+.information-contact .information-phone { margin-top: 16px; }
+.information-links a:focus-visible { outline: 3px solid #806636; outline-offset: 4px; }
+
+@media (min-width: 1101px) {
+  .cinematic-program .renewal-faq-layout > .section-heading { position: sticky; top: 126px; align-self: start; }
+}
+@media (max-width: 1200px) {
+  .cinematic-program .renewal-wrap { width: calc(100% - 80px); }
+  .cinematic-program .hero-statement { margin-left: 40px; width: 62%; }
+  .cinematic-program .hero-facts { padding-inline: 40px; }
+  .cinematic-program .hero-statement > .renewal-text-link { display: flex; width: fit-content; margin-left: 0; }
+  .cinematic-program .tuition-course { padding-inline: 24px; }
+  .cinematic-program .tuition-course h3 { font-size: 24px; }
+  .cinematic-program .tuition-amount p { font-size: 32px; }
+  .cinematic-program .instructor-introduction { gap: 36px; }
+}
+@media (max-width: 1100px) {
+  .cinematic-program .hero-composition { width: 100%; min-height: 0; }
+  .cinematic-program .hero-photograph { inset: 0 0 auto; width: 100%; height: clamp(370px, 52vw, 520px); }
+  .cinematic-program .hero-photograph .program-photo img { object-position: 50% 40%; }
+  .cinematic-program .hero-photograph::after { background: linear-gradient(180deg, #102f2800 35%, #102f2860 60%, #102f28 100%); }
+  .cinematic-program .hero-photograph figcaption { right: 16px; top: 16px; bottom: auto; font-size: 10px; }
+  .cinematic-program .hero-statement { width: auto; margin: 0; padding: calc(clamp(370px, 52vw, 520px) - 70px) 28px 40px; }
+  .cinematic-program .hero-statement > .renewal-kicker { display: none; }
+  .cinematic-program .hero-for { margin: 0 0 22px; font-size: 14px; }
+
+  .cinematic-program h1 { font-size: clamp(38px, 5vw, 52px); }
+}
+@media (max-width: 1000px) {
+  .cinematic-program .renewal-step-grid li { grid-template-columns: 1fr 1fr; padding-left: 28px; }
+  .cinematic-program .step-description { grid-column: 2; }
+  .cinematic-program .step-period { grid-column: 1; grid-row: auto; margin-top: 14px; }
+  .cinematic-program .future-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+  .cinematic-program .future-list li:last-child { grid-column: 1 / -1; }
+  .cinematic-program .tuition-courses { grid-template-columns: 1fr; }
+  .cinematic-program .tuition-course { display: grid; grid-template-columns: 1fr 1fr; padding: 32px; }
+  .cinematic-program .tuition-course > div:first-child { grid-column: 1 / -1; grid-row: auto; }
+  .cinematic-program .tuition-course + .tuition-course { border-left: 0; border-top: 1px solid var(--line); }
+  .cinematic-program .tuition-amount { margin: 0; padding-left: 20px; }
+  .cinematic-program .instructor-details > div { grid-template-columns: 1fr; gap: 6px; }
+}
+@media (max-width: 900px) {
+  .cinematic-program .renewal-wrap { width: calc(100% - 56px); }
+  .cinematic-program .hero-composition { width: 100%; }
+  .cinematic-program .hero-statement { margin-left: 0; width: auto; }
+  .cinematic-program h1 { font-size: clamp(36px, 5.4vw, 48px); }
+  .cinematic-program .hero-facts { padding-inline: 28px; }
+  .cinematic-program .hero-facts dl { flex-wrap: wrap; }
+  .cinematic-program .editorial-split { grid-template-columns: 1fr; gap: 44px; }
+  .cinematic-program .about-photograph { max-width: 85%; order: 2; }
+  .cinematic-program .perspective-grid { grid-template-columns: 1fr 1fr; }
+  .cinematic-program .perspective-grid li:nth-child(odd) { padding-left: 0; }
+  .cinematic-program .perspective-grid li:nth-child(even) { border-right: 0; }
+  .cinematic-program .support-composition { grid-template-columns: 1fr; gap: 32px; }
+  .cinematic-program .support-list { grid-template-columns: 1fr 1fr; gap: 0 28px; }
+  .cinematic-program .training-story:not(.theory-story) { grid-template-columns: 1fr; gap: 0; }
+  .cinematic-program .training-practical-details, .cinematic-program .training-main-photo { display: contents; }
+  .cinematic-program .training-practical-details .section-heading { grid-row: 1; }
+  .cinematic-program .training-main-photo > .program-photo { grid-row: 2; }
+  .cinematic-program .training-practical-details > .training-story-copy { grid-row: 3; padding: 0; margin-top: 28px; }
+  .cinematic-program .training-secondary-photo { grid-row: 4; width: 74%; margin-top: 28px; }
+  .cinematic-program .theory-story { grid-template-columns: 1fr; gap: 32px; }
+  .cinematic-program .theory-story > .training-story-copy { order: 0; }
+  .cinematic-program .training-atmosphere-story { grid-template-columns: 1fr; gap: 28px; padding: 32px; }
+  .cinematic-program .future-composition > div:first-child { grid-template-columns: 1fr; gap: 28px; }
+  .cinematic-program .renewal-faq-layout { grid-template-columns: 1fr; gap: 12px; }
+  .cinematic-program .contact-layout { gap: 16px; }
+  .cinematic-program .contact-guidance { padding-left: 0; }
+}
+@media (max-width: 700px) {
+  .cinematic-program .hero-composition { min-height: 0; }
+  .cinematic-program .hero-photograph { inset: 0 0 auto; width: 100%; height: 370px; }
+  .cinematic-program .hero-photograph .program-photo img { object-position: 50% 40%; }
+  .cinematic-program .hero-photograph::after { background: linear-gradient(180deg, #102f2800 35%, #102f2860 60%, #102f28 100%); }
+  .cinematic-program .hero-photograph figcaption { right: 16px; top: 16px; bottom: auto; font-size: 10px; }
+  .cinematic-program .hero-statement { width: auto; margin: 0; padding: 300px 28px 40px; }
+  .cinematic-program .hero-statement > .renewal-kicker { display: none; }
+  .cinematic-program .hero-for { margin: 0 0 22px; font-size: 13px; }
+  .cinematic-program h1 { font-size: clamp(30px, 5.8vw, 40px); }
+  .cinematic-program .hero-introduction { max-width: 520px; }
+  .cinematic-program .hero-facts { display: block; }
+  .cinematic-program .hero-facts dl { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 20px; }
+  .cinematic-program .hero-facts dl div { display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 12px; border: 0; padding: 0; }
+  .cinematic-program .hero-facts > p br { display: none; }
+  .cinematic-program .hero-facts strong { margin-left: 12px; }
+  .cinematic-program .instructor-introduction { grid-template-columns: 1fr; gap: 32px; }
+  .cinematic-program .instructor-introduction > .renewal-prose { grid-column: 1; grid-row: 2; padding: 0; }
+  .cinematic-program .renewal-instructor-photos > :first-child { grid-column: 1; grid-row: 1; max-width: 88%; }
+  .cinematic-program .renewal-instructor-photos > :last-child { grid-column: 1; grid-row: 3; width: 82%; }
+  .cinematic-program .instructor-details > div { grid-template-columns: 68px minmax(0, 1fr); gap: 14px; }
+}
+@media (max-width: 600px) {
+  .cinematic-program { font-size: 15px; }
+  .cinematic-program .renewal-wrap { width: calc(100% - 40px); }
+  .cinematic-program .story-section { padding-block: 76px; }
+  .cinematic-program h2 { font-size: clamp(28px, 7.4vw, 38px); line-height: 1.6; }
+  .cinematic-program .section-heading { margin-bottom: 30px; }
+  .cinematic-program .section-heading .eyebrow { font-size: 9px; gap: 10px; margin-bottom: 20px; }
+  .cinematic-program .renewal-prose { font-size: 15px; line-height: 2; }
+  .cinematic-program .hero-composition { width: 100%; }
+  .cinematic-program .hero-photograph { height: 300px; }
+  .cinematic-program .hero-statement { padding: 240px 20px 36px; }
+  .cinematic-program h1 { font-size: clamp(27px, 7.1vw, 39px); line-height: 1.7; }
+  .cinematic-program .hero-introduction { font-size: 14px; margin-block: 24px; }
+  .cinematic-program .hero-statement > .renewal-text-link { margin: 14px 0 0; font-size: 14px; }
+  .cinematic-program .hero-statement > .renewal-button { width: 100%; padding-inline: 20px; }
+  .cinematic-program .hero-facts { width: 100%; padding: 24px 20px; }
+  .cinematic-program .hero-facts dd { font-size: 12px; }
+  .cinematic-program .about-photograph { max-width: 100%; padding-bottom: 28px; }
+  .cinematic-program .about-photograph::after { left: -10px; right: 20px; }
+  .cinematic-program .section-intro-row { display: block; }
+  .cinematic-program .section-side-copy { max-width: none; font-size: 14px; }
+  .cinematic-program .perspective-grid { gap: 0 20px; margin-top: 36px; }
+  .cinematic-program .perspective-grid li,
+  .cinematic-program .perspective-grid li:first-child,
+  .cinematic-program .perspective-grid li:last-child { padding: 24px 0 30px; border-right: 0; }
+  .cinematic-program .perspective-number { font-size: 46px; }
+  .cinematic-program .perspective-grid h3 { font-size: 19px; margin-block: 22px 12px; }
+  .cinematic-program .perspective-grid p { font-size: 15px; }
+  .cinematic-program .renewal-audience-grid { margin-top: 32px; }
+  .cinematic-program .renewal-audience-grid article { display: block; padding-block: 30px; }
+  .cinematic-program .audience-subject { display: block; font-size: 12px; }
+  .cinematic-program .renewal-audience-grid h3 { font-size: 29px; margin: 24px 0; }
+  .cinematic-program .support-list { grid-template-columns: 1fr; }
+  .cinematic-program .support-list h3 { font-size: 21px; }
+  .cinematic-program .learning-cycle { grid-template-columns: 1fr 1fr; margin-top: 36px; }
+  .cinematic-program .learning-cycle li { padding: 22px 18px; border-bottom: 1px solid #dbc89a40; }
+  .cinematic-program .learning-cycle li:nth-child(2) { border-right: 0; }
+  .cinematic-program .learning-cycle li > p { font-size: 14px; margin-top: 12px; }
+  .cinematic-program .training-practical-details > .training-story-copy { padding: 0; width: 100%; }
+  .cinematic-program .training-practical-details .section-heading h2 { font-size: clamp(27px, 7vw, 34px); }
+  .cinematic-program .training-secondary-photo { width: 85%; align-self: flex-start; }
+  .cinematic-program .training-story-copy h3 { font-size: 30px; }
+  .cinematic-program .theory-story { margin-top: 48px; padding-top: 40px; }
+  .cinematic-program .training-atmosphere-story { margin-top: 48px; padding: 26px 20px; }
+  .cinematic-program .training-atmosphere-story h3 { font-size: clamp(24px, 6vw, 26px); }
+  .cinematic-program .consultation-callout { padding: 24px 20px; }
+  .cinematic-program .consultation-actions { width: 100%; }
+  .cinematic-program .renewal-step-grid { margin-top: 36px; }
+  .cinematic-program .renewal-step-grid li { display: block; margin-left: 5px; padding: 28px 0 28px 24px; }
+  .cinematic-program .renewal-step-grid li::before { top: 36px; }
+  .cinematic-program .renewal-step-grid h3 { font-size: 29px; }
+  .cinematic-program .step-description { margin-top: 22px; font-size: 14px; }
+  .cinematic-program .step-period { margin-top: 18px; }
+  .cinematic-program .step-period strong { font-size: 46px; }
+  .cinematic-program .roadmap-common { display: grid; gap: 8px; }
+  .cinematic-program .roadmap-common > * { margin: 0; }
+  .cinematic-program .instructor-name { font-size: 34px; }
+  .cinematic-program .future-list { grid-template-columns: 1fr; gap: 0; }
+  .cinematic-program .future-list li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 20px; padding-block: 24px; }
+  .cinematic-program .future-list li > span { font-size: 32px; margin: 0; }
+  .cinematic-program .future-list h3 { font-size: 21px; }
+  .cinematic-program .tuition-courses { margin-top: 32px; }
+  .cinematic-program .tuition-course { display: flex; align-items: stretch; padding: 28px 22px; gap: 26px; }
+  .cinematic-program .tuition-course h3 { font-size: 27px; }
+  .cinematic-program .tuition-amount { padding: 0; }
+  .cinematic-program .tuition-amount p { font-size: 36px; }
+  .cinematic-program .tuition-total { padding-block: 24px; }
+  .cinematic-program .renewal-faq-list summary { padding-block: 24px; gap: 12px; }
+  .cinematic-program .renewal-faq-list h3 { font-size: 15px; }
+  .cinematic-program .renewal-faq-list details > p { padding: 0 16px 24px; }
+  .cinematic-program .renewal-contact { padding-block: 76px; }
+  .cinematic-program .renewal-contact h2 { font-size: clamp(31px, 8vw, 42px); }
+  .cinematic-program .contact-layout { padding-top: 20px; margin-top: 32px; }
+  .cinematic-program .contact-phone { font-size: clamp(29px, 8vw, 38px); }
+  .mobile-consult-bar { grid-template-columns: 1.1fr 1fr; padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px)); gap: 10px; background: #f8f7f2f5; }
+  .mobile-consult-bar > a { min-height: 54px; gap: 8px; }
+  .mobile-consult-bar > a:first-child { background: #102f28; border-color: #102f28; }
+  .mobile-consult-bar > a:last-child { background: #f8f7f2; }
+  .home-footer { padding-bottom: calc(112px + env(safe-area-inset-bottom, 0px)); }
+  .information-main { padding-bottom: 56px; }
+  .information-main h1 { font-size: clamp(25px, 6.8vw, 32px); }
+  .information-table > div { grid-template-columns: minmax(0, 1fr); gap: 10px; padding-block: 22px; }
+  .information-notice, .information-contact { padding: 24px 20px; }
+  .information-contact .information-phone { font-size: 14px; }
+}
+
+/* Native progressive animation; no scroll hijacking and no hidden-content dependency. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .cinematic-program .story-section .section-heading h2 {
+      animation: editorial-arrival linear both;
+      animation-timeline: view(); animation-range: entry 0% entry 100%;
+    }
+    .cinematic-program .story-section .program-photo img {
+      animation: photograph-arrival linear both;
+      animation-timeline: view(); animation-range: entry 0% entry 100%;
+    }
+    @keyframes editorial-arrival { from { opacity: .86; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+    @keyframes photograph-arrival { from { filter: brightness(.92); } to { filter: brightness(1); } }
+  }
+  @media (hover: hover) {
+    .cinematic-program .story-section .program-photo img { transition: scale .6s ease; }
+    .cinematic-program .story-section .program-photo:hover img { scale: 1.015; }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-program *, .site-header *, .information-main *, .mobile-consult-bar * { animation: none !important; transition: none !important; }
+}

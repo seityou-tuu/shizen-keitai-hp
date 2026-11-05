@@ -70,7 +70,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
       for (const fact of ["柔道整復師（2012年取得）", "2017年 ながとも整骨院開院", "15年", "自然形体療法 理事", "YouTube総再生回数220万回", "2024年 FANCHANNEL グランプリ"]) {
         assert.equal(profileText.split(fact).length - 1, 1, `profile fact at ${width}: ${fact}`);
       }
-      assert.equal(await page.locator("#about .section-heading").evaluate(el => getComputedStyle(el).animationName), "none", "reduced-motion headings must not animate");
+      assert.ok(await page.locator("#about .section-heading, #about h2").evaluateAll(nodes => nodes.every(el => getComputedStyle(el).animationName === "none")), "reduced-motion headings must not animate");
       const initial = await page.evaluate(() => ({
         ...window.__qaMetrics,
         scroll: document.documentElement.scrollWidth,
@@ -208,6 +208,18 @@ if (out) fs.mkdirSync(out, { recursive: true });
             "false",
           );
       }
+      const trainingLayout = await page.locator("#training").evaluate(el => {
+        const rect = selector => { const r = el.querySelector(selector).getBoundingClientRect(); return {left:r.left,right:r.right,top:r.top,bottom:r.bottom}; };
+        return {heading:rect(".training-practical-details .section-heading"),photo:rect(".training-main-photo > .program-photo"),copy:rect(".training-practical-details > .training-story-copy"),secondary:rect(".training-secondary-photo")};
+      });
+      if (width > 900) {
+        assert.ok(trainingLayout.photo.right < trainingLayout.heading.left, `training must be side by side at ${width}`);
+        assert.ok(Math.abs(trainingLayout.photo.top - trainingLayout.heading.top) < 2, `training heading/photo top alignment at ${width}`);
+      } else {
+        assert.ok(trainingLayout.heading.bottom <= trainingLayout.photo.top + 1, `training heading before photo at ${width}`);
+        assert.ok(trainingLayout.photo.bottom <= trainingLayout.copy.top + 1, `training copy after photo at ${width}`);
+        assert.ok(trainingLayout.copy.bottom <= trainingLayout.secondary.top + 1, `training secondary after copy at ${width}`);
+      }
       const sections = [];
       for (const section of await page.locator("#main > section").all()) {
         await section.scrollIntoViewIfNeeded();
@@ -276,11 +288,11 @@ if (out) fs.mkdirSync(out, { recursive: true });
           assert.equal(await page.locator(url.hash).count(), 1, href);
       }
       if (out && [320, 375, 390, 400, 430, 1440].includes(width)) {
-        for (const id of ["support", "instructors", "future", "courses"]) {
+        for (const id of ["about", "features", "audience", "support", "training", "roadmap", "instructors", "future", "courses", "contact"]) {
           await page.locator(`#${id}`).scrollIntoViewIfNeeded();
           await page
             .locator(`#${id}`)
-            .screenshot({ path: path.join(out, `${id}-${width}.png`) });
+            .screenshot({ path: path.join(out, `${id}-${width}.png`), style: ".site-header,.mobile-consult-bar,.skip-link { visibility: hidden !important; }" });
         }
       }
       const phones = await page
@@ -338,13 +350,16 @@ if (out) fs.mkdirSync(out, { recursive: true });
         await photo.evaluate((img) => img.decode());
         const ratio = await photo.evaluate((img) => ({
           natural: img.naturalWidth / img.naturalHeight,
+          fit: getComputedStyle(img).objectFit,
+          name: img.closest("figure").dataset.photo,
           displayed:
             img.getBoundingClientRect().width /
             img.getBoundingClientRect().height,
         }));
         assert.ok(
-          Math.abs(ratio.natural - ratio.displayed) < 0.015,
-          `image distortion at ${width}`,
+          Math.abs(ratio.natural - ratio.displayed) < 0.015 ||
+          (ratio.fit === "cover" && ["treatment-main", "instructor-portrait", "practical-hands-on"].includes(ratio.name)),
+          `image distortion or unintended cropping at ${width}`,
         );
       }
       assert.equal(await page.locator(".program-photo img").count(), 8);
