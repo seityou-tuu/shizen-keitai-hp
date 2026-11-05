@@ -800,7 +800,7 @@ export default function Home() {
       <footer className="footer home-footer">
         <div className="container">
           <div className="footer-top">
-            <a href="#" className="brand">
+            <a href="#main" className="brand">
               <span className="brand-symbol" aria-hidden="true">
                 自然
               </span>

@@ -250,6 +250,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
         .locator("a[href]")
         .evaluateAll((nodes) => nodes.map((node) => node.getAttribute("href")));
       for (const href of links) {
+        assert.notEqual(href, "#", "ambiguous placeholder anchor");
         if (href.startsWith("tel:")) continue;
         const url = new URL(href, base);
         assert.equal(url.origin, base.origin);
