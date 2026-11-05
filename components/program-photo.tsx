@@ -26,7 +26,7 @@ export function ProgramPhoto({ name, caption, priority = false, sizes = "(max-wi
   sizes?: string;
 }) {
   return (
-    <figure className="program-photo">
+    <figure className="program-photo" data-photo={name}>
       <Image src={photos[name]} alt={caption}
         sizes={sizes} priority={priority} />
       <figcaption>{caption}</figcaption>

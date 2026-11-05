@@ -123,12 +123,12 @@ export default function Home() {
         本文へ移動
       </a>
       <Header />
-      <main id="main" className="program-renewal">
+      <main id="main" className="program-renewal cinematic-program">
         <section className="renewal-hero" aria-labelledby="hero-title">
           <div className="renewal-wrap hero-composition">
             <div className="hero-statement">
               <p className="renewal-kicker">01 / SHIZEN KEITAI EDUCATION</p>
-              <p className="hero-for">施術に向き合う、あなたの次の一歩へ。</p>
+              <p className="hero-for">自然形体療法 資格取得プログラム</p>
               <h1 id="hero-title">
                 驚きを、
                 <br />
@@ -163,7 +163,7 @@ export default function Home() {
                 name="treatment-main"
                 caption="自然形体療法の施術風景"
                 priority
-                sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 900px) calc(100vw - 80px), (max-width: 1400px) 45vw, 600px"
+                sizes="(max-width: 1100px) 115vw, 90vw"
               />
               <p className="hero-photo-word">その手で、学びを深める。</p>
               <p className="hero-photo-detail">理論を知る。実技で確かめる。</p>
@@ -381,47 +381,49 @@ export default function Home() {
                 <ProgramPhoto
                   name="practical-hands-on"
                   caption="講師の技術を間近で学ぶ実技研修"
-                  sizes="(max-width: 900px) calc(100vw - 40px), 65vw"
+                  sizes="(max-width: 900px) calc(100vw - 40px), (max-width: 1392px) calc(100vw - 112px), 1280px"
                 />
               </div>
-              <div className="training-story-copy">
-                <p className="renewal-kicker">PRACTICAL TRAINING</p>
-                <h3>
-                  身体で確かめる、
-                  <br />
-                  実技の時間。
-                </h3>
-                <div className="renewal-prose">
-                  <p>講師の技術を間近で見ながら、実際に手を動かして学ぶ。</p>
-                  <p>
-                    手の位置、力加減、身体への触れ方など、言葉だけでは伝わりにくい細かな部分まで確認していきます。
+              <div className="training-practical-details">
+                <div className="training-story-copy">
+                  <p className="renewal-kicker">PRACTICAL TRAINING</p>
+                  <h3>
+                    身体で確かめる、
+                    <br />
+                    実技の時間。
+                  </h3>
+                  <div className="renewal-prose">
+                    <p>講師の技術を間近で見ながら、実際に手を動かして学ぶ。</p>
+                    <p>
+                      手の位置、力加減、身体への触れ方など、言葉だけでは伝わりにくい細かな部分まで確認していきます。
+                    </p>
+                  </div>
+                  <dl className="training-details">
+                    <div>
+                      <dt>開催頻度</dt>
+                      <dd>月1回</dd>
+                    </div>
+                    <div>
+                      <dt>受講形式</dt>
+                      <dd>対面（オフライン）</dd>
+                    </div>
+                    <div>
+                      <dt>研修時間</dt>
+                      <dd>9:00〜17:00</dd>
+                    </div>
+                  </dl>
+                  <p className="renewal-note">
+                    会場・開催日・具体的な指導内容、休憩時間を含む時間配分は確認中です。
                   </p>
                 </div>
-                <dl className="training-details">
-                  <div>
-                    <dt>開催頻度</dt>
-                    <dd>月1回</dd>
-                  </div>
-                  <div>
-                    <dt>受講形式</dt>
-                    <dd>対面（オフライン）</dd>
-                  </div>
-                  <div>
-                    <dt>研修時間</dt>
-                    <dd>9:00〜17:00</dd>
-                  </div>
-                </dl>
-                <p className="renewal-note">
-                  会場・開催日・具体的な指導内容、休憩時間を含む時間配分は確認中です。
-                </p>
+                <div className="training-secondary-photo">
+                  <ProgramPhoto
+                    name="practical-observation"
+                    caption="手の位置や身体への触れ方を確認する様子"
+                  />
+                </div>
               </div>
             </article>
-            <div className="training-secondary-photo">
-              <ProgramPhoto
-                name="practical-observation"
-                caption="手の位置や身体への触れ方を確認する様子"
-              />
-            </div>
             <article className="training-story theory-story">
               <div className="training-story-copy">
                 <p className="renewal-kicker">THEORETICAL TRAINING</p>
@@ -469,9 +471,9 @@ export default function Home() {
               <div>
                 <p className="renewal-kicker">LEARN TOGETHER</p>
                 <h3>
-                  一人では気づけなかったことが、
+                  <span className="thought-phrase">一人では</span><span className="thought-phrase">気づけなかったことが、</span>
                   <br />
-                  仲間との学びで見えてくる。
+                  <span className="thought-phrase">仲間との学びで</span><span className="thought-phrase">見えてくる。</span>
                 </h3>
                 <p>機会によっては、実際の施術を見学できる場合もあります。</p>
                 <p className="renewal-note">
@@ -542,6 +544,7 @@ export default function Home() {
                 <ProgramPhoto
                   name="instructor-portrait"
                   caption={instructorProfile.displayName}
+                  sizes="(max-width: 700px) 160vw, 1080px"
                 />
                 <ProgramPhoto
                   name="speaker-message"

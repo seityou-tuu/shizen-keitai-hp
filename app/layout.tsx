@@ -9,7 +9,7 @@ import "./globals.css";
 import "./program-photos.css";
 import "./renewal.css";
 import "./contact.css";
-import "./polish.css";
+import "./art-direction.css";
 
 const title = `${SITE_NAME} | 株式会社TSUNAGi`;
 export const metadata: Metadata = {

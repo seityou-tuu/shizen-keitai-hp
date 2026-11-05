@@ -70,7 +70,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
       for (const fact of ["柔道整復師（2012年取得）", "2017年 ながとも整骨院開院", "15年", "自然形体療法 理事", "YouTube総再生回数220万回", "2024年 FANCHANNEL グランプリ"]) {
         assert.equal(profileText.split(fact).length - 1, 1, `profile fact at ${width}: ${fact}`);
       }
-      assert.equal(await page.locator("#about .section-heading").evaluate(el => getComputedStyle(el).animationName), "none", "reduced-motion headings must not animate");
+      assert.ok(await page.locator("#about .section-heading, #about h2").evaluateAll(nodes => nodes.every(el => getComputedStyle(el).animationName === "none")), "reduced-motion headings must not animate");
       const initial = await page.evaluate(() => ({
         ...window.__qaMetrics,
         scroll: document.documentElement.scrollWidth,
@@ -276,11 +276,11 @@ if (out) fs.mkdirSync(out, { recursive: true });
           assert.equal(await page.locator(url.hash).count(), 1, href);
       }
       if (out && [320, 375, 390, 400, 430, 1440].includes(width)) {
-        for (const id of ["support", "instructors", "future", "courses"]) {
+        for (const id of ["about", "features", "audience", "support", "training", "roadmap", "instructors", "future", "courses", "contact"]) {
           await page.locator(`#${id}`).scrollIntoViewIfNeeded();
           await page
             .locator(`#${id}`)
-            .screenshot({ path: path.join(out, `${id}-${width}.png`) });
+            .screenshot({ path: path.join(out, `${id}-${width}.png`), style: ".site-header,.mobile-consult-bar,.skip-link { visibility: hidden !important; }" });
         }
       }
       const phones = await page
@@ -338,13 +338,16 @@ if (out) fs.mkdirSync(out, { recursive: true });
         await photo.evaluate((img) => img.decode());
         const ratio = await photo.evaluate((img) => ({
           natural: img.naturalWidth / img.naturalHeight,
+          fit: getComputedStyle(img).objectFit,
+          name: img.closest("figure").dataset.photo,
           displayed:
             img.getBoundingClientRect().width /
             img.getBoundingClientRect().height,
         }));
         assert.ok(
-          Math.abs(ratio.natural - ratio.displayed) < 0.015,
-          `image distortion at ${width}`,
+          Math.abs(ratio.natural - ratio.displayed) < 0.015 ||
+          (ratio.fit === "cover" && ["treatment-main", "instructor-portrait"].includes(ratio.name)),
+          `image distortion or unintended cropping at ${width}`,
         );
       }
       assert.equal(await page.locator(".program-photo img").count(), 8);
