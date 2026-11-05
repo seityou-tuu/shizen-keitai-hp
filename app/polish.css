@@ -1,0 +1,216 @@
+/* Visual refinement layer. Content, course conditions and legal data stay in their sources. */
+.program-renewal {
+  --section-space: clamp(76px, 8vw, 112px);
+}
+.program-renewal .story-section { padding-block: var(--section-space); }
+.program-renewal h2 { line-height: 1.55; text-wrap: balance; }
+.program-renewal h3 { text-wrap: balance; }
+.program-renewal .renewal-prose { line-height: 2; }
+.program-renewal .renewal-note { font-size: 13px; }
+.program-renewal .section-heading .eyebrow { margin-bottom: 20px; }
+.program-renewal .program-photo figcaption { font-size: 12px; line-height: 1.8; }
+.program-renewal :is(.renewal-button, .renewal-text-link, .renewal-contact-link),
+.site-header a, .information-links a, .mobile-consult-bar a {
+  transition: background-color .18s ease, color .18s ease, border-color .18s ease;
+}
+.program-renewal .renewal-button { gap: 20px; font-weight: 500; }
+.program-renewal .renewal-button > span { transition: transform .18s ease; }
+@media (hover: hover) {
+  .program-renewal .renewal-button:hover > span { transform: translate(2px, -2px); }
+  .desktop-nav > a:not(.header-contact):hover { color: #806636; }
+  .mobile-consult-bar a:hover { border-color: #806636; }
+}
+.site-header { -webkit-backdrop-filter: blur(15px); }
+.mobile-nav { padding-bottom: max(18px, env(safe-area-inset-bottom, 0px)); }
+.mobile-nav a { border-bottom: 1px solid var(--line); }
+
+/* A quieter frame gives the treatment itself more space. */
+.renewal-hero { padding-top: clamp(36px, 4vw, 64px); background: linear-gradient(110deg, #fdfdfa 55%, #edf1e9 55%); }
+.hero-composition { gap: clamp(32px, 4vw, 64px); }
+.hero-statement { padding-bottom: 32px; }
+.program-renewal h1 { font-size: clamp(32px, 3.4vw, 51px); line-height: 1.6; letter-spacing: .015em; }
+.hero-for { color: var(--muted); }
+.hero-introduction { line-height: 2; margin-block: 24px; }
+.program-renewal .hero-photograph { padding-block: 32px; }
+.program-renewal .hero-photograph::before { inset: 12px -12px 76px 16px; border-color: #a68b5850; }
+.photo-overline { top: 0; font-size: 9px; }
+.program-renewal .hero-photo-word { background: transparent; color: var(--green); padding: 12px 0 0; margin-top: 4px; border-top: 1px solid var(--line); font-size: clamp(19px, 2vw, 25px); }
+.program-renewal .hero-photo-detail { margin-top: 6px; font-size: 11px; }
+.hero-facts { margin-top: 12px; padding-block: 24px; }
+.hero-facts dl div { padding-left: 24px; }
+
+/* Consistent surfaces and spacing keep the long page easy to scan. */
+.section-side-copy { max-width: 30em; }
+.perspective-grid { gap: 16px; }
+.perspective-grid li,
+.perspective-grid li:first-child,
+.perspective-grid li:last-child { padding: 24px; border: 1px solid #cbd3c4; border-top: 2px solid #a68b58; background: #fdfdfa; }
+.program-renewal .perspective-grid h3 { margin-block: 18px 12px; }
+.perspective-mark { margin-top: 20px; }
+.renewal-audience-grid { gap: 24px; margin-top: 32px; }
+.renewal-audience-grid article { padding: clamp(26px, 3vw, 42px); }
+.program-renewal .renewal-audience-grid h3 { margin-block: 20px; }
+.support-composition { gap: clamp(32px, 6vw, 80px); }
+.program-renewal .learning-cycle { gap: 16px; margin-top: 36px; }
+.learning-cycle li { border-top: 2px solid #a68b58; }
+.training-story { gap: clamp(28px, 5vw, 64px); }
+.training-secondary-photo { width: 58%; margin: 20px 0 0 auto; }
+.training-atmosphere-story { padding: clamp(24px, 3vw, 40px); }
+.renewal-step-grid { gap: 16px; }
+.renewal-step-grid li,
+.renewal-step-grid li:last-child { border: 1px solid #738b7280; padding: 28px; background: #ffffff05; }
+.renewal-step-grid li:not(:last-child)::after { right: -17px; }
+.program-renewal .consultation-callout { padding: 28px 32px; gap: 28px; border-left: 3px solid #a68b58; }
+.consultation-callout > p { max-width: 32em; }
+
+/* Keep the teacher's two photographs beside a compact, labelled profile. */
+.instructor-introduction { grid-template-columns: .95fr 1.05fr; gap: clamp(32px, 5vw, 72px); }
+.renewal-instructor-photos { gap: 28px; }
+.renewal-instructor-photos > :last-child { width: 86%; justify-self: end; }
+.instructor-details { margin-top: 28px; }
+.instructor-details > div { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 16px; padding-block: 17px; }
+.instructor-details dt { padding-top: 2px; margin-bottom: 0; color: #806636; }
+.instructor-details ul { padding: 0; list-style: none; }
+.instructor-details li + li { margin-top: 6px; }
+
+/* Identical fields align across the three courses without a wide mobile table. */
+.tuition-courses { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; border-top: 0; }
+.tuition-course { display: flex; flex-direction: column; align-items: stretch; gap: 24px; padding: 28px; border: 1px solid var(--line); border-top: 3px solid #a68b58; background: #fff; }
+.program-renewal .tuition-course h3 { font-size: clamp(21px, 2.1vw, 27px); margin-bottom: 0; }
+.tuition-course dl { border-top: 1px solid var(--line); }
+.tuition-course dl div { grid-template-columns: 70px minmax(0, 1fr); padding-block: 12px; border-bottom: 1px solid var(--line); line-height: 1.85; }
+.tuition-amount { margin-top: auto; padding: 0; border: 0; }
+.tuition-amount p { font-size: clamp(29px, 2.8vw, 36px); }
+.tuition-total { padding: 24px; border: 1px solid var(--line); background: #f3f4ed; }
+.payment-preparing { margin-top: 28px; }
+.renewal-flow { margin-top: 56px; }
+.renewal-faq-list details[open] { background: #fdfdfa; }
+.renewal-faq-list summary { padding-inline: 16px; }
+.program-renewal .renewal-faq-list h3 { font-size: 15px; }
+.renewal-faq-list details > p { padding: 0 22px 24px 76px; }
+.faq-consultation { margin-top: 28px; font-size: 14px; line-height: 1.9; }
+.faq-consultation > p { color: var(--muted); }
+.faq-consultation .renewal-text-link { margin-top: 10px; }
+.program-renewal .contact-layout { margin-top: 32px; gap: 48px; }
+.contact-by-phone .contact-phone { font-variant-numeric: tabular-nums; }
+.contact-guidance { padding-left: 32px; }
+.home-footer .information-links a { padding-block: 9px; }
+
+/* Policy/operating pages: presentation only; unknown conditions remain unknown. */
+.information-main { max-width: 1000px; padding-bottom: 88px; }
+.information-main h1 { padding-bottom: 24px; border-bottom: 1px solid var(--line); text-wrap: balance; }
+.information-back { min-height: 44px; display: inline-flex; align-items: center; margin-bottom: 28px; }
+.information-lead { font-size: 15px; line-height: 2; }
+.information-notice { padding: 24px 28px; margin-block: 32px; }
+.information-table > div { grid-template-columns: 200px minmax(0, 1fr); gap: 32px; padding-block: 26px; }
+.information-table dt { color: var(--green); font-size: 14px; }
+.information-table dd { font-size: 14px; line-height: 2; }
+.information-note { font-size: 13px; }
+.information-contact { border-top: 2px solid #a68b58; padding: 32px; }
+.information-contact p { font-size: 14px; }
+.information-contact .information-phone { margin-top: 16px; }
+.information-links a:focus-visible { outline: 3px solid #806636; outline-offset: 4px; }
+
+@media (min-width: 1101px) {
+  .renewal-faq-layout > .section-heading { position: sticky; top: 126px; align-self: start; }
+}
+@media (max-width: 1100px) {
+  .perspective-grid li,
+  .perspective-grid li:first-child,
+  .perspective-grid li:last-child { padding: 22px; }
+  .program-renewal .tuition-course h3 { font-size: 22px; }
+  .tuition-course { padding: 24px 20px; }
+}
+@media (max-width: 1000px) {
+  .tuition-courses { grid-template-columns: 1fr; }
+  .tuition-course { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .8fr); align-items: center; padding: 28px; }
+  .tuition-course > div:first-child { grid-column: 1 / -1; }
+  .tuition-amount { margin-top: 0; padding-left: 24px; }
+}
+@media (max-width: 900px) {
+  .program-renewal h1 { font-size: clamp(32px, 5vw, 42px); }
+  .hero-composition { gap: 12px; }
+  .hero-statement { padding-bottom: 0; }
+  .renewal-hero { background: linear-gradient(180deg, #fdfdfa 55%, #edf1e9); }
+  .hero-facts dl div { padding-left: 0; }
+  .instructor-introduction { gap: 32px; }
+  .instructor-details > div { grid-template-columns: 1fr; gap: 6px; }
+  .program-renewal .contact-layout { gap: 16px; }
+  .contact-guidance { padding-left: 0; }
+}
+@media (max-width: 600px) {
+  .program-renewal { --section-space: 64px; font-size: 15px; }
+  .program-renewal h2 { font-size: clamp(27px, 6.8vw, 34px); }
+  .program-renewal .renewal-prose { line-height: 1.95; }
+  .renewal-hero { padding-top: 30px; }
+  .hero-composition { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .hero-statement { display: contents; }
+  .hero-for { margin-block: 12px 18px; font-size: 12px; }
+  .program-renewal h1 { font-size: clamp(27px, 6.8vw, 39px); line-height: 1.65; }
+  .program-renewal .hero-photograph { grid-row: 4; padding-block: 22px 0; margin-top: 14px; }
+  .program-renewal .hero-photograph::before { display: none; }
+  .photo-overline { font-size: 8px; }
+  .program-renewal .hero-photo-word { font-size: 20px; }
+  .hero-introduction { margin-block: 24px; }
+  .hero-statement > .renewal-text-link { margin: 12px 0 0; }
+  .hero-facts { margin-top: 28px; padding-block: 24px; }
+  .hero-facts dl div { margin-top: 10px; }
+  .perspective-grid { gap: 12px; }
+  .perspective-grid li,
+  .perspective-grid li:first-child,
+  .perspective-grid li:last-child { padding: 20px 16px; }
+  .program-renewal .perspective-grid h3 { font-size: 18px; margin-top: 12px; }
+  .perspective-mark { margin-top: 14px; transform: scale(.8); }
+  .renewal-audience-grid { margin-top: 28px; gap: 20px; }
+  .support-composition { gap: 24px; }
+  .training-secondary-photo { width: 78%; }
+  .program-renewal .consultation-callout { padding: 24px 20px; gap: 20px; }
+  .renewal-step-grid li,
+  .renewal-step-grid li:last-child { padding: 24px; }
+  .renewal-step-grid li:not(:last-child)::after { right: 24px; }
+  .instructor-introduction { grid-template-columns: 1fr; gap: 0; margin-top: 28px; }
+  .instructor-details > div { grid-template-columns: 65px minmax(0, 1fr); gap: 12px; padding-block: 16px; }
+  .renewal-instructor-photos > :last-child { width: 92%; }
+  .tuition-course { display: flex; align-items: stretch; padding: 24px; gap: 20px; }
+  .tuition-course dl { padding: 0; background: transparent; }
+  .tuition-amount { padding-left: 0; }
+  .tuition-amount p { font-size: 34px; }
+  .tuition-total { padding: 20px; gap: 12px; }
+  .program-renewal .renewal-faq-list h3 { font-size: 15px; line-height: 1.85; }
+  .renewal-faq-list summary { gap: 12px; padding: 22px 12px; }
+  .renewal-faq-list details > p { padding: 0 16px 24px; }
+  .program-renewal .renewal-contact { padding-block: 68px; }
+  .mobile-consult-bar { grid-template-columns: 1.1fr 1fr; gap: 10px; padding-top: 10px; box-shadow: 0 -4px 20px #173f350a; }
+  .mobile-consult-bar > a { gap: 8px; min-height: 52px; }
+  .mobile-consult-bar .phone-icon { width: 18px; height: 18px; flex: 0 0 auto; }
+  .mobile-consult-bar .phone-action { display: flex; flex-direction: column; line-height: 1.5; }
+  .mobile-consult-bar .phone-action small { font-size: 10px; font-variant-numeric: tabular-nums; letter-spacing: .025em; }
+  .home-footer { padding-bottom: calc(112px + env(safe-area-inset-bottom, 0px)); }
+  .information-main { padding-bottom: 56px; }
+  .information-main h1 { font-size: clamp(25px, 6.8vw, 32px); }
+  .information-table > div { grid-template-columns: minmax(0, 1fr); gap: 10px; padding-block: 22px; }
+  .information-notice, .information-contact { padding: 24px 20px; }
+  .information-contact .information-phone { font-size: 14px; }
+  .information-main .information-links { gap: 10px 20px; }
+}
+
+/* Progressive enhancement: no JS or hidden-content fallback for scroll effects. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .program-renewal .story-section .section-heading {
+      animation: heading-arrive linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+    @keyframes heading-arrive {
+      from { transform: translateY(10px); }
+      to { transform: none; }
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .program-renewal *, .site-header *, .information-main *, .mobile-consult-bar * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

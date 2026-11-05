@@ -163,7 +163,7 @@ export default function Home() {
                 name="treatment-main"
                 caption="自然形体療法の施術風景"
                 priority
-                sizes="(max-width: 900px) calc(100vw - 40px), 55vw"
+                sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 900px) calc(100vw - 80px), (max-width: 1400px) 45vw, 600px"
               />
               <p className="hero-photo-word">その手で、学びを深める。</p>
               <p className="hero-photo-detail">理論を知る。実技で確かめる。</p>
@@ -720,6 +720,12 @@ export default function Home() {
                   <p>{a}</p>
                 </details>
               ))}
+              <aside className="faq-consultation">
+                <p>ほかにも気になることがありましたら、お気軽にご相談ください。</p>
+                <a className="renewal-text-link" href="#contact">
+                  受講相談の窓口を見る <span aria-hidden="true">↗</span>
+                </a>
+              </aside>
             </div>
           </div>
         </section>
@@ -850,7 +856,10 @@ export default function Home() {
           href={CONTACT_TEL}
           aria-label={`電話で受講相談する（${CONTACT_PHONE}へ発信）`}
         >
-          電話で相談する
+          <svg className="phone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true" focusable="false">
+            <path d="M7 3H4.5C3.7 3 3 3.7 3 4.5 3 13.6 10.4 21 19.5 21c.8 0 1.5-.7 1.5-1.5V17l-5-2-2 2a14 14 0 0 1-7-7l2-2-2-5Z" />
+          </svg>
+          <span className="phone-action">電話で相談する<small>{CONTACT_PHONE}</small></span>
         </a>
         {getOfficialLineUrl() ? (
           <LineConsultationLink className="mobile-line-link" />
