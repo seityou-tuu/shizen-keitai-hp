@@ -1,0 +1,552 @@
+/* Contact and mobile refinements; no policy text or existing legal data changes. */
+:root {
+  scroll-padding-top: 112px;
+}
+.program-renewal {
+  --renewal-gold: #806636;
+  --muted: #59675d;
+}
+[hidden] {
+  display: none !important;
+}
+.mobile-nav {
+  max-height: calc(100dvh - 94px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.program-renewal section[id] {
+  scroll-margin-top: 12px;
+}
+.program-renewal :is(a, button, summary):focus-visible,
+.home-footer a:focus-visible,
+.mobile-consult-bar a:focus-visible {
+  outline: 3px solid #806636;
+  outline-offset: 4px;
+}
+.program-renewal .renewal-button {
+  min-height: 48px;
+}
+.program-renewal .renewal-text-link,
+.renewal-contact-link,
+.footer-contact-link {
+  min-height: 44px;
+}
+.program-renewal .hero-photograph {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+.program-renewal .hero-photo-word {
+  position: static;
+  margin-top: 18px;
+  padding: 14px 20px;
+  font-size: 21px;
+}
+.program-renewal .hero-photo-detail {
+  position: static;
+  margin-top: 12px;
+  max-width: none;
+}
+.program-renewal .hero-photograph::before {
+  inset-block-end: 95px;
+}
+.program-renewal .consultation-callout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-top: 35px;
+  padding: 27px;
+  background: #edf0e6;
+  border: 1px solid var(--line);
+}
+.consultation-callout > p {
+  font-size: 14px;
+  line-height: 2;
+}
+.consultation-callout .renewal-button {
+  flex-shrink: 0;
+}
+.program-renewal .renewal-roadmap .consultation-callout {
+  background: #244d40;
+  border-color: #648267;
+}
+.renewal-roadmap .consultation-callout .renewal-button {
+  border-color: #c8b47f;
+}
+.program-renewal .learning-cycle {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 45px 0 0;
+  padding: 0;
+  gap: 14px;
+}
+.learning-cycle li {
+  position: relative;
+  padding: 24px 20px;
+  border: 1px solid #b9c6b0;
+  background: #f3f4ed;
+}
+.learning-cycle li > span {
+  font:
+    15px Georgia,
+    serif;
+  color: #806636;
+}
+.learning-cycle li > p {
+  font-size: 15px;
+  margin-top: 10px;
+  padding-right: 7px;
+}
+.learning-cycle li > b {
+  position: absolute;
+  right: -12px;
+  top: 45%;
+  color: var(--green);
+  font-weight: 400;
+  background: #fdfdfa;
+  padding-inline: 3px;
+  z-index: 1;
+}
+.learning-cycle li:last-child > b {
+  right: 8px;
+  top: 12px;
+  background: transparent;
+  font-size: 22px;
+  color: #806636;
+}
+.cycle-caption {
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 18px;
+}
+.program-renewal .instructor-name {
+  font-size: 27px;
+  margin: 0 0 18px;
+}
+.program-renewal .training-atmosphere-story h3 {
+  font-size: clamp(22px, 2.3vw, 30px);
+}
+.program-renewal .contact-layout {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 60px;
+  align-items: start;
+  text-align: left;
+  margin-top: 42px;
+}
+.program-renewal .contact-by-phone {
+  padding: 26px 0;
+}
+.program-renewal .contact-by-phone h3 {
+  font-size: 24px;
+  color: #f6f2e8;
+}
+.contact-phone {
+  display: inline-block;
+  font:
+    35px/1.9 Georgia,
+    serif;
+  border-bottom: 1px solid #cfbc8c;
+  color: #f6f2e8;
+  white-space: nowrap;
+  margin: 15px 0;
+}
+.contact-by-phone > p {
+  font-size: 13px;
+  color: #d2dccb;
+}
+.program-renewal .contact-by-phone .renewal-note {
+  color: #bdcbb8;
+}
+.home-footer .company-info {
+  margin-right: 0;
+}
+.home-footer .footer-top {
+  gap: 30px;
+}
+.home-footer .company-info dd {
+  max-width: 280px;
+  overflow-wrap: anywhere;
+}
+.home-footer .company-info a {
+  display: inline-block;
+  min-height: 35px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.footer-contact-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
+  margin-top: 10px;
+}
+.mobile-consult-bar {
+  display: none;
+}
+@media (max-width: 1100px) {
+  .mobile-nav {
+    max-height: calc(100dvh - 94px);
+  }
+  .site-header .menu-toggle {
+    min-width: 85px;
+    min-height: 44px;
+  }
+  .site-header .mobile-nav a {
+    min-height: 48px;
+  }
+  .program-renewal .contact-layout {
+    gap: 30px;
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+  .contact-phone {
+    font-size: 29px;
+  }
+}
+@media (max-width: 900px) {
+  .program-renewal .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .contact-by-phone {
+    max-width: 600px;
+  }
+  .program-renewal .learning-cycle {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .learning-cycle li > b {
+    display: none;
+  }
+  .learning-cycle li:last-child > b {
+    display: block;
+  }
+  .program-renewal .consultation-callout {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+@media (max-width: 850px) {
+  :root {
+    scroll-padding-top: 94px;
+  }
+}
+@media (max-width: 600px) {
+  :root {
+    scroll-padding-top: 90px;
+  }
+  .mobile-nav {
+    max-height: calc(100dvh - 74px);
+  }
+  .program-renewal .hero-photo-word {
+    margin-top: 14px;
+    font-size: 18px;
+    padding: 14px 16px;
+  }
+  .program-renewal .hero-photograph::before {
+    inset-block-end: 85px;
+  }
+  .program-renewal .renewal-button {
+    width: 100%;
+    font-size: 15px;
+  }
+  .program-renewal .renewal-text-link {
+    font-size: 14px;
+  }
+  .program-renewal .consultation-callout {
+    padding: 22px 20px;
+  }
+  .program-renewal .learning-cycle {
+    gap: 12px;
+    margin-top: 30px;
+  }
+  .learning-cycle li {
+    padding: 20px 14px;
+  }
+  .learning-cycle li > p {
+    font-size: 14px;
+  }
+  .contact-phone {
+    font-size: 34px;
+  }
+  .program-renewal .contact-layout {
+    margin-top: 25px;
+  }
+  .home-footer .footer-top {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .home-footer .company-info {
+    width: 100%;
+  }
+  .home-footer .back-top {
+    margin-left: 0;
+  }
+  .home-footer {
+    padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px));
+  }
+  .mobile-consult-bar {
+    position: fixed;
+    z-index: 35;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 8px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px));
+    background: #fdfdfaf5;
+    border-top: 1px solid var(--line);
+  }
+  .mobile-consult-bar a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 48px;
+    font-size: 13px;
+    border: 1px solid var(--green);
+    color: var(--green);
+  }
+  .mobile-consult-bar a:last-child {
+    background: var(--green);
+    color: white;
+  }
+  /* Keep focused links above the fixed contact controls. */
+  .program-renewal :is(a, summary) {
+    scroll-margin-bottom: 110px;
+  }
+  .program-renewal .renewal-faq-list summary {
+    min-height: 56px;
+  }
+}
+@media (max-width: 360px) {
+  .contact-phone {
+    font-size: 29px;
+  }
+  .mobile-consult-bar a {
+    font-size: 12px;
+  }
+}
+
+/* Shared phone/LINE actions; LINE links render only when configured. */
+.consultation-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.consultation-actions .renewal-button {
+  font-size: 14px;
+  gap: 12px;
+  padding: 17px 20px;
+}
+.line-consult-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 48px;
+  padding: 14px 20px;
+  border: 1px solid var(--green);
+  color: var(--green);
+  font-size: 14px;
+}
+.program-renewal .hero-statement > .line-consult-link {
+  margin-top: 14px;
+}
+.training-consultation {
+  padding-bottom: 54px;
+}
+.training-consultation .consultation-callout {
+  margin-top: 0;
+}
+.program-renewal .contact-layout {
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
+.contact-guidance {
+  min-width: 0;
+  text-align: left;
+  padding: 26px 0 26px 35px;
+  border-left: 1px solid #cfbc8c50;
+}
+.program-renewal .contact-guidance h3 {
+  color: #f6f2e8;
+  font-size: 23px;
+  margin-bottom: 20px;
+}
+.contact-guidance > p {
+  color: #d2dccb;
+  font-size: 14px;
+  line-height: 2;
+}
+.contact-guidance > p + p {
+  margin-top: 16px;
+}
+.program-renewal .contact-guidance .renewal-note {
+  color: #bdcbb8;
+}
+.contact-guidance .line-consult-link {
+  margin-top: 25px;
+}
+.renewal-contact .line-consult-link,
+.renewal-roadmap .line-consult-link {
+  border-color: #cfbc8c;
+  color: #f6f2e8;
+}
+@media (max-width: 900px) {
+  .program-renewal .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .contact-guidance {
+    border-left: 0;
+    border-top: 1px solid #cfbc8c50;
+    padding: 30px 0 0;
+  }
+}
+@media (max-width: 600px) {
+  .consultation-actions,
+  .consultation-actions .line-consult-link {
+    width: 100%;
+  }
+  .training-consultation {
+    padding-bottom: 35px;
+  }
+  .program-renewal .contact-by-phone h3 {
+    font-size: 23px;
+  }
+  .mobile-consult-bar a {
+    gap: 5px;
+  }
+}
+
+/* Keep FAQ numbers on one line even when long questions wrap. */
+.program-renewal .renewal-faq-list summary {
+  display: grid;
+  grid-template-columns: 2.6rem minmax(0, 1fr) 12px;
+}
+.program-renewal .renewal-faq-list summary > span:first-child {
+  inline-size: 2.6rem;
+  min-inline-size: 2.6rem;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.5;
+}
+.program-renewal .renewal-faq-list summary h3 {
+  min-width: 0;
+}
+.program-renewal .renewal-faq-toggle {
+  margin-left: 0;
+}
+.site-header .brand,
+.home-footer .company-info a,
+.home-footer .back-top {
+  min-height: 44px;
+}
+.home-footer .eyebrow,
+.information-main .eyebrow {
+  color: #806636;
+}
+.information-contact .information-phone,
+.information-contact .text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.information-contact .information-phone {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+@media (max-width: 600px) {
+  html {
+    scroll-padding-bottom: calc(90px + env(safe-area-inset-bottom, 0px));
+  }
+  .mobile-consult-bar > a:first-child {
+    background: var(--green);
+    color: white;
+  }
+  .mobile-consult-bar > a:last-child {
+    background: #fdfdfa;
+    color: var(--green);
+  }
+}
+
+.program-renewal .renewal-contact a:focus-visible,
+.program-renewal .renewal-roadmap a:focus-visible {
+  outline-color: #e4ce93;
+}
+.information-main a:focus-visible {
+  outline: 3px solid #806636;
+  outline-offset: 4px;
+}
+
+/* Fixed number columns for long support/benefit headings on narrow screens. */
+.program-renewal .future-list li,
+.program-renewal .support-list li {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  align-items: baseline;
+  column-gap: 20px;
+}
+.program-renewal .future-list li > span,
+.program-renewal .support-list li > span {
+  inline-size: 2.25rem;
+  min-inline-size: 2.25rem;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.program-renewal .future-list li > div,
+.program-renewal .support-list li > div {
+  min-width: 0;
+}
+.program-renewal .section-heading .eyebrow > span {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+.program-renewal .learning-cycle li > span,
+.program-renewal .perspective-number,
+.program-renewal .renewal-flow li > .renewal-kicker {
+  white-space: nowrap;
+}
+.instructor-details {
+  margin: 25px 0 0;
+  font-size: 14px;
+}
+.instructor-details > div {
+  padding: 13px 0;
+  border-top: 1px solid var(--line);
+}
+.instructor-details dt {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+.instructor-details ul {
+  padding-left: 1.2em;
+  margin: 0;
+}
+.instructor-details dd,
+.instructor-message p {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+.instructor-message {
+  margin: 24px 0 0;
+  padding: 15px 20px;
+  border-left: 2px solid var(--gold);
+  background: var(--paper);
+}
+
+@media (max-width: 600px) {
+  .program-renewal .future-list h3,
+  .program-renewal .support-list h3 {
+    font-size: clamp(18px, 4.8vw, 20px);
+    text-wrap: balance;
+  }
+  .program-renewal .renewal-prose p {
+    text-wrap: pretty;
+  }
+}

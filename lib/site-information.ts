@@ -1,9 +1,11 @@
+import { CONTACT_PHONE } from "./contact";
+
 // null means unconfirmed. Replace only with operator-approved information.
 export const operator = {
   name: "株式会社TSUNAGi",
   representative: "永友裕也",
   address: null,
-  phone: null,
+  phone: CONTACT_PHONE,
   email: null,
   corporateNumber: null,
 } satisfies Record<string, string | null>;
