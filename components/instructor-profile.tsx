@@ -10,8 +10,11 @@ export function InstructorProfile({
 }) {
   const background = profile.background.filter((value) => value.trim());
   const qualifications = profile.qualifications.filter((value) => value.trim());
+  const achievements = (profile.achievements ?? []).filter((value) => value.trim());
   const hasBiography = !!(
     profile.formalName.trim() ||
+    profile.role?.trim() ||
+    achievements.length ||
     background.length ||
     qualifications.length ||
     profile.practiceExperience.trim() ||
@@ -65,6 +68,22 @@ export function InstructorProfile({
                 <div>
                   <dt>施術歴</dt>
                   <dd>{profile.practiceExperience}</dd>
+                </div>
+              )}
+              {profile.role?.trim() && (
+                <div>
+                  <dt>役職</dt>
+                  <dd>{profile.role}</dd>
+                </div>
+              )}
+              {achievements.length > 0 && (
+                <div>
+                  <dt>実績</dt>
+                  <dd>
+                    <ul>
+                      {achievements.map((value, i) => <li key={i}>{value}</li>)}
+                    </ul>
+                  </dd>
                 </div>
               )}
               {profile.teachingExperience.trim() && (

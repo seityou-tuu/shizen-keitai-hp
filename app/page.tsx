@@ -531,23 +531,23 @@ export default function Home() {
 
         <section id="instructors" className="story-section renewal-instructors">
           <div className="renewal-wrap">
+            <SectionHeading number="08" english="INSTRUCTORS">
+              一つひとつの技術に、
+              <br />
+              向き合う。
+            </SectionHeading>
             <div className="instructor-introduction">
-              <SectionHeading number="08" english="INSTRUCTORS">
-                一つひとつの技術に、
-                <br />
-                向き合う。
-              </SectionHeading>
               <InstructorProfile />
-            </div>
-            <div className="renewal-instructor-photos">
-              <ProgramPhoto
-                name="instructor-portrait"
-                caption={instructorProfile.displayName}
-              />
-              <ProgramPhoto
-                name="speaker-message"
-                caption={`技術への考え方を伝える${instructorProfile.displayName}`}
-              />
+              <div className="renewal-instructor-photos">
+                <ProgramPhoto
+                  name="instructor-portrait"
+                  caption={instructorProfile.displayName}
+                />
+                <ProgramPhoto
+                  name="speaker-message"
+                  caption={`技術への考え方を伝える${instructorProfile.displayName}`}
+                />
+              </div>
             </div>
           </div>
         </section>

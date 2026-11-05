@@ -4,7 +4,7 @@ const assert = require("node:assert/strict");
 const { renderToStaticMarkup } = require("react-dom/server");
 const { instructorProfile } = require("../lib/instructor.ts");
 const { InstructorProfile } = require("../components/instructor-profile.tsx");
-const emptyProfile = { ...instructorProfile, background: [], qualifications: [], practiceExperience: "" };
+const emptyProfile = { ...instructorProfile, background: [], qualifications: [], practiceExperience: "", role: "", achievements: [] };
 
 test("unconfirmed profile facts are not published as empty headings or invented claims", () => {
   assert.equal(instructorProfile.displayName, "永友先生");
@@ -16,6 +16,8 @@ test("unconfirmed profile facts are not published as empty headings or invented 
     "<dt>保有資格",
     "<dt>施術歴",
     "<dt>指導実績",
+    "<dt>役職",
+    "<dt>実績",
     "<blockquote",
   ])
     assert.ok(!html.includes(heading), heading);

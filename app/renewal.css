@@ -116,10 +116,10 @@
 .roadmap-common { display: flex; flex-wrap: wrap; align-items: center; gap: 15px 30px; margin-top: 33px; padding-bottom: 26px; border-bottom: 1px solid #738b7255; font-size: 13px; }
 .roadmap-common > p { color: #cfbc8c; }
 .program-renewal .renewal-roadmap .renewal-note { color: #b9c8b7; }
-.instructor-introduction { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-.instructor-introduction .renewal-prose { padding-top: 35px; }
-.renewal-instructor-photos { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 36px; margin-top: 32px; }
-.renewal-instructor-photos > :last-child { margin-top: 65px; }
+.instructor-introduction { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 40px; }
+.instructor-introduction .renewal-prose { grid-column: 2; grid-row: 1; padding-top: 0; }
+.renewal-instructor-photos { display: grid; grid-column: 1; grid-row: 1; grid-template-columns: 1fr; align-items: start; gap: 28px; margin-top: 0; }
+.renewal-instructor-photos > :last-child { margin-top: 0; }
 .renewal-future { background: #edf0e7; }
 .future-composition { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 90px; }
 .future-list li { display: flex; align-items: baseline; gap: 24px; padding: 22px 0; border-top: 1px solid #ccd4c3; }
@@ -315,8 +315,8 @@
   .roadmap-common { display: block; margin-top: 25px; }
   .roadmap-common > * { display: block; margin-top: 9px; }
   .instructor-introduction { grid-template-columns: 1fr; gap: 0; }
-  .instructor-introduction .renewal-prose { padding-top: 0; }
-  .renewal-instructor-photos { grid-template-columns: 1fr; gap: 27px; margin-top: 30px; }
+  .instructor-introduction .renewal-prose { grid-column: auto; grid-row: auto; padding-top: 0; }
+  .renewal-instructor-photos { grid-column: auto; grid-row: auto; grid-template-columns: 1fr; gap: 27px; margin-top: 30px; }
   .renewal-instructor-photos > :last-child { margin-top: 0; }
   .future-composition { gap: 30px; }
   .future-list { display: block; }

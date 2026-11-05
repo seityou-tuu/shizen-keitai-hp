@@ -4,6 +4,8 @@ export type InstructorProfile = {
   formalName: string;
   background: readonly string[];
   qualifications: readonly string[];
+  role?: string;
+  achievements?: readonly string[];
   practiceExperience: string;
   teachingExperience: string;
   message: string;
@@ -12,12 +14,9 @@ export type InstructorProfile = {
 export const instructorProfile: InstructorProfile = {
   displayName: "永友先生",
   formalName: "",
-  background: [
-    "2017年 ながとも整骨院開院",
-    "自然形体療法 理事",
-    "YouTube総再生回数220万回",
-    "2024年 FANCHANNEL グランプリ",
-  ],
+  background: ["2017年 ながとも整骨院開院"],
+  role: "自然形体療法 理事",
+  achievements: ["YouTube総再生回数220万回", "2024年 FANCHANNEL グランプリ"],
   qualifications: ["柔道整復師（2012年取得）"],
   practiceExperience: "15年",
   teachingExperience: "",
