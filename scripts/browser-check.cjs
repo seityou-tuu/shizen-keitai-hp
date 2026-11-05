@@ -56,12 +56,21 @@ if (out) fs.mkdirSync(out, { recursive: true });
       });
       const response = await page.goto(base.href, { waitUntil: "networkidle" });
       assert.equal(response.status(), 200);
+      assert.equal(await page.locator("html").getAttribute("lang"), "ja");
+      assert.equal(await page.locator("h1").count(), 1);
+      assert.match(await page.title(), /自然形体療法 資格取得プログラム/);
+      assert.equal(await page.locator('link[rel="canonical"]').getAttribute("href"), "https://shizen-keitai-hp.vercel.app");
+      assert.ok((await page.locator('meta[name="description"]').getAttribute("content")).length > 40);
+      assert.equal(await page.locator('meta[property="og:url"]').getAttribute("content"), "https://shizen-keitai-hp.vercel.app");
+      assert.equal(await page.locator('img:not([alt]), img[alt=""]').count(), 0);
+
       assert.match(response.headers()["x-robots-tag"], /noindex/);
       await page.waitForTimeout(150);
       const profileText = await page.locator("#instructors .instructor-details").innerText();
       for (const fact of ["柔道整復師（2012年取得）", "2017年 ながとも整骨院開院", "15年", "自然形体療法 理事", "YouTube総再生回数220万回", "2024年 FANCHANNEL グランプリ"]) {
         assert.equal(profileText.split(fact).length - 1, 1, `profile fact at ${width}: ${fact}`);
       }
+      assert.equal(await page.locator("#about .section-heading").evaluate(el => getComputedStyle(el).animationName), "none", "reduced-motion headings must not animate");
       const initial = await page.evaluate(() => ({
         ...window.__qaMetrics,
         scroll: document.documentElement.scrollWidth,
@@ -305,6 +314,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
           })),
         );
         assert.ok(taps.every((rect) => rect.width >= 44 && rect.height >= 44));
+        assert.ok(await sticky.locator("a").evaluateAll(nodes => nodes.every(el => el.scrollWidth <= el.clientWidth + 1)), `sticky CTA text overflow at ${width}`);
         await sticky.locator("a").last().click();
         assert.ok(page.url().endsWith("#contact"));
         await page.evaluate(() =>
@@ -398,9 +408,21 @@ if (out) fs.mkdirSync(out, { recursive: true });
           `${route} overflow`,
         );
       }
+      if (out) {
+        for (const width of [390, 1440]) {
+          await page.setViewportSize({ width, height: 900 });
+          await page.screenshot({ path: path.join(out, `${route.slice(1)}-${width}.png`), fullPage: true });
+        }
+      }
       report.routes.push({ route, status: response.status(), passed: true });
     }
     assert.deepEqual(report.externalRequests, []);
+    const motionPage = await browser.newPage({ viewport: { width: 390, height: 900 }, reducedMotion: "no-preference" });
+    await motionPage.goto(base.href, { waitUntil: "networkidle" });
+    await motionPage.locator("#about").scrollIntoViewIfNeeded();
+    assert.equal(await motionPage.locator("#about .section-heading").evaluate(el => getComputedStyle(el).opacity), "1", "scroll enhancement must keep content opaque");
+    assert.ok(await motionPage.locator("#about h2").isVisible());
+    await motionPage.close();
     assert.deepEqual(report.errors, []);
     if (out)
       fs.writeFileSync(
