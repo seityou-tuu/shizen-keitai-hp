@@ -1,0 +1,22 @@
+{
+  "conditions": "Local Chromium; LINE requests intercepted; no friend-add, messages or real phone calls",
+  "path": "/",
+  "devices": [
+    {
+      "device": "desktop",
+      "interceptedClicks": 7,
+      "exactUrl": true,
+      "safeNewTab": true,
+      "phonePreserved": true,
+      "passed": true
+    },
+    {
+      "device": "mobile touch",
+      "interceptedClicks": 7,
+      "exactUrl": true,
+      "safeNewTab": true,
+      "phonePreserved": true,
+      "passed": true
+    }
+  ]
+}
