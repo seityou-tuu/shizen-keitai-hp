@@ -279,6 +279,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
       for (const href of links) {
         assert.notEqual(href, "#", "ambiguous placeholder anchor");
         if (href.startsWith("tel:")) continue;
+        if (["https://youtu.be/yp_P0a_oedY", "https://youtu.be/yudalXPijCk"].includes(href)) continue;
         const url = new URL(href, base);
         assert.equal(url.origin, base.origin);
         assert.ok(
@@ -370,7 +371,17 @@ if (out) fs.mkdirSync(out, { recursive: true });
       const evidence = await page.locator(".instructor-evidence").innerText();
       for (const fact of ["86万回", "132万回", "提供画像の表示時点", "チャンネル全体", "受講生の集合写真ではありません"])
         assert.ok(evidence.includes(fact), `evidence context at ${width}: ${fact}`);
-      assert.equal(await page.locator(".instructor-evidence iframe, .instructor-evidence a").count(), 0);
+      assert.equal(await page.locator(".instructor-evidence iframe").count(), 0);
+      const videoLinks = page.locator(".evidence-video-link");
+      assert.equal(await videoLinks.count(), 2);
+      for (const [count, id] of [["86万回", "yp_P0a_oedY"], ["132万回", "yudalXPijCk"]]) {
+        const video = page.locator(".evidence-video").filter({ hasText: count });
+        const link = video.locator("a");
+        assert.equal(await link.getAttribute("href"), `https://youtu.be/${id}`);
+        assert.equal(await link.getAttribute("target"), "_blank");
+        assert.equal(await link.getAttribute("rel"), "noopener noreferrer");
+        assert.ok(await link.evaluate(el => el.clientWidth >= 44 && el.clientHeight >= 44));
+      }
       assert.ok(evidence.includes("受賞年・賞の正式名称は確認中です"));
       const allInstructorText = await page.locator("#instructors").innerText();
       for (const unconfirmed of ["220万", "2024年", "FANCHANNEL グランプリ"])

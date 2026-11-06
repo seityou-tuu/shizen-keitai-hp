@@ -4,3 +4,4 @@ require("./seo.test.cjs");
 require("./content.test.cjs");
 
 require("./instructor.test.cjs");
+require("./youtube-video-link.test.cjs");

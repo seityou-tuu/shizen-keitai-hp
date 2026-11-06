@@ -1,0 +1,27 @@
+{
+  "conditions": "Local Chromium; external destinations intercepted, video playback untested",
+  "results": [
+    {
+      "device": "desktop mouse and keyboard",
+      "destinations": [
+        "https://youtu.be/yp_P0a_oedY",
+        "https://youtu.be/yp_P0a_oedY",
+        "https://youtu.be/yp_P0a_oedY",
+        "https://youtu.be/yudalXPijCk",
+        "https://youtu.be/yudalXPijCk",
+        "https://youtu.be/yudalXPijCk"
+      ],
+      "passed": true
+    },
+    {
+      "device": "mobile touch",
+      "destinations": [
+        "https://youtu.be/yp_P0a_oedY",
+        "https://youtu.be/yp_P0a_oedY",
+        "https://youtu.be/yudalXPijCk",
+        "https://youtu.be/yudalXPijCk"
+      ],
+      "passed": true
+    }
+  ]
+}

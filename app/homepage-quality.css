@@ -85,6 +85,19 @@
 .homepage-quality .evidence-video { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 20px; margin: 0; align-items: center; }
 .homepage-quality .evidence-video + .evidence-video { border-top: 1px solid #d5dacd; padding-top: 18px; margin-top: 18px; }
 .homepage-quality .evidence-video img, .homepage-quality .evidence-award img { display: block; width: 100%; height: auto; border-radius: 0; }
+.homepage-quality .evidence-video-link { display: block; position: relative; min-width: 44px; min-height: 44px; }
+.homepage-quality .evidence-play { position: absolute; right: 7px; bottom: 7px; display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid #dbc89a; border-radius: 50%; background: #102f28ed; color: #fff; pointer-events: none; }
+.homepage-quality .evidence-play svg { width: 15px; height: 15px; }
+.homepage-quality .evidence-video-link:focus-visible { outline: 3px solid #806636; outline-offset: 4px; }
+@media (prefers-reduced-motion: no-preference) {
+  .homepage-quality .evidence-play { transition: transform .2s ease, background-color .2s ease; }
+}
+@media (hover: hover) {
+  .homepage-quality .evidence-video-link:hover .evidence-play { background: #2b5747; }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .homepage-quality .evidence-video-link:hover .evidence-play { transform: scale(1.08); }
+}
 .homepage-quality .evidence-video figcaption { display: flex; flex-direction: column; gap: 8px; }
 .homepage-quality .evidence-video figcaption > span { color: #58675e; font-size: 11px; line-height: 1.8; }
 .homepage-quality .evidence-video strong { font-size: 32px; font-weight: 500; color: #244237; line-height: 1.3; }
