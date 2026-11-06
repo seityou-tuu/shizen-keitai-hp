@@ -180,7 +180,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
       ]) {
         if (width <= 1100)
           await page.getByRole("button", { name: "メニューを開く" }).click();
-        const link = nav.getByRole("link", { name: label, exact: true });
+        const link = nav.locator("a").filter({ hasText: label });
         const target = new URL(await link.getAttribute("href"), base).hash;
         await link.click();
         assert.ok(
@@ -210,15 +210,15 @@ if (out) fs.mkdirSync(out, { recursive: true });
       }
       const trainingLayout = await page.locator("#training").evaluate(el => {
         const rect = selector => { const r = el.querySelector(selector).getBoundingClientRect(); return {left:r.left,right:r.right,top:r.top,bottom:r.bottom}; };
-        return {heading:rect(".training-practical-details .section-heading"),photo:rect(".training-main-photo > .program-photo"),copy:rect(".training-practical-details > .training-story-copy"),secondary:rect(".training-secondary-photo")};
+        return {heading:rect(".training-section-intro"),photo:rect(".training-main-photo > .program-photo"),copy:rect(".training-practical-details > .training-story-copy"),secondary:rect(".training-secondary-photo")};
       });
       if (width > 900) {
-        assert.ok(trainingLayout.photo.right < trainingLayout.heading.left, `training must be side by side at ${width}`);
-        assert.ok(Math.abs(trainingLayout.photo.top - trainingLayout.heading.top) < 2, `training heading/photo top alignment at ${width}`);
+        assert.ok(trainingLayout.photo.right < trainingLayout.copy.left, `training must be side by side at ${width}`);
+        assert.ok(trainingLayout.heading.bottom <= trainingLayout.photo.top, `training introduction precedes photos at ${width}`);
       } else {
         assert.ok(trainingLayout.heading.bottom <= trainingLayout.photo.top + 1, `training heading before photo at ${width}`);
         assert.ok(trainingLayout.photo.bottom <= trainingLayout.copy.top + 1, `training copy after photo at ${width}`);
-        assert.ok(trainingLayout.copy.bottom <= trainingLayout.secondary.top + 1, `training secondary after copy at ${width}`);
+        assert.ok(trainingLayout.secondary.bottom <= trainingLayout.copy.top + 1, `training photographs precede copy at ${width}`);
       }
       const sections = [];
       for (const section of await page.locator("#main > section").all()) {
@@ -299,7 +299,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
         .locator('a[href^="tel:"]')
         .evaluateAll((nodes) => nodes.map((node) => node.getAttribute("href")));
       assert.ok(
-        phones.length >= 7 && phones.every((href) => href === "tel:0985747643"),
+        phones.length >= 6 && phones.every((href) => href === "tel:0985747643"),
       );
       assert.equal(
         await page.locator('a[href*="lin.ee"],a[href*="line.me"]').count(),
@@ -369,13 +369,12 @@ if (out) fs.mkdirSync(out, { recursive: true });
           "990,000円（税込）",
           "税抜900,000円",
           "6ヶ月",
-          "月1回",
-          "9:00〜17:00",
-          "オンライン",
-          "1回2時間",
         ])
           assert.ok(text.includes(value), value);
       }
+      const shared = (await page.locator(".tuition-shared").innerText()).replace(/\s/g, "");
+      for (const value of ["月1回", "9:00〜17:00", "オンライン", "1回2時間"])
+        assert.ok(shared.includes(value), value);
       assert.match(
         await page.locator(".tuition-total").innerText(),
         /2,970,000/,

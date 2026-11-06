@@ -1,3 +1,5 @@
+import "./homepage-quality.css";
+import { HomepageMotion } from "@/components/homepage-motion";
 import { InstructorProfile } from "@/components/instructor-profile";
 import { instructorProfile } from "@/lib/instructor";
 import { CONTACT_PHONE, CONTACT_TEL, getOfficialLineUrl } from "@/lib/contact";
@@ -123,7 +125,8 @@ export default function Home() {
         本文へ移動
       </a>
       <Header />
-      <main id="main" className="program-renewal cinematic-program">
+      <main id="main" className="program-renewal cinematic-program homepage-quality">
+        <HomepageMotion />
         <section className="renewal-hero" aria-labelledby="hero-title">
           <div className="renewal-wrap hero-composition">
             <div className="hero-statement">
@@ -371,15 +374,23 @@ export default function Home() {
 
         <section id="training" className="story-section renewal-training">
           <div className="renewal-wrap">
+            <div className="training-section-intro">
+              <SectionHeading number="06" english="INSIDE THE TRAINING">
+                技術を、目で見て、
+                <br />
+                手で感じる。
+              </SectionHeading>
+              <p className="section-side-copy">対面で手を動かす実技と、<br />オンラインで理解を深める理論。<br />二つの学びを、毎月重ねていきます。</p>
+            </div>
+            <div className="training-format-key" aria-label="二つの研修形式">
+              <p><span>01 / 実技</span><strong>対面で学ぶ</strong><small>月1回 · 9:00〜17:00</small></p>
+              <span className="format-plus" aria-hidden="true">＋</span>
+              <p><span>02 / 理論</span><strong>オンラインで学ぶ</strong><small>月1回 · 1回2時間</small></p>
+            </div>
             <article className="training-story">
               <div className="training-practical-details">
-                <SectionHeading number="06" english="INSIDE THE TRAINING">
-                  技術を、目で見て、
-                  <br />
-                  手で感じる。
-                </SectionHeading>
                 <div className="training-story-copy">
-                  <p className="renewal-kicker">PRACTICAL TRAINING</p>
+                  <p className="renewal-kicker"><span className="training-label">対面 / 実技</span> PRACTICAL TRAINING</p>
                   <h3>
                     身体で確かめる、
                     <br />
@@ -426,7 +437,7 @@ export default function Home() {
             </article>
             <article className="training-story theory-story">
               <div className="training-story-copy">
-                <p className="renewal-kicker">THEORETICAL TRAINING</p>
+                <p className="renewal-kicker"><span className="training-label">オンライン / 理論</span> THEORETICAL TRAINING</p>
                 <h3>
                   その技術の、
                   <br />
@@ -488,10 +499,6 @@ export default function Home() {
           </div>
         </section>
 
-        <div className="renewal-wrap training-consultation">
-          <ConsultationCallout text="研修内容や学び方について、気になることをお電話でご相談ください。" />
-        </div>
-
         <section id="roadmap" className="story-section renewal-roadmap">
           <div className="renewal-wrap">
             <div className="section-intro-row">
@@ -519,6 +526,7 @@ export default function Home() {
                 </li>
               ))}
             </ol>
+            <a className="roadmap-fee-link" href="#courses">各コースの料金を確認する <span aria-hidden="true">↓</span></a>
             <div className="roadmap-common">
               <p>各コース共通</p>
               <span>実技：月1回・対面 9:00〜17:00</span>
@@ -544,7 +552,7 @@ export default function Home() {
                 <ProgramPhoto
                   name="instructor-portrait"
                   caption={instructorProfile.displayName}
-                  sizes="(max-width: 700px) 160vw, 1080px"
+                  sizes="(max-width: 700px) calc(100vw - 40px), 520px"
                 />
                 <ProgramPhoto
                   name="speaker-message"
@@ -610,28 +618,7 @@ export default function Home() {
                     <p className="renewal-kicker">STEP {c.step}</p>
                     <h3>{c.title}</h3>
                   </div>
-                  <dl>
-                    <div>
-                      <dt>受講期間</dt>
-                      <dd>6ヶ月</dd>
-                    </div>
-                    <div>
-                      <dt>実技研修</dt>
-                      <dd>
-                        月1回・対面
-                        <br />
-                        9:00〜17:00
-                      </dd>
-                    </div>
-                    <div>
-                      <dt>理論研修</dt>
-                      <dd>
-                        月1回・オンライン
-                        <br />
-                        1回2時間
-                      </dd>
-                    </div>
-                  </dl>
+                  <p className="tuition-duration">受講期間 <strong>6ヶ月</strong></p>
                   <div className="tuition-amount">
                     <span>受講料 / 1コース</span>
                     <p>
@@ -641,6 +628,11 @@ export default function Home() {
                   </div>
                 </article>
               ))}
+            </div>
+            <div className="tuition-shared">
+              <p className="renewal-kicker">各コース共通の研修</p>
+              <p><strong>実技</strong>月1回・対面 9:00〜17:00</p>
+              <p><strong>理論</strong>月1回・オンライン 1回2時間</p>
             </div>
             <div className="tuition-total">
               <p>3コースすべての受講料合計</p>
