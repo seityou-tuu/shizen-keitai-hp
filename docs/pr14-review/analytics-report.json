@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "conditions": "Isolated React StrictMode fixture; synthetic ID only in tests; all external requests intercepted; no Google delivery verified",
+  "noRequestBeforeConsent": true,
+  "scriptLoads": 1,
+  "phoneEvents": 2,
+  "pageViews": 1,
+  "withdrawalAndUnmount": true,
+  "errors": []
+}
