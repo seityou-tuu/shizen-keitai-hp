@@ -3,7 +3,7 @@ import { SITE_URL, isSearchIndexingEnabled } from "@/lib/site-config";
 export default function robots(): MetadataRoute.Robots {
   return isSearchIndexingEnabled()
     ? {
-        rules: { userAgent: "*", allow: "/", disallow: ["/api/", "/recruitment/"] },
+        rules: { userAgent: "*", allow: "/", disallow: ["/api/", "/recruitment/", "/first-cohort"] },
         sitemap: `${SITE_URL}/sitemap.xml`,
         host: SITE_URL,
       }

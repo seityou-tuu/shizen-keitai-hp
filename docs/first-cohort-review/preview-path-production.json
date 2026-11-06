@@ -1,0 +1,16 @@
+{
+  "checks": [
+    {
+      "path": "/first-cohort",
+      "status": 404,
+      "noindex": true
+    },
+    {
+      "path": "/recruitment/first",
+      "status": 404,
+      "noindex": true
+    }
+  ],
+  "homepageNoRecruitmentLink": true,
+  "sitemapExcludesBoth": true
+}

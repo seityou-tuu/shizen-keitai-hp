@@ -17,6 +17,21 @@ function FirstPage() {
   try { return OriginalFirstPage(); } finally { if (previous === undefined) delete process.env.VERCEL_ENV; else process.env.VERCEL_ENV = previous; }
 }
 const now = new Date("2026-11-06T03:00:00Z");
+test("first-cohort alias redirects only in preview and always has noindex headers", async () => {
+  const previous = process.env.VERCEL_ENV;
+  const config = require("../next.config.ts").default;
+  try {
+    process.env.VERCEL_ENV = "production";
+    assert.deepEqual(await config.redirects(), []);
+    process.env.VERCEL_ENV = "preview";
+    assert.deepEqual(await config.redirects(), [{ source: "/first-cohort", destination: "/recruitment/first", permanent: false }]);
+    const headers = await config.headers();
+    for (const source of ["/first-cohort", "/recruitment/:path*"]) {
+      assert.ok(headers.find(rule => rule.source === source).headers.some(header => header.key === "X-Robots-Tag" && header.value.includes("noindex")));
+    }
+    assert.ok(!require("../lib/site-config.ts").PUBLIC_PATHS.includes("/first-cohort"));
+  } finally { if (previous === undefined) delete process.env.VERCEL_ENV; else process.env.VERCEL_ENV = previous; }
+});
 test("all 18 dates match the organizer's schedule and the 2027 Japanese calendar", () => {
   const expected = [
     ["東京", ["2027-01-15", "2027-02-08", "2027-03-08", "2027-04-20", "2027-05-18", "2027-06-22"], ["金", "月", "月", "火", "火", "火"]],
