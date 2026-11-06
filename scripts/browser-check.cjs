@@ -97,6 +97,9 @@ if (out) fs.mkdirSync(out, { recursive: true });
           ".renewal-faq-list h3",
           ".contact-phone",
           ".home-footer .eyebrow",
+          ".instagram-eyebrow",
+          ".instagram-description",
+          ".instagram-note",
         ].map((selector) => {
           const element = document.querySelector(selector);
           const foreground = rgb(getComputedStyle(element).color);
@@ -232,6 +235,10 @@ if (out) fs.mkdirSync(out, { recursive: true });
             .filter((node) => {
               if (!node.getClientRects().length) return false;
               const rect = node.getBoundingClientRect();
+              const reels = node.closest(".instagram-reels");
+              // Reel cards intentionally scroll inside their own mobile scrollport.
+              if (reels && getComputedStyle(reels).overflowX === "auto")
+                return node.matches("h1,h2,h3,p,dd,dt") && node.scrollWidth > node.clientWidth + 2;
               return (
                 rect.left < -1 ||
                 rect.right > innerWidth + 1 ||
@@ -252,7 +259,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
         );
         sections.push(audit.id);
       }
-      assert.equal(sections.length, 12);
+      assert.equal(sections.length, 13);
       const allNumbers = await page
         .locator(
           ".future-list li > span,.support-list li > span,.learning-cycle li > span,.section-heading .eyebrow > span,.perspective-number,.renewal-step-grid .renewal-kicker,.renewal-flow li > .renewal-kicker",
@@ -279,7 +286,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
       for (const href of links) {
         assert.notEqual(href, "#", "ambiguous placeholder anchor");
         if (href.startsWith("tel:")) continue;
-        if (["https://youtu.be/yp_P0a_oedY", "https://youtu.be/yudalXPijCk"].includes(href)) continue;
+        if (["https://youtu.be/yp_P0a_oedY", "https://youtu.be/yudalXPijCk", "https://www.instagram.com/ngtmyy_1990", "https://www.instagram.com/reel/DcGE2FPKpHz/", "https://www.instagram.com/reel/DcN4DM8K89p/", "https://www.instagram.com/reel/DapZQNvvtVR/"].includes(href)) continue;
         const url = new URL(href, base);
         assert.equal(url.origin, base.origin);
         assert.ok(
@@ -348,24 +355,26 @@ if (out) fs.mkdirSync(out, { recursive: true });
           `footer hidden by sticky CTA at ${width}`,
         );
       }
-      for (const photo of await page.locator(".program-photo img, .instructor-evidence img").all()) {
+      for (const photo of await page.locator(".program-photo img, .instructor-evidence img, .instagram-reel-image img").all()) {
         await photo.scrollIntoViewIfNeeded();
         await photo.evaluate((img) => img.decode());
         const ratio = await photo.evaluate((img) => ({
           natural: img.naturalWidth / img.naturalHeight,
           intrinsic: Number(img.getAttribute("width")) / Number(img.getAttribute("height")),
           fit: getComputedStyle(img).objectFit,
-          name: img.closest("figure").dataset.photo,
+          name: img.closest("figure")?.dataset.photo,
           displayed:
             img.getBoundingClientRect().width /
             img.getBoundingClientRect().height,
         }));
         assert.ok(
-          Math.abs(ratio.intrinsic / ratio.displayed - 1) < 0.01 ||
+          Math.abs(ratio.intrinsic / ratio.displayed - 1) < 0.01 || ratio.fit === "contain" ||
           (ratio.fit === "cover" && ["treatment-main", "instructor-portrait", "practical-hands-on"].includes(ratio.name)),
           `image distortion or unintended cropping at ${width}: ${JSON.stringify(ratio)}`,
         );
       }
+      assert.equal(await page.locator(".instagram-reel-image img").count(), 3);
+      assert.equal(await page.locator(".instagram-section iframe").count(), 0);
       assert.equal(await page.locator(".program-photo img").count(), 8);
       assert.equal(await page.locator(".instructor-evidence img").count(), 3);
       const evidence = await page.locator(".instructor-evidence").innerText();

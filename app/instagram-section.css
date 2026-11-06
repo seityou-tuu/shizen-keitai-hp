@@ -1,0 +1,52 @@
+/* Scoped to the new introduction; the existing twelve sections stay unchanged. */
+.homepage-quality .instagram-section { background: #102f28; color: #fff; padding-block: 80px; }
+.homepage-quality .instagram-intro { display: grid; grid-template-columns: 1.4fr 1fr; align-items: end; gap: 48px; }
+.homepage-quality .instagram-eyebrow { display: flex; align-items: center; gap: 12px; color: #dbc89a; font-size: 11px; letter-spacing: .12em; margin-bottom: 22px; }
+.homepage-quality .instagram-eyebrow svg { width: 20px; height: 20px; flex-shrink: 0; }
+.homepage-quality .instagram-intro h2 { font-size: clamp(28px, 3.1vw, 43px); line-height: 1.65; letter-spacing: .02em; margin: 0; }
+.homepage-quality .instagram-intro h2 > span { display: inline-block; }
+.homepage-quality .instagram-description { color: #d4ded5; font-size: 14px; line-height: 2; margin: 0; max-width: 34em; }
+.homepage-quality .instagram-reels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; width: min(100%, 940px); margin: 40px auto 0; padding: 0; list-style: none; }
+.homepage-quality .instagram-reels li { min-width: 0; }
+.homepage-quality .instagram-reel { display: block; color: #fff; text-decoration: none; }
+.homepage-quality .instagram-reel-image { position: relative; aspect-ratio: 9 / 14; background: #0b251f; overflow: hidden; }
+.homepage-quality .instagram-reel-image img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.homepage-quality .instagram-reel-icon { position: absolute; top: 12px; left: 12px; width: 28px; height: 28px; display: grid; place-items: center; background: #102f28e8; border: 1px solid #dbc89a80; border-radius: 50%; color: #fff; }
+.homepage-quality .instagram-reel-icon svg { width: 16px; height: 16px; }
+.homepage-quality .instagram-play { position: absolute; bottom: 14px; right: 14px; width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid #dbc89a; border-radius: 50%; background: #102f28ed; color: #fff; }
+.homepage-quality .instagram-play svg { width: 18px; height: 18px; }
+.homepage-quality .instagram-reel-caption { display: flex; align-items: center; gap: 16px; min-height: 52px; border-bottom: 1px solid #dbc89a60; font-size: 13px; }
+.homepage-quality .instagram-reel-caption > span:first-child { color: #dbc89a; font-size: 10px; letter-spacing: .1em; margin-right: auto; }
+.homepage-quality .instagram-reel-caption > span:last-child { color: #dbc89a; font-size: 20px; }
+.homepage-quality .instagram-footer { display: flex; justify-content: space-between; align-items: center; gap: 32px; margin-top: 28px; }
+.homepage-quality .instagram-note { font-size: 12px; line-height: 1.9; color: #c9d6cb; max-width: 54em; }
+.homepage-quality .instagram-account { display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 56px; padding: 14px 24px; border: 1px solid #dbc89a; color: #dbc89a; font-size: 14px; text-decoration: none; white-space: nowrap; }
+.homepage-quality .instagram-account svg { width: 19px; height: 19px; }
+.homepage-quality .instagram-account > span { font-size: 20px; }
+.homepage-quality .instagram-swipe { display: none; }
+.homepage-quality :is(.instagram-reel, .instagram-account, .instagram-reels):focus-visible { outline: 2px solid #dbc89a; outline-offset: 4px; }
+@media (max-width: 900px) {
+  .homepage-quality .instagram-intro { grid-template-columns: 1fr; gap: 20px; }
+  .homepage-quality .instagram-description { max-width: 44em; }
+  .homepage-quality .instagram-footer { flex-direction: column; align-items: start; gap: 20px; }
+}
+@media (max-width: 700px) {
+  .homepage-quality .instagram-section { padding-block: 64px; }
+  .homepage-quality .instagram-intro h2 { font-size: clamp(27px, 7vw, 34px); text-wrap: initial; }
+  .homepage-quality .instagram-reels { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: min(78vw, 280px); gap: 16px; overflow-x: auto; padding: 4px 4px 16px; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: #dbc89a80 #173f35; margin-top: 12px; }
+  .homepage-quality .instagram-reels li { scroll-snap-align: start; }
+  .homepage-quality .instagram-swipe { display: block; color: #dbc89a; font-size: 11px; margin-top: 28px; }
+  .homepage-quality .instagram-account { width: 100%; }
+}
+@media (hover: hover) {
+  .homepage-quality .instagram-reel:hover .instagram-play { background: #2b5747; }
+  .homepage-quality .instagram-account:hover { background: #24493d; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .homepage-quality :is(.instagram-play, .instagram-reel-caption > span:last-child, .instagram-account > span) { transition: transform .25s ease; }
+  .homepage-quality .instagram-account { transition: background-color .25s ease; }
+  @media (hover: hover) {
+    .homepage-quality .instagram-reel:hover .instagram-play { transform: scale(1.07); }
+    .homepage-quality .instagram-reel:hover .instagram-reel-caption > span:last-child, .homepage-quality .instagram-account:hover > span { transform: translate(2px, -2px); }
+  }
+}
