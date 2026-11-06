@@ -50,7 +50,23 @@ test("all 18 dates match the organizer's schedule and the 2027 Japanese calendar
     assert.equal(venue.endTime, null);
   });
 });
-test("production and local production cannot expose the preview-only cohort route", () => {
+test("approved cohort page renders in production and local production without opening applications or indexing", () => {
+  const previous = process.env.VERCEL_ENV;
+  try {
+    for (const environment of ["production", "preview", undefined]) {
+      if (environment === undefined) delete process.env.VERCEL_ENV; else process.env.VERCEL_ENV = environment;
+      const html = renderToStaticMarkup(React.createElement(OriginalFirstPage));
+      assert.match(html, /第1期生募集/);
+      assert.match(html, /募集準備中/);
+      assert.ok(html.includes("https://lin.ee/O3tJo01"));
+      assert.ok(!/<form|<input|募集受付中/.test(html));
+      const metadata = require("../app/recruitment/first/page.tsx").generateMetadata();
+      assert.match(metadata.title, /第1期生/);
+      assert.equal(metadata.alternates.canonical, "/recruitment/first");
+      assert.deepEqual(metadata.robots, { index: false, follow: false });
+    }
+  } finally { if (previous === undefined) delete process.env.VERCEL_ENV; else process.env.VERCEL_ENV = previous; }
+  // The preview-only legacy alias and homepage callout remain unchanged.
   assert.equal(isFirstCohortPreview({ VERCEL_ENV: "production", NODE_ENV: "development" }), false);
   assert.equal(isFirstCohortPreview({ VERCEL_ENV: "preview", NODE_ENV: "production" }), true);
   assert.equal(isFirstCohortPreview({ NODE_ENV: "development" }), true);
@@ -157,4 +173,3 @@ test("first cohort menus and content links use the dedicated page sections", () 
   const ids = new Set([...html.matchAll(/id="([^"]+)"/g)].map(match=>match[1]));
   for (const [, hash] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.has(hash), hash);
 });
-

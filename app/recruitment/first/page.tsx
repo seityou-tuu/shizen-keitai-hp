@@ -4,7 +4,6 @@ import youtube860k from "@/public/images/homepage/youtube-860k.webp";
 import youtube1320k from "@/public/images/homepage/youtube-1320k.webp";
 import { ProgramPhoto } from "@/components/program-photo";
 import { LineConsultationLink } from "@/components/line-consultation-link";
-import { notFound } from "next/navigation";
 import { CohortSchedule } from "@/components/cohort-schedule";
 import { CohortInstructor } from "@/components/cohort-instructor";
 import "@/app/recruitment.css";
@@ -14,11 +13,10 @@ import { Header } from "@/components/header";
 import { InformationLinks } from "@/components/information-links";
 import { CONTACT_PHONE, CONTACT_TEL } from "@/lib/contact";
 import { informationMetadata } from "@/lib/information-metadata";
-import { FIRST_COHORT_PATH, firstCohortDetails, formatRecruitmentDate, getFirstCohort, getFirstCohortSummary, isFirstCohortPreview } from "@/lib/recruitment";
+import { FIRST_COHORT_PATH, firstCohortDetails, formatRecruitmentDate, getFirstCohort, getFirstCohortSummary } from "@/lib/recruitment";
 import { operator } from "@/lib/site-information";
 
 export function generateMetadata() {
-  if (!isFirstCohortPreview()) return { title: "ページが見つかりません", description: "お探しのページは見つかりませんでした。", robots: { index: false, follow: false } };
   const summary = getFirstCohortSummary();
   return { ...informationMetadata(
   "第1期生 募集案内 | 自然形体療法 資格取得プログラム",
@@ -36,7 +34,6 @@ const faq = [
 ];
 
 export default function FirstRecruitmentPage() {
-  if (!isFirstCohortPreview()) notFound();
   const info = getFirstCohort();
   const facts = firstCohortDetails;
   const summary = getFirstCohortSummary();
@@ -200,4 +197,3 @@ export default function FirstRecruitmentPage() {
     </>
   );
 }
-
