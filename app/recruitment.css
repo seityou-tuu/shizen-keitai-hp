@@ -1,4 +1,8 @@
 /* Recruitment surfaces are scoped; the existing hero and twelve sections keep their design. */
+.recruitment-page .recruitment-contact .recruitment-button { background: #dbc89a; color: #102f28; border-color: #dbc89a; margin-block: 24px 0; }
+.recruitment-page .recruitment-contact .recruitment-button > span { color: inherit; }
+.recruitment-page .recruitment-contact .recruitment-phone { font-size: clamp(26px, 3vw, 36px); }
+.recruitment-contact-bar .cohort-sticky-line { flex-direction: row; gap: 8px; }
 .recruitment-page .cohort-hero-grid .cohort-hero-heading h1 { font-size: clamp(30px, 3.8vw, 50px); }
 .recruitment-page .cohort-hero-grid .cohort-hero-photo { grid-row: 1 / span 3; }
 .recruitment-page .cohort-hero-grid .cohort-hero-details { grid-row: 3; }

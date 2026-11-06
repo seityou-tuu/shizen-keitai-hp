@@ -4,7 +4,7 @@ export const CONTACT_TEL = `tel:${CONTACT_PHONE.replace(/\D/g, "")}`;
 
 // Set only after the operator opens and verifies the official LINE account.
 // One edit updates every LINE consultation link. Blank means hidden everywhere.
-export const OFFICIAL_LINE_URL: string = "";
+export const OFFICIAL_LINE_URL: string = "https://lin.ee/O3tJo01";
 
 export function getOfficialLineUrl(
   value: string = OFFICIAL_LINE_URL,

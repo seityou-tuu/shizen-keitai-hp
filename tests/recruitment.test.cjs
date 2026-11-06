@@ -107,7 +107,8 @@ test("recruitment page retains known fees and phone with only the approved exist
   assert.match(html, /第1期生・第0期生の実施状況を示すものではありません/);
   assert.equal((html.match(/<img/g) || []).length, 3);
   assert.equal((html.match(/確定後にご案内します/g) || []).length, 0);
-  assert.ok(!/lin\.ee|line\.me|募集受付中/.test(html));
+  assert.match(html, /https:\/\/lin\.ee\/O3tJo01/);
+  assert.ok(!/募集受付中|LINEも未開設/.test(html));
 });
 
 
@@ -115,14 +116,14 @@ test("program header keeps its original navigation destinations", () => {
   const { Header } = require("../components/header.tsx");
   const html = renderToStaticMarkup(React.createElement(Header));
   const nav = html.match(/<nav aria-label="メインナビゲーション"[^>]*>(.*?)<\/nav>/s)[1];
-  assert.deepEqual([...nav.matchAll(/href="([^"]+)"/g)].map(match=>match[1]), ["/#about", "/#training", "/#roadmap", "/#courses", "/#faq", "/#contact"]);
+  assert.deepEqual([...nav.matchAll(/href="([^"]+)"/g)].map(match=>match[1]), ["/#about", "/#training", "/#roadmap", "/#courses", "/#faq", "/#contact", "https://lin.ee/O3tJo01"]);
 });
 
 test("first cohort menus and content links use the dedicated page sections", () => {
   const html = renderToStaticMarkup(React.createElement(FirstPage));
   for (const label of ["メインナビゲーション", "モバイルナビゲーション"]) {
     const nav = html.match(new RegExp(`<nav[^>]*aria-label="${label}"[^>]*>(.*?)</nav>`, "s"))[1];
-    assert.deepEqual([...nav.matchAll(/href="([^"]+)"/g)].map(match=>match[1]), ["/#about", "#cohort-learning", "#cohort-schedule", "#cohort-tuition", "#cohort-faq", "#cohort-contact"]);
+    assert.deepEqual([...nav.matchAll(/href="([^"]+)"/g)].map(match=>match[1]), ["/#about", "#cohort-learning", "#cohort-schedule", "#cohort-tuition", "#cohort-faq", "#cohort-contact", "https://lin.ee/O3tJo01"]);
   }
   for (const oldDestination of ["/#training", "/#roadmap", "/#courses", "/#faq", "/#contact"]) assert.ok(!html.includes(`href="${oldDestination}"`));
   const ids = new Set([...html.matchAll(/id="([^"]+)"/g)].map(match=>match[1]));

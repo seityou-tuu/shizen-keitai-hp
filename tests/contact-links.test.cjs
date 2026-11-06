@@ -13,6 +13,7 @@ test("the published contact number uses the exact tap-to-call destination", () =
   assert.equal(CONTACT_TEL, "tel:0985747643");
 });
 test("one shared setting controls LINE availability and blank values stay hidden", () => {
+  assert.equal(OFFICIAL_LINE_URL, "https://lin.ee/O3tJo01");
   assert.equal(getOfficialLineUrl(), getOfficialLineUrl(OFFICIAL_LINE_URL));
   assert.equal(getOfficialLineUrl(""), null);
   assert.equal(getOfficialLineUrl("  "), null);
@@ -72,7 +73,7 @@ test("a configured LINE link renders the validated destination and safe new-tab 
     assert.match(html, /href="https:\/\/lin\.ee\/test123"/);
     assert.match(html, /target="_blank"/);
     assert.match(html, /rel="noopener noreferrer"/);
-    assert.match(html, /公式LINEで相談する/);
+    assert.match(html, /LINEで受講相談/);
   } finally {
     contact.getOfficialLineUrl = originalGetter;
   }

@@ -1,4 +1,5 @@
 import { ProgramPhoto } from "@/components/program-photo";
+import { LineConsultationLink } from "@/components/line-consultation-link";
 import { notFound } from "next/navigation";
 import { CohortSchedule } from "@/components/cohort-schedule";
 import { InstructorProfile } from "@/components/instructor-profile";
@@ -20,7 +21,7 @@ export function generateMetadata() {
   ), robots: { index: false, follow: false } };
 }
 const faq = [
-  ["申込みはどこからできますか？", "申込み方法は準備中です。公式LINEも未開設のため、申込みリンクやフォームは設置していません。電話は受講内容の相談窓口であり、正式な申込み・契約・決済の受付ではありません。"],
+  ["申込みはどこからできますか？", "正式な申込み方法は準備中です。公式LINE・電話は受講相談とお問い合わせの窓口です。LINEでの相談や友だち追加だけで、正式な受講申込み・契約・決済が完了するものではありません。"],
   ["施術未経験でも受講できますか？", "はい。第1期生は施術経験者・未経験者のどちらも受講可能です。その他の具体的な受講要件・認定条件は確認後にご案内します。"],
   ["実技と理論はどのように学びますか？", "実技は対面、理論はオンラインで学びます。プログラム共通の案内ではいずれも月1回、理論は1回2時間です。第1期生の会場住所・開始時刻・終了時刻、オンライン理論の開催日・接続方法は確認後にご案内します。"],
   ["研修日以外にも学べますか？", "主催者から復習用動画が提供され、研修日以外も質問できます。視聴方法・閲覧期限、質問方法・回答時間は未確定です。"],
@@ -54,8 +55,8 @@ export default function FirstRecruitmentPage() {
             <div className="cohort-hero-details">
               <p>理論で理解し、実技で体感し、繰り返し磨いていく。<br />次の学びを考える方へ、第1期生の情報をご案内します。</p>
               <div className="cohort-hero-actions">
-                <a href="#cohort-schedule" className="recruitment-button">会場・全6回の日程を見る <span aria-hidden="true">↓</span></a>
-                <a href="#cohort-contact" className="recruitment-text-link">電話相談の窓口を見る ↓</a>
+                <LineConsultationLink className="recruitment-button" />
+                <a href="#cohort-schedule" className="recruitment-text-link">会場・全6回の日程を見る ↓</a>
               </div>
               <p className="recruitment-hero-note">受講相談の窓口です。<br />正式な申込み・決済は受け付けていません。</p>
             </div>
@@ -123,7 +124,7 @@ export default function FirstRecruitmentPage() {
             <div className="cohort-pending-panel">
               <h3>現在、確認・準備している項目</h3>
               <p>会場住所・開始時刻・終了時刻、募集する研修と各コースの対応、認定基準・進級条件、支払方法・支払時期、追加費用、キャンセル・返金条件、正式な申込み方法は確認後にご案内します。</p>
-              <p className="recruitment-note">公式LINEは未開設です。現在は電話による受講相談のみをご案内しています。電話で正式な申込みが完了するものではありません。</p>
+              <p className="recruitment-note">公式LINE・電話で受講相談をご利用いただけます。相談だけで正式な申込みが完了するものではありません。</p>
             </div>
           </div>
         </section>
@@ -152,11 +153,19 @@ export default function FirstRecruitmentPage() {
           <div className="recruitment-wrap"><p className="recruitment-eyebrow">QUESTIONS</p><h2>よくある質問</h2><div className="recruitment-faq">{faq.map(([q, a], i) => <details key={q}><summary><span>Q0{i + 1}</span><span>{q}</span><b aria-hidden="true">＋</b></summary><p>{a}</p></details>)}</div></div>
         </section>
         <section id="cohort-contact" className="recruitment-section recruitment-contact">
-          <div className="recruitment-wrap"><p className="recruitment-eyebrow">CONSULTATION</p><h2>第1期生について、<br />まずはご相談ください。</h2><p>日程や学び方、料金など、気になることをお聞かせください。</p><a className="recruitment-phone" href={CONTACT_TEL}>{CONTACT_PHONE}</a><p>スマートフォンではタップして発信できます。</p><p className="recruitment-note">受付時間・休業日は確認後にご案内します。通話料はお客様のご負担です。<br />お問い合わせは正式な受講申込み・契約・決済ではありません。</p><a className="recruitment-text-link" href="/">プログラム全体を見る ↗</a></div>
+          <div className="recruitment-wrap">
+            <p className="recruitment-eyebrow">CONSULTATION</p><h2>第1期生について、<br />まずはご相談ください。</h2>
+            <p>日程や学び方、料金など、気になることを公式LINEでお聞かせください。</p>
+            <LineConsultationLink className="recruitment-button" />
+            <p className="recruitment-note">LINE相談や友だち追加だけで、正式な受講申込み・契約・決済が完了するものではありません。</p>
+            <p>電話でもご相談いただけます。</p><a className="recruitment-phone" href={CONTACT_TEL}>{CONTACT_PHONE}</a>
+            <p className="recruitment-note">受付時間・休業日は確認後にご案内します。通話料はお客様のご負担です。</p>
+            <a className="recruitment-text-link" href="/">プログラム全体を見る ↗</a>
+          </div>
         </section>
       </main>
-      <footer className="recruitment-footer"><div className="recruitment-wrap"><InformationLinks /><p>{operator.name} · 代表取締役 {operator.representative}</p><p>掲載情報・各種方針には確認中の項目が含まれます。</p></div></footer>
-      <nav className="recruitment-contact-bar" aria-label="第1期生の相談窓口"><a href={CONTACT_TEL} aria-label={`電話で第1期生について相談する（${CONTACT_PHONE}へ発信）`}>電話で相談する<small>{CONTACT_PHONE}</small></a><a href="#cohort-schedule">日程・会場を見る ↓</a></nav>
+      <footer className="recruitment-footer"><div className="recruitment-wrap"><InformationLinks /><LineConsultationLink className="recruitment-text-link" /><p>{operator.name} · 代表取締役 {operator.representative}</p><p>掲載情報・各種方針には確認中の項目が含まれます。</p></div></footer>
+      <nav className="recruitment-contact-bar" aria-label="第1期生の相談窓口"><LineConsultationLink className="cohort-sticky-line" label="LINEで相談" /><a href={CONTACT_TEL} aria-label={`電話で第1期生について相談する（${CONTACT_PHONE}へ発信）`}>電話相談<small>{CONTACT_PHONE}</small></a></nav>
     </>
   );
 }

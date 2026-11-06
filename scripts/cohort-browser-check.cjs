@@ -40,7 +40,8 @@ const expected = {
       assert.match(await page.locator("h1").innerText(), /資格取得プログラム/);
       assert.equal(await page.locator('link[rel="canonical"]').getAttribute("href"), "https://shizen-keitai-hp.vercel.app/recruitment/first");
       assert.equal(await page.locator("form,input,textarea").count(), 0);
-      assert.equal(await page.locator('a[href*="lin.ee"],a[href*="line.me"]').count(), 0);
+      assert.ok(await page.locator('a[href="https://lin.ee/O3tJo01"]').count() >= 5);
+      assert.ok(await page.locator('a[href*="lin.ee"],a[href*="line.me"]').evaluateAll(nodes => nodes.every(el => el.getAttribute("href") === "https://lin.ee/O3tJo01")));
       assert.match(await page.locator(".recruitment-status").innerText(), /募集準備中/);
       assert.ok(!(await page.locator("main").innerText()).includes("9:00〜17:00"));
       assert.deepEqual((await page.locator(".recruitment-fee").allTextContents()).map(normalize), mainFees);
