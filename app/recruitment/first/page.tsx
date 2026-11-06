@@ -9,6 +9,7 @@ import { CohortSchedule } from "@/components/cohort-schedule";
 import { CohortInstructor } from "@/components/cohort-instructor";
 import "@/app/recruitment.css";
 import "@/app/cohort-instructor-story.css";
+import "@/app/cohort-mobile.css";
 import { Header } from "@/components/header";
 import { InformationLinks } from "@/components/information-links";
 import { CONTACT_PHONE, CONTACT_TEL } from "@/lib/contact";
@@ -50,7 +51,7 @@ export default function FirstRecruitmentPage() {
               <a className="recruitment-back" href="/">← プログラム全体のご案内</a>
               <p className="recruitment-eyebrow">SHIZEN KEITAI / FIRST COHORT</p>
               <span className="recruitment-status">{info.statusLabel}</span>
-              <h1>自然形体療法<br />資格取得プログラム<br /><em>第1期生募集</em></h1>
+              <h1><span className="cohort-program-title">自然形体療法<br />資格取得プログラム</span><em>第1期生募集</em></h1>
               <p className="recruitment-lead">{summary.startYear}年{summary.startMonth}月、第1期生として学び始める。</p>
             </div>
             <div className="cohort-hero-photo cohort-photo">
@@ -85,14 +86,13 @@ export default function FirstRecruitmentPage() {
             <div className="cohort-next-step-grid">
               <h2 id="cohort-next-step-title">次は、あなたが<br />この技術を<em>身につける番。</em></h2>
               <div className="cohort-next-step-copy">
-                <p className="cohort-next-step-lead">映像で見るだけだった技術を、今度は自分の手で。</p>
-                <p>自然形体療法の考え方と技術を、永友裕也から直接学ぶ6ヶ月。</p>
-                <a className="recruitment-text-link" href="#cohort-learning">学び方を知る <span aria-hidden="true">↓</span></a>
+                <p className="cohort-next-step-lead"><span>映像で見るだけだった技術を、</span><span>今度は自分の手で。</span></p>
+                <p><span>自然形体療法の考え方と技術を、</span><span>永友裕也から直接学ぶ6ヶ月。</span></p>
               </div>
             </div>
             <div className="cohort-film-grid">
               {([
-                { image: youtube860k, count: "86万回", title: "技術への関心を、ここから。", text: "Fann Channelの施術紹介。まずは映像から、自然形体療法に触れてみてください。" },
+                { image: youtube860k, count: "86万回", title: "技術への関心を、ここから。", text: "まずは施術の映像から、技術に触れてみてください。" },
                 { image: youtube1320k, count: "132万回", title: "映像から、自分の学びへ。", text: "気になった点を、自分なら何を学びたいか考えるきっかけに。" },
               ] as const).map(({ image, count, title, text }) => (
                 <figure className="cohort-film" key={count}>
@@ -103,7 +103,8 @@ export default function FirstRecruitmentPage() {
                 </figure>
               ))}
             </div>
-            <p className="cohort-film-note">画像を押すとYouTubeが別タブで開きます。表示できない場合は「YouTubeで見る」からご覧ください。画像内の再生数・表現は掲載時点のもので、施術効果や受講後の成果を保証するものではありません。</p>
+            <a className="recruitment-text-link cohort-film-learning" href="#cohort-learning">学び方を知る <span aria-hidden="true">↓</span></a>
+            <p className="cohort-film-note">YouTubeが別タブで開きます。画像が出ない場合も「YouTubeで見る」から視聴できます。画像内の再生数・表現は掲載時点のもので、施術効果や受講後の成果を保証するものではありません。</p>
           </div>
         </section>
         <section id="cohort-learning" className="recruitment-section recruitment-wrap">
@@ -132,10 +133,7 @@ export default function FirstRecruitmentPage() {
           <p className="recruitment-eyebrow">OVERVIEW</p>
           <h2 id="cohort-overview">続いていく学びに、<br />あなたの一歩を。</h2>
           <div className="cohort-story-layout">
-            <ol className="cohort-story">
-              <li><span aria-hidden="true">00</span><div><h3>0期生の研修が、始まっています。</h3><p>理論を理解し、実技で確かめる学びが、すでに動き始めています。</p></div></li>
-              <li><span aria-hidden="true">01</span><div><h3>{summary.startYear}年{summary.startMonth}月、第1期生へ。</h3><p>次の学びの一歩を、同じ技術に向き合う仲間と。{summary.locations}の{summary.venueCount}会場で開催します。</p></div></li>
-            </ol>
+            <div className="cohort-intake-story"><h3>{summary.startYear}年{summary.startMonth}月、第1期生へ。</h3><p>同じ技術に向き合う仲間と、新しい学びを。{summary.locations}の{summary.venueCount}会場で始まります。</p></div>
             <div className="cohort-small-group"><p className="recruitment-eyebrow">FIRST COHORT</p><h3>各会場<span>{facts.venues[0].capacity}</span>名の募集</h3><p>同じ技術を学ぶ仲間と、ひとつずつ理解を重ねる。自然形体療法を学ぶ、新しい出会いを。</p><p>{facts.eligible}です。</p></div>
           </div>
           <dl className="cohort-overview-facts">

@@ -23,7 +23,7 @@ const expected = {
     assert.equal(mainFees.length, 3);
     assert.equal(await main.locator('a[href="/recruitment/first"]').count(), 0);
     await main.close();
-    for (const width of [320, 360, 375, 390, 400, 414, 430, 768, 1024, 1440]) {
+    for (const width of [320, 360, 375, 390, 400, 414, 430, 768, 1024, 1280, 1440]) {
       const context = await browser.newContext({ viewport: { width, height: 1000 }, reducedMotion: "reduce" });
       await context.route("**/*", route => {
         if (new URL(route.request().url()).origin === base.origin) return route.continue();
@@ -75,6 +75,23 @@ const expected = {
         assert.ok(await photo.evaluate(img => Math.abs(img.naturalWidth / img.naturalHeight - img.getBoundingClientRect().width / img.getBoundingClientRect().height) < .015));
       }
       assert.equal(await page.locator(".program-photo img").count(), 4);
+      const films = await page.locator(".cohort-film").evaluateAll(nodes => nodes.map(el => ({ width: el.getBoundingClientRect().width, height: el.getBoundingClientRect().height })));
+      if (width <= 700) {
+        assert.ok(films[1].height < films[0].height * .7, "mobile secondary film stays compact");
+        assert.ok(await page.locator(".cohort-film .evidence-video-link").evaluateAll(nodes => nodes.every(el => el.getBoundingClientRect().height >= 44)));
+        assert.ok(await page.locator(".recruitment-contact-bar").evaluate(el => el.getBoundingClientRect().height <= 65));
+        for (const copy of await page.locator(".cohort-next-step-copy p > span").all()) {
+          assert.ok(await copy.evaluate(el => el.scrollWidth <= el.clientWidth), "copy does not clip");
+        }
+      } else {
+        assert.ok(Math.abs(films[0].width - films[1].width) < 1, "desktop films retain equal columns");
+      }
+      for (const href of ["https://youtu.be/yp_P0a_oedY", "https://youtu.be/yudalXPijCk"]) {
+        const videoLink = page.locator(`.cohort-film a[href="${href}"]`);
+        assert.equal(await videoLink.count(), 1);
+        assert.equal(await videoLink.getAttribute("target"), "_blank");
+        assert.equal(await videoLink.getAttribute("rel"), "noopener noreferrer");
+      }
       const instructor = await page.locator("#cohort-instructor").innerText();
       assert.match(instructor, /永友裕也/);
       assert.match(instructor, /220万回/);
@@ -110,12 +127,12 @@ const expected = {
         await page.evaluate(() => scrollTo(0, document.documentElement.scrollHeight));
         assert.ok(await page.evaluate(() => document.querySelector(".recruitment-footer p:last-child").getBoundingClientRect().bottom <= document.querySelector(".recruitment-contact-bar").getBoundingClientRect().top));
       }
-      if (out && [375, 1440].includes(width)) {
+      if (out && [375, 400, 1440].includes(width)) {
         for (const [selector, name] of [[".cohort-schedule-switcher", "schedule"], ["#cohort-tuition", "fees"], [".cohort-next-step", "films"], ["#cohort-instructor", "instructor"]]) await page.locator(selector).screenshot({ path: path.join(out, `${name}-${width}.png`), style: ".site-header,.recruitment-contact-bar,.skip-link {visibility:hidden!important}" });
         await page.evaluate(() => { document.activeElement?.blur(); scrollTo(0, 0); });
         await page.screenshot({ path: path.join(out, `hero-${width}.png`) });
       }
-      report.widths.push({ width, all18Dates: true, keyboardTabs: true, compareAll: true, feesMatchHomepage: true, passed: true });
+      report.widths.push({ width, pageHeight: await page.evaluate(() => document.documentElement.scrollHeight), filmHeights: films.map(film => Math.round(film.height)), all18Dates: true, keyboardTabs: true, compareAll: true, feesMatchHomepage: true, passed: true });
       await context.close();
     }
     const noJs = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 900 }, reducedMotion: "reduce" });

@@ -7,7 +7,7 @@ export function CohortInstructor() {
     <section id="cohort-instructor" className="recruitment-section recruitment-wrap cohort-instructor-feature">
       <div className="cohort-teacher-heading">
         <div><p className="recruitment-eyebrow">INSTRUCTOR</p><h2>永友先生から、<br />技術と考え方を学ぶ。</h2></div>
-        <p>施術歴{profile.practiceExperience}の永友先生から、技術とその背景にある考え方を学ぶ。施術家としての経験と、自然形体療法を伝える立場に触れる研修です。</p>
+        <p><span>映像で気になった技術を、</span><span>永友裕也から直接。</span><span>実技と理論を通して、</span><span>その背景にある考え方まで学びます。</span></p>
       </div>
       <div className="cohort-teacher-visual">
         <div className="cohort-teacher-portrait cohort-photo"><ProgramPhoto name="instructor-portrait" caption={`${profile.formalName}先生`} sizes="(max-width: 700px) calc(100vw - 80px), 440px" /></div>
@@ -29,7 +29,7 @@ export function CohortInstructor() {
           <h3 id="cohort-method-title">技術の背景まで、<br />理解を深める。</h3>
           <p>技術だけでなく、身体をどう捉え、なぜその施術を行うのか。実技と理論を通して、考え方への理解も深めていきます。</p>
         </aside>
-        <a className="recruitment-text-link" href="/#instructors">講師の映像紹介を確認する <span aria-hidden="true">↗</span></a>
+        <a className="recruitment-text-link" href="#cohort-learning">実技と理論の学び方を確認する <span aria-hidden="true">↗</span></a>
       </div>
     </section>
   );
