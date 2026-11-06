@@ -4,6 +4,11 @@ const assert = require("node:assert/strict");
 const React = require("react");
 const { renderToStaticMarkup } = require("react-dom/server");
 const { firstCohortConfig, getFirstCohort } = require("../lib/recruitment.ts");
+// Static image imports are transformed by Next in production; use metadata stubs
+// for this Node-only text/price test. Real image ratios are checked in Chromium.
+require.extensions[".jpg"] = (module, filename) => {
+  module.exports = { src: "/images/" + require("node:path").basename(filename), width: 1, height: 1 };
+};
 const FirstPage = require("../app/recruitment/first/page.tsx").default;
 const now = new Date("2026-11-06T03:00:00Z");
 function config() { return structuredClone(firstCohortConfig); }
@@ -49,7 +54,7 @@ test("invalid dates/capacities stay unconfirmed and an expired announcement is n
   assert.equal(getFirstCohort(input, now).status, "closed");
   assert.match(getFirstCohort(input, now).summary, /終了しました/);
 });
-test("recruitment page retains known fees and phone without forms or unapproved cohort photos", () => {
+test("recruitment page retains known fees and phone with only the approved existing training assets", () => {
   const html = renderToStaticMarkup(React.createElement(FirstPage));
   assert.match(html, /募集準備中/);
   assert.match(html, /第0期生の研修が始まっています/);
@@ -57,6 +62,10 @@ test("recruitment page retains known fees and phone without forms or unapproved 
   assert.match(html, /税抜2,700,000円/);
   assert.match(html, /990,000/);
   assert.match(html, /tel:0985747643/);
-  assert.ok(!/<form|<input|<img/.test(html));
+  assert.ok(!/<form|<input/.test(html));
+  for (const name of ["practical-hands-on", "practical-observation", "group-guidance"]) assert.equal(html.split(`data-photo="${name}"`).length - 1, 1);
+  assert.match(html, /第1期生・第0期生の実施状況を示すものではありません/);
+  assert.equal((html.match(/<img/g) || []).length, 3);
+  assert.equal((html.match(/確定後にご案内します/g) || []).length, 0);
   assert.ok(!/lin\.ee|line\.me|募集受付中/.test(html));
 });

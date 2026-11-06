@@ -441,9 +441,16 @@ if (out) fs.mkdirSync(out, { recursive: true });
       assert.equal(response.status(), 200);
       assert.match(response.headers()["x-robots-tag"], /noindex/);
       assert.equal(await recruitment.locator("h1").count(), 1);
+      assert.equal(await recruitment.locator(".program-photo img").count(), 3);
+      for (const photo of await recruitment.locator(".program-photo img").all()) {
+        await photo.scrollIntoViewIfNeeded();
+        await photo.evaluate(img=>img.decode());
+        assert.ok(await photo.evaluate(img=>Math.abs(img.naturalWidth/img.naturalHeight-img.getBoundingClientRect().width/img.getBoundingClientRect().height)<0.015), `recruitment uncropped photo at ${width}`);
+      }
+      assert.match(await recruitment.locator(".cohort-photo-note").innerText(), /第1期生・第0期生の実施状況を示すものではありません/);
       assert.equal(await recruitment.locator('link[rel="canonical"]').getAttribute("href"), "https://shizen-keitai-hp.vercel.app/recruitment/first");
       assert.match(await recruitment.title(), /第1期生/);
-      assert.equal(await recruitment.locator("form,input,textarea,img").count(), 0);
+      assert.equal(await recruitment.locator("form,input,textarea").count(), 0);
       assert.equal(await recruitment.locator('a[href*="line.me"],a[href*="lin.ee"]').count(), 0);
       assert.match(await recruitment.locator(".recruitment-status").innerText(), /募集準備中/);
       assert.ok(!(await recruitment.locator("main").innerText()).includes("募集受付中"));
@@ -487,6 +494,11 @@ if (out) fs.mkdirSync(out, { recursive: true });
     await motionPage.locator("#about").scrollIntoViewIfNeeded();
     assert.equal(await motionPage.locator("#about .section-heading").evaluate(el => getComputedStyle(el).opacity), "1", "scroll enhancement must keep content opaque");
     assert.ok(await motionPage.locator("#about h2").isVisible());
+    await motionPage.goto(new URL("/recruitment/first", base).href, { waitUntil: "networkidle" });
+    await motionPage.locator(".cohort-observation-photo").scrollIntoViewIfNeeded();
+    assert.ok(await motionPage.locator(".cohort-observation-photo").evaluate(el=>Number(getComputedStyle(el).opacity)>=.95), "recruitment scroll photo remains visible");
+    await motionPage.emulateMedia({ reducedMotion: "reduce" });
+    assert.ok(await motionPage.locator(".cohort-photo, #cohort-learning h2").evaluateAll(nodes=>nodes.every(el=>getComputedStyle(el).animationName==="none")), "recruitment reduced motion disables animation");
     await motionPage.close();
     assert.deepEqual(report.errors, []);
     if (out)

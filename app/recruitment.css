@@ -134,3 +134,82 @@
 }
 
 @media (max-width: 600px) { .recruitment-page { padding-top: 74px; } }
+
+/* PR 9: photographic editorial layout, confined to the dedicated page. */
+.recruitment-page .cohort-hero-grid { width: min(1280px, calc(100% - 80px)); display: grid; grid-template-columns: 1fr 1.15fr; column-gap: 56px; row-gap: 24px; align-items: start; }
+.recruitment-page .cohort-hero-heading { grid-column: 1; grid-row: 1; }
+.recruitment-page .cohort-hero-heading .recruitment-back { margin-bottom: 24px; }
+.recruitment-page .recruitment-hero h1 { font-size: clamp(36px, 3.9vw, 56px); margin-block: 24px; }
+.recruitment-page .cohort-hero-photo { grid-column: 2; grid-row: 1 / span 2; align-self: center; padding: 18px; border: 1px solid #dbc89a60; background: #ffffff05; }
+.recruitment-page .cohort-photo .program-photo { margin: 0; }
+.recruitment-page .cohort-photo img { display: block; width: 100%; height: auto; border-radius: 0; }
+.recruitment-page .cohort-photo figcaption { font-size: 12px; line-height: 1.8; padding-top: 12px; color: #58675e; }
+.recruitment-page .cohort-hero-photo figcaption, .recruitment-page .cohort-photo-note { color: #d3dfd2; }
+.recruitment-page .cohort-photo-note { font-size: 12px; line-height: 1.9; margin-top: 12px; }
+.recruitment-page .cohort-hero-details { grid-column: 1; grid-row: 2; }
+.recruitment-page .cohort-hero-details > p { max-width: 35em; }
+.recruitment-page .cohort-hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 26px; }
+.recruitment-page .cohort-hero-actions .recruitment-button, .recruitment-page .cohort-hero-actions .recruitment-text-link { margin: 0; }
+.recruitment-page .recruitment-hero-note { margin-top: 20px; }
+.recruitment-page .cohort-learning-lead { max-width: 46em; margin-bottom: 40px; }
+.recruitment-page .cohort-training-spread { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px 48px; align-items: start; }
+.recruitment-page .cohort-observation-photo { grid-column: 1; grid-row: 1 / span 2; align-self: center; }
+.recruitment-page .cohort-training-copy { grid-column: 2; grid-row: 1; }
+.recruitment-page .cohort-training-copy h3 { font-size: clamp(28px, 3vw, 38px); margin-block: 18px 24px; }
+.recruitment-page .cohort-training-copy > p + p { margin-top: 18px; }
+.recruitment-page .cohort-community-photo { grid-column: 2; grid-row: 2; width: 82%; justify-self: end; }
+.recruitment-page .recruitment-learning { margin-top: 52px; }
+.recruitment-page .cohort-pending-panel { padding: 30px; border: 1px solid #bdc5b5; border-left: 3px solid #a68b58; background: #f8f7f2; }
+.recruitment-page .cohort-pending-panel h3 { font-size: 22px; }
+.recruitment-page .cohort-pending-items { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; list-style: none; padding: 0; margin: 24px 0; }
+.recruitment-page .cohort-pending-items li { background: #eeeae0; padding: 12px 16px; font-size: 14px; border-bottom: 1px solid #c7cebf; }
+.recruitment-page .cohort-course-description { line-height: 1.95; font-size: 14px; margin-bottom: 24px; }
+.recruitment-page .recruitment-fees article { display: flex; flex-direction: column; align-items: flex-start; padding: 32px 28px; }
+.recruitment-page .recruitment-fees article > .recruitment-eyebrow { font-size: 12px; padding-bottom: 10px; border-bottom: 1px solid #a68b58; }
+.recruitment-page .recruitment-fees article:nth-child(2) { background: #173f35; color: #fff; }
+.recruitment-page .recruitment-fees article:nth-child(2) > .recruitment-eyebrow,
+.recruitment-page .recruitment-fees article:nth-child(2) > p:last-child { color: #d3dfd2; }
+.recruitment-page .recruitment-fee { margin-top: auto; }
+@media (max-width: 1100px) {
+  .recruitment-page .cohort-hero-grid { gap: 24px 36px; }
+  .recruitment-page .recruitment-fees article { padding-inline: 20px; }
+}
+@media (max-width: 900px) {
+  .recruitment-page .cohort-hero-grid { width: calc(100% - 40px); grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .recruitment-page .cohort-hero-heading { grid-column: 1; grid-row: 1; }
+  .recruitment-page .cohort-hero-photo { grid-column: 1; grid-row: 2; max-width: 720px; width: 100%; padding: 14px; }
+  .recruitment-page .cohort-hero-details { grid-column: 1; grid-row: 3; }
+  .recruitment-page .recruitment-hero h1 { font-size: clamp(32px, 5.8vw, 46px); }
+  .recruitment-page .cohort-training-spread { gap: 28px; grid-template-columns: 1fr; }
+  .recruitment-page .cohort-observation-photo { grid-column: 1; grid-row: 1; }
+  .recruitment-page .cohort-training-copy { grid-column: 1; grid-row: 2; }
+  .recruitment-page .cohort-community-photo { grid-column: 1; grid-row: 3; width: 72%; }
+  .recruitment-page .cohort-pending-items { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 700px) {
+  .recruitment-page .recruitment-hero h1 { font-size: clamp(30px, 7.6vw, 44px); }
+  .recruitment-page .cohort-hero-photo { padding: 10px; }
+  .recruitment-page .cohort-hero-actions { flex-direction: column; align-items: stretch; gap: 12px; }
+  .recruitment-page .cohort-hero-actions .recruitment-text-link { justify-content: center; }
+  .recruitment-page .cohort-learning-lead { margin-bottom: 28px; }
+  .recruitment-page .cohort-training-copy h3 { font-size: 30px; }
+  .recruitment-page .cohort-community-photo { width: 84%; }
+  .recruitment-page .cohort-pending-panel { padding: 24px 20px; }
+  .recruitment-page .cohort-pending-items { gap: 10px; }
+  .recruitment-page .cohort-pending-items li { padding: 12px; font-size: 13px; }
+  .recruitment-page .recruitment-fees article { padding: 28px 22px; }
+  .recruitment-page .cohort-course-description { margin-bottom: 20px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .recruitment-page section .cohort-photo,
+    .recruitment-page section h2 {
+      animation: cohort-reveal linear both;
+      animation-timeline: view(); animation-range: entry 0% entry 100%;
+    }
+    @keyframes cohort-reveal { from { opacity: .95; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .recruitment-page * { animation: none !important; transition: none !important; }
+}
