@@ -3,20 +3,60 @@ const { test } = require("node:test");
 const assert = require("node:assert/strict");
 const React = require("react");
 const { renderToStaticMarkup } = require("react-dom/server");
-const { firstCohortConfig, getFirstCohort } = require("../lib/recruitment.ts");
+const { firstCohortConfig, firstCohortDetails, getFirstCohort, getFirstCohortSummary, formatSessionDate, isFirstCohortPreview } = require("../lib/recruitment.ts");
 // Static image imports are transformed by Next in production; use metadata stubs
 // for this Node-only text/price test. Real image ratios are checked in Chromium.
 require.extensions[".jpg"] = (module, filename) => {
   module.exports = { src: "/images/" + require("node:path").basename(filename), width: 1, height: 1 };
 };
-const FirstPage = require("../app/recruitment/first/page.tsx").default;
+require.extensions[".css"] = module => { module.exports = {}; };
+const OriginalFirstPage = require("../app/recruitment/first/page.tsx").default;
+function FirstPage() {
+  const previous = process.env.VERCEL_ENV;
+  process.env.VERCEL_ENV = "preview";
+  try { return OriginalFirstPage(); } finally { if (previous === undefined) delete process.env.VERCEL_ENV; else process.env.VERCEL_ENV = previous; }
+}
 const now = new Date("2026-11-06T03:00:00Z");
+test("all 18 dates match the organizer's schedule and the 2027 Japanese calendar", () => {
+  const expected = [
+    ["東京", ["2027-01-15", "2027-02-08", "2027-03-08", "2027-04-20", "2027-05-18", "2027-06-22"], ["金", "月", "月", "火", "火", "火"]],
+    ["大阪", ["2027-01-12", "2027-02-10", "2027-03-10", "2027-04-22", "2027-05-20", "2027-06-24"], ["火", "水", "水", "木", "木", "木"]],
+    ["福岡", ["2027-01-18", "2027-02-12", "2027-03-12", "2027-04-23", "2027-05-21", "2027-06-25"], ["月", "金", "金", "金", "金", "金"]],
+  ];
+  firstCohortDetails.venues.forEach((venue, index) => {
+    assert.equal(venue.name, expected[index][0]);
+    assert.deepEqual([...venue.dates], expected[index][1]);
+    venue.dates.forEach((date, i) => assert.ok(formatSessionDate(date).includes(expected[index][2][i])));
+    assert.ok(venue.dates[0] > firstCohortDetails.deadline);
+    assert.equal(venue.capacity, 6);
+    assert.equal(venue.address, null);
+    assert.equal(venue.startTime, null);
+    assert.equal(venue.endTime, null);
+  });
+});
+test("production and local production cannot expose the preview-only cohort route", () => {
+  assert.equal(isFirstCohortPreview({ VERCEL_ENV: "production", NODE_ENV: "development" }), false);
+  assert.equal(isFirstCohortPreview({ VERCEL_ENV: "preview", NODE_ENV: "production" }), true);
+  assert.equal(isFirstCohortPreview({ NODE_ENV: "development" }), true);
+  assert.equal(isFirstCohortPreview({ NODE_ENV: "production" }), false);
+  assert.equal(isFirstCohortPreview({}), false);
+  assert.ok(!require("../lib/site-config.ts").PUBLIC_PATHS.includes("/recruitment/first"));
+  const callout = require("../components/first-cohort-callout.tsx").FirstCohortCallout;
+  assert.equal(renderToStaticMarkup(React.createElement(callout)), "");
+});
 function config() { return structuredClone(firstCohortConfig); }
 
-test("first cohort starts as preparing with no invented dates, capacity or venue", () => {
+test("confirmed first cohort remains preparing with no application endpoint or invented times", () => {
   const info = getFirstCohort(config(), now);
   assert.equal(info.statusLabel, "募集準備中");
-  assert.ok(Object.values(info.confirmed).every(value => value === null));
+  assert.equal(info.confirmed.capacity, 18);
+  assert.equal(info.confirmed.deadline, "2027-01-10");
+  assert.equal(info.confirmed.trainingTime, null);
+  assert.equal(firstCohortDetails.application.url, null);
+  assert.equal(firstCohortConfig.publicationApproved, false);
+  assert.equal(getFirstCohortSummary().period, "2027年1月〜6月");
+  assert.equal(getFirstCohortSummary().capacityLabel, "各会場6名");
+  assert.equal(getFirstCohortSummary().totalCapacity, 18);
 });
 test("draft information is never passed to the public recruitment view", () => {
   const input = config();
@@ -26,7 +66,7 @@ test("draft information is never passed to the public recruitment view", () => {
   const info = getFirstCohort(input, now);
   assert.ok(!JSON.stringify(info).includes("内部用"));
   assert.ok(!JSON.stringify(info).includes("2099"));
-  assert.equal(info.confirmed.capacity, null);
+  assert.equal(info.confirmed.capacity, 18);
   assert.equal(info.draft, undefined);
 });
 test("open status requires explicit approval and a confirmed opening date already reached", () => {
@@ -57,7 +97,7 @@ test("invalid dates/capacities stay unconfirmed and an expired announcement is n
 test("recruitment page retains known fees and phone with only the approved existing training assets", () => {
   const html = renderToStaticMarkup(React.createElement(FirstPage));
   assert.match(html, /募集準備中/);
-  assert.match(html, /第0期生の研修が始まっています/);
+  assert.match(html, /2027年1月〜6月/);
   assert.match(html, /2,970,000円（税込）/);
   assert.match(html, /税抜2,700,000円/);
   assert.match(html, /990,000/);

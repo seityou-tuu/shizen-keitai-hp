@@ -1,0 +1,29 @@
+[
+  {
+    "width": 320,
+    "textContrastMinimum": 4.515101833507354,
+    "passed": true
+  },
+  {
+    "width": 390,
+    "textContrastMinimum": 4.515101833507354,
+    "passed": true
+  },
+  {
+    "width": 768,
+    "textContrastMinimum": 4.515101833507354,
+    "passed": true
+  },
+  {
+    "width": 1440,
+    "textContrastMinimum": 4.515101833507354,
+    "passed": true
+  },
+  {
+    "mobileTouchFukuoka": true
+  },
+  {
+    "normalMotionTextVisible": true,
+    "reducedMotionAnimationDisabled": true
+  }
+]

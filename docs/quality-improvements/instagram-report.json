@@ -1,0 +1,25 @@
+{
+  "conditions": "Local Chromium; Instagram navigation intercepted; external playback and real Safari untested",
+  "results": [
+    {
+      "device": "desktop",
+      "destinations": [
+        "https://www.instagram.com/reel/DcGE2FPKpHz/",
+        "https://www.instagram.com/reel/DcN4DM8K89p/",
+        "https://www.instagram.com/reel/DapZQNvvtVR/",
+        "https://www.instagram.com/ngtmyy_1990"
+      ],
+      "passed": true
+    },
+    {
+      "device": "mobile touch",
+      "destinations": [
+        "https://www.instagram.com/reel/DcGE2FPKpHz/",
+        "https://www.instagram.com/reel/DcN4DM8K89p/",
+        "https://www.instagram.com/reel/DapZQNvvtVR/",
+        "https://www.instagram.com/ngtmyy_1990"
+      ],
+      "passed": true
+    }
+  ]
+}

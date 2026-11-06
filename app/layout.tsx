@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getGoogleVerification } from "@/lib/analytics-config";
 import {
   SITE_URL,
   SITE_NAME,
@@ -10,11 +11,11 @@ import "./program-photos.css";
 import "./renewal.css";
 import "./contact.css";
 import "./art-direction.css";
-import "./recruitment.css";
 
 const title = `${SITE_NAME} | 株式会社TSUNAGi`;
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  verification: { google: getGoogleVerification() },
   title,
   description: SITE_DESCRIPTION,
   alternates: { canonical: "/" },

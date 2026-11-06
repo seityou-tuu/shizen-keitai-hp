@@ -1,0 +1,236 @@
+/* Home only: independent of PR #9's recruitment styles and shared site shell. */
+.homepage-quality .program-shortcuts { padding-block: 24px; }
+.homepage-quality .program-shortcuts > p { color: #c9d6cb; font-size: 13px; margin-bottom: 12px; }
+.homepage-quality .program-shortcuts ul { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; padding: 0; margin: 0; list-style: none; }
+.homepage-quality .program-shortcuts a { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; border-bottom: 1px solid #dbc89a80; color: #fff; font-size: 14px; }
+.homepage-quality .program-shortcuts a > span { color: #dbc89a; }
+.homepage-quality .program-shortcuts a:focus-visible { outline-color: #dbc89a; }
+.homepage-quality .step-fee-link { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 48px; color: #dbc89a; font-size: 13px; text-decoration: underline; text-underline-offset: 5px; }
+.homepage-quality .evidence-video-action { display: flex; justify-content: space-between; align-items: center; min-height: 44px; gap: 8px; color: #24493d; font-size: 12px; text-decoration: underline; text-underline-offset: 4px; }
+.homepage-quality .evidence-video-link .evidence-play { bottom: 54px; }
+.homepage-quality .tuition-course[id] { scroll-margin-top: 124px; }
+.homepage-quality .consultation-actions { align-items: center; }
+.homepage-quality .consultation-details-link { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; color: #24493d; font-size: 14px; text-decoration: underline; text-underline-offset: 5px; }
+.homepage-quality .renewal-roadmap .consultation-details-link { color: #dbc89a; }
+.homepage-quality .consultation-topics { list-style: none; padding: 0; margin: 20px 0; }
+.homepage-quality .consultation-topics a { display: flex; align-items: center; min-height: 44px; padding-block: 8px; color: #f6f2e8; text-decoration: underline; text-underline-offset: 5px; }
+@media (max-width: 700px) {
+  .homepage-quality .program-shortcuts ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 20px; }
+  .homepage-quality .program-shortcuts a { font-size: 13px; }
+  .homepage-quality .consultation-actions { flex-direction: column; align-items: stretch; }
+  .homepage-quality .consultation-details-link { justify-content: center; }
+}
+.homepage-quality .story-section .section-heading h2,
+.homepage-quality .story-section .program-photo img { animation: none; }
+.homepage-quality .story-section .program-photo img { scale: 1; }
+.homepage-quality .story-section .program-photo:hover img { scale: 1; }
+
+/* A two-part editorial feature: read the learning format before the photographs. */
+.homepage-quality .renewal-training { background: #f5f3ec; }
+.homepage-quality .training-section-intro { display: flex; justify-content: space-between; align-items: end; gap: 48px; }
+.homepage-quality .training-section-intro .section-heading { margin-bottom: 0; }
+.homepage-quality .training-section-intro .section-side-copy { margin-bottom: 8px; }
+.homepage-quality .training-format-key { display: grid; grid-template-columns: 1fr 48px 1fr; align-items: center; border-block: 1px solid #c4c6b6; margin: 44px 0 64px; padding-block: 24px; }
+.homepage-quality .training-format-key p { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 24px; }
+.homepage-quality .training-format-key p > span { color: #806636; font-size: 12px; letter-spacing: .08em; }
+.homepage-quality .training-format-key strong { font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: 23px; font-weight: 500; }
+.homepage-quality .training-format-key small { font-size: 13px; color: #58675e; }
+.homepage-quality .format-plus { text-align: center; color: #806636; }
+.homepage-quality .training-story:not(.theory-story) { grid-template-columns: 1.4fr 1fr; gap: clamp(36px, 5vw, 72px); align-items: center; }
+.homepage-quality .training-main-photo { position: relative; padding-bottom: 64px; }
+.homepage-quality .training-main-photo > .program-photo img { height: auto; aspect-ratio: auto; object-fit: contain; }
+@media (min-width: 901px) {
+  .homepage-quality .training-main-photo > .program-photo { display: flex; flex-direction: column; }
+  .homepage-quality .training-main-photo > .program-photo figcaption { order: -1; padding: 0 0 12px; }
+}
+.homepage-quality .training-secondary-photo { position: relative; width: 82%; margin: -24px -20px 0 auto; padding: 12px 0 0 12px; background: #f5f3ec; }
+.homepage-quality .training-label { display: block; width: fit-content; border-bottom: 1px solid #a68b58; padding-bottom: 10px; margin-bottom: 18px; color: #24493d; font-size: 14px; letter-spacing: .12em; }
+.homepage-quality .training-story-copy h3 { font-size: clamp(30px, 3vw, 42px); line-height: 1.65; }
+.homepage-quality .theory-story { grid-template-columns: 1fr 1.25fr; gap: 72px; align-items: center; margin-top: 24px; padding-top: 64px; }
+.homepage-quality .theory-story > .training-story-copy { grid-column: 2; grid-row: 1; padding: 32px 0 32px 40px; border-left: 1px solid #c4c6b6; }
+.homepage-quality .theory-story > div:last-child { grid-column: 1; grid-row: 1; }
+.homepage-quality .training-atmosphere-story { background: #e5e9de; color: #244237; padding: 0; margin-top: 88px; grid-template-columns: 1fr 1.15fr; gap: 56px; }
+.homepage-quality .training-atmosphere-story > div { padding: 32px 0; }
+.homepage-quality .training-atmosphere-story .renewal-kicker { color: #806636; }
+.homepage-quality .training-atmosphere-story .renewal-note,
+.homepage-quality .training-atmosphere-story figcaption { color: #58675e; }
+.homepage-quality .training-atmosphere-story > .program-photo { align-self: center; }
+.homepage-quality .training-atmosphere-story { padding: 32px; }
+
+/* A visible progression; numbering describes order, never an invented condition. */
+.homepage-quality .renewal-roadmap { background: radial-gradient(ellipse at 100% 0, #2b5547, transparent 65%), #102f28; }
+.homepage-quality .renewal-step-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 64px; }
+.homepage-quality .renewal-step-grid li { display: flex; flex-direction: column; padding: 32px 0 0; border: 0; border-top: 1px solid #dbc89a90; margin: 0; }
+.homepage-quality .renewal-step-grid li:nth-child(2) { margin-top: 36px; }
+.homepage-quality .renewal-step-grid li:nth-child(3) { margin-top: 72px; }
+.homepage-quality .renewal-step-grid li:last-child { border: 0; border-top: 1px solid #dbc89a90; }
+.homepage-quality .renewal-step-grid li::before { width: 7px; height: 7px; top: -4px; left: 0; }
+.homepage-quality .renewal-step-grid h3 { font-size: clamp(24px, 2.3vw, 32px); margin: 24px 0 12px; }
+.homepage-quality .step-description { margin-top: 24px; flex: 1; }
+.homepage-quality .step-description > strong { display: block; color: #f5f3ec; font-size: 16px; font-weight: 500; margin-bottom: 12px; }
+.homepage-quality .step-period { margin-top: 24px; align-self: stretch; border-top: 1px solid #dbc89a40; padding-top: 16px; color: #c9d6cb; font-size: 13px; text-align: left; }
+.homepage-quality .step-period strong { font-family: inherit; font-weight: 500; font-size: 17px; line-height: 1.8; padding: 0 0 0 12px; color: #e5dcc7; }
+.homepage-quality .roadmap-fee-link { display: flex; justify-content: space-between; gap: 24px; align-items: center; width: fit-content; min-height: 48px; margin: 32px 0 16px auto; border-bottom: 1px solid #dbc89a; color: #dbc89a; font-size: 14px; }
+.homepage-quality .roadmap-fee-link span { font-size: 20px; }
+
+/* Let the complete portrait and verified biography introduce the teacher together. */
+.homepage-quality .renewal-instructors { background: linear-gradient(90deg, #e8e9de 0 40%, #f8f7f2 40%); }
+.homepage-quality .renewal-instructors > .renewal-wrap { display: grid; grid-template-columns: .9fr 1fr; gap: 0 80px; }
+.homepage-quality .renewal-instructors > .renewal-wrap > .section-heading { grid-column: 2; margin-bottom: 32px; }
+.homepage-quality .renewal-instructors .section-heading h2 { font-size: clamp(30px, 3.2vw, 46px); }
+.homepage-quality .instructor-introduction { display: contents; }
+.homepage-quality .renewal-instructor-photos { display: flex; flex-direction: column; grid-column: 1; grid-row: 1 / span 2; gap: 32px; }
+.homepage-quality .instructor-introduction > .renewal-prose { grid-column: 2; grid-row: 2; padding: 0; }
+.homepage-quality .renewal-instructor-photos > :first-child { grid-column: 1; grid-row: 1 / span 2; max-width: 100%; align-self: start; position: relative; padding: 0 24px 24px 0; }
+.homepage-quality .renewal-instructor-photos > :first-child::after { content: ""; position: absolute; inset: 24px 0 0 24px; border: 1px solid #a68b5860; pointer-events: none; }
+.homepage-quality .renewal-instructor-photos > :first-child img { height: auto; aspect-ratio: auto; object-fit: contain; }
+.homepage-quality .renewal-instructor-photos > :last-child { width: 78%; margin: 0; align-self: end; }
+.homepage-quality .instructor-name { border-top: 1px solid #a68b58; padding-top: 24px; font-size: 38px; }
+.homepage-quality .instructor-details > div { padding-block: 16px; }
+
+/* A readable pair of columns in place of five narrow text columns. */
+.homepage-quality .future-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 56px; border-bottom: 1px solid #a5b19c; }
+.homepage-quality .future-list li { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 24px; padding: 30px 0; }
+.homepage-quality .future-list li:last-child { grid-column: 1 / -1; }
+.homepage-quality .future-list li > span { font-size: 24px; line-height: 1.8; margin: 0; }
+.homepage-quality .future-list h3 { font-size: 23px; line-height: 1.65; text-wrap: initial; }
+.homepage-quality .future-list p { font-size: 15px; line-height: 2; margin-top: 12px; max-width: 38em; }
+
+/* Small source images support the profile without competing with its portraits. */
+.homepage-quality .instructor-evidence { grid-column: 1 / -1; margin-top: 48px; padding: 32px 0 0; background: transparent; border-top: 1px solid #a68b58; }
+.homepage-quality .evidence-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 32px; margin-bottom: 28px; }
+.homepage-quality .evidence-heading h3 { font-size: 25px; line-height: 1.7; margin: 0; }
+.homepage-quality .evidence-heading .renewal-kicker { margin: 0; }
+.homepage-quality .evidence-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: start; }
+.homepage-quality .evidence-layout h4 { font-size: 17px; font-weight: 500; line-height: 1.8; margin: 0 0 18px; }
+.homepage-quality .evidence-video { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 20px; margin: 0; align-items: center; }
+.homepage-quality .evidence-video + .evidence-video { border-top: 1px solid #d5dacd; padding-top: 18px; margin-top: 18px; }
+.homepage-quality .evidence-video img, .homepage-quality .evidence-award img { display: block; width: 100%; height: auto; border-radius: 0; }
+.homepage-quality .evidence-video-link { display: block; position: relative; min-width: 44px; min-height: 44px; }
+.homepage-quality .evidence-play { position: absolute; right: 7px; bottom: 7px; display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid #dbc89a; border-radius: 50%; background: #102f28ed; color: #fff; pointer-events: none; }
+.homepage-quality .evidence-play svg { width: 15px; height: 15px; }
+.homepage-quality .evidence-video-link:focus-visible { outline: 3px solid #806636; outline-offset: 4px; }
+@media (prefers-reduced-motion: no-preference) {
+  .homepage-quality .evidence-play { transition: transform .2s ease, background-color .2s ease; }
+}
+@media (hover: hover) {
+  .homepage-quality .evidence-video-link:hover .evidence-play { background: #2b5747; }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .homepage-quality .evidence-video-link:hover .evidence-play { transform: scale(1.08); }
+}
+.homepage-quality .evidence-video figcaption { display: flex; flex-direction: column; gap: 8px; }
+.homepage-quality .evidence-video figcaption > span { color: #58675e; font-size: 11px; line-height: 1.8; }
+.homepage-quality .evidence-video strong { font-size: 32px; font-weight: 500; color: #244237; line-height: 1.3; }
+.homepage-quality .evidence-video small { color: #58675e; font-size: 11px; line-height: 1.8; }
+.homepage-quality .evidence-award { margin: 0; }
+.homepage-quality .evidence-award figcaption { padding-top: 16px; }
+.homepage-quality .evidence-award h4 { margin-bottom: 8px; }
+.homepage-quality .evidence-award p { font-size: 12px; line-height: 1.9; color: #58675e; }
+.homepage-quality .evidence-note { border-top: 1px solid #d5dacd; padding-top: 20px; margin-top: 24px; }
+@media (min-width: 701px) and (max-width: 1000px) {
+  .homepage-quality .evidence-layout { gap: 28px; }
+  .homepage-quality .evidence-video { grid-template-columns: 120px minmax(0, 1fr); gap: 14px; }
+}
+@media (max-width: 700px) {
+  .homepage-quality .instructor-evidence { grid-column: 1; margin-top: 8px; padding: 28px 0 0; }
+  .homepage-quality .evidence-heading h3 { font-size: 21px; }
+  .homepage-quality .evidence-layout { grid-template-columns: 1fr; gap: 28px; }
+  .homepage-quality .evidence-video { grid-template-columns: minmax(0, 128px) minmax(0, 1fr); gap: 16px; }
+  .homepage-quality .evidence-video strong { font-size: 29px; }
+}
+@media (max-width: 360px) {
+  .homepage-quality .evidence-video { grid-template-columns: 96px minmax(0, 1fr); gap: 12px; }
+  .homepage-quality .evidence-video strong { font-size: 27px; }
+}
+
+/* One common teaching schedule, three clear course fees. */
+.homepage-quality .tuition-courses { border: 0; border-top: 1px solid #a68b58; border-bottom: 1px solid #c4c6b6; }
+.homepage-quality .tuition-course { padding: 32px; gap: 24px; background: #f8f7f2; }
+.homepage-quality .tuition-course:nth-child(2) { background: #f8f7f2; }
+.homepage-quality .tuition-course .renewal-kicker { border: 0; padding: 0; }
+.homepage-quality .tuition-course h3 { margin-top: 16px; }
+.homepage-quality .tuition-duration { color: #58675e; font-size: 13px; display: flex; justify-content: space-between; gap: 16px; }
+.homepage-quality .tuition-duration strong { color: #244237; font-weight: 500; }
+.homepage-quality .tuition-amount { border-top: 1px solid #c4c6b6; padding-top: 20px; }
+.homepage-quality .tuition-amount p { font-size: clamp(28px, 3vw, 38px); white-space: nowrap; }
+.homepage-quality .tuition-shared { display: flex; flex-wrap: wrap; gap: 12px 32px; padding: 24px 32px; background: #e9eee4; font-size: 14px; }
+.homepage-quality .tuition-shared .renewal-kicker { align-self: center; margin: 0; }
+.homepage-quality .tuition-shared strong { font-weight: 500; margin-right: 16px; color: #244237; }
+.homepage-quality .tuition-total { padding-block: 32px; }
+
+@media (max-width: 1100px) {
+  .homepage-quality .training-format-key p { display: grid; gap: 6px; }
+  .homepage-quality .training-section-intro { gap: 24px; }
+  .homepage-quality .renewal-instructors > .renewal-wrap { gap: 0 40px; }
+  .homepage-quality .renewal-step-grid { gap: 24px; }
+  .homepage-quality .tuition-courses { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .homepage-quality .tuition-course { display: flex; padding: 24px 18px; }
+  .homepage-quality .tuition-course + .tuition-course { border-top: 0; border-left: 1px solid #c4c6b6; }
+  .homepage-quality .tuition-course h3 { font-size: 22px; }
+  .homepage-quality .tuition-amount { padding-left: 0; }
+}
+@media (max-width: 900px) {
+  .homepage-quality .training-section-intro { display: block; }
+  .homepage-quality .training-section-intro .section-side-copy { margin-top: 24px; }
+  .homepage-quality .training-story:not(.theory-story) { display: flex; flex-direction: column; gap: 32px; align-items: stretch; }
+  .homepage-quality .training-practical-details { display: block; order: 2; }
+  .homepage-quality .training-main-photo { display: block; padding-bottom: 0; }
+  .homepage-quality .training-secondary-photo { width: 88%; margin-top: 20px; margin-right: -8px; }
+  .homepage-quality .theory-story { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .homepage-quality .theory-story > .training-story-copy { padding-left: 24px; }
+  .homepage-quality .training-atmosphere-story { grid-template-columns: 1fr; gap: 24px; }
+  .homepage-quality .training-atmosphere-story > div { padding: 0; }
+  .homepage-quality .renewal-step-grid { gap: 20px; }
+  .homepage-quality .renewal-step-grid h3 { font-size: 23px; }
+}
+@media (max-width: 700px) {
+  .homepage-quality .future-list { grid-template-columns: 1fr; gap: 0; }
+  .homepage-quality .future-list li { grid-template-columns: 28px minmax(0, 1fr); gap: 16px; padding: 26px 0; }
+  .homepage-quality .future-list h3 { font-size: 21px; }
+  .homepage-quality .future-list li > span { font-size: 21px; }
+
+  .homepage-quality .training-secondary-photo { margin-top: 20px; }
+  .homepage-quality .training-format-key { grid-template-columns: 1fr 24px 1fr; margin: 32px 0 40px; padding-block: 20px; gap: 8px; }
+  .homepage-quality .training-format-key strong { font-size: 19px; }
+  .homepage-quality .training-format-key small { font-size: 11px; }
+  .homepage-quality .training-format-key p > span { font-size: 11px; }
+  .homepage-quality .training-label { font-size: 13px; }
+  .homepage-quality .theory-story { grid-template-columns: 1fr; margin-top: 40px; padding-top: 40px; }
+  .homepage-quality .theory-story > .training-story-copy { grid-column: 1; grid-row: 1; border: 0; padding: 0; }
+  .homepage-quality .theory-story > div:last-child { grid-row: 2; }
+  .homepage-quality .training-atmosphere-story { padding: 24px 20px; margin-top: 48px; }
+  .homepage-quality .training-atmosphere-story h3 { font-size: clamp(20px, 5.6vw, 27px); }
+  .homepage-quality .renewal-step-grid { display: block; margin-top: 40px; }
+  .homepage-quality .renewal-step-grid li,
+  .homepage-quality .renewal-step-grid li:nth-child(2),
+  .homepage-quality .renewal-step-grid li:nth-child(3) { margin: 0; padding: 28px 0 28px 24px; border: 0; border-left: 1px solid #dbc89a80; }
+  .homepage-quality .renewal-step-grid li::before { top: 34px; left: -4px; }
+  .homepage-quality .renewal-step-grid h3 { font-size: 28px; margin-top: 14px; }
+  .homepage-quality .step-description { margin-top: 20px; }
+  .homepage-quality .step-period { margin-top: 12px; }
+  .homepage-quality .roadmap-fee-link { margin-top: 16px; }
+  .homepage-quality .renewal-instructors { background: #f8f7f2; }
+  .homepage-quality .renewal-instructors > .renewal-wrap { grid-template-columns: 1fr; gap: 32px; }
+  .homepage-quality .renewal-instructors > .renewal-wrap > .section-heading { grid-column: 1; grid-row: 1; margin: 0; }
+  .homepage-quality .renewal-instructor-photos { display: contents; }
+  .homepage-quality .renewal-instructor-photos > :first-child { grid-column: 1; grid-row: 2; width: 84%; justify-self: center; padding: 0 16px 16px 0; }
+  .homepage-quality .instructor-introduction > .renewal-prose { grid-column: 1; grid-row: 3; }
+  .homepage-quality .renewal-instructor-photos > :last-child { grid-column: 1; grid-row: 4; width: 80%; margin: 0; }
+  .homepage-quality .tuition-courses { grid-template-columns: 1fr; }
+  .homepage-quality .tuition-course { display: grid; grid-template-columns: 1fr; gap: 16px; padding: 28px 24px; }
+  .homepage-quality .tuition-course + .tuition-course { border-left: 0; border-top: 1px solid #c4c6b6; }
+  .homepage-quality .tuition-course h3 { font-size: 27px; }
+  .homepage-quality .tuition-amount p { font-size: 36px; }
+  .homepage-quality .tuition-shared { display: grid; gap: 12px; padding: 24px; font-size: 13px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .homepage-quality .arrival-ready { opacity: 0; transform: translateY(18px); transition: opacity .75s ease, transform .75s cubic-bezier(.2,.65,.3,1); }
+  .homepage-quality figure.arrival-ready { transform: translateY(10px); transition-duration: .95s; }
+  .homepage-quality .arrival-visible { opacity: 1; transform: none; }
+  .homepage-quality .renewal-roadmap .section-heading.arrival-ready { transform: none; }
+  @media (hover: hover) {
+    .homepage-quality .roadmap-fee-link span { transition: transform .2s ease; }
+    .homepage-quality .roadmap-fee-link:hover span { transform: translateY(3px); }
+  }
+}

@@ -1,49 +1,51 @@
 import { ProgramPhoto } from "@/components/program-photo";
+import { notFound } from "next/navigation";
+import { CohortSchedule } from "@/components/cohort-schedule";
+import { InstructorProfile } from "@/components/instructor-profile";
+import "@/app/recruitment.css";
 import { Header } from "@/components/header";
 import { InformationLinks } from "@/components/information-links";
 import { CONTACT_PHONE, CONTACT_TEL } from "@/lib/contact";
 import { informationMetadata } from "@/lib/information-metadata";
-import { FIRST_COHORT_PATH, formatRecruitmentDate, getFirstCohort } from "@/lib/recruitment";
+import { FIRST_COHORT_PATH, firstCohortDetails, formatRecruitmentDate, getFirstCohort, getFirstCohortSummary, isFirstCohortPreview } from "@/lib/recruitment";
 import { operator } from "@/lib/site-information";
 
-export const metadata = informationMetadata(
+export function generateMetadata() {
+  if (!isFirstCohortPreview()) return { title: "ページが見つかりません", description: "お探しのページは見つかりませんでした。", robots: { index: false, follow: false } };
+  const summary = getFirstCohortSummary();
+  return { ...informationMetadata(
   "第1期生 募集案内 | 自然形体療法 資格取得プログラム",
-  "自然形体療法 資格取得プログラムの第1期生募集案内。募集状況・開催日程・会場・研修内容・受講料金・電話での受講相談をご確認いただけます。",
+  `${summary.period}、${summary.locations}の${summary.venueCount}会場で学ぶ第1期生の開催案内。${summary.capacityLabel}、募集締切${formatRecruitmentDate(firstCohortDetails.deadline)}。日程・研修・料金と電話相談をご案内します。申込み方法は準備中です。`,
   FIRST_COHORT_PATH,
-);
+  ), robots: { index: false, follow: false } };
+}
 const faq = [
-  ["第1期生の募集は始まっていますか？", "募集状況は、このページ上部の表示をご確認ください。日程・募集条件は募集情報欄にまとめています。現在、このページでは正式な受講申込み・契約・決済を受け付けていません。"],
-  ["施術未経験でも相談できますか？", "はい。プログラムは施術経験者・未経験者の両方を対象としています。第1期生の具体的な受講要件は、募集情報欄をご確認ください。"],
-  ["実技と理論はどのように学びますか？", "プログラム共通の案内は、実技が月1回・対面9:00〜17:00、理論が月1回・オンラインで1回2時間です。第1期生の実施日・会場は募集情報欄をご確認ください。"],
+  ["申込みはどこからできますか？", "申込み方法は準備中です。公式LINEも未開設のため、申込みリンクやフォームは設置していません。電話は受講内容の相談窓口であり、正式な申込み・契約・決済の受付ではありません。"],
+  ["施術未経験でも受講できますか？", "はい。第1期生は施術経験者・未経験者のどちらも受講可能です。その他の具体的な受講要件・認定条件は確認後にご案内します。"],
+  ["実技と理論はどのように学びますか？", "実技は対面、理論はオンラインで学びます。プログラム共通の案内ではいずれも月1回、理論は1回2時間です。第1期生の会場住所・開始時刻・終了時刻、オンライン理論の開催日・接続方法は確認後にご案内します。"],
   ["研修日以外にも学べますか？", "主催者から復習用動画が提供され、研修日以外も質問できます。視聴方法・閲覧期限、質問方法・回答時間は未確定です。"],
   ["3コースすべての受講が必要ですか？", "3コースすべての受講が必須かどうか、認定基準・進級条件は未確定です。本プログラムの資格は国家資格や法的な開業資格の取得を示すものではありません。"],
   ["支払い方法・キャンセル条件は？", "支払い方法・支払時期、追加費用、キャンセル・返金条件は未確定です。クレジットカード分割払いは導入準備中で、現時点で利用可能とはご案内していません。"],
 ];
 
 export default function FirstRecruitmentPage() {
+  if (!isFirstCohortPreview()) notFound();
   const info = getFirstCohort();
-  const facts = info.confirmed;
-  const schedule = [
-    ["研修開始日", facts.startDate ? formatRecruitmentDate(facts.startDate) : null],
-    ["第1期生の研修時間", facts.trainingTime],
-    ["募集開始日", facts.recruitmentStartDate ? formatRecruitmentDate(facts.recruitmentStartDate) : null],
-    ["募集締切日", facts.deadline ? formatRecruitmentDate(facts.deadline) : null],
-    ["定員", facts.capacity ? `${facts.capacity}名` : null],
-    ["実技研修の会場", facts.venue],
-  ];
+  const facts = firstCohortDetails;
+  const summary = getFirstCohortSummary();
   return (
     <>
       <a className="skip-link" href="#recruitment-main">本文へ移動</a>
       <Header variant="first-cohort" />
-      <main id="recruitment-main" className="recruitment-page">
+      <main id="recruitment-main" tabIndex={-1} className="recruitment-page">
         <header className="recruitment-hero">
           <div className="recruitment-wrap cohort-hero-grid">
             <div className="cohort-hero-heading">
               <a className="recruitment-back" href="/">← プログラム全体のご案内</a>
               <p className="recruitment-eyebrow">SHIZEN KEITAI / FIRST COHORT</p>
               <span className="recruitment-status">{info.statusLabel}</span>
-              <h1>第1期生へ。<br />その技術を、<br /><em>あなた自身の手に。</em></h1>
-              <p className="recruitment-lead">自然形体療法 資格取得プログラム</p>
+              <h1>自然形体療法<br />資格取得プログラム<br /><em>第1期生募集</em></h1>
+              <p className="recruitment-lead">{summary.startYear}年{summary.startMonth}月、新しい学びの一歩を。</p>
             </div>
             <div className="cohort-hero-photo cohort-photo">
               <ProgramPhoto name="practical-hands-on" caption="実技研修の紹介写真（既存HP掲載）" priority sizes="(max-width: 900px) calc(100vw - 40px), (max-width: 1400px) 52vw, 680px" />
@@ -52,11 +54,17 @@ export default function FirstRecruitmentPage() {
             <div className="cohort-hero-details">
               <p>理論で理解し、実技で体感し、繰り返し磨いていく。<br />次の学びを考える方へ、第1期生の情報をご案内します。</p>
               <div className="cohort-hero-actions">
-                <a href={CONTACT_TEL} className="recruitment-button">電話で受講相談する <span aria-hidden="true">↗</span></a>
-                <a href="#cohort-schedule" className="recruitment-text-link">募集情報を見る ↓</a>
+                <a href="#cohort-schedule" className="recruitment-button">会場・全6回の日程を見る <span aria-hidden="true">↓</span></a>
+                <a href="#cohort-contact" className="recruitment-text-link">電話相談の窓口を見る ↓</a>
               </div>
               <p className="recruitment-hero-note">受講相談の窓口です。<br />正式な申込み・決済は受け付けていません。</p>
             </div>
+            <dl className="cohort-launch-facts">
+              <div><dt>開講</dt><dd>{summary.startYear}年<span>{summary.startMonth}月</span></dd></div>
+              <div><dt>開催地域</dt><dd>{summary.locations}</dd></div>
+              <div><dt>定員</dt><dd><strong>{summary.capacityLabel}</strong><small>合計{summary.totalCapacity}名</small></dd></div>
+              <div><dt>募集締切</dt><dd><time dateTime={facts.deadline}>{formatRecruitmentDate(facts.deadline)}</time></dd></div>
+            </dl>
           </div>
         </header>
         <nav className="recruitment-quick-nav recruitment-wrap" aria-label="第1期生のページ内メニュー">
@@ -69,9 +77,17 @@ export default function FirstRecruitmentPage() {
           <p className="recruitment-eyebrow">OVERVIEW</p>
           <h2 id="cohort-overview">次の一歩を、ここから。</h2>
           <div className="recruitment-two-columns">
-            <div><p>第0期生の研修が始まっています。</p><p>第1期生に関するご案内として、プログラムの概要と、確認しておきたい情報をまとめました。</p></div>
-            <div className="recruitment-note-panel"><h3>受講対象</h3><p>接骨院・整体院などで施術を行っている方も、これから施術を学びたい方も対象です。</p><p>具体的な受講要件・募集条件は、募集情報欄にまとめています。</p></div>
+            <div><p>{summary.locations}。ご自身の学びを考える会場から、全6回の開催日程をご確認ください。</p><p>理論で理解し、実技で確かめ、動画で振り返る。既存プログラムの学び方と第1期生の開催情報をまとめました。</p></div>
+            <div className="recruitment-note-panel"><h3>受講対象</h3><p>{facts.eligible}です。</p><p>認定基準・進級条件などは確認後にご案内します。</p></div>
           </div>
+          <dl className="cohort-overview-facts">
+            <div><dt>開催期間</dt><dd>{summary.period}</dd></div>
+            <div><dt>開催地域</dt><dd>{summary.locations}の{summary.venueCount}会場</dd></div>
+            <div><dt>募集定員</dt><dd>{summary.capacityLabel}・合計{summary.totalCapacity}名</dd></div>
+            <div><dt>募集締切</dt><dd>{formatRecruitmentDate(facts.deadline)}</dd></div>
+            <div><dt>受講対象</dt><dd>{facts.eligible}</dd></div>
+            <div><dt>受講料金</dt><dd>各コース990,000円（税込）／税抜900,000円 <a href="#cohort-tuition">料金の詳細を見る ↓</a></dd></div>
+          </dl>
         </section>
         <section id="cohort-learning" className="recruitment-section recruitment-wrap">
           <p className="recruitment-eyebrow">LEARNING</p><h2>理論と実技を、重ねて学ぶ。</h2>
@@ -87,26 +103,27 @@ export default function FirstRecruitmentPage() {
             <div className="cohort-community-photo cohort-photo"><ProgramPhoto name="group-guidance" caption="指導・学び合いの雰囲気を伝える研修紹介写真" sizes="(max-width: 700px) 75vw, 440px" /></div>
           </div>
           <div className="recruitment-learning">
-            <article><span>01</span><h3>実技研修</h3><p>講師の技術を間近で見ながら、触れ方・力加減・身体の反応を確かめます。</p><p className="recruitment-fact-line">月1回・対面<br />9:00〜17:00</p></article>
+            <article><span>01</span><h3>実技研修</h3><p>講師の技術を間近で見ながら、触れ方・力加減・身体の反応を確かめます。</p><p className="recruitment-fact-line">月1回・対面<br />第1期生の時刻は確認中</p></article>
             <article><span>02</span><h3>理論研修</h3><p>なぜその施術を行うのか。感覚だけに頼らず、技術の背景にある考え方を学びます。</p><p className="recruitment-fact-line">月1回・オンライン<br />1回2時間</p></article>
             <article><span>03</span><h3>復習と質問</h3><p>主催者が提供する復習用動画で振り返り、研修日以外にも疑問を質問できます。</p><p className="recruitment-fact-line">研修の振り返りと<br />研修日以外の質問</p></article>
           </div>
-          <p className="recruitment-note">上記は既存のプログラム共通情報です。第1期生の詳細や動画・質問の利用条件は未確定です。募集情報欄をご確認ください。施術見学を確約するものではありません。</p>
+          <p className="recruitment-note">上記は既存プログラムの学び方です。第1期生の開始・終了時刻、動画の視聴方法・期限、質問方法・回答時間等は確認後にご案内します。施術見学を確約するものではありません。施術の感じ方や身体の反応には個人差があり、医学的な効果・治癒を保証するものではありません。</p>
           <a className="recruitment-text-link" href="#cohort-schedule">募集日程・条件を確認する ↓</a>
+        </section>
+        <section id="cohort-instructor" className="recruitment-section recruitment-wrap cohort-instructor">
+          <div><p className="recruitment-eyebrow">INSTRUCTOR</p><h2>技術に向き合う、<br />講師と学ぶ。</h2></div>
+          <InstructorProfile />
         </section>
         <section id="cohort-schedule" className="recruitment-section recruitment-soft">
           <div className="recruitment-wrap">
             <p className="recruitment-eyebrow">SCHEDULE & LOCATION</p>
-            <h2>第1期生の募集情報</h2>
-            <p className="recruitment-section-lead">{info.summary}</p>
-            {schedule.some(([, value]) => value !== null) && (
-              <dl className="recruitment-facts">{schedule.filter(([, value]) => value !== null).map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
-            )}
+            <h2>学ぶ会場を選び、<br />全6回を見渡す。</h2>
+            <p className="recruitment-section-lead">{summary.period}、{summary.locations}の{summary.venueCount}会場。{summary.capacityLabel}の開催情報です。会場を切り替えて日程を確認できます。</p>
+            <CohortSchedule />
             <div className="cohort-pending-panel">
               <h3>現在、確認・準備している項目</h3>
-              {schedule.some(([, value]) => value === null) && <ul className="cohort-pending-items">{schedule.filter(([, value]) => value === null).map(([label]) => <li key={label}>{label}</li>)}</ul>}
-              <p>受講要件・認定基準・進級条件、支払方法・支払時期、追加費用、キャンセル・返金条件、正式な申込み方法も未確定です。</p>
-              <p className="recruitment-note">確認できた内容から、この募集情報欄に掲載します。実技は対面、理論はオンラインです。開催日・接続方法などの詳細も、この欄でご案内します。</p>
+              <p>会場住所・開始時刻・終了時刻、募集する研修と各コースの対応、認定基準・進級条件、支払方法・支払時期、追加費用、キャンセル・返金条件、正式な申込み方法は確認後にご案内します。</p>
+              <p className="recruitment-note">公式LINEは未開設です。現在は電話による受講相談のみをご案内しています。電話で正式な申込みが完了するものではありません。</p>
             </div>
           </div>
         </section>

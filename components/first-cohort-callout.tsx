@@ -1,6 +1,7 @@
-import { FIRST_COHORT_PATH, getFirstCohort } from "@/lib/recruitment";
+import { FIRST_COHORT_PATH, firstCohortConfig, getFirstCohort } from "@/lib/recruitment";
 
 export function FirstCohortCallout() {
+  if (!firstCohortConfig.publicationApproved) return null;
   const recruitment = getFirstCohort();
   return (
     <section id="first-cohort" className="first-cohort-callout" aria-labelledby="first-cohort-title">

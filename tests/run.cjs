@@ -4,5 +4,7 @@ require("./seo.test.cjs");
 require("./content.test.cjs");
 
 require("./instructor.test.cjs");
-
+require("./youtube-video-link.test.cjs");
+require("./instagram.test.cjs");
+require("./analytics.test.cjs");
 require("./recruitment.test.cjs");

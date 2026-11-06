@@ -1,9 +1,16 @@
-import { FirstCohortCallout } from "@/components/first-cohort-callout";
+import { InstagramSection } from "@/components/instagram-section";
+import { AnalyticsConsent } from "@/components/analytics-consent";
+import { getGa4MeasurementId } from "@/lib/analytics-config";
+import "./homepage-quality.css";
+import "./section-stories.css";
+import { PerspectiveDiagram } from "@/components/perspective-diagram";
+import { HomepageTrainingPhoto, InstructorEvidence } from "@/components/homepage-photos";
+import { HomepageMotion } from "@/components/homepage-motion";
 import { InstructorProfile } from "@/components/instructor-profile";
 import { instructorProfile } from "@/lib/instructor";
 import { CONTACT_PHONE, CONTACT_TEL, getOfficialLineUrl } from "@/lib/contact";
 import { LineConsultationLink } from "@/components/line-consultation-link";
-import { SITE_NAME, SITE_URL } from "@/lib/site-config";
+import { SITE_NAME, SITE_URL, SITE_DESCRIPTION } from "@/lib/site-config";
 import { operator } from "@/lib/site-information";
 import { Header } from "@/components/header";
 import { InformationLinks } from "@/components/information-links";
@@ -15,19 +22,22 @@ const courses = [
     step: "01",
     title: "準師範コース",
     english: "JUNIOR INSTRUCTOR",
-    text: "資格取得の第一歩となるコース。実技と理論を組み合わせ、学びを積み重ねていきます。",
+    lead: "資格取得の第一歩となるコース。",
+    text: "実技と理論を組み合わせ、学びを積み重ねていきます。",
   },
   {
     step: "02",
     title: "師範コース",
     english: "INSTRUCTOR",
-    text: "準師範コースに続く、次の段階。継続した研修を通じて、自然形体療法への理解を深めます。",
+    lead: "準師範コースに続く、次の段階。",
+    text: "継続した研修を通じて、自然形体療法への理解を深めます。",
   },
   {
     step: "03",
     title: "本部師範コース",
     english: "HEADQUARTERS INSTRUCTOR",
-    text: "3段階のロードマップの最終コース。実技と理論の両面から、さらに学びを重ねます。",
+    lead: "3段階のロードマップの最終コース。",
+    text: "実技と理論の両面から、さらに学びを重ねます。",
   },
 ];
 const features = [
@@ -112,19 +122,24 @@ function ConsultationCallout({ text }: { text: string }) {
           受講について電話で相談する <span aria-hidden="true">↗</span>
         </a>
         <LineConsultationLink />
+        <a className="consultation-details-link" href="#contact">
+          電話番号・窓口案内を見る <span aria-hidden="true">↓</span>
+        </a>
       </div>
     </aside>
   );
 }
 
 export default function Home() {
+  const measurementId = getGa4MeasurementId();
   return (
     <>
       <a className="skip-link" href="#main">
         本文へ移動
       </a>
       <Header />
-      <main id="main" className="program-renewal cinematic-program">
+      <main id="main" tabIndex={-1} className="program-renewal cinematic-program homepage-quality">
+        <HomepageMotion />
         <section className="renewal-hero" aria-labelledby="hero-title">
           <div className="renewal-wrap hero-composition">
             <div className="hero-statement">
@@ -164,7 +179,7 @@ export default function Home() {
                 name="treatment-main"
                 caption="自然形体療法の施術風景"
                 priority
-                sizes="(max-width: 1100px) 115vw, 90vw"
+                sizes="(max-width: 1100px) 100vw, 65vw"
               />
               <p className="hero-photo-word">その手で、学びを深める。</p>
               <p className="hero-photo-detail">理論を知る。実技で確かめる。</p>
@@ -194,9 +209,16 @@ export default function Home() {
               </div>
             </dl>
           </div>
+          <nav className="program-shortcuts renewal-wrap" aria-label="プログラムの確認ポイント">
+            <p>気になる内容から確認する</p>
+            <ul>
+              <li><a href="#training">研修内容<span aria-hidden="true">↓</span></a></li>
+              <li><a href="#instructors">講師・映像紹介<span aria-hidden="true">↓</span></a></li>
+              <li><a href="#courses">受講料金<span aria-hidden="true">↓</span></a></li>
+              <li><a href="#faq">よくある質問<span aria-hidden="true">↓</span></a></li>
+            </ul>
+          </nav>
         </section>
-
-        <FirstCohortCallout />
 
         <section id="about" className="story-section renewal-about">
           <div className="renewal-wrap editorial-split">
@@ -255,14 +277,7 @@ export default function Home() {
               {features.map(([title, text], i) => (
                 <li key={title}>
                   <span className="perspective-number">0{i + 1}</span>
-                  <span
-                    className={`perspective-mark mark-${i + 1}`}
-                    aria-hidden="true"
-                  >
-                    <i />
-                    <i />
-                    <i />
-                  </span>
+                  <PerspectiveDiagram index={i} />
                   <h3>{title}</h3>
                   <p>{text}</p>
                 </li>
@@ -280,6 +295,7 @@ export default function Home() {
             </SectionHeading>
             <div className="renewal-audience-grid">
               <article>
+                <div className="audience-motif motif-layers" aria-hidden="true"><i /><i /><i /></div>
                 <p className="renewal-kicker">FOR PRACTITIONERS</p>
                 <span className="audience-subject">
                   接骨院・整体院などで施術を行っている方へ
@@ -294,6 +310,7 @@ export default function Home() {
                 </p>
               </article>
               <article>
+                <div className="audience-motif motif-origin" aria-hidden="true"><i /><i /><i /></div>
                 <p className="renewal-kicker">FOR BEGINNERS</p>
                 <span className="audience-subject">
                   これから施術を学びたい方へ
@@ -374,15 +391,23 @@ export default function Home() {
 
         <section id="training" className="story-section renewal-training">
           <div className="renewal-wrap">
+            <div className="training-section-intro">
+              <SectionHeading number="06" english="INSIDE THE TRAINING">
+                技術を、目で見て、
+                <br />
+                手で感じる。
+              </SectionHeading>
+              <p className="section-side-copy">対面で手を動かす実技と、<br />オンラインで理解を深める理論。<br />二つの学びを、毎月重ねていきます。</p>
+            </div>
+            <div className="training-format-key" aria-label="二つの研修形式">
+              <p><span>01 / 実技</span><strong>対面で学ぶ</strong><small>月1回 · 9:00〜17:00</small></p>
+              <span className="format-plus" aria-hidden="true">＋</span>
+              <p><span>02 / 理論</span><strong>オンラインで学ぶ</strong><small>月1回 · 1回2時間</small></p>
+            </div>
             <article className="training-story">
               <div className="training-practical-details">
-                <SectionHeading number="06" english="INSIDE THE TRAINING">
-                  技術を、目で見て、
-                  <br />
-                  手で感じる。
-                </SectionHeading>
                 <div className="training-story-copy">
-                  <p className="renewal-kicker">PRACTICAL TRAINING</p>
+                  <p className="renewal-kicker"><span className="training-label">対面 / 実技</span> PRACTICAL TRAINING</p>
                   <h3>
                     身体で確かめる、
                     <br />
@@ -420,16 +445,13 @@ export default function Home() {
                   sizes="(max-width: 900px) calc(100vw - 40px), (max-width: 1392px) 50vw, 680px"
                 />
                 <div className="training-secondary-photo">
-                  <ProgramPhoto
-                    name="practical-observation"
-                    caption="手の位置や身体への触れ方を確認する様子"
-                  />
+                  <HomepageTrainingPhoto name="observation" />
                 </div>
               </div>
             </article>
             <article className="training-story theory-story">
               <div className="training-story-copy">
-                <p className="renewal-kicker">THEORETICAL TRAINING</p>
+                <p className="renewal-kicker"><span className="training-label">オンライン / 理論</span> THEORETICAL TRAINING</p>
                 <h3>
                   その技術の、
                   <br />
@@ -480,20 +502,13 @@ export default function Home() {
                 </h3>
                 <p>機会によっては、実際の施術を見学できる場合もあります。</p>
                 <p className="renewal-note">
-                  施術見学は確約されたカリキュラムではありません。公開施術の開催日・場所・実施者・参加条件、本プログラムへの参加・見学等の包含は未確定です。
+                  施術見学は確約されたカリキュラムではありません。開催日・場所・実施者・参加条件、本プログラムへの包含は確認後にご案内します。
                 </p>
               </div>
-              <ProgramPhoto
-                name="group-guidance"
-                caption="研修での指導・学び合いの雰囲気"
-              />
+              <HomepageTrainingPhoto name="guidance" />
             </div>
           </div>
         </section>
-
-        <div className="renewal-wrap training-consultation">
-          <ConsultationCallout text="研修内容や学び方について、気になることをお電話でご相談ください。" />
-        </div>
 
         <section id="roadmap" className="story-section renewal-roadmap">
           <div className="renewal-wrap">
@@ -515,20 +530,24 @@ export default function Home() {
                   <p className="renewal-kicker">STEP {c.step}</p>
                   <h3>{c.title}</h3>
                   <p className="step-english">{c.english}</p>
-                  <p className="step-description">{c.text}</p>
+                  <p className="step-description"><strong>{c.lead}</strong>{c.text}</p>
                   <p className="step-period">
-                    受講期間 <strong>6</strong> ヶ月
+                    受講期間 <strong>6ヶ月</strong>
                   </p>
+                  <a className="step-fee-link" href={`#tuition-${c.step}`}>
+                    {c.title}の料金を見る <span aria-hidden="true">↓</span>
+                  </a>
                 </li>
               ))}
             </ol>
+            <a className="roadmap-fee-link" href="#courses">各コースの料金を確認する <span aria-hidden="true">↓</span></a>
             <div className="roadmap-common">
               <p>各コース共通</p>
               <span>実技：月1回・対面 9:00〜17:00</span>
               <span>理論：月1回・オンライン 1回2時間</span>
             </div>
             <p className="renewal-note">
-              各コースの受講期間の合算は18ヶ月です。連続開講時期は未確認のため、18ヶ月での資格取得を確約するものではありません。各研修6回は月1回×6ヶ月で算出した目安です。正式な開催日程・振替、詳しいカリキュラム・認定基準・進級条件は確認中です。
+              3コースの受講期間合計は18ヶ月ですが、連続開講時期は未確認のため、18ヶ月での資格取得を確約するものではありません。開催日程・振替、カリキュラム・認定基準・進級条件は確認後にご案内します。
             </p>
             <ConsultationCallout text="ご自身の経験や学びたいことを、受講相談でお聞かせください。" />
           </div>
@@ -547,7 +566,7 @@ export default function Home() {
                 <ProgramPhoto
                   name="instructor-portrait"
                   caption={instructorProfile.displayName}
-                  sizes="(max-width: 700px) 160vw, 1080px"
+                  sizes="(max-width: 700px) calc(100vw - 40px), 520px"
                 />
                 <ProgramPhoto
                   name="speaker-message"
@@ -555,8 +574,11 @@ export default function Home() {
                 />
               </div>
             </div>
+            <InstructorEvidence />
           </div>
         </section>
+
+        <InstagramSection />
 
         <section id="future" className="story-section renewal-future">
           <div className="renewal-wrap future-composition">
@@ -579,6 +601,10 @@ export default function Home() {
               {future.map(([title, text], i) => (
                 <li key={title}>
                   <span>0{i + 1}</span>
+                  {i === 0 && <svg className="future-branches" viewBox="0 0 180 100" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M22 50h38c30 0 30-32 60-32h36M60 50h96M60 50c30 0 30 32 60 32h36" />
+                    <circle cx="22" cy="50" r="5" /><circle cx="156" cy="18" r="4" /><circle cx="156" cy="50" r="4" /><circle cx="156" cy="82" r="4" />
+                  </svg>}
                   <div>
                     <h3>{title}</h3>
                     <p>{text}</p>
@@ -608,33 +634,12 @@ export default function Home() {
             </div>
             <div className="tuition-courses">
               {courses.map((c) => (
-                <article key={c.step} className="tuition-course">
+                <article key={c.step} id={`tuition-${c.step}`} className="tuition-course">
                   <div>
                     <p className="renewal-kicker">STEP {c.step}</p>
                     <h3>{c.title}</h3>
                   </div>
-                  <dl>
-                    <div>
-                      <dt>受講期間</dt>
-                      <dd>6ヶ月</dd>
-                    </div>
-                    <div>
-                      <dt>実技研修</dt>
-                      <dd>
-                        月1回・対面
-                        <br />
-                        9:00〜17:00
-                      </dd>
-                    </div>
-                    <div>
-                      <dt>理論研修</dt>
-                      <dd>
-                        月1回・オンライン
-                        <br />
-                        1回2時間
-                      </dd>
-                    </div>
-                  </dl>
+                  <p className="tuition-duration">受講期間 <strong>6ヶ月</strong></p>
                   <div className="tuition-amount">
                     <span>受講料 / 1コース</span>
                     <p>
@@ -644,6 +649,11 @@ export default function Home() {
                   </div>
                 </article>
               ))}
+            </div>
+            <div className="tuition-shared">
+              <p className="renewal-kicker">各コース共通の研修</p>
+              <p><strong>実技</strong>月1回・対面 9:00〜17:00</p>
+              <p><strong>理論</strong>月1回・オンライン 1回2時間</p>
             </div>
             <div className="tuition-total">
               <p>3コースすべての受講料合計</p>
@@ -666,28 +676,31 @@ export default function Home() {
               </p>
             </div>
             <ConsultationCallout text="受講内容や料金について、気になる点をご相談ください。" />
+            <a className="renewal-text-link" href="#faq">
+              料金・支払いについてのFAQを見る <span aria-hidden="true">↓</span>
+            </a>
             <div className="renewal-flow">
               <div className="flow-title">
-                <h3>受講までの流れ</h3>
-                <span>以下は仮案です</span>
+                <h3>受講前に確認すること</h3>
+                <span>相談前の確認ポイント</span>
               </div>
               <ol>
                 {[
                   [
-                    "お問い合わせ",
-                    "まずはプログラムへの関心や、ご質問をお寄せいただく流れを想定しています。",
+                    "研修の学び方",
+                    "月1回の対面実技とオンライン理論で、どのように学ぶかをご確認ください。",
                   ],
                   [
-                    "受講内容の確認",
-                    "研修内容・開催日程・受講条件などの詳細をご確認いただきます。",
+                    "復習と質問",
+                    "復習用動画と研修日以外の質問対応があります。利用条件は確認後にご案内します。",
                   ],
                   [
-                    "お申込み手続き",
-                    "内容や規約にご同意のうえ、正式なお申し込みへ進みます。",
+                    "受講期間・料金",
+                    "各コース6ヶ月の受講期間と料金、受講料以外の費用の確認事項をご覧ください。",
                   ],
                   [
-                    "受講開始",
-                    "受講に必要な準備をご案内し、研修の開始を迎えます。",
+                    "受講条件",
+                    "受講要件・認定基準・進級条件は確認後にご案内します。気になる点は電話でご相談ください。",
                   ],
                 ].map(([title, text], i) => (
                   <li key={title}>
@@ -697,9 +710,7 @@ export default function Home() {
                   </li>
                 ))}
               </ol>
-              <p className="renewal-note">
-                正式な受付・申し込み手順は未確定です。上記はご案内の構成案であり、現在のお申し込み受付を示すものではありません。
-              </p>
+              <p className="renewal-note">このサイトでは、正式な受講申込み・決済は受け付けていません。</p>
             </div>
             <div className="tuition-information">
               <p>お申し込み前にご確認いただく情報</p>
@@ -748,7 +759,7 @@ export default function Home() {
               次の一歩に。
             </h2>
             <p>
-              受講相談・資料請求・プログラムへのご質問をお寄せください。
+              受講内容や研修についてのご質問は、お電話でご相談ください。
               <br />
               正式な受講申込みや決済のお手続きではありません。
             </p>
@@ -773,6 +784,11 @@ export default function Home() {
                 <p>
                   お問い合わせだけで正式な受講申込みや決済が行われることはありません。
                 </p>
+                <ul className="consultation-topics" aria-label="相談前に確認できる内容">
+                  <li><a href="#training">実技・理論の学び方を確認する</a></li>
+                  <li><a href="#roadmap">資格取得のステップを確認する</a></li>
+                  <li><a href="#courses">各コースの受講料金を確認する</a></li>
+                </ul>
                 <LineConsultationLink />
                 {!getOfficialLineUrl() && (
                   <p className="renewal-note line-preparing">
@@ -794,12 +810,25 @@ export default function Home() {
               "@graph": [
                 {
                   "@type": "WebSite",
+                  "@id": `${SITE_URL}/#website`,
                   name: SITE_NAME,
                   url: SITE_URL,
                   inLanguage: "ja",
+                  publisher: { "@id": `${SITE_URL}/#organization` },
+                },
+                {
+                  "@type": "WebPage",
+                  "@id": `${SITE_URL}/#webpage`,
+                  name: SITE_NAME,
+                  url: SITE_URL,
+                  description: SITE_DESCRIPTION,
+                  inLanguage: "ja",
+                  isPartOf: { "@id": `${SITE_URL}/#website` },
+                  publisher: { "@id": `${SITE_URL}/#organization` },
                 },
                 {
                   "@type": "Organization",
+                  "@id": `${SITE_URL}/#organization`,
                   name: operator.name,
                   url: SITE_URL,
                   telephone: CONTACT_PHONE,
@@ -853,10 +882,10 @@ export default function Home() {
           <InformationLinks />
           <div className="footer-bottom">
             <p>© {new Date().getFullYear()} TSUNAGi Co., Ltd.</p>
-            <p>デザイン試作版 · 掲載内容には確認中の情報が含まれます</p>
           </div>
         </div>
       </footer>
+      {measurementId && <AnalyticsConsent measurementId={measurementId} />}
       <nav className="mobile-consult-bar" aria-label="スマートフォンの受講相談">
         <a
           href={CONTACT_TEL}

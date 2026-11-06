@@ -1,0 +1,10 @@
+{
+  "environment": "local production build with indexing enabled",
+  "cohortStatus": 404,
+  "robotsHeader": "noindex, nofollow",
+  "cohortContentAbsent": true,
+  "homepageStatus": 200,
+  "homepageRecruitmentLinkAbsent": true,
+  "publicSitemapExcludesRecruitment": true,
+  "robotsDisallowsRecruitment": true
+}

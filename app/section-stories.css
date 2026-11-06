@@ -1,0 +1,109 @@
+/* Three homepage stories, each with its own reading rhythm. No shared shell changes. */
+.homepage-quality #features .perspective-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 44px;
+}
+.homepage-quality #features .perspective-grid li {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr) 120px;
+  grid-template-rows: auto 1fr;
+  gap: 12px 20px;
+  align-items: start;
+  padding: 32px;
+  border: 1px solid #dbc89a60;
+  background: #173c32;
+  min-width: 0;
+  position: relative;
+}
+.homepage-quality #features .perspective-grid li:nth-child(2),
+.homepage-quality #features .perspective-grid li:nth-child(3) { background: #1c4439; }
+.homepage-quality #features .perspective-number { grid-row: 1 / 3; font-size: 48px; line-height: 1; padding-top: 4px; }
+.homepage-quality #features .perspective-grid h3 { grid-column: 2; margin: 0; font-size: 23px; line-height: 1.7; text-wrap: initial; }
+.homepage-quality #features .perspective-grid p { grid-column: 2; margin: 0; font-size: 14px; line-height: 2; text-wrap: pretty; }
+.homepage-quality #features .perspective-diagram { grid-column: 3; grid-row: 1 / 3; align-self: center; width: 100%; max-width: 100%; height: auto; color: #d4dfd2; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.homepage-quality #features .diagram-accent { stroke: #dbc89a; }
+
+/* Audience: an anchored editorial panel and a lighter, offset companion. */
+.homepage-quality #audience .renewal-audience-grid { grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: start; margin-top: 40px; }
+.homepage-quality #audience .renewal-audience-grid article { display: block; position: relative; isolation: isolate; overflow: hidden; padding: 42px; border: 1px solid #c5c7b7; background: #f8f7f2; color: #263c34; }
+.homepage-quality #audience .renewal-audience-grid article:first-child { background: #173f35; color: #fff; border-color: #173f35; }
+.homepage-quality #audience .renewal-audience-grid article:nth-child(2) { margin-top: 72px; }
+.homepage-quality #audience .renewal-kicker { position: relative; color: #806636; margin-bottom: 20px; font-size: 11px; }
+.homepage-quality #audience article:first-child .renewal-kicker { color: #dbc89a; }
+.homepage-quality #audience .audience-subject { display: block; max-width: 23em; margin: 0; padding-top: 20px; border-top: 1px solid #b5baa5; color: #58675e; font-size: 13px; }
+.homepage-quality #audience article:first-child .audience-subject { color: #d4dfd2; border-color: #dbc89a70; }
+.homepage-quality #audience .renewal-audience-grid h3 { font-size: clamp(27px, 2.6vw, 38px); line-height: 1.65; margin: 32px 0 24px; text-wrap: initial; position: relative; }
+.homepage-quality #audience .renewal-audience-grid article > p:last-child { max-width: 30em; line-height: 2.1; font-size: 15px; position: relative; }
+.homepage-quality #audience article:first-child > p:last-child { color: #d4dfd2; }
+.homepage-quality #audience .audience-closing { margin: 28px 0 0; padding: 24px 0 0 24px; border-top: 1px solid #bcbba9; border-left: 2px solid #806636; color: #455b4b; max-width: 55em; }
+.homepage-quality #audience .audience-motif { position: relative; height: 64px; width: 104px; margin: 0 0 32px auto; color: #dbc89a; }
+.homepage-quality #audience .audience-motif i { display: block; position: absolute; width: 70px; height: 38px; border: 1px solid currentColor; transform: skewY(-15deg); }
+.homepage-quality #audience .motif-layers i:nth-child(1) { top: 0; left: 0; }
+.homepage-quality #audience .motif-layers i:nth-child(2) { top: 12px; left: 14px; }
+.homepage-quality #audience .motif-layers i:nth-child(3) { top: 24px; left: 28px; }
+.homepage-quality #audience .motif-origin { color: #806636; }
+.homepage-quality #audience .motif-origin i { width: 60px; height: 60px; border-radius: 50%; transform: none; top: 0; left: 20px; }
+.homepage-quality #audience .motif-origin i:nth-child(2) { width: 36px; height: 36px; top: 12px; left: 32px; }
+.homepage-quality #audience .motif-origin i:nth-child(3) { width: 8px; height: 8px; top: 26px; left: 46px; background: currentColor; }
+
+/* Future: a five-part mosaic. These are possibilities, not stages or promises. */
+.homepage-quality #future .section-heading .eyebrow { color: #765e30; }
+.homepage-quality #future .future-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; border: 0; }
+.homepage-quality #future .future-list li { display: flex; flex-direction: column; align-items: stretch; gap: 24px; padding: 28px; background: #f8f7f2; border: 1px solid #bec6b3; min-width: 0; }
+.homepage-quality #future .future-list li:first-child { grid-row: span 2; background: #173f35; color: #fff; padding: 36px; justify-content: space-between; }
+.homepage-quality #future .future-list li:last-child { grid-column: auto; }
+.homepage-quality #future .future-list li > span { font: 34px/1 Georgia, serif; color: #806636; margin: 0; width: 100%; padding-bottom: 18px; border-bottom: 1px solid #c5cbb9; }
+.homepage-quality #future .future-list li:first-child > span { color: #dbc89a; font-size: 70px; border-color: #dbc89a70; }
+.homepage-quality #future .future-list h3 { font-size: 22px; line-height: 1.65; text-wrap: balance; }
+.homepage-quality #future .future-list li:first-child h3 { font-size: clamp(26px, 2vw, 30px); text-wrap: balance; }
+.homepage-quality #future .future-list p { font-size: 14px; line-height: 2; margin-top: 16px; }
+.homepage-quality #future .future-list li:first-child p { color: #d4dfd2; }
+.homepage-quality #future .future-branches { display: block; width: 100%; max-height: 140px; min-height: 72px; stroke: #dbc89a; stroke-width: 1.5; stroke-linecap: round; }
+.homepage-quality #future .future-note { font-size: 13px; line-height: 2; }
+
+@media (max-width: 1200px) {
+  .homepage-quality #features .perspective-grid li { grid-template-columns: 56px minmax(0, 1fr); padding: 28px; gap: 16px; }
+  .homepage-quality #features .perspective-diagram { grid-column: 2; grid-row: 1; width: 140px; justify-self: end; margin-bottom: 8px; }
+  .homepage-quality #features .perspective-number { grid-row: 1; }
+  .homepage-quality #features .perspective-grid h3 { grid-column: 1 / -1; grid-row: 2; }
+  .homepage-quality #features .perspective-grid p { grid-column: 1 / -1; grid-row: 3; }
+  .homepage-quality #audience .renewal-audience-grid article { padding: 32px; }
+  .homepage-quality #future .future-list li, .homepage-quality #future .future-list li:first-child { padding: 26px; }
+}
+@media (max-width: 900px) {
+  .homepage-quality #audience .renewal-audience-grid { gap: 20px; grid-template-columns: 1fr 1fr; }
+  .homepage-quality #audience .renewal-audience-grid article { padding: 28px; }
+  .homepage-quality #audience .renewal-audience-grid h3 { font-size: 26px; }
+  .homepage-quality #future .future-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .homepage-quality #future .future-list li:first-child { grid-column: 1 / -1; grid-row: auto; display: grid; grid-template-columns: 64px 100px minmax(0, 1fr); align-items: start; gap: 20px; }
+  .homepage-quality #future .future-list li:first-child > span { font-size: 56px; border: 0; padding: 0; }
+}
+@media (max-width: 600px) {
+  .homepage-quality #features .perspective-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 32px; }
+  .homepage-quality #features .perspective-grid li { grid-template-columns: 48px minmax(0, 1fr); gap: 16px 20px; padding: 24px; }
+  .homepage-quality #features .perspective-number { font-size: 42px; }
+  .homepage-quality #features .perspective-diagram { width: 112px; }
+  .homepage-quality #features .perspective-grid h3 { font-size: 23px; text-wrap: balance; }
+  .homepage-quality #features .perspective-grid p { font-size: 15px; }
+  .homepage-quality #audience .renewal-audience-grid { grid-template-columns: 1fr; gap: 20px; margin-top: 32px; }
+  .homepage-quality #audience .renewal-audience-grid article { padding: 28px; }
+  .homepage-quality #audience .renewal-audience-grid article:nth-child(2) { margin-top: 0; margin-left: 20px; }
+  .homepage-quality #audience .renewal-audience-grid h3 { font-size: clamp(24px, 6.8vw, 30px); }
+  .homepage-quality #audience .audience-motif { height: 60px; margin-bottom: 24px; }
+  .homepage-quality #audience .audience-closing { font-size: 14px; padding-left: 18px; }
+  .homepage-quality #future .future-list { grid-template-columns: 1fr; gap: 12px; }
+  .homepage-quality #future .future-list li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 20px; padding: 24px 20px; }
+  .homepage-quality #future .future-list li:first-child { grid-template-columns: 64px minmax(0, 1fr); gap: 24px; padding: 28px; }
+  .homepage-quality #future .future-list li > span { width: auto; border: 0; padding: 0; font-size: 26px; }
+  .homepage-quality #future .future-list li:first-child > span { font-size: 56px; padding: 0; border: 0; }
+  .homepage-quality #future .future-list li:first-child > div { grid-column: 1 / -1; }
+  .homepage-quality #future .future-list h3 { font-size: 21px; }
+  .homepage-quality #future .future-list p { font-size: 15px; margin-top: 12px; }
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) {
+  .homepage-quality #features .perspective-grid li { transition: border-color .25s ease; }
+  .homepage-quality #features .perspective-grid li:hover { border-color: #dbc89a; }
+  .homepage-quality #future .future-list li:not(:first-child) { transition: background-color .25s ease; }
+  .homepage-quality #future .future-list li:not(:first-child):hover { background: #fff; }
+}

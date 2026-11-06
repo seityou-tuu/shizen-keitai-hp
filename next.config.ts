@@ -3,6 +3,7 @@ import { isSearchIndexingEnabled } from "./lib/site-config";
 const config: NextConfig = {
   async headers() {
     return [
+      { source: "/recruitment/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] },
       {
         source: "/:path*",
         headers: [

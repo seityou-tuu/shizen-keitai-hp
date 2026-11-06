@@ -1,4 +1,69 @@
 /* Recruitment surfaces are scoped; the existing hero and twelve sections keep their design. */
+.recruitment-page .cohort-hero-grid .cohort-hero-heading h1 { font-size: clamp(30px, 3.8vw, 50px); }
+.recruitment-page .cohort-hero-grid .cohort-hero-photo { grid-row: 1 / span 3; }
+.recruitment-page .cohort-hero-grid .cohort-hero-details { grid-row: 3; }
+.recruitment-page .cohort-launch-facts { grid-column: 1; grid-row: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding-top: 28px; border-top: 1px solid #dbc89a70; margin: 0; }
+.recruitment-page .cohort-launch-facts > div { padding-left: 20px; border-left: 1px solid #dbc89a60; min-width: 0; }
+.recruitment-page .cohort-launch-facts dt { color: #c9d6cb; font-size: 12px; margin-bottom: 8px; }
+.recruitment-page .cohort-launch-facts dd { margin: 0; font-size: 18px; line-height: 1.8; }
+.recruitment-page .cohort-launch-facts dd span { color: #dbc89a; font-size: 26px; margin-left: 8px; }
+.recruitment-page .cohort-launch-facts dd strong { color: #dbc89a; font-size: 24px; font-weight: 500; }
+.recruitment-page .cohort-launch-facts small { display: block; color: #c9d6cb; font-size: 12px; }
+.recruitment-page .cohort-overview-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 36px 0 0; border-top: 1px solid #a4af9b; }
+.recruitment-page .cohort-overview-facts > div { padding: 22px 20px 22px 0; border-bottom: 1px solid #ccd2c2; }
+.recruitment-page .cohort-overview-facts dt { color: #58675e; font-size: 12px; margin-bottom: 8px; }
+.recruitment-page .cohort-overview-facts dd { margin: 0; font-size: 16px; }
+.recruitment-page .cohort-overview-facts a { display: flex; min-height: 44px; align-items: center; text-decoration: underline; font-size: 14px; text-underline-offset: 4px; }
+.recruitment-page .cohort-instructor { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; border-top: 1px solid #c5cbbb; }
+.recruitment-page .cohort-instructor .instructor-name { font-size: 30px; margin-bottom: 20px; }
+.recruitment-page .cohort-instructor .instructor-details { margin-top: 24px; }
+.recruitment-page .cohort-venue-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 36px 0 20px; }
+.recruitment-page .cohort-venue-tabs :is(button,a) { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4px; min-height: 72px; padding: 14px; border: 1px solid #9ca98e; background: #f8f7f2; color: #173f35; font-size: 16px; cursor: pointer; }
+.recruitment-page .cohort-venue-tabs span { font-size: 11px; }
+.recruitment-page .cohort-venue-tabs [aria-selected="true"] { background: #173f35; color: #fff; border-color: #173f35; box-shadow: inset 0 -4px #dbc89a; }
+.recruitment-page .cohort-venue-tabs button:focus-visible, .recruitment-page .cohort-venue-panel:focus-visible { outline: 3px solid #765e30; outline-offset: 4px; }
+.recruitment-page .cohort-selection { font-size: 13px; color: #455b4b; margin-bottom: 16px; }
+.recruitment-page .cohort-venue-panel { padding: 32px; background: #f8f7f2; border: 1px solid #b8c1ad; scroll-margin-top: 120px; }
+.recruitment-page .cohort-venue-heading { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid #c8cebd; }
+.recruitment-page .cohort-venue-heading h3 { font-size: 30px; margin-top: 8px; }
+.recruitment-page .cohort-venue-heading strong { font: 42px/1.4 Georgia, serif; color: #765e30; margin-left: 8px; }
+.recruitment-page .cohort-session-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; list-style: none; padding: 0; margin: 0 0 24px; }
+.recruitment-page .cohort-session-list li { padding: 18px; background: #e9ede2; border-top: 2px solid #a68b58; }
+.recruitment-page .cohort-session-list span { display: block; color: #58675e; font-size: 12px; margin-bottom: 8px; }
+.recruitment-page .cohort-session-list time { font-size: 22px; font-family: "Yu Mincho", serif; color: #173f35; white-space: nowrap; }
+.recruitment-page .compare-venues { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.recruitment-page .compare-venues .cohort-venue-panel { padding: 24px; }
+.recruitment-page .compare-venues .cohort-venue-heading { display: block; }
+.recruitment-page .compare-venues .cohort-session-list { grid-template-columns: 1fr; gap: 12px; }
+.recruitment-page .compare-venues .cohort-session-list li { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.recruitment-page .compare-venues .cohort-session-list span { margin: 0; }
+.recruitment-page .compare-venues .cohort-session-list time { font-size: 18px; }
+.recruitment-page .cohort-schedule-switcher > .recruitment-note { margin-top: 24px; }
+@media (max-width: 900px) {
+  .recruitment-page .cohort-launch-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .recruitment-page .cohort-hero-grid .cohort-launch-facts { grid-row: 2; }
+  .recruitment-page .cohort-hero-grid .cohort-hero-photo { grid-row: 3; }
+  .recruitment-page .cohort-hero-grid .cohort-hero-details { grid-row: 4; }
+  .recruitment-page .cohort-instructor { grid-template-columns: 1fr; gap: 16px; }
+  .recruitment-page .compare-venues { grid-template-columns: 1fr; }
+  .recruitment-page .compare-venues .cohort-session-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .recruitment-page .cohort-launch-facts { gap: 24px 12px; }
+  .recruitment-page .cohort-launch-facts > div { padding-left: 12px; }
+  .recruitment-page .cohort-launch-facts dd { font-size: 15px; }
+  .recruitment-page .cohort-launch-facts dd span { font-size: 24px; }
+  .recruitment-page .cohort-overview-facts { grid-template-columns: 1fr; }
+  .recruitment-page .cohort-venue-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .recruitment-page .cohort-venue-tabs :is(button,a) { min-height: 64px; font-size: 15px; }
+  .recruitment-page .cohort-venue-panel, .recruitment-page .compare-venues .cohort-venue-panel { padding: 20px; }
+  .recruitment-page .cohort-venue-heading { gap: 12px; }
+  .recruitment-page .cohort-venue-heading h3 { font-size: 26px; }
+  .recruitment-page .cohort-session-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .recruitment-page .cohort-session-list li { padding: 14px 10px; }
+  .recruitment-page .cohort-session-list time { font-size: 18px; }
+  .recruitment-page .compare-venues .cohort-session-list { grid-template-columns: 1fr; }
+}
 .recruitment-wrap { width: min(1080px, calc(100% - 80px)); margin-inline: auto; }
 .recruitment-page { padding-top: 94px; color: #263c34; background: #f8f7f2; font-size: 15px; line-height: 2; overflow-wrap: anywhere; }
 .recruitment-page h1, .recruitment-page h2, .recruitment-page h3 { text-wrap: balance; }

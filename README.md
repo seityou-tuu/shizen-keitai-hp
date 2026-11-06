@@ -41,6 +41,8 @@ npm run dev
 
 canonical・OGPは正式URLへ統一。favicon、robots.txt、sitemap.xmlを用意しています。プレビューは常にnoindexです。本番も現在の検索登録停止を初期値として維持しています。法定情報・公開準備の確認後、検索登録を希望する場合はVercelのProductionのみ`SITE_INDEXING_ENABLED=true`にして再デプロイします。雛形は[.env.example](.env.example)です。
 
+GA4・Search Consoleは現在未設定です。正式ID・Production・運営者による有効化・訪問者の許可が揃うまで解析を開始しない準備実装を用意しています。有効化前に[設定手順とプライバシー確認](docs/analytics-search-console-setup.md)を確認してください。[今回の品質改善と検証記録](docs/pr14-review/README.md)も参照できます。
+
 ## 管理用資料
 
 - [決済審査の確認リスト](docs/payment-review-checklist.md)

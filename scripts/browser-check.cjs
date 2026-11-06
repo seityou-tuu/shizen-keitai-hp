@@ -25,7 +25,6 @@ if (out) fs.mkdirSync(out, { recursive: true });
       "Local Chromium, DPR 1, reduced motion, no CPU/network throttling, single navigation per width; not field or iPhone Safari data",
     widths: [],
     routes: [],
-    recruitmentWidths: [],
     externalRequests: [],
     errors: [],
   };
@@ -66,11 +65,24 @@ if (out) fs.mkdirSync(out, { recursive: true });
       assert.equal(await page.locator('img:not([alt]), img[alt=""]').count(), 0);
 
       assert.match(response.headers()["x-robots-tag"], /noindex/);
+      assert.equal(await page.locator(".analytics-consent").count(), 0, "analytics must stay absent without approved settings");
+      assert.equal(await page.locator('script[src*="googletagmanager.com"],meta[name="google-site-verification"]').count(), 0);
+      assert.ok(!(await page.locator(".footer-bottom").innerText()).includes("デザイン試作版"));
+      assert.ok(!(await page.locator("#contact").innerText()).includes("資料請求"));
+      assert.equal(await page.locator("#courses a[href='#faq']").count(), 1);
+      const graph = await page.locator('script[type="application/ld+json"]').evaluate(el => JSON.parse(el.textContent)["@graph"]);
+      const webpage = graph.find(item => item["@type"] === "WebPage");
+      assert.equal(webpage.url, "https://shizen-keitai-hp.vercel.app");
+      assert.ok(graph.some(item => item["@id"] === webpage.isPartOf["@id"]));
+      assert.ok(graph.some(item => item["@id"] === webpage.publisher["@id"]));
+      assert.ok(!graph.some(item => ["Review", "AggregateRating", "Course", "MedicalBusiness"].includes(item["@type"])));
       await page.waitForTimeout(150);
       const profileText = await page.locator("#instructors .instructor-details").innerText();
-      for (const fact of ["柔道整復師（2012年取得）", "2017年 ながとも整骨院開院", "15年", "自然形体療法 理事", "YouTube総再生回数220万回", "2024年 FANCHANNEL グランプリ"]) {
+      for (const fact of ["柔道整復師（2012年取得）", "2017年 ながとも整骨院開院", "15年", "自然形体療法 理事"]) {
         assert.equal(profileText.split(fact).length - 1, 1, `profile fact at ${width}: ${fact}`);
       }
+      assert.ok(!profileText.includes("220万"));
+      assert.ok(!profileText.includes("2024年"));
       assert.ok(await page.locator("#about .section-heading, #about h2").evaluateAll(nodes => nodes.every(el => getComputedStyle(el).animationName === "none")), "reduced-motion headings must not animate");
       const initial = await page.evaluate(() => ({
         ...window.__qaMetrics,
@@ -96,6 +108,9 @@ if (out) fs.mkdirSync(out, { recursive: true });
           ".renewal-faq-list h3",
           ".contact-phone",
           ".home-footer .eyebrow",
+          ".instagram-eyebrow",
+          ".instagram-description",
+          ".instagram-note",
         ].map((selector) => {
           const element = document.querySelector(selector);
           const foreground = rgb(getComputedStyle(element).color);
@@ -181,9 +196,13 @@ if (out) fs.mkdirSync(out, { recursive: true });
       ]) {
         if (width <= 1100)
           await page.getByRole("button", { name: "メニューを開く" }).click();
-        const link = nav.getByRole("link", { name: label, exact: true });
+        const link = nav.locator("a").filter({ hasText: label });
         const target = new URL(await link.getAttribute("href"), base).hash;
         await link.click();
+        if (width <= 1100) {
+          assert.equal(await page.evaluate(() => document.activeElement.id), target.slice(1), `menu focus for ${label} at ${width}`);
+          assert.equal(await page.getByRole("button", { name: "メニューを開く" }).getAttribute("aria-expanded"), "false");
+        }
         assert.ok(
           page.url().endsWith(target),
           `menu target ${label} at ${width}`,
@@ -211,15 +230,23 @@ if (out) fs.mkdirSync(out, { recursive: true });
       }
       const trainingLayout = await page.locator("#training").evaluate(el => {
         const rect = selector => { const r = el.querySelector(selector).getBoundingClientRect(); return {left:r.left,right:r.right,top:r.top,bottom:r.bottom}; };
-        return {heading:rect(".training-practical-details .section-heading"),photo:rect(".training-main-photo > .program-photo"),copy:rect(".training-practical-details > .training-story-copy"),secondary:rect(".training-secondary-photo")};
+        return {heading:rect(".training-section-intro"),photo:rect(".training-main-photo > .program-photo"),copy:rect(".training-practical-details > .training-story-copy"),secondary:rect(".training-secondary-photo")};
       });
       if (width > 900) {
-        assert.ok(trainingLayout.photo.right < trainingLayout.heading.left, `training must be side by side at ${width}`);
-        assert.ok(Math.abs(trainingLayout.photo.top - trainingLayout.heading.top) < 2, `training heading/photo top alignment at ${width}`);
+        assert.ok(trainingLayout.photo.right < trainingLayout.copy.left, `training must be side by side at ${width}`);
+        assert.ok(trainingLayout.heading.bottom <= trainingLayout.photo.top, `training introduction precedes photos at ${width}`);
       } else {
         assert.ok(trainingLayout.heading.bottom <= trainingLayout.photo.top + 1, `training heading before photo at ${width}`);
         assert.ok(trainingLayout.photo.bottom <= trainingLayout.copy.top + 1, `training copy after photo at ${width}`);
-        assert.ok(trainingLayout.copy.bottom <= trainingLayout.secondary.top + 1, `training secondary after copy at ${width}`);
+        assert.ok(trainingLayout.secondary.bottom <= trainingLayout.copy.top + 1, `training photographs precede copy at ${width}`);
+      }
+      for (const link of await page.locator(".program-shortcuts a, .step-fee-link, .consultation-details-link, .consultation-topics a").all()) {
+        const hash = await link.getAttribute("href");
+        await link.click();
+        assert.ok(page.url().endsWith(hash));
+        const bounds = await page.locator(hash).evaluate(el => ({ top: el.getBoundingClientRect().top, header: document.querySelector(".site-header").getBoundingClientRect().bottom }));
+        assert.ok(bounds.top >= bounds.header - 1, `shortcut target hidden: ${hash} at ${width}`);
+        assert.ok(await link.evaluate(el => el.getBoundingClientRect().height >= 44), `shortcut touch target: ${hash}`);
       }
       const sections = [];
       for (const section of await page.locator("#main > section").all()) {
@@ -231,6 +258,10 @@ if (out) fs.mkdirSync(out, { recursive: true });
             .filter((node) => {
               if (!node.getClientRects().length) return false;
               const rect = node.getBoundingClientRect();
+              const reels = node.closest(".instagram-reels");
+              // Reel cards intentionally scroll inside their own mobile scrollport.
+              if (reels && getComputedStyle(reels).overflowX === "auto")
+                return node.matches("h1,h2,h3,p,dd,dt") && node.scrollWidth > node.clientWidth + 2;
               return (
                 rect.left < -1 ||
                 rect.right > innerWidth + 1 ||
@@ -278,10 +309,11 @@ if (out) fs.mkdirSync(out, { recursive: true });
       for (const href of links) {
         assert.notEqual(href, "#", "ambiguous placeholder anchor");
         if (href.startsWith("tel:")) continue;
+        if (["https://youtu.be/yp_P0a_oedY", "https://youtu.be/yudalXPijCk", "https://www.instagram.com/ngtmyy_1990", "https://www.instagram.com/reel/DcGE2FPKpHz/", "https://www.instagram.com/reel/DcN4DM8K89p/", "https://www.instagram.com/reel/DapZQNvvtVR/"].includes(href)) continue;
         const url = new URL(href, base);
         assert.equal(url.origin, base.origin);
         assert.ok(
-          ["/", "/company", "/legal", "/privacy", "/terms", "/recruitment/first"].includes(
+          ["/", "/company", "/legal", "/privacy", "/terms"].includes(
             url.pathname,
           ),
         );
@@ -300,7 +332,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
         .locator('a[href^="tel:"]')
         .evaluateAll((nodes) => nodes.map((node) => node.getAttribute("href")));
       assert.ok(
-        phones.length >= 7 && phones.every((href) => href === "tel:0985747643"),
+        phones.length >= 6 && phones.every((href) => href === "tel:0985747643"),
       );
       assert.equal(
         await page.locator('a[href*="lin.ee"],a[href*="line.me"]').count(),
@@ -346,37 +378,60 @@ if (out) fs.mkdirSync(out, { recursive: true });
           `footer hidden by sticky CTA at ${width}`,
         );
       }
-      for (const photo of await page.locator(".program-photo img").all()) {
+      for (const photo of await page.locator(".program-photo img, .instructor-evidence img, .instagram-reel-image img").all()) {
         await photo.scrollIntoViewIfNeeded();
         await photo.evaluate((img) => img.decode());
         const ratio = await photo.evaluate((img) => ({
           natural: img.naturalWidth / img.naturalHeight,
+          intrinsic: Number(img.getAttribute("width")) / Number(img.getAttribute("height")),
           fit: getComputedStyle(img).objectFit,
-          name: img.closest("figure").dataset.photo,
+          name: img.closest("figure")?.dataset.photo,
           displayed:
             img.getBoundingClientRect().width /
             img.getBoundingClientRect().height,
         }));
         assert.ok(
-          Math.abs(ratio.natural - ratio.displayed) < 0.015 ||
+          Math.abs(ratio.intrinsic / ratio.displayed - 1) < 0.01 || ratio.fit === "contain" ||
           (ratio.fit === "cover" && ["treatment-main", "instructor-portrait", "practical-hands-on"].includes(ratio.name)),
-          `image distortion or unintended cropping at ${width}`,
+          `image distortion or unintended cropping at ${width}: ${JSON.stringify(ratio)}`,
         );
       }
+      assert.equal(await page.locator(".instagram-reel-image img").count(), 3);
+      assert.equal(await page.locator(".instagram-section iframe").count(), 0);
       assert.equal(await page.locator(".program-photo img").count(), 8);
+      assert.equal(await page.locator(".instructor-evidence img").count(), 3);
+      const evidence = await page.locator(".instructor-evidence").innerText();
+      for (const fact of ["86万回", "132万回", "提供画像の表示時点", "チャンネル全体", "受講生の集合写真ではありません"])
+        assert.ok(evidence.includes(fact), `evidence context at ${width}: ${fact}`);
+      assert.equal(await page.locator(".instructor-evidence iframe").count(), 0);
+      const videoLinks = page.locator(".evidence-video-link");
+      assert.equal(await videoLinks.count(), 2);
+      for (const [count, id] of [["86万回", "yp_P0a_oedY"], ["132万回", "yudalXPijCk"]]) {
+        const video = page.locator(".evidence-video").filter({ hasText: count });
+        const link = video.locator("a");
+        assert.equal(await link.getAttribute("href"), `https://youtu.be/${id}`);
+        assert.equal(await link.getAttribute("target"), "_blank");
+        assert.equal(await link.getAttribute("rel"), "noopener noreferrer");
+        assert.ok(await link.evaluate(el => el.clientWidth >= 44 && el.clientHeight >= 44));
+      }
+      assert.ok(evidence.includes("受賞年・賞の正式名称は確認中です"));
+      const allInstructorText = await page.locator("#instructors").innerText();
+      for (const unconfirmed of ["220万", "2024年", "FANCHANNEL グランプリ"])
+        assert.ok(!allInstructorText.includes(unconfirmed), `unconfirmed assertion at ${width}: ${unconfirmed}`);
+
+
       for (const course of await page.locator(".tuition-course").all()) {
         const text = (await course.innerText()).replace(/\s/g, "");
         for (const value of [
           "990,000円（税込）",
           "税抜900,000円",
           "6ヶ月",
-          "月1回",
-          "9:00〜17:00",
-          "オンライン",
-          "1回2時間",
         ])
           assert.ok(text.includes(value), value);
       }
+      const shared = (await page.locator(".tuition-shared").innerText()).replace(/\s/g, "");
+      for (const value of ["月1回", "9:00〜17:00", "オンライン", "1回2時間"])
+        assert.ok(shared.includes(value), value);
       assert.match(
         await page.locator(".tuition-total").innerText(),
         /2,970,000/,
@@ -433,106 +488,32 @@ if (out) fs.mkdirSync(out, { recursive: true });
       report.routes.push({ route, status: response.status(), passed: true });
     }
     assert.deepEqual(report.externalRequests, []);
-    const recruitment = await browser.newPage({ reducedMotion: "reduce" });
-    recruitment.on("pageerror", error => report.errors.push(error.message));
-    for (const width of [320, 360, 375, 390, 400, 414, 430, 768, 1024, 1440]) {
-      await recruitment.setViewportSize({ width, height: 900 });
-      const response = await recruitment.goto(new URL("/recruitment/first", base).href, { waitUntil: "networkidle" });
-      assert.equal(response.status(), 200);
-      assert.match(response.headers()["x-robots-tag"], /noindex/);
-      assert.equal(await recruitment.locator("h1").count(), 1);
-      assert.equal(await recruitment.locator(".program-photo img").count(), 3);
-      for (const photo of await recruitment.locator(".program-photo img").all()) {
-        await photo.scrollIntoViewIfNeeded();
-        await photo.evaluate(img=>img.decode());
-        assert.ok(await photo.evaluate(img=>Math.abs(img.naturalWidth/img.naturalHeight-img.getBoundingClientRect().width/img.getBoundingClientRect().height)<0.015), `recruitment uncropped photo at ${width}`);
-      }
-      assert.match(await recruitment.locator(".cohort-photo-note").innerText(), /第1期生・第0期生の実施状況を示すものではありません/);
-      assert.equal(await recruitment.locator('link[rel="canonical"]').getAttribute("href"), "https://shizen-keitai-hp.vercel.app/recruitment/first");
-      assert.match(await recruitment.title(), /第1期生/);
-      assert.equal(await recruitment.locator("form,input,textarea").count(), 0);
-      assert.equal(await recruitment.locator('a[href*="line.me"],a[href*="lin.ee"]').count(), 0);
-      assert.match(await recruitment.locator(".recruitment-status").innerText(), /募集準備中/);
-      assert.ok(!(await recruitment.locator("main").innerText()).includes("募集受付中"));
-      assert.ok(await recruitment.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `recruitment overflow at ${width}`);
-      const clipped = await recruitment.locator("main h1,main h2,main h3,main p,main a,main dd,main dt").evaluateAll(nodes => nodes.filter(el => { const r=el.getBoundingClientRect(); return r.left < -1 || r.right > innerWidth+1 || el.scrollWidth > el.clientWidth+2; }).map(el=>el.textContent));
-      assert.deepEqual(clipped, [], `recruitment text clipping at ${width}`);
-      const cohortMenu = recruitment.locator(width <= 1100 ? ".site-header .mobile-nav" : ".site-header .desktop-nav");
-      for (const [label, hash] of [["研修内容","#cohort-learning"],["募集情報","#cohort-schedule"],["受講料金","#cohort-tuition"],["よくある質問","#cohort-faq"],["お問い合わせ","#cohort-contact"]]) {
-        if (width <= 1100) await recruitment.getByRole("button",{name:"メニューを開く"}).click();
-        const link=cohortMenu.getByRole("link",{name:label,exact:true});
-        assert.equal(await link.getAttribute("href"),hash);
-        await link.click();
-        assert.equal(new URL(recruitment.url()).pathname,"/recruitment/first",`cohort menu left the page at ${width}: ${label}`);
-        assert.equal(new URL(recruitment.url()).hash,hash);
-        assert.ok(await recruitment.locator(hash).evaluate(el=>el.getBoundingClientRect().top>=document.querySelector(".site-header").getBoundingClientRect().bottom-1),`cohort menu hidden heading at ${width}`);
-        if (width <= 1100) assert.equal(await recruitment.getByRole("button",{name:"メニューを開く"}).getAttribute("aria-expanded"),"false");
-      }
-      assert.equal(await cohortMenu.locator('a[href="/#about"]').getAttribute("href"),"/#about");
-      const cohortDestinations=await recruitment.locator('a[href]').evaluateAll(nodes=>nodes.map(el=>el.getAttribute("href")));
-      const allowedCohortLinks=new Set(["/","/#about","/company","/legal","/privacy","/terms","tel:0985747643","#recruitment-main","#cohort-learning","#cohort-schedule","#cohort-tuition","#cohort-faq","#cohort-contact"]);
-      assert.ok(cohortDestinations.every(href=>allowedCohortLinks.has(href)), `unexpected recruitment link at ${width}`);
-      for (const link of await recruitment.locator('main a[href^="#"], .recruitment-contact-bar a[href^="#"]').all()) {
-        const hash=await link.getAttribute("href");
-        if (!(await link.isVisible())) continue;
-        await link.click();
-        assert.equal(new URL(recruitment.url()).pathname,"/recruitment/first");
-        assert.equal(new URL(recruitment.url()).hash,hash);
-      }
-      for (const link of await recruitment.locator(".recruitment-quick-nav a").all()) {
-        const hash = await link.getAttribute("href");
-        await link.click();
-        assert.ok(recruitment.url().endsWith(hash));
-        assert.ok(await recruitment.locator(hash).evaluate(el => el.getBoundingClientRect().top >= document.querySelector(".site-header").getBoundingClientRect().bottom - 1), `recruitment anchor under header at ${width}`);
-      }
-      for (const item of await recruitment.locator(".recruitment-faq details").all()) {
-        await item.locator("summary").click();
-        assert.ok(await item.evaluate(el=>el.open));
-        await item.locator("summary").focus();
-        await recruitment.keyboard.press("Space");
-        assert.ok(!(await item.evaluate(el=>el.open)));
-      }
-      assert.equal(await recruitment.locator(".recruitment-faq details").count(), 6);
-      for (const fee of await recruitment.locator(".recruitment-fees article").all()) {
-        const text=(await fee.innerText()).replace(/\s/g, "");
-        for (const value of ["990,000円（税込）", "税抜900,000円", "6ヶ月"]) assert.ok(text.includes(value));
-      }
-      assert.match(await recruitment.locator(".recruitment-total").innerText(), /2,970,000円（税込）/);
-      assert.ok(await recruitment.locator('a[href^="tel:"]').evaluateAll(nodes=>nodes.every(el=>el.getAttribute("href")==="tel:0985747643")));
-      for (const link of await recruitment.locator('a[href^="#"]').all()) assert.equal(await recruitment.locator(await link.getAttribute("href")).count(), 1);
-      if (width <= 700) {
-        const bar=recruitment.locator(".recruitment-contact-bar");
-        assert.ok(await bar.locator("a").evaluateAll(nodes=>nodes.every(el=>{const r=el.getBoundingClientRect();return r.height>=44 && r.width>=44 && el.scrollWidth<=el.clientWidth+1;})));
-        await recruitment.evaluate(()=>scrollTo(0,document.documentElement.scrollHeight));
-        assert.ok(await recruitment.evaluate(()=>document.querySelector(".recruitment-footer p:last-child").getBoundingClientRect().bottom <= document.querySelector(".recruitment-contact-bar").getBoundingClientRect().top));
-      }
-      await recruitment.evaluate(()=>scrollTo(0,0));
-      if (out && [320,390,768,1440].includes(width)) await recruitment.screenshot({path:path.join(out,`recruitment-${width}.png`),fullPage:true});
-      report.recruitmentWidths.push({ width, passed:true });
-      if ([390,1440].includes(width)) {
-        if (width <= 1100) await recruitment.getByRole("button",{name:"メニューを開く"}).click();
-        await cohortMenu.getByRole("link",{name:"自然形体療法とは",exact:true}).click();
-        await recruitment.waitForURL(url=>url.pathname==="/" && url.hash==="#about");
-        assert.ok(await recruitment.locator("#about").isVisible());
-      }
-    }
-    await recruitment.close();
     const motionPage = await browser.newPage({ viewport: { width: 390, height: 900 }, reducedMotion: "no-preference" });
     await motionPage.goto(base.href, { waitUntil: "networkidle" });
     await motionPage.locator("#about").scrollIntoViewIfNeeded();
     assert.equal(await motionPage.locator("#about .section-heading").evaluate(el => getComputedStyle(el).opacity), "1", "scroll enhancement must keep content opaque");
     assert.ok(await motionPage.locator("#about h2").isVisible());
-    await motionPage.goto(new URL("/recruitment/first", base).href, { waitUntil: "networkidle" });
-    assert.equal(await motionPage.evaluate(()=>getComputedStyle(document.documentElement).scrollBehavior),"smooth");
-    await motionPage.locator('.cohort-hero-actions a[href="#cohort-schedule"]').click();
-    await motionPage.waitForFunction(()=>{const top=document.querySelector("#cohort-schedule").getBoundingClientRect().top;const header=document.querySelector(".site-header").getBoundingClientRect().bottom;return top>=header-1 && top<header+80;});
-    assert.equal(new URL(motionPage.url()).pathname,"/recruitment/first");
-    await motionPage.locator(".cohort-observation-photo").scrollIntoViewIfNeeded();
-    assert.ok(await motionPage.locator(".cohort-observation-photo").evaluate(el=>Number(getComputedStyle(el).opacity)>=.95), "recruitment scroll photo remains visible");
-    await motionPage.emulateMedia({ reducedMotion: "reduce" });
-    assert.equal(await motionPage.evaluate(()=>getComputedStyle(document.documentElement).scrollBehavior),"auto");
-    assert.ok(await motionPage.locator(".cohort-photo, #cohort-learning h2").evaluateAll(nodes=>nodes.every(el=>getComputedStyle(el).animationName==="none")), "recruitment reduced motion disables animation");
     await motionPage.close();
+    const landscape = await browser.newPage({ viewport: { width: 667, height: 375 }, reducedMotion: "reduce" });
+    await landscape.goto(base.href, { waitUntil: "networkidle" });
+    await landscape.getByRole("button", { name: "メニューを開く" }).click();
+    const lastMenuLink = landscape.getByRole("navigation", { name: "モバイルナビゲーション" }).getByRole("link", { name: "お問い合わせ" });
+    await lastMenuLink.scrollIntoViewIfNeeded();
+    assert.ok(await lastMenuLink.evaluate(el => el.getBoundingClientRect().bottom <= innerHeight + 1));
+    await lastMenuLink.click();
+    assert.equal(await landscape.evaluate(() => document.activeElement.id), "contact");
+    await landscape.close();
+    const noJs = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 900 }, reducedMotion: "reduce" });
+    const staticPage = await noJs.newPage();
+    await staticPage.goto(base.href, { waitUntil: "networkidle" });
+    assert.equal(await staticPage.locator("#main > section").count(), 13); // Original twelve + PR #12 Instagram.
+    await staticPage.locator(".program-shortcuts a[href='#courses']").click();
+    assert.ok(staticPage.url().endsWith("#courses"));
+    await staticPage.locator(".renewal-faq-list summary").first().click();
+    assert.equal(await staticPage.locator(".renewal-faq-list details").first().getAttribute("open"), "");
+    assert.equal(await staticPage.locator(".contact-phone").getAttribute("href"), "tel:0985747643");
+    await noJs.close();
+    report.qualityChecks = { structuredData: true, shortcutNavigation: true, mobileMenuFocus: true, landscapeMenu: true, withoutJavaScript: true };
     assert.deepEqual(report.errors, []);
     if (out)
       fs.writeFileSync(

@@ -22,12 +22,57 @@ const unconfirmed: RecruitmentFacts = {
   capacity: null,
   venue: null,
 };
+// Only the dated information received from the organizer; no venue address or time inferred.
+export const firstCohortDetails = {
+  deadline: "2027-01-10",
+  eligible: "施術経験者・未経験者のどちらも受講可能",
+  application: { status: "preparing", url: null },
+  venues: [
+    { id: "tokyo", name: "東京", capacity: 6, address: null, startTime: null, endTime: null,
+      dates: ["2027-01-15", "2027-02-08", "2027-03-08", "2027-04-20", "2027-05-18", "2027-06-22"] },
+    { id: "osaka", name: "大阪", capacity: 6, address: null, startTime: null, endTime: null,
+      dates: ["2027-01-12", "2027-02-10", "2027-03-10", "2027-04-22", "2027-05-20", "2027-06-24"] },
+    { id: "fukuoka", name: "福岡", capacity: 6, address: null, startTime: null, endTime: null,
+      dates: ["2027-01-18", "2027-02-12", "2027-03-12", "2027-04-23", "2027-05-21", "2027-06-25"] },
+  ],
+} as const;
+
+export function getFirstCohortSummary() {
+  const dates = firstCohortDetails.venues.flatMap(venue => [...venue.dates]).sort();
+  const [startYear, startMonth] = dates[0].split("-").map(Number);
+  const [endYear, endMonth] = dates[dates.length - 1].split("-").map(Number);
+  const sameCapacity = firstCohortDetails.venues.every(venue => venue.capacity === firstCohortDetails.venues[0].capacity);
+  return {
+    startYear, startMonth,
+    period: `${startYear}年${startMonth}月〜${endYear === startYear ? "" : `${endYear}年`}${endMonth}月`,
+    locations: firstCohortDetails.venues.map(venue => venue.name).join("・"),
+    venueCount: firstCohortDetails.venues.length,
+    capacityLabel: sameCapacity ? `各会場${firstCohortDetails.venues[0].capacity}名` : firstCohortDetails.venues.map(venue => `${venue.name}${venue.capacity}名`).join("・"),
+    totalCapacity: firstCohortDetails.venues.reduce((total, venue) => total + venue.capacity, 0),
+  };
+}
+
 export const firstCohortConfig: RecruitmentConfig = {
   status: "preparing",
   publicationApproved: false,
-  confirmed: { ...unconfirmed },
+  confirmed: {
+    ...unconfirmed,
+    startDate: firstCohortDetails.venues.flatMap(venue => [...venue.dates]).sort()[0],
+    deadline: firstCohortDetails.deadline,
+    capacity: firstCohortDetails.venues.reduce((total, venue) => total + venue.capacity, 0),
+    venue: firstCohortDetails.venues.map(venue => venue.name).join("・"),
+  },
   draft: { ...unconfirmed },
 };
+
+export function isFirstCohortPreview(env = process.env) {
+  return env.VERCEL_ENV === "preview" || (!env.VERCEL_ENV && env.NODE_ENV === "development");
+}
+
+export function formatSessionDate(value: string) {
+  return new Intl.DateTimeFormat("ja-JP", { month: "long", day: "numeric", weekday: "short", timeZone: "Asia/Tokyo" })
+    .format(new Date(`${value}T12:00:00+09:00`));
+}
 
 function validDate(value: string | null) {
   if (!value || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;

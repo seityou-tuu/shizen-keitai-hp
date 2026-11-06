@@ -51,12 +51,20 @@ test("a message without biography does not produce an empty details list", () =>
 });
 
 
-test("the six operator-approved profile facts are shown once without inventing a formal name", () => {
+test("the confirmed profile facts are shown once without inventing a formal name", () => {
   const html = renderToStaticMarkup(InstructorProfile({}));
-  for (const fact of ["柔道整復師（2012年取得）", "2017年 ながとも整骨院開院", "15年", "自然形体療法 理事", "YouTube総再生回数220万回", "2024年 FANCHANNEL グランプリ"]) {
+  for (const fact of ["柔道整復師（2012年取得）", "2017年 ながとも整骨院開院", "15年", "自然形体療法 理事"]) {
     assert.equal(html.split(fact).length - 1, 1, fact);
   }
   assert.ok(!html.includes("<dt>氏名"));
   assert.ok(!html.includes("<dt>指導実績"));
   assert.ok(!html.includes("詳しいプロフィールは"));
+});
+
+test("unconfirmed channel-wide views and award details stay unpublished", () => {
+  const html = renderToStaticMarkup(InstructorProfile({}));
+  assert.deepEqual(instructorProfile.achievements, []);
+  assert.ok(!html.includes("220万"));
+  assert.ok(!html.includes("2024年"));
+  assert.ok(!html.includes("FANCHANNEL"));
 });
