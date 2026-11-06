@@ -5,3 +5,4 @@ require("./content.test.cjs");
 
 require("./instructor.test.cjs");
 require("./youtube-video-link.test.cjs");
+require("./instagram.test.cjs");

@@ -1,3 +1,4 @@
+import { InstagramSection } from "@/components/instagram-section";
 import "./homepage-quality.css";
 import { HomepageTrainingPhoto, InstructorEvidence } from "@/components/homepage-photos";
 import { HomepageMotion } from "@/components/homepage-motion";
@@ -561,6 +562,8 @@ export default function Home() {
             <InstructorEvidence />
           </div>
         </section>
+
+        <InstagramSection />
 
         <section id="future" className="story-section renewal-future">
           <div className="renewal-wrap future-composition">
