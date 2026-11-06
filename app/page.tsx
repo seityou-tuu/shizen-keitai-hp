@@ -1,4 +1,6 @@
 import { InstagramSection } from "@/components/instagram-section";
+import { AnalyticsConsent } from "@/components/analytics-consent";
+import { getGa4MeasurementId } from "@/lib/analytics-config";
 import "./homepage-quality.css";
 import { HomepageTrainingPhoto, InstructorEvidence } from "@/components/homepage-photos";
 import { HomepageMotion } from "@/components/homepage-motion";
@@ -127,6 +129,7 @@ function ConsultationCallout({ text }: { text: string }) {
 }
 
 export default function Home() {
+  const measurementId = getGa4MeasurementId();
   return (
     <>
       <a className="skip-link" href="#main">
@@ -502,7 +505,7 @@ export default function Home() {
                 </h3>
                 <p>機会によっては、実際の施術を見学できる場合もあります。</p>
                 <p className="renewal-note">
-                  施術見学は確約されたカリキュラムではありません。公開施術の開催日・場所・実施者・参加条件、本プログラムへの参加・見学等の包含は未確定です。
+                  施術見学は確約されたカリキュラムではありません。開催日・場所・実施者・参加条件、本プログラムへの包含は確認後にご案内します。
                 </p>
               </div>
               <HomepageTrainingPhoto name="guidance" />
@@ -547,7 +550,7 @@ export default function Home() {
               <span>理論：月1回・オンライン 1回2時間</span>
             </div>
             <p className="renewal-note">
-              各コースの受講期間の合算は18ヶ月です。連続開講時期は未確認のため、18ヶ月での資格取得を確約するものではありません。各研修6回は月1回×6ヶ月で算出した目安です。正式な開催日程・振替、詳しいカリキュラム・認定基準・進級条件は確認中です。
+              3コースの受講期間合計は18ヶ月ですが、連続開講時期は未確認のため、18ヶ月での資格取得を確約するものではありません。開催日程・振替、カリキュラム・認定基準・進級条件は確認後にご案内します。
             </p>
             <ConsultationCallout text="ご自身の経験や学びたいことを、受講相談でお聞かせください。" />
           </div>
@@ -672,28 +675,31 @@ export default function Home() {
               </p>
             </div>
             <ConsultationCallout text="受講内容や料金について、気になる点をご相談ください。" />
+            <a className="renewal-text-link" href="#faq">
+              料金・支払いについてのFAQを見る <span aria-hidden="true">↓</span>
+            </a>
             <div className="renewal-flow">
               <div className="flow-title">
-                <h3>受講までの流れ</h3>
-                <span>以下は仮案です</span>
+                <h3>受講前に確認すること</h3>
+                <span>相談前の確認ポイント</span>
               </div>
               <ol>
                 {[
                   [
-                    "お問い合わせ",
-                    "まずはプログラムへの関心や、ご質問をお寄せいただく流れを想定しています。",
+                    "研修の学び方",
+                    "月1回の対面実技とオンライン理論で、どのように学ぶかをご確認ください。",
                   ],
                   [
-                    "受講内容の確認",
-                    "研修内容・開催日程・受講条件などの詳細をご確認いただきます。",
+                    "復習と質問",
+                    "復習用動画と研修日以外の質問対応があります。利用条件は確認後にご案内します。",
                   ],
                   [
-                    "お申込み手続き",
-                    "内容や規約にご同意のうえ、正式なお申し込みへ進みます。",
+                    "受講期間・料金",
+                    "各コース6ヶ月の受講期間と料金、受講料以外の費用の確認事項をご覧ください。",
                   ],
                   [
-                    "受講開始",
-                    "受講に必要な準備をご案内し、研修の開始を迎えます。",
+                    "受講条件",
+                    "受講要件・認定基準・進級条件は確認後にご案内します。気になる点は電話でご相談ください。",
                   ],
                 ].map(([title, text], i) => (
                   <li key={title}>
@@ -703,9 +709,7 @@ export default function Home() {
                   </li>
                 ))}
               </ol>
-              <p className="renewal-note">
-                正式な受付・申し込み手順は未確定です。上記はご案内の構成案であり、現在のお申し込み受付を示すものではありません。
-              </p>
+              <p className="renewal-note">このサイトでは、正式な受講申込み・決済は受け付けていません。</p>
             </div>
             <div className="tuition-information">
               <p>お申し込み前にご確認いただく情報</p>
@@ -754,7 +758,7 @@ export default function Home() {
               次の一歩に。
             </h2>
             <p>
-              受講相談・資料請求・プログラムへのご質問をお寄せください。
+              受講内容や研修についてのご質問は、お電話でご相談ください。
               <br />
               正式な受講申込みや決済のお手続きではありません。
             </p>
@@ -819,7 +823,7 @@ export default function Home() {
                   description: SITE_DESCRIPTION,
                   inLanguage: "ja",
                   isPartOf: { "@id": `${SITE_URL}/#website` },
-                  about: { "@id": `${SITE_URL}/#organization` },
+                  publisher: { "@id": `${SITE_URL}/#organization` },
                 },
                 {
                   "@type": "Organization",
@@ -877,10 +881,10 @@ export default function Home() {
           <InformationLinks />
           <div className="footer-bottom">
             <p>© {new Date().getFullYear()} TSUNAGi Co., Ltd.</p>
-            <p>デザイン試作版 · 掲載内容には確認中の情報が含まれます</p>
           </div>
         </div>
       </footer>
+      {measurementId && <AnalyticsConsent measurementId={measurementId} />}
       <nav className="mobile-consult-bar" aria-label="スマートフォンの受講相談">
         <a
           href={CONTACT_TEL}

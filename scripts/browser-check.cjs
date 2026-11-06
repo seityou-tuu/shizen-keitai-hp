@@ -65,11 +65,16 @@ if (out) fs.mkdirSync(out, { recursive: true });
       assert.equal(await page.locator('img:not([alt]), img[alt=""]').count(), 0);
 
       assert.match(response.headers()["x-robots-tag"], /noindex/);
+      assert.equal(await page.locator(".analytics-consent").count(), 0, "analytics must stay absent without approved settings");
+      assert.equal(await page.locator('script[src*="googletagmanager.com"],meta[name="google-site-verification"]').count(), 0);
+      assert.ok(!(await page.locator(".footer-bottom").innerText()).includes("デザイン試作版"));
+      assert.ok(!(await page.locator("#contact").innerText()).includes("資料請求"));
+      assert.equal(await page.locator("#courses a[href='#faq']").count(), 1);
       const graph = await page.locator('script[type="application/ld+json"]').evaluate(el => JSON.parse(el.textContent)["@graph"]);
       const webpage = graph.find(item => item["@type"] === "WebPage");
       assert.equal(webpage.url, "https://shizen-keitai-hp.vercel.app");
       assert.ok(graph.some(item => item["@id"] === webpage.isPartOf["@id"]));
-      assert.ok(graph.some(item => item["@id"] === webpage.about["@id"]));
+      assert.ok(graph.some(item => item["@id"] === webpage.publisher["@id"]));
       assert.ok(!graph.some(item => ["Review", "AggregateRating", "Course", "MedicalBusiness"].includes(item["@type"])));
       await page.waitForTimeout(150);
       const profileText = await page.locator("#instructors .instructor-details").innerText();
