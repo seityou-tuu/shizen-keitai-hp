@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { YoutubeVideoLink } from "@/components/youtube-video-link";
 import observation from "@/public/images/homepage/practical-peer-observation.webp";
 import guidance from "@/public/images/homepage/practical-guidance.webp";
 import youtube860k from "@/public/images/homepage/youtube-860k.webp";
@@ -30,10 +31,12 @@ export function InstructorEvidence() {
       <div className="evidence-layout">
         <div className="evidence-videos">
           <h4>Fann Channelでの動画紹介</h4>
-          {[{ image: youtube860k, count: "86万回" }, { image: youtube1320k, count: "132万回" }].map(({ image, count }) => (
+          {([{ image: youtube860k, count: "86万回" }, { image: youtube1320k, count: "132万回" }] as const).map(({ image, count }) => (
             <figure className="evidence-video" key={count}>
-              <Image src={image} alt={`Fann Channelの動画掲載画面（表示再生数${count}）`}
-                sizes="(max-width: 700px) 128px, 160px" />
+              <YoutubeVideoLink count={count}>
+                <Image src={image} alt={`Fann Channelの動画掲載画面（表示再生数${count}）`}
+                  sizes="(max-width: 700px) 128px, 160px" />
+              </YoutubeVideoLink>
               <figcaption>
                 <span>画像に表示された再生数</span>
                 <strong>{count}</strong>
