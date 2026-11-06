@@ -1,0 +1,549 @@
+{
+  "conditions": "Local Chromium, DPR 1, reduced motion, no CPU/network throttling, single navigation per width; not field or iPhone Safari data",
+  "widths": [
+    {
+      "width": 320,
+      "initialLcpMs": 628,
+      "sectionsChecked": [
+        "hero",
+        "about",
+        "features",
+        "audience",
+        "support",
+        "training",
+        "roadmap",
+        "instructors",
+        "future",
+        "courses",
+        "faq",
+        "contact"
+      ],
+      "numberedItemsChecked": 34,
+      "menuLinksChecked": 6,
+      "initialCls": 0,
+      "faqNumberLines": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contrast": [
+        {
+          "selector": ".renewal-faq-list summary > span:first-child",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".renewal-faq-list h3",
+          "ratio": 11.01
+        },
+        {
+          "selector": ".contact-phone",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".home-footer .eyebrow",
+          "ratio": 5.06
+        }
+      ],
+      "passed": true
+    },
+    {
+      "width": 360,
+      "initialLcpMs": 428,
+      "sectionsChecked": [
+        "hero",
+        "about",
+        "features",
+        "audience",
+        "support",
+        "training",
+        "roadmap",
+        "instructors",
+        "future",
+        "courses",
+        "faq",
+        "contact"
+      ],
+      "numberedItemsChecked": 34,
+      "menuLinksChecked": 6,
+      "initialCls": 0,
+      "faqNumberLines": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contrast": [
+        {
+          "selector": ".renewal-faq-list summary > span:first-child",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".renewal-faq-list h3",
+          "ratio": 11.01
+        },
+        {
+          "selector": ".contact-phone",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".home-footer .eyebrow",
+          "ratio": 5.06
+        }
+      ],
+      "passed": true
+    },
+    {
+      "width": 375,
+      "initialLcpMs": 624,
+      "sectionsChecked": [
+        "hero",
+        "about",
+        "features",
+        "audience",
+        "support",
+        "training",
+        "roadmap",
+        "instructors",
+        "future",
+        "courses",
+        "faq",
+        "contact"
+      ],
+      "numberedItemsChecked": 34,
+      "menuLinksChecked": 6,
+      "initialCls": 0,
+      "faqNumberLines": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contrast": [
+        {
+          "selector": ".renewal-faq-list summary > span:first-child",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".renewal-faq-list h3",
+          "ratio": 11.01
+        },
+        {
+          "selector": ".contact-phone",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".home-footer .eyebrow",
+          "ratio": 5.06
+        }
+      ],
+      "passed": true
+    },
+    {
+      "width": 390,
+      "initialLcpMs": 496,
+      "sectionsChecked": [
+        "hero",
+        "about",
+        "features",
+        "audience",
+        "support",
+        "training",
+        "roadmap",
+        "instructors",
+        "future",
+        "courses",
+        "faq",
+        "contact"
+      ],
+      "numberedItemsChecked": 34,
+      "menuLinksChecked": 6,
+      "initialCls": 0,
+      "faqNumberLines": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contrast": [
+        {
+          "selector": ".renewal-faq-list summary > span:first-child",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".renewal-faq-list h3",
+          "ratio": 11.01
+        },
+        {
+          "selector": ".contact-phone",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".home-footer .eyebrow",
+          "ratio": 5.06
+        }
+      ],
+      "passed": true
+    },
+    {
+      "width": 400,
+      "initialLcpMs": 464,
+      "sectionsChecked": [
+        "hero",
+        "about",
+        "features",
+        "audience",
+        "support",
+        "training",
+        "roadmap",
+        "instructors",
+        "future",
+        "courses",
+        "faq",
+        "contact"
+      ],
+      "numberedItemsChecked": 34,
+      "menuLinksChecked": 6,
+      "initialCls": 0,
+      "faqNumberLines": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contrast": [
+        {
+          "selector": ".renewal-faq-list summary > span:first-child",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".renewal-faq-list h3",
+          "ratio": 11.01
+        },
+        {
+          "selector": ".contact-phone",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".home-footer .eyebrow",
+          "ratio": 5.06
+        }
+      ],
+      "passed": true
+    },
+    {
+      "width": 414,
+      "initialLcpMs": 388,
+      "sectionsChecked": [
+        "hero",
+        "about",
+        "features",
+        "audience",
+        "support",
+        "training",
+        "roadmap",
+        "instructors",
+        "future",
+        "courses",
+        "faq",
+        "contact"
+      ],
+      "numberedItemsChecked": 34,
+      "menuLinksChecked": 6,
+      "initialCls": 0,
+      "faqNumberLines": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contrast": [
+        {
+          "selector": ".renewal-faq-list summary > span:first-child",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".renewal-faq-list h3",
+          "ratio": 11.01
+        },
+        {
+          "selector": ".contact-phone",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".home-footer .eyebrow",
+          "ratio": 5.06
+        }
+      ],
+      "passed": true
+    },
+    {
+      "width": 430,
+      "initialLcpMs": 404,
+      "sectionsChecked": [
+        "hero",
+        "about",
+        "features",
+        "audience",
+        "support",
+        "training",
+        "roadmap",
+        "instructors",
+        "future",
+        "courses",
+        "faq",
+        "contact"
+      ],
+      "numberedItemsChecked": 34,
+      "menuLinksChecked": 6,
+      "initialCls": 0,
+      "faqNumberLines": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contrast": [
+        {
+          "selector": ".renewal-faq-list summary > span:first-child",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".renewal-faq-list h3",
+          "ratio": 11.01
+        },
+        {
+          "selector": ".contact-phone",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".home-footer .eyebrow",
+          "ratio": 5.06
+        }
+      ],
+      "passed": true
+    },
+    {
+      "width": 768,
+      "initialLcpMs": 488,
+      "sectionsChecked": [
+        "hero",
+        "about",
+        "features",
+        "audience",
+        "support",
+        "training",
+        "roadmap",
+        "instructors",
+        "future",
+        "courses",
+        "faq",
+        "contact"
+      ],
+      "numberedItemsChecked": 34,
+      "menuLinksChecked": 6,
+      "initialCls": 0,
+      "faqNumberLines": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contrast": [
+        {
+          "selector": ".renewal-faq-list summary > span:first-child",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".renewal-faq-list h3",
+          "ratio": 11.01
+        },
+        {
+          "selector": ".contact-phone",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".home-footer .eyebrow",
+          "ratio": 5.06
+        }
+      ],
+      "passed": true
+    },
+    {
+      "width": 1024,
+      "initialLcpMs": 464,
+      "sectionsChecked": [
+        "hero",
+        "about",
+        "features",
+        "audience",
+        "support",
+        "training",
+        "roadmap",
+        "instructors",
+        "future",
+        "courses",
+        "faq",
+        "contact"
+      ],
+      "numberedItemsChecked": 34,
+      "menuLinksChecked": 6,
+      "initialCls": 0,
+      "faqNumberLines": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contrast": [
+        {
+          "selector": ".renewal-faq-list summary > span:first-child",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".renewal-faq-list h3",
+          "ratio": 11.01
+        },
+        {
+          "selector": ".contact-phone",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".home-footer .eyebrow",
+          "ratio": 5.06
+        }
+      ],
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "initialLcpMs": 580,
+      "sectionsChecked": [
+        "hero",
+        "about",
+        "features",
+        "audience",
+        "support",
+        "training",
+        "roadmap",
+        "instructors",
+        "future",
+        "courses",
+        "faq",
+        "contact"
+      ],
+      "numberedItemsChecked": 34,
+      "menuLinksChecked": 6,
+      "initialCls": 0,
+      "faqNumberLines": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contrast": [
+        {
+          "selector": ".renewal-faq-list summary > span:first-child",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".renewal-faq-list h3",
+          "ratio": 11.01
+        },
+        {
+          "selector": ".contact-phone",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".home-footer .eyebrow",
+          "ratio": 5.06
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "routes": [
+    {
+      "route": "/company",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/legal",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/privacy",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/terms",
+      "status": 200,
+      "passed": true
+    }
+  ],
+  "externalRequests": [],
+  "errors": []
+}

@@ -18,7 +18,11 @@
 .homepage-quality .training-story:not(.theory-story) { grid-template-columns: 1.4fr 1fr; gap: clamp(36px, 5vw, 72px); align-items: center; }
 .homepage-quality .training-main-photo { position: relative; padding-bottom: 64px; }
 .homepage-quality .training-main-photo > .program-photo img { height: auto; aspect-ratio: auto; object-fit: contain; }
-.homepage-quality .training-secondary-photo { position: relative; width: 64%; margin: -32px -20px 0 auto; padding: 12px 0 0 12px; background: #f5f3ec; }
+@media (min-width: 901px) {
+  .homepage-quality .training-main-photo > .program-photo { display: flex; flex-direction: column; }
+  .homepage-quality .training-main-photo > .program-photo figcaption { order: -1; padding: 0 0 12px; }
+}
+.homepage-quality .training-secondary-photo { position: relative; width: 82%; margin: -24px -20px 0 auto; padding: 12px 0 0 12px; background: #f5f3ec; }
 .homepage-quality .training-label { display: block; width: fit-content; border-bottom: 1px solid #a68b58; padding-bottom: 10px; margin-bottom: 18px; color: #24493d; font-size: 14px; letter-spacing: .12em; }
 .homepage-quality .training-story-copy h3 { font-size: clamp(30px, 3vw, 42px); line-height: 1.65; }
 .homepage-quality .theory-story { grid-template-columns: 1fr 1.25fr; gap: 72px; align-items: center; margin-top: 24px; padding-top: 64px; }
@@ -72,7 +76,7 @@
 .homepage-quality .future-list p { font-size: 15px; line-height: 2; margin-top: 12px; max-width: 38em; }
 
 /* Small source images support the profile without competing with its portraits. */
-.homepage-quality .instructor-evidence { grid-column: 1 / -1; margin-top: 56px; padding: 32px; background: #fff; border-top: 1px solid #a68b58; }
+.homepage-quality .instructor-evidence { grid-column: 1 / -1; margin-top: 48px; padding: 32px 0 0; background: transparent; border-top: 1px solid #a68b58; }
 .homepage-quality .evidence-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 32px; margin-bottom: 28px; }
 .homepage-quality .evidence-heading h3 { font-size: 25px; line-height: 1.7; margin: 0; }
 .homepage-quality .evidence-heading .renewal-kicker { margin: 0; }
@@ -83,7 +87,7 @@
 .homepage-quality .evidence-video img, .homepage-quality .evidence-award img { display: block; width: 100%; height: auto; border-radius: 0; }
 .homepage-quality .evidence-video figcaption { display: flex; flex-direction: column; gap: 8px; }
 .homepage-quality .evidence-video figcaption > span { color: #58675e; font-size: 11px; line-height: 1.8; }
-.homepage-quality .evidence-video strong { font-size: 28px; font-weight: 500; color: #244237; line-height: 1.3; }
+.homepage-quality .evidence-video strong { font-size: 32px; font-weight: 500; color: #244237; line-height: 1.3; }
 .homepage-quality .evidence-video small { color: #58675e; font-size: 11px; line-height: 1.8; }
 .homepage-quality .evidence-award { margin: 0; }
 .homepage-quality .evidence-award figcaption { padding-top: 16px; }
@@ -95,15 +99,15 @@
   .homepage-quality .evidence-video { grid-template-columns: 120px minmax(0, 1fr); gap: 14px; }
 }
 @media (max-width: 700px) {
-  .homepage-quality .instructor-evidence { grid-column: 1; margin-top: 8px; padding: 24px 20px; }
+  .homepage-quality .instructor-evidence { grid-column: 1; margin-top: 8px; padding: 28px 0 0; }
   .homepage-quality .evidence-heading h3 { font-size: 21px; }
   .homepage-quality .evidence-layout { grid-template-columns: 1fr; gap: 28px; }
   .homepage-quality .evidence-video { grid-template-columns: minmax(0, 128px) minmax(0, 1fr); gap: 16px; }
-  .homepage-quality .evidence-video strong { font-size: 25px; }
+  .homepage-quality .evidence-video strong { font-size: 29px; }
 }
 @media (max-width: 360px) {
   .homepage-quality .evidence-video { grid-template-columns: 96px minmax(0, 1fr); gap: 12px; }
-  .homepage-quality .evidence-video strong { font-size: 23px; }
+  .homepage-quality .evidence-video strong { font-size: 27px; }
 }
 
 /* One common teaching schedule, three clear course fees. */
@@ -138,7 +142,7 @@
   .homepage-quality .training-story:not(.theory-story) { display: flex; flex-direction: column; gap: 32px; align-items: stretch; }
   .homepage-quality .training-practical-details { display: block; order: 2; }
   .homepage-quality .training-main-photo { display: block; padding-bottom: 0; }
-  .homepage-quality .training-secondary-photo { width: 66%; margin-right: -8px; }
+  .homepage-quality .training-secondary-photo { width: 88%; margin-top: 20px; margin-right: -8px; }
   .homepage-quality .theory-story { grid-template-columns: 1fr 1fr; gap: 32px; }
   .homepage-quality .theory-story > .training-story-copy { padding-left: 24px; }
   .homepage-quality .training-atmosphere-story { grid-template-columns: 1fr; gap: 24px; }

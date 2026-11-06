@@ -67,9 +67,11 @@ if (out) fs.mkdirSync(out, { recursive: true });
       assert.match(response.headers()["x-robots-tag"], /noindex/);
       await page.waitForTimeout(150);
       const profileText = await page.locator("#instructors .instructor-details").innerText();
-      for (const fact of ["柔道整復師（2012年取得）", "2017年 ながとも整骨院開院", "15年", "自然形体療法 理事", "YouTube総再生回数220万回", "2024年 FANCHANNEL グランプリ"]) {
+      for (const fact of ["柔道整復師（2012年取得）", "2017年 ながとも整骨院開院", "15年", "自然形体療法 理事"]) {
         assert.equal(profileText.split(fact).length - 1, 1, `profile fact at ${width}: ${fact}`);
       }
+      assert.ok(!profileText.includes("220万"));
+      assert.ok(!profileText.includes("2024年"));
       assert.ok(await page.locator("#about .section-heading, #about h2").evaluateAll(nodes => nodes.every(el => getComputedStyle(el).animationName === "none")), "reduced-motion headings must not animate");
       const initial = await page.evaluate(() => ({
         ...window.__qaMetrics,
@@ -369,6 +371,11 @@ if (out) fs.mkdirSync(out, { recursive: true });
       for (const fact of ["86万回", "132万回", "提供画像の表示時点", "チャンネル全体", "受講生の集合写真ではありません"])
         assert.ok(evidence.includes(fact), `evidence context at ${width}: ${fact}`);
       assert.equal(await page.locator(".instructor-evidence iframe, .instructor-evidence a").count(), 0);
+      assert.ok(evidence.includes("受賞年・賞の正式名称は確認中です"));
+      const allInstructorText = await page.locator("#instructors").innerText();
+      for (const unconfirmed of ["220万", "2024年", "FANCHANNEL グランプリ"])
+        assert.ok(!allInstructorText.includes(unconfirmed), `unconfirmed assertion at ${width}: ${unconfirmed}`);
+
 
       for (const course of await page.locator(".tuition-course").all()) {
         const text = (await course.innerText()).replace(/\s/g, "");

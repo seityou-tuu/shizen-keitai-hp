@@ -14,7 +14,7 @@ export function HomepageTrainingPhoto({ name }: { name: "observation" | "guidanc
   return (
     <figure className="program-photo" data-photo={`homepage-${name}`}>
       <Image src={observing ? observation : guidance} alt={caption}
-        sizes={observing ? "(max-width: 900px) 65vw, 460px" : "(max-width: 900px) calc(100vw - 80px), 620px"} />
+        sizes={observing ? "(max-width: 900px) 85vw, 600px" : "(max-width: 900px) calc(100vw - 80px), 620px"} />
       <figcaption>{caption}</figcaption>
     </figure>
   );
@@ -43,11 +43,11 @@ export function InstructorEvidence() {
           ))}
         </div>
         <figure className="evidence-award">
-          <Image src={award} alt="永友先生のFANCHANNELグランプリ受賞時の集合写真"
+          <Image src={award} alt="主催者提供の受賞時集合写真"
             sizes="(max-width: 700px) calc(100vw - 80px), (max-width: 1100px) 45vw, 560px" />
           <figcaption>
-            <h4>2024年 FANCHANNEL グランプリ</h4>
-            <p>主催者提供の受賞時集合写真です。<br />本プログラムの受講生の集合写真ではありません。</p>
+            <h4>受賞時の記録</h4>
+            <p>主催者提供の受賞時集合写真です。<br />受賞年・賞の正式名称は確認中です。<br />本プログラムの受講生の集合写真ではありません。</p>
           </figcaption>
         </figure>
       </div>
