@@ -1,3 +1,7 @@
+import Image from "next/image";
+import { YoutubeVideoLink } from "@/components/youtube-video-link";
+import youtube860k from "@/public/images/homepage/youtube-860k.webp";
+import youtube1320k from "@/public/images/homepage/youtube-1320k.webp";
 import { ProgramPhoto } from "@/components/program-photo";
 import { LineConsultationLink } from "@/components/line-consultation-link";
 import { notFound } from "next/navigation";
@@ -56,7 +60,7 @@ export default function FirstRecruitmentPage() {
             <div className="cohort-hero-details">
               <p>0期生の研修が、すでに始まっています。<br />次の学びの一歩を、第1期生として。</p>
               <div className="cohort-hero-actions">
-                <LineConsultationLink className="recruitment-button" />
+                <LineConsultationLink className="recruitment-button" label="第1期生についてLINEで相談する" />
                 <a href="#cohort-schedule" className="recruitment-text-link">会場・全6回の日程を見る ↓</a>
               </div>
               <p className="recruitment-hero-note">受講相談の窓口です。<br />正式な申込み・決済は受け付けていません。</p>
@@ -75,24 +79,32 @@ export default function FirstRecruitmentPage() {
           <a href="#cohort-faq">よくある質問 <span aria-hidden="true">↓</span></a>
           <a href="#cohort-contact">受講相談 <span aria-hidden="true">↓</span></a>
         </nav>
-        <section className="recruitment-section recruitment-wrap" aria-labelledby="cohort-overview">
-          <p className="recruitment-eyebrow">OVERVIEW</p>
-          <h2 id="cohort-overview">続いていく学びに、<br />あなたの一歩を。</h2>
-          <div className="cohort-story-layout">
-            <ol className="cohort-story">
-              <li><span aria-hidden="true">00</span><div><h3>0期生の研修が、始まっています。</h3><p>理論を理解し、実技で確かめる学びが、すでに動き始めています。</p></div></li>
-              <li><span aria-hidden="true">01</span><div><h3>{summary.startYear}年{summary.startMonth}月、第1期生へ。</h3><p>次の学びの一歩を、同じ技術に向き合う仲間と。{summary.locations}の{summary.venueCount}会場で開催します。</p></div></li>
-            </ol>
-            <div className="cohort-small-group"><p className="recruitment-eyebrow">FIRST COHORT</p><h3>各会場<span>{facts.venues[0].capacity}</span>名の募集</h3><p>同じ技術を学ぶ仲間と、ひとつずつ理解を重ねる。自然形体療法を学ぶ、新しい出会いを。</p><p>{facts.eligible}です。</p></div>
+        <section className="cohort-next-step" aria-labelledby="cohort-next-step-title">
+          <div className="recruitment-wrap">
+            <p className="recruitment-eyebrow">まずは、その技術を映像で。</p>
+            <div className="cohort-next-step-grid">
+              <h2 id="cohort-next-step-title">次は、あなたが<br />この技術を<em>身につける番。</em></h2>
+              <div className="cohort-next-step-copy">
+                <p className="cohort-next-step-lead">映像で見るだけだった技術を、今度は自分の手で。</p>
+                <p>自然形体療法の考え方と技術を、永友裕也から直接学ぶ6ヶ月。</p>
+                <a className="recruitment-text-link" href="#cohort-learning">学び方を知る <span aria-hidden="true">↓</span></a>
+              </div>
+            </div>
+            <div className="cohort-film-grid">
+              {([
+                { image: youtube860k, count: "86万回", title: "技術への関心を、ここから。", text: "Fann Channelの施術紹介。まずは映像から、自然形体療法に触れてみてください。" },
+                { image: youtube1320k, count: "132万回", title: "映像から、自分の学びへ。", text: "気になった点を、自分なら何を学びたいか考えるきっかけに。" },
+              ] as const).map(({ image, count, title, text }) => (
+                <figure className="cohort-film" key={count}>
+                  <YoutubeVideoLink count={count}>
+                    <Image src={image} alt="Fann Channelの施術紹介動画の掲載画面" sizes="(max-width: 700px) calc(100vw - 40px), 560px" />
+                  </YoutubeVideoLink>
+                  <figcaption><h3>{title}</h3><p>{text}</p></figcaption>
+                </figure>
+              ))}
+            </div>
+            <p className="cohort-film-note">画像を押すとYouTubeが別タブで開きます。表示できない場合は「YouTubeで見る」からご覧ください。画像内の再生数・表現は掲載時点のもので、施術効果や受講後の成果を保証するものではありません。</p>
           </div>
-          <dl className="cohort-overview-facts">
-            <div><dt>開催期間</dt><dd>{summary.period}</dd></div>
-            <div><dt>開催地域</dt><dd>{summary.locations}の{summary.venueCount}会場</dd></div>
-            <div><dt>募集定員</dt><dd>{summary.capacityLabel}・合計{summary.totalCapacity}名</dd></div>
-            <div><dt>募集締切</dt><dd>{formatRecruitmentDate(facts.deadline)}</dd></div>
-            <div><dt>受講対象</dt><dd>{facts.eligible}</dd></div>
-            <div><dt>受講料金</dt><dd>各コース990,000円（税込）／税抜900,000円 <a href="#cohort-tuition">料金の詳細を見る ↓</a></dd></div>
-          </dl>
         </section>
         <section id="cohort-learning" className="recruitment-section recruitment-wrap">
           <p className="recruitment-eyebrow">LEARNING</p><h2>理論と実技を、重ねて学ぶ。</h2>
@@ -116,20 +128,26 @@ export default function FirstRecruitmentPage() {
           <a className="recruitment-text-link" href="#cohort-schedule">募集日程・条件を確認する ↓</a>
         </section>
         <CohortInstructor />
-        <section className="cohort-next-step" aria-labelledby="cohort-next-step-title">
-          <div className="recruitment-wrap cohort-next-step-grid">
-            <div>
-              <p className="recruitment-eyebrow">FROM WATCHING TO LEARNING</p>
-              <h2 id="cohort-next-step-title">その技術を、<br /><em>見るだけで</em><br />終わらせない。</h2>
-            </div>
-            <div className="cohort-next-step-copy">
-              <p className="cohort-next-step-lead">動画や施術紹介で気になった技術を、<br />今度は、自分の学びへ。</p>
-              <p>永友先生の技術と、その背景にある考え方に触れる。理論と実技を重ねながら、理解を深めていく。</p>
-              <p>{summary.startYear}年{summary.startMonth}月、{summary.locations}で始まる第1期生。あなたの新しい一歩を、ここから。</p>
-              <a className="recruitment-text-link" href="#cohort-schedule">学ぶ会場と日程を見てみる <span aria-hidden="true">↓</span></a>
-            </div>
+        <section className="recruitment-section recruitment-wrap" aria-labelledby="cohort-overview">
+          <p className="recruitment-eyebrow">OVERVIEW</p>
+          <h2 id="cohort-overview">続いていく学びに、<br />あなたの一歩を。</h2>
+          <div className="cohort-story-layout">
+            <ol className="cohort-story">
+              <li><span aria-hidden="true">00</span><div><h3>0期生の研修が、始まっています。</h3><p>理論を理解し、実技で確かめる学びが、すでに動き始めています。</p></div></li>
+              <li><span aria-hidden="true">01</span><div><h3>{summary.startYear}年{summary.startMonth}月、第1期生へ。</h3><p>次の学びの一歩を、同じ技術に向き合う仲間と。{summary.locations}の{summary.venueCount}会場で開催します。</p></div></li>
+            </ol>
+            <div className="cohort-small-group"><p className="recruitment-eyebrow">FIRST COHORT</p><h3>各会場<span>{facts.venues[0].capacity}</span>名の募集</h3><p>同じ技術を学ぶ仲間と、ひとつずつ理解を重ねる。自然形体療法を学ぶ、新しい出会いを。</p><p>{facts.eligible}です。</p></div>
           </div>
+          <dl className="cohort-overview-facts">
+            <div><dt>開催期間</dt><dd>{summary.period}</dd></div>
+            <div><dt>開催地域</dt><dd>{summary.locations}の{summary.venueCount}会場</dd></div>
+            <div><dt>募集定員</dt><dd>{summary.capacityLabel}・合計{summary.totalCapacity}名</dd></div>
+            <div><dt>募集締切</dt><dd>{formatRecruitmentDate(facts.deadline)}</dd></div>
+            <div><dt>受講対象</dt><dd>{facts.eligible}</dd></div>
+            <div><dt>受講料金</dt><dd>各コース990,000円（税込）／税抜900,000円 <a href="#cohort-tuition">料金の詳細を見る ↓</a></dd></div>
+          </dl>
         </section>
+
         <section id="cohort-schedule" className="recruitment-section recruitment-soft">
           <div className="recruitment-wrap">
             <p className="recruitment-eyebrow">SCHEDULE & LOCATION</p>
@@ -170,8 +188,8 @@ export default function FirstRecruitmentPage() {
         <section id="cohort-contact" className="recruitment-section recruitment-contact">
           <div className="recruitment-wrap">
             <p className="recruitment-eyebrow">CONSULTATION</p><h2>「学んでみたい」を、<br />相談するところから。</h2>
-            <p>学び方、会場選び、受講料金。気になったことから、公式LINEでご質問ください。</p>
-            <LineConsultationLink className="recruitment-button" />
+            <p>学び方、会場選び、受講料金。受講を検討中の方も、お気軽にご相談ください。</p>
+            <LineConsultationLink className="recruitment-button" label="第1期生についてLINEで相談する" />
             <p className="recruitment-note">LINE相談や友だち追加だけで、正式な受講申込み・契約・決済が完了するものではありません。</p>
             <p>電話でもご相談いただけます。</p><a className="recruitment-phone" href={CONTACT_TEL}>{CONTACT_PHONE}</a>
             <p className="recruitment-note">受付時間・休業日は確認後にご案内します。通話料はお客様のご負担です。</p>
@@ -179,8 +197,9 @@ export default function FirstRecruitmentPage() {
           </div>
         </section>
       </main>
-      <footer className="recruitment-footer"><div className="recruitment-wrap"><InformationLinks /><LineConsultationLink className="recruitment-text-link" /><p>{operator.name} · 代表取締役 {operator.representative}</p><p>掲載情報・各種方針には確認中の項目が含まれます。</p></div></footer>
+      <footer className="recruitment-footer"><div className="recruitment-wrap"><InformationLinks /><p>{operator.name} · 代表取締役 {operator.representative}</p><p>掲載情報・各種方針には確認中の項目が含まれます。</p></div></footer>
       <nav className="recruitment-contact-bar" aria-label="第1期生の相談窓口"><LineConsultationLink className="cohort-sticky-line" label="LINEで相談" /><a href={CONTACT_TEL} aria-label={`電話で第1期生について相談する（${CONTACT_PHONE}へ発信）`}>電話相談<small>{CONTACT_PHONE}</small></a></nav>
     </>
   );
 }
+

@@ -75,3 +75,24 @@
   .recruitment-page .cohort-story h3 { font-size: 21px; }
   .recruitment-page .cohort-small-group { padding: 28px; }
 }
+
+
+/* Recruitment films reuse the verified homepage links without loading a player. */
+.recruitment-page .cohort-next-step-grid { margin-top: 24px; }
+.recruitment-page .cohort-next-step-lead { text-wrap: balance; }
+.recruitment-page .cohort-next-step h2 { margin: 0; font-size: clamp(28px, 3.2vw, 44px); }
+.recruitment-page .cohort-next-step h2 em { display: block; }
+.recruitment-page .cohort-film-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 44px; }
+.recruitment-page .cohort-film { margin: 0; min-width: 0; }
+.recruitment-page .cohort-film .evidence-video-link { display: block; position: relative; color: #fff; border: 1px solid #897449; }
+.recruitment-page .cohort-film img { display: block; width: 100%; height: auto; }
+.recruitment-page .cohort-film .evidence-video-action { display: flex; justify-content: space-between; padding: 14px 18px; background: #183c32; font-size: 14px; }
+.recruitment-page .cohort-film .evidence-play { position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: #102f28; border: 1px solid #dbc89a; pointer-events: none; }
+.recruitment-page .cohort-film .evidence-play svg { width: 22px; height: 22px; }
+.recruitment-page .cohort-film h3 { color: #fff; font-size: 18px; margin: 20px 0 8px; line-height: 1.7; }
+.recruitment-page .cohort-film p, .recruitment-page .cohort-film-note { color: #d3dfd2; font-size: 14px; line-height: 1.9; }
+.recruitment-page .cohort-film-note { margin: 28px 0 0; font-size: 12px; }
+@media (max-width: 700px) {
+  .recruitment-page .cohort-film-grid { grid-template-columns: 1fr; gap: 28px; margin-top: 32px; }
+  .recruitment-page .cohort-next-step h2 { font-size: clamp(26px, 7vw, 32px); letter-spacing: .01em; }
+}

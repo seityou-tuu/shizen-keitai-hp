@@ -80,11 +80,16 @@ const expected = {
       assert.match(instructor, /220万回/);
       assert.match(instructor, /最新の再生数を示すものではなく/);
       assert.ok(!instructor.includes("2024年"));
-      assert.equal(await page.locator(".cohort-learning-path li").count(), 3);
-      const nextStep = page.getByRole("region", { name: /その技術を、\s*見るだけで\s*終わらせない。/ });
+      assert.equal(await page.locator(".cohort-film").count(), 2);
+      assert.equal(await page.locator("iframe").count(), 0);
+      for (const image of await page.locator(".cohort-film img").all()) {
+        await image.scrollIntoViewIfNeeded(); await image.evaluate(img => img.decode());
+        assert.ok(await image.evaluate(img => Math.abs(img.naturalWidth / img.naturalHeight - img.width / img.height) < .015));
+      }
+      const nextStep = page.getByRole("region", { name: /次は、あなたが\s*この技術を\s*身につける番。/ });
       assert.equal(await nextStep.count(), 1);
-      await nextStep.getByRole("link").click();
-      assert.ok(page.url().endsWith("#cohort-schedule"));
+      await nextStep.getByRole("link", { name: "学び方を知る" }).click();
+      assert.ok(page.url().endsWith("#cohort-learning"));
       for (const question of await page.locator(".recruitment-faq details").all()) {
         await question.locator("summary").click(); assert.equal(await question.evaluate(el => el.open), true);
         await question.locator("summary").focus(); await page.keyboard.press("Space"); assert.equal(await question.evaluate(el => el.open), false);
@@ -105,8 +110,8 @@ const expected = {
         await page.evaluate(() => scrollTo(0, document.documentElement.scrollHeight));
         assert.ok(await page.evaluate(() => document.querySelector(".recruitment-footer p:last-child").getBoundingClientRect().bottom <= document.querySelector(".recruitment-contact-bar").getBoundingClientRect().top));
       }
-      if (out && [390, 1440].includes(width)) {
-        for (const [selector, name] of [[".cohort-schedule-switcher", "schedule"], ["#cohort-tuition", "fees"]]) await page.locator(selector).screenshot({ path: path.join(out, `${name}-${width}.png`), style: ".site-header,.recruitment-contact-bar,.skip-link {visibility:hidden!important}" });
+      if (out && [375, 1440].includes(width)) {
+        for (const [selector, name] of [[".cohort-schedule-switcher", "schedule"], ["#cohort-tuition", "fees"], [".cohort-next-step", "films"], ["#cohort-instructor", "instructor"]]) await page.locator(selector).screenshot({ path: path.join(out, `${name}-${width}.png`), style: ".site-header,.recruitment-contact-bar,.skip-link {visibility:hidden!important}" });
         await page.evaluate(() => { document.activeElement?.blur(); scrollTo(0, 0); });
         await page.screenshot({ path: path.join(out, `hero-${width}.png`) });
       }
@@ -130,3 +135,4 @@ const expected = {
     console.log(JSON.stringify(report, null, 2));
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exit(1); });
+

@@ -6,7 +6,7 @@ export function CohortInstructor() {
   return (
     <section id="cohort-instructor" className="recruitment-section recruitment-wrap cohort-instructor-feature">
       <div className="cohort-teacher-heading">
-        <div><p className="recruitment-eyebrow">INSTRUCTOR</p><h2>経験を、<br />学びにつなぐ。</h2></div>
+        <div><p className="recruitment-eyebrow">INSTRUCTOR</p><h2>永友先生から、<br />技術と考え方を学ぶ。</h2></div>
         <p>施術歴{profile.practiceExperience}の永友先生から、技術とその背景にある考え方を学ぶ。施術家としての経験と、自然形体療法を伝える立場に触れる研修です。</p>
       </div>
       <div className="cohort-teacher-visual">
@@ -27,14 +27,11 @@ export function CohortInstructor() {
         <aside className="cohort-teacher-method" aria-labelledby="cohort-method-title">
           <p className="recruitment-eyebrow">THE WAY WE LEARN</p>
           <h3 id="cohort-method-title">技術の背景まで、<br />理解を深める。</h3>
-          <ol className="cohort-learning-path">
-            <li><span aria-hidden="true">01</span><div><h4>技術を見る</h4><p>講師の手の位置や、身体への触れ方を確認する。</p></div></li>
-            <li><span aria-hidden="true">02</span><div><h4>自分の手で確かめる</h4><p>実技で力加減や身体の反応を確かめ、理論でその理由を学ぶ。</p></div></li>
-            <li><span aria-hidden="true">03</span><div><h4>振り返って、次の学びへ</h4><p>復習用動画で振り返り、疑問を質問する。</p></div></li>
-          </ol>
+          <p>技術だけでなく、身体をどう捉え、なぜその施術を行うのか。実技と理論を通して、考え方への理解も深めていきます。</p>
         </aside>
         <a className="recruitment-text-link" href="/#instructors">講師の映像紹介を確認する <span aria-hidden="true">↗</span></a>
       </div>
     </section>
   );
 }
+

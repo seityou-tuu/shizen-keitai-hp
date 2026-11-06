@@ -9,6 +9,7 @@ const { firstCohortConfig, firstCohortDetails, getFirstCohort, getFirstCohortSum
 require.extensions[".jpg"] = (module, filename) => {
   module.exports = { src: "/images/" + require("node:path").basename(filename), width: 1, height: 1 };
 };
+require.extensions[".webp"] = require.extensions[".jpg"];
 require.extensions[".css"] = module => { module.exports = {}; };
 const OriginalFirstPage = require("../app/recruitment/first/page.tsx").default;
 function FirstPage() {
@@ -120,7 +121,11 @@ test("recruitment page retains known fees and phone with only the approved exist
   assert.ok(!/<form|<input/.test(html));
   for (const name of ["practical-hands-on", "practical-observation", "group-guidance"]) assert.equal(html.split(`data-photo="${name}"`).length - 1, 1);
   assert.match(html, /第1期生・第0期生の実施状況を示すものではありません/);
-  assert.equal((html.match(/<img/g) || []).length, 4);
+  assert.equal((html.match(/<img/g) || []).length, 6);
+  for (const url of ["https://youtu.be/yp_P0a_oedY", "https://youtu.be/yudalXPijCk"]) assert.ok(html.includes(url));
+  assert.ok(!/<iframe|autoplay/.test(html));
+  assert.ok(html.indexOf("cohort-next-step-title") < html.indexOf('id="cohort-learning"'));
+  assert.ok(!html.includes("見るだけで</em>"));
   assert.equal((html.match(/確定後にご案内します/g) || []).length, 0);
   assert.match(html, /https:\/\/lin\.ee\/O3tJo01/);
   assert.ok(!/募集受付中|LINEも未開設/.test(html));
@@ -152,3 +157,4 @@ test("first cohort menus and content links use the dedicated page sections", () 
   const ids = new Set([...html.matchAll(/id="([^"]+)"/g)].map(match=>match[1]));
   for (const [, hash] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.has(hash), hash);
 });
+
