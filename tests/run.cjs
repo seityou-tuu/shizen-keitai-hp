@@ -4,3 +4,5 @@ require("./seo.test.cjs");
 require("./content.test.cjs");
 
 require("./instructor.test.cjs");
+
+require("./recruitment.test.cjs");

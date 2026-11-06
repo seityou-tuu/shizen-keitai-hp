@@ -1,3 +1,4 @@
+import { FirstCohortCallout } from "@/components/first-cohort-callout";
 import { InstructorProfile } from "@/components/instructor-profile";
 import { instructorProfile } from "@/lib/instructor";
 import { CONTACT_PHONE, CONTACT_TEL, getOfficialLineUrl } from "@/lib/contact";
@@ -194,6 +195,8 @@ export default function Home() {
             </dl>
           </div>
         </section>
+
+        <FirstCohortCallout />
 
         <section id="about" className="story-section renewal-about">
           <div className="renewal-wrap editorial-split">

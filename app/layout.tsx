@@ -10,6 +10,7 @@ import "./program-photos.css";
 import "./renewal.css";
 import "./contact.css";
 import "./art-direction.css";
+import "./recruitment.css";
 
 const title = `${SITE_NAME} | 株式会社TSUNAGi`;
 export const metadata: Metadata = {

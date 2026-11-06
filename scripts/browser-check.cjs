@@ -25,6 +25,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
       "Local Chromium, DPR 1, reduced motion, no CPU/network throttling, single navigation per width; not field or iPhone Safari data",
     widths: [],
     routes: [],
+    recruitmentWidths: [],
     externalRequests: [],
     errors: [],
   };
@@ -250,7 +251,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
         );
         sections.push(audit.id);
       }
-      assert.equal(sections.length, 12);
+      assert.equal(sections.length, 13);
       const allNumbers = await page
         .locator(
           ".future-list li > span,.support-list li > span,.learning-cycle li > span,.section-heading .eyebrow > span,.perspective-number,.renewal-step-grid .renewal-kicker,.renewal-flow li > .renewal-kicker",
@@ -280,7 +281,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
         const url = new URL(href, base);
         assert.equal(url.origin, base.origin);
         assert.ok(
-          ["/", "/company", "/legal", "/privacy", "/terms"].includes(
+          ["/", "/company", "/legal", "/privacy", "/terms", "/recruitment/first"].includes(
             url.pathname,
           ),
         );
@@ -432,6 +433,55 @@ if (out) fs.mkdirSync(out, { recursive: true });
       report.routes.push({ route, status: response.status(), passed: true });
     }
     assert.deepEqual(report.externalRequests, []);
+    const recruitment = await browser.newPage({ reducedMotion: "reduce" });
+    recruitment.on("pageerror", error => report.errors.push(error.message));
+    for (const width of [320, 360, 375, 390, 400, 414, 430, 768, 1024, 1440]) {
+      await recruitment.setViewportSize({ width, height: 900 });
+      const response = await recruitment.goto(new URL("/recruitment/first", base).href, { waitUntil: "networkidle" });
+      assert.equal(response.status(), 200);
+      assert.match(response.headers()["x-robots-tag"], /noindex/);
+      assert.equal(await recruitment.locator("h1").count(), 1);
+      assert.equal(await recruitment.locator('link[rel="canonical"]').getAttribute("href"), "https://shizen-keitai-hp.vercel.app/recruitment/first");
+      assert.match(await recruitment.title(), /第1期生/);
+      assert.equal(await recruitment.locator("form,input,textarea,img").count(), 0);
+      assert.equal(await recruitment.locator('a[href*="line.me"],a[href*="lin.ee"]').count(), 0);
+      assert.match(await recruitment.locator(".recruitment-status").innerText(), /募集準備中/);
+      assert.ok(!(await recruitment.locator("main").innerText()).includes("募集受付中"));
+      assert.ok(await recruitment.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `recruitment overflow at ${width}`);
+      const clipped = await recruitment.locator("main h1,main h2,main h3,main p,main a,main dd,main dt").evaluateAll(nodes => nodes.filter(el => { const r=el.getBoundingClientRect(); return r.left < -1 || r.right > innerWidth+1 || el.scrollWidth > el.clientWidth+2; }).map(el=>el.textContent));
+      assert.deepEqual(clipped, [], `recruitment text clipping at ${width}`);
+      for (const link of await recruitment.locator(".recruitment-quick-nav a").all()) {
+        const hash = await link.getAttribute("href");
+        await link.click();
+        assert.ok(recruitment.url().endsWith(hash));
+        assert.ok(await recruitment.locator(hash).evaluate(el => el.getBoundingClientRect().top >= document.querySelector(".site-header").getBoundingClientRect().bottom - 1), `recruitment anchor under header at ${width}`);
+      }
+      for (const item of await recruitment.locator(".recruitment-faq details").all()) {
+        await item.locator("summary").click();
+        assert.ok(await item.evaluate(el=>el.open));
+        await item.locator("summary").focus();
+        await recruitment.keyboard.press("Space");
+        assert.ok(!(await item.evaluate(el=>el.open)));
+      }
+      assert.equal(await recruitment.locator(".recruitment-faq details").count(), 6);
+      for (const fee of await recruitment.locator(".recruitment-fees article").all()) {
+        const text=(await fee.innerText()).replace(/\s/g, "");
+        for (const value of ["990,000円（税込）", "税抜900,000円", "6ヶ月"]) assert.ok(text.includes(value));
+      }
+      assert.match(await recruitment.locator(".recruitment-total").innerText(), /2,970,000円（税込）/);
+      assert.ok(await recruitment.locator('a[href^="tel:"]').evaluateAll(nodes=>nodes.every(el=>el.getAttribute("href")==="tel:0985747643")));
+      for (const link of await recruitment.locator('a[href^="#"]').all()) assert.equal(await recruitment.locator(await link.getAttribute("href")).count(), 1);
+      if (width <= 700) {
+        const bar=recruitment.locator(".recruitment-contact-bar");
+        assert.ok(await bar.locator("a").evaluateAll(nodes=>nodes.every(el=>{const r=el.getBoundingClientRect();return r.height>=44 && r.width>=44 && el.scrollWidth<=el.clientWidth+1;})));
+        await recruitment.evaluate(()=>scrollTo(0,document.documentElement.scrollHeight));
+        assert.ok(await recruitment.evaluate(()=>document.querySelector(".recruitment-footer p:last-child").getBoundingClientRect().bottom <= document.querySelector(".recruitment-contact-bar").getBoundingClientRect().top));
+      }
+      await recruitment.evaluate(()=>scrollTo(0,0));
+      if (out && [320,390,768,1440].includes(width)) await recruitment.screenshot({path:path.join(out,`recruitment-${width}.png`),fullPage:true});
+      report.recruitmentWidths.push({ width, passed:true });
+    }
+    await recruitment.close();
     const motionPage = await browser.newPage({ viewport: { width: 390, height: 900 }, reducedMotion: "no-preference" });
     await motionPage.goto(base.href, { waitUntil: "networkidle" });
     await motionPage.locator("#about").scrollIntoViewIfNeeded();
