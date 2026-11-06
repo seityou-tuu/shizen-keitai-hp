@@ -16,19 +16,22 @@ const courses = [
     step: "01",
     title: "準師範コース",
     english: "JUNIOR INSTRUCTOR",
-    text: "資格取得の第一歩となるコース。実技と理論を組み合わせ、学びを積み重ねていきます。",
+    lead: "資格取得の第一歩となるコース。",
+    text: "実技と理論を組み合わせ、学びを積み重ねていきます。",
   },
   {
     step: "02",
     title: "師範コース",
     english: "INSTRUCTOR",
-    text: "準師範コースに続く、次の段階。継続した研修を通じて、自然形体療法への理解を深めます。",
+    lead: "準師範コースに続く、次の段階。",
+    text: "継続した研修を通じて、自然形体療法への理解を深めます。",
   },
   {
     step: "03",
     title: "本部師範コース",
     english: "HEADQUARTERS INSTRUCTOR",
-    text: "3段階のロードマップの最終コース。実技と理論の両面から、さらに学びを重ねます。",
+    lead: "3段階のロードマップの最終コース。",
+    text: "実技と理論の両面から、さらに学びを重ねます。",
   },
 ];
 const features = [
@@ -519,9 +522,9 @@ export default function Home() {
                   <p className="renewal-kicker">STEP {c.step}</p>
                   <h3>{c.title}</h3>
                   <p className="step-english">{c.english}</p>
-                  <p className="step-description">{c.text}</p>
+                  <p className="step-description"><strong>{c.lead}</strong>{c.text}</p>
                   <p className="step-period">
-                    受講期間 <strong>6</strong> ヶ月
+                    受講期間 <strong>6ヶ月</strong>
                   </p>
                 </li>
               ))}
