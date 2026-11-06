@@ -4,7 +4,7 @@ const assert = require("node:assert/strict");
 const { renderToStaticMarkup } = require("react-dom/server");
 const { instructorProfile } = require("../lib/instructor.ts");
 const { InstructorProfile } = require("../components/instructor-profile.tsx");
-const emptyProfile = { ...instructorProfile, background: [], qualifications: [], practiceExperience: "", role: "", achievements: [] };
+const emptyProfile = { ...instructorProfile, formalName: "", background: [], qualifications: [], practiceExperience: "", role: "", achievements: [] };
 
 test("unconfirmed profile facts are not published as empty headings or invented claims", () => {
   assert.equal(instructorProfile.displayName, "永友先生");
@@ -51,20 +51,22 @@ test("a message without biography does not produce an empty details list", () =>
 });
 
 
-test("the confirmed profile facts are shown once without inventing a formal name", () => {
+test("the confirmed profile facts and approved formal name are shown once", () => {
   const html = renderToStaticMarkup(InstructorProfile({}));
   for (const fact of ["柔道整復師（2012年取得）", "2017年 ながとも整骨院開院", "15年", "自然形体療法 理事"]) {
     assert.equal(html.split(fact).length - 1, 1, fact);
   }
-  assert.ok(!html.includes("<dt>氏名"));
+  assert.match(html, /<dt>氏名/);
+  assert.equal(html.split("永友裕也").length - 1, 1);
   assert.ok(!html.includes("<dt>指導実績"));
   assert.ok(!html.includes("詳しいプロフィールは"));
 });
 
-test("unconfirmed channel-wide views and award details stay unpublished", () => {
+test("approved historical channel views are qualified while unverified award details stay unpublished", () => {
   const html = renderToStaticMarkup(InstructorProfile({}));
-  assert.deepEqual(instructorProfile.achievements, []);
-  assert.ok(!html.includes("220万"));
+  assert.match(html, /YouTube総再生回数220万回/);
+  assert.match(html, /過去に確認された値/);
+  assert.match(html, /最新の再生数ではありません/);
   assert.ok(!html.includes("2024年"));
   assert.ok(!html.includes("FANCHANNEL"));
 });

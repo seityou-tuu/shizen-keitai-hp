@@ -2,8 +2,9 @@ import { ProgramPhoto } from "@/components/program-photo";
 import { LineConsultationLink } from "@/components/line-consultation-link";
 import { notFound } from "next/navigation";
 import { CohortSchedule } from "@/components/cohort-schedule";
-import { InstructorProfile } from "@/components/instructor-profile";
+import { CohortInstructor } from "@/components/cohort-instructor";
 import "@/app/recruitment.css";
+import "@/app/cohort-instructor-story.css";
 import { Header } from "@/components/header";
 import { InformationLinks } from "@/components/information-links";
 import { CONTACT_PHONE, CONTACT_TEL } from "@/lib/contact";
@@ -16,7 +17,7 @@ export function generateMetadata() {
   const summary = getFirstCohortSummary();
   return { ...informationMetadata(
   "第1期生 募集案内 | 自然形体療法 資格取得プログラム",
-  `${summary.period}、${summary.locations}の${summary.venueCount}会場で学ぶ第1期生の開催案内。${summary.capacityLabel}、募集締切${formatRecruitmentDate(firstCohortDetails.deadline)}。日程・研修・料金と電話相談をご案内します。申込み方法は準備中です。`,
+  `${summary.period}、${summary.locations}の${summary.venueCount}会場で学ぶ第1期生の開催案内。${summary.capacityLabel}、募集締切${formatRecruitmentDate(firstCohortDetails.deadline)}。日程・研修・料金とLINE・電話による受講相談をご案内します。申込み方法は準備中です。`,
   FIRST_COHORT_PATH,
   ), robots: { index: false, follow: false } };
 }
@@ -46,14 +47,14 @@ export default function FirstRecruitmentPage() {
               <p className="recruitment-eyebrow">SHIZEN KEITAI / FIRST COHORT</p>
               <span className="recruitment-status">{info.statusLabel}</span>
               <h1>自然形体療法<br />資格取得プログラム<br /><em>第1期生募集</em></h1>
-              <p className="recruitment-lead">{summary.startYear}年{summary.startMonth}月、新しい学びの一歩を。</p>
+              <p className="recruitment-lead">{summary.startYear}年{summary.startMonth}月、第1期生として学び始める。</p>
             </div>
             <div className="cohort-hero-photo cohort-photo">
               <ProgramPhoto name="practical-hands-on" caption="実技研修の紹介写真（既存HP掲載）" priority sizes="(max-width: 900px) calc(100vw - 40px), (max-width: 1400px) 52vw, 680px" />
               <p className="cohort-photo-note">掲載写真は既存の研修紹介用です。第1期生・第0期生の実施状況を示すものではありません。</p>
             </div>
             <div className="cohort-hero-details">
-              <p>理論で理解し、実技で体感し、繰り返し磨いていく。<br />次の学びを考える方へ、第1期生の情報をご案内します。</p>
+              <p>0期生の研修が、すでに始まっています。<br />次の学びの一歩を、第1期生として。</p>
               <div className="cohort-hero-actions">
                 <LineConsultationLink className="recruitment-button" />
                 <a href="#cohort-schedule" className="recruitment-text-link">会場・全6回の日程を見る ↓</a>
@@ -76,10 +77,13 @@ export default function FirstRecruitmentPage() {
         </nav>
         <section className="recruitment-section recruitment-wrap" aria-labelledby="cohort-overview">
           <p className="recruitment-eyebrow">OVERVIEW</p>
-          <h2 id="cohort-overview">次の一歩を、ここから。</h2>
-          <div className="recruitment-two-columns">
-            <div><p>{summary.locations}。ご自身の学びを考える会場から、全6回の開催日程をご確認ください。</p><p>理論で理解し、実技で確かめ、動画で振り返る。既存プログラムの学び方と第1期生の開催情報をまとめました。</p></div>
-            <div className="recruitment-note-panel"><h3>受講対象</h3><p>{facts.eligible}です。</p><p>認定基準・進級条件などは確認後にご案内します。</p></div>
+          <h2 id="cohort-overview">続いていく学びに、<br />あなたの一歩を。</h2>
+          <div className="cohort-story-layout">
+            <ol className="cohort-story">
+              <li><span aria-hidden="true">00</span><div><h3>0期生の研修が、始まっています。</h3><p>理論を理解し、実技で確かめる学びが、すでに動き始めています。</p></div></li>
+              <li><span aria-hidden="true">01</span><div><h3>{summary.startYear}年{summary.startMonth}月、第1期生へ。</h3><p>次の学びの一歩を、同じ技術に向き合う仲間と。{summary.locations}の{summary.venueCount}会場で開催します。</p></div></li>
+            </ol>
+            <div className="cohort-small-group"><p className="recruitment-eyebrow">FIRST COHORT</p><h3>各会場<span>{facts.venues[0].capacity}</span>名の募集</h3><p>自然形体療法を学ぶ、新しい仲間との出会いを。</p><p>{facts.eligible}です。</p></div>
           </div>
           <dl className="cohort-overview-facts">
             <div><dt>開催期間</dt><dd>{summary.period}</dd></div>
@@ -111,10 +115,7 @@ export default function FirstRecruitmentPage() {
           <p className="recruitment-note">上記は既存プログラムの学び方です。第1期生の開始・終了時刻、動画の視聴方法・期限、質問方法・回答時間等は確認後にご案内します。施術見学を確約するものではありません。施術の感じ方や身体の反応には個人差があり、医学的な効果・治癒を保証するものではありません。</p>
           <a className="recruitment-text-link" href="#cohort-schedule">募集日程・条件を確認する ↓</a>
         </section>
-        <section id="cohort-instructor" className="recruitment-section recruitment-wrap cohort-instructor">
-          <div><p className="recruitment-eyebrow">INSTRUCTOR</p><h2>技術に向き合う、<br />講師と学ぶ。</h2></div>
-          <InstructorProfile />
-        </section>
+        <CohortInstructor />
         <section id="cohort-schedule" className="recruitment-section recruitment-soft">
           <div className="recruitment-wrap">
             <p className="recruitment-eyebrow">SCHEDULE & LOCATION</p>
@@ -144,7 +145,7 @@ export default function FirstRecruitmentPage() {
         </section>
         <section id="cohort-flow" className="recruitment-section recruitment-wrap">
           <p className="recruitment-eyebrow">GETTING STARTED</p><h2>受講前の確認事項</h2>
-          <p className="recruitment-section-lead">現在ご利用いただけるのは電話による受講相談です。正式な申込み方法・契約手順は未確定です。</p>
+          <p className="recruitment-section-lead">受講相談は公式LINEを中心に、お電話でも承ります。正式な申込み方法・契約手順は準備中です。</p>
           <ol className="recruitment-flow"><li><h3>まずは受講相談</h3><p>ご自身の経験や、学びたいこと、気になる点をお聞かせください。</p></li><li><h3>日程・条件を確認</h3><p>開催日・会場・受講要件・料金・規約など、確定した募集案内をご確認ください。</p></li><li><h3>手続き・条件を確認する</h3><p>お申込み・支払い・受講開始までの具体的な手順は未確定です。</p></li></ol>
           <p className="recruitment-note">上記は確認する情報の案内であり、確定した契約手順ではありません。お問い合わせだけで申込み・契約成立・決済になることはありません。</p>
           <InformationLinks />

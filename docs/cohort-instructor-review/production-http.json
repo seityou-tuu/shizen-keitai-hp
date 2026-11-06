@@ -1,0 +1,29 @@
+{
+  "/": {
+    "status": 200,
+    "noindex": null,
+    "recruitmentLink": false
+  },
+  "/recruitment/first": {
+    "status": 404,
+    "noindex": "noindex, nofollow",
+    "recruitmentLink": false
+  },
+  "/first-cohort": {
+    "status": 404,
+    "noindex": "noindex, nofollow",
+    "recruitmentLink": false
+  },
+  "/sitemap.xml": {
+    "status": 200,
+    "noindex": null,
+    "recruitmentLink": false,
+    "recruitmentExcluded": true
+  },
+  "/robots.txt": {
+    "status": 200,
+    "noindex": null,
+    "recruitmentLink": false,
+    "body": "User-Agent: *\nAllow: /\nDisallow: /api/\nDisallow: /recruitment/\nDisallow: /first-cohort\n\nHost: https://shizen-keitai-hp.vercel.app\nSitemap: https://shizen-keitai-hp.vercel.app/sitemap.xml\n"
+  }
+}

@@ -1,0 +1,686 @@
+{
+  "conditions": "Local Chromium, DPR 1, reduced motion, no CPU/network throttling, single navigation per width; not field or iPhone Safari data",
+  "widths": [
+    {
+      "width": 320,
+      "initialLcpMs": 464,
+      "sectionsChecked": [
+        "hero",
+        "about",
+        "features",
+        "audience",
+        "support",
+        "training",
+        "roadmap",
+        "instructors",
+        "instagram",
+        "future",
+        "courses",
+        "faq",
+        "contact"
+      ],
+      "numberedItemsChecked": 34,
+      "menuLinksChecked": 6,
+      "initialCls": 0,
+      "faqNumberLines": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contrast": [
+        {
+          "selector": ".renewal-faq-list summary > span:first-child",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".renewal-faq-list h3",
+          "ratio": 11.01
+        },
+        {
+          "selector": ".contact-phone",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".home-footer .eyebrow",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".instagram-eyebrow",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".instagram-description",
+          "ratio": 10.42
+        },
+        {
+          "selector": ".instagram-note",
+          "ratio": 9.57
+        }
+      ],
+      "passed": true
+    },
+    {
+      "width": 360,
+      "initialLcpMs": 308,
+      "sectionsChecked": [
+        "hero",
+        "about",
+        "features",
+        "audience",
+        "support",
+        "training",
+        "roadmap",
+        "instructors",
+        "instagram",
+        "future",
+        "courses",
+        "faq",
+        "contact"
+      ],
+      "numberedItemsChecked": 34,
+      "menuLinksChecked": 6,
+      "initialCls": 0,
+      "faqNumberLines": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contrast": [
+        {
+          "selector": ".renewal-faq-list summary > span:first-child",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".renewal-faq-list h3",
+          "ratio": 11.01
+        },
+        {
+          "selector": ".contact-phone",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".home-footer .eyebrow",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".instagram-eyebrow",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".instagram-description",
+          "ratio": 10.42
+        },
+        {
+          "selector": ".instagram-note",
+          "ratio": 9.57
+        }
+      ],
+      "passed": true
+    },
+    {
+      "width": 375,
+      "initialLcpMs": 332,
+      "sectionsChecked": [
+        "hero",
+        "about",
+        "features",
+        "audience",
+        "support",
+        "training",
+        "roadmap",
+        "instructors",
+        "instagram",
+        "future",
+        "courses",
+        "faq",
+        "contact"
+      ],
+      "numberedItemsChecked": 34,
+      "menuLinksChecked": 6,
+      "initialCls": 0,
+      "faqNumberLines": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contrast": [
+        {
+          "selector": ".renewal-faq-list summary > span:first-child",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".renewal-faq-list h3",
+          "ratio": 11.01
+        },
+        {
+          "selector": ".contact-phone",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".home-footer .eyebrow",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".instagram-eyebrow",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".instagram-description",
+          "ratio": 10.42
+        },
+        {
+          "selector": ".instagram-note",
+          "ratio": 9.57
+        }
+      ],
+      "passed": true
+    },
+    {
+      "width": 390,
+      "initialLcpMs": 360,
+      "sectionsChecked": [
+        "hero",
+        "about",
+        "features",
+        "audience",
+        "support",
+        "training",
+        "roadmap",
+        "instructors",
+        "instagram",
+        "future",
+        "courses",
+        "faq",
+        "contact"
+      ],
+      "numberedItemsChecked": 34,
+      "menuLinksChecked": 6,
+      "initialCls": 0,
+      "faqNumberLines": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contrast": [
+        {
+          "selector": ".renewal-faq-list summary > span:first-child",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".renewal-faq-list h3",
+          "ratio": 11.01
+        },
+        {
+          "selector": ".contact-phone",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".home-footer .eyebrow",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".instagram-eyebrow",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".instagram-description",
+          "ratio": 10.42
+        },
+        {
+          "selector": ".instagram-note",
+          "ratio": 9.57
+        }
+      ],
+      "passed": true
+    },
+    {
+      "width": 400,
+      "initialLcpMs": 272,
+      "sectionsChecked": [
+        "hero",
+        "about",
+        "features",
+        "audience",
+        "support",
+        "training",
+        "roadmap",
+        "instructors",
+        "instagram",
+        "future",
+        "courses",
+        "faq",
+        "contact"
+      ],
+      "numberedItemsChecked": 34,
+      "menuLinksChecked": 6,
+      "initialCls": 0,
+      "faqNumberLines": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contrast": [
+        {
+          "selector": ".renewal-faq-list summary > span:first-child",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".renewal-faq-list h3",
+          "ratio": 11.01
+        },
+        {
+          "selector": ".contact-phone",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".home-footer .eyebrow",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".instagram-eyebrow",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".instagram-description",
+          "ratio": 10.42
+        },
+        {
+          "selector": ".instagram-note",
+          "ratio": 9.57
+        }
+      ],
+      "passed": true
+    },
+    {
+      "width": 414,
+      "initialLcpMs": 292,
+      "sectionsChecked": [
+        "hero",
+        "about",
+        "features",
+        "audience",
+        "support",
+        "training",
+        "roadmap",
+        "instructors",
+        "instagram",
+        "future",
+        "courses",
+        "faq",
+        "contact"
+      ],
+      "numberedItemsChecked": 34,
+      "menuLinksChecked": 6,
+      "initialCls": 0,
+      "faqNumberLines": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contrast": [
+        {
+          "selector": ".renewal-faq-list summary > span:first-child",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".renewal-faq-list h3",
+          "ratio": 11.01
+        },
+        {
+          "selector": ".contact-phone",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".home-footer .eyebrow",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".instagram-eyebrow",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".instagram-description",
+          "ratio": 10.42
+        },
+        {
+          "selector": ".instagram-note",
+          "ratio": 9.57
+        }
+      ],
+      "passed": true
+    },
+    {
+      "width": 430,
+      "initialLcpMs": 272,
+      "sectionsChecked": [
+        "hero",
+        "about",
+        "features",
+        "audience",
+        "support",
+        "training",
+        "roadmap",
+        "instructors",
+        "instagram",
+        "future",
+        "courses",
+        "faq",
+        "contact"
+      ],
+      "numberedItemsChecked": 34,
+      "menuLinksChecked": 6,
+      "initialCls": 0,
+      "faqNumberLines": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contrast": [
+        {
+          "selector": ".renewal-faq-list summary > span:first-child",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".renewal-faq-list h3",
+          "ratio": 11.01
+        },
+        {
+          "selector": ".contact-phone",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".home-footer .eyebrow",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".instagram-eyebrow",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".instagram-description",
+          "ratio": 10.42
+        },
+        {
+          "selector": ".instagram-note",
+          "ratio": 9.57
+        }
+      ],
+      "passed": true
+    },
+    {
+      "width": 768,
+      "initialLcpMs": 260,
+      "sectionsChecked": [
+        "hero",
+        "about",
+        "features",
+        "audience",
+        "support",
+        "training",
+        "roadmap",
+        "instructors",
+        "instagram",
+        "future",
+        "courses",
+        "faq",
+        "contact"
+      ],
+      "numberedItemsChecked": 34,
+      "menuLinksChecked": 6,
+      "initialCls": 0,
+      "faqNumberLines": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contrast": [
+        {
+          "selector": ".renewal-faq-list summary > span:first-child",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".renewal-faq-list h3",
+          "ratio": 11.01
+        },
+        {
+          "selector": ".contact-phone",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".home-footer .eyebrow",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".instagram-eyebrow",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".instagram-description",
+          "ratio": 10.42
+        },
+        {
+          "selector": ".instagram-note",
+          "ratio": 9.57
+        }
+      ],
+      "passed": true
+    },
+    {
+      "width": 1024,
+      "initialLcpMs": 288,
+      "sectionsChecked": [
+        "hero",
+        "about",
+        "features",
+        "audience",
+        "support",
+        "training",
+        "roadmap",
+        "instructors",
+        "instagram",
+        "future",
+        "courses",
+        "faq",
+        "contact"
+      ],
+      "numberedItemsChecked": 34,
+      "menuLinksChecked": 6,
+      "initialCls": 0,
+      "faqNumberLines": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contrast": [
+        {
+          "selector": ".renewal-faq-list summary > span:first-child",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".renewal-faq-list h3",
+          "ratio": 11.01
+        },
+        {
+          "selector": ".contact-phone",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".home-footer .eyebrow",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".instagram-eyebrow",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".instagram-description",
+          "ratio": 10.42
+        },
+        {
+          "selector": ".instagram-note",
+          "ratio": 9.57
+        }
+      ],
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "initialLcpMs": 288,
+      "sectionsChecked": [
+        "hero",
+        "about",
+        "features",
+        "audience",
+        "support",
+        "training",
+        "roadmap",
+        "instructors",
+        "instagram",
+        "future",
+        "courses",
+        "faq",
+        "contact"
+      ],
+      "numberedItemsChecked": 34,
+      "menuLinksChecked": 6,
+      "initialCls": 0,
+      "faqNumberLines": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contrast": [
+        {
+          "selector": ".renewal-faq-list summary > span:first-child",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".renewal-faq-list h3",
+          "ratio": 11.01
+        },
+        {
+          "selector": ".contact-phone",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".home-footer .eyebrow",
+          "ratio": 5.06
+        },
+        {
+          "selector": ".instagram-eyebrow",
+          "ratio": 8.73
+        },
+        {
+          "selector": ".instagram-description",
+          "ratio": 10.42
+        },
+        {
+          "selector": ".instagram-note",
+          "ratio": 9.57
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "routes": [
+    {
+      "route": "/company",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/legal",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/privacy",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/terms",
+      "status": 200,
+      "passed": true
+    }
+  ],
+  "externalRequests": [],
+  "errors": [],
+  "qualityChecks": {
+    "structuredData": true,
+    "shortcutNavigation": true,
+    "mobileMenuFocus": true,
+    "landscapeMenu": true,
+    "withoutJavaScript": true
+  }
+}

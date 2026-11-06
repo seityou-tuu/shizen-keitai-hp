@@ -120,12 +120,20 @@ test("recruitment page retains known fees and phone with only the approved exist
   assert.ok(!/<form|<input/.test(html));
   for (const name of ["practical-hands-on", "practical-observation", "group-guidance"]) assert.equal(html.split(`data-photo="${name}"`).length - 1, 1);
   assert.match(html, /第1期生・第0期生の実施状況を示すものではありません/);
-  assert.equal((html.match(/<img/g) || []).length, 3);
+  assert.equal((html.match(/<img/g) || []).length, 4);
   assert.equal((html.match(/確定後にご案内します/g) || []).length, 0);
   assert.match(html, /https:\/\/lin\.ee\/O3tJo01/);
   assert.ok(!/募集受付中|LINEも未開設/.test(html));
 });
 
+
+test("cohort introduces the approved instructor and the next cohort without invented benefits or quotes", () => {
+  const html = renderToStaticMarkup(React.createElement(FirstPage));
+  for (const fact of ["永友裕也", "柔道整復師（2012年取得）", "2017年 ながとも整骨院開院", "自然形体療法 理事", "15年", "220万回", "最新の再生数を示すものではなく", "0期生の研修が"]) assert.ok(html.includes(fact), fact);
+  assert.ok(!/<blockquote|限定特典|優先選抜|創設メンバー|2024年|FANCHANNEL GP/.test(html));
+  assert.ok(!html.includes("現在ご利用いただけるのは電話による受講相談です"));
+  assert.equal(firstCohortDetails.application.url, null);
+});
 
 test("program header keeps its original navigation destinations", () => {
   const { Header } = require("../components/header.tsx");

@@ -81,7 +81,8 @@ if (out) fs.mkdirSync(out, { recursive: true });
       for (const fact of ["柔道整復師（2012年取得）", "2017年 ながとも整骨院開院", "15年", "自然形体療法 理事"]) {
         assert.equal(profileText.split(fact).length - 1, 1, `profile fact at ${width}: ${fact}`);
       }
-      assert.ok(!profileText.includes("220万"));
+      assert.ok(profileText.includes("YouTube総再生回数220万回"));
+      assert.ok(profileText.includes("最新の再生数ではありません"));
       assert.ok(!profileText.includes("2024年"));
       assert.ok(await page.locator("#about .section-heading, #about h2").evaluateAll(nodes => nodes.every(el => getComputedStyle(el).animationName === "none")), "reduced-motion headings must not animate");
       const initial = await page.evaluate(() => ({
@@ -414,7 +415,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
       }
       assert.ok(evidence.includes("受賞年・賞の正式名称は確認中です"));
       const allInstructorText = await page.locator("#instructors").innerText();
-      for (const unconfirmed of ["220万", "2024年", "FANCHANNEL グランプリ"])
+      for (const unconfirmed of ["2024年", "FANCHANNEL グランプリ"])
         assert.ok(!allInstructorText.includes(unconfirmed), `unconfirmed assertion at ${width}: ${unconfirmed}`);
 
 

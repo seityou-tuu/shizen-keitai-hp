@@ -74,7 +74,12 @@ const expected = {
         await photo.scrollIntoViewIfNeeded(); await photo.evaluate(img => img.decode());
         assert.ok(await photo.evaluate(img => Math.abs(img.naturalWidth / img.naturalHeight - img.getBoundingClientRect().width / img.getBoundingClientRect().height) < .015));
       }
-      assert.equal(await page.locator(".program-photo img").count(), 3);
+      assert.equal(await page.locator(".program-photo img").count(), 4);
+      const instructor = await page.locator("#cohort-instructor").innerText();
+      assert.match(instructor, /永友裕也/);
+      assert.match(instructor, /220万回/);
+      assert.match(instructor, /最新の再生数を示すものではなく/);
+      assert.ok(!instructor.includes("2024年"));
       for (const question of await page.locator(".recruitment-faq details").all()) {
         await question.locator("summary").click(); assert.equal(await question.evaluate(el => el.open), true);
         await question.locator("summary").focus(); await page.keyboard.press("Space"); assert.equal(await question.evaluate(el => el.open), false);
