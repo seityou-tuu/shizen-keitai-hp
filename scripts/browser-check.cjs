@@ -308,7 +308,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
         .evaluateAll((nodes) => nodes.map((node) => node.getAttribute("href")));
       for (const href of links) {
         assert.notEqual(href, "#", "ambiguous placeholder anchor");
-        if (href.startsWith("tel:")) continue;
+        if (href.startsWith("tel:") || href === "https://lin.ee/O3tJo01") continue;
         if (["https://youtu.be/yp_P0a_oedY", "https://youtu.be/yudalXPijCk", "https://www.instagram.com/ngtmyy_1990", "https://www.instagram.com/reel/DcGE2FPKpHz/", "https://www.instagram.com/reel/DcN4DM8K89p/", "https://www.instagram.com/reel/DapZQNvvtVR/"].includes(href)) continue;
         const url = new URL(href, base);
         assert.equal(url.origin, base.origin);
@@ -334,23 +334,21 @@ if (out) fs.mkdirSync(out, { recursive: true });
       assert.ok(
         phones.length >= 6 && phones.every((href) => href === "tel:0985747643"),
       );
-      assert.equal(
-        await page.locator('a[href*="lin.ee"],a[href*="line.me"]').count(),
-        0,
-      );
+      assert.ok(await page.locator('a[href="https://lin.ee/O3tJo01"]').count() >= 8);
+      assert.ok(await page.locator('a[href*="lin.ee"],a[href*="line.me"]').evaluateAll(nodes => nodes.every(el => el.getAttribute("href") === "https://lin.ee/O3tJo01" && el.getAttribute("target") === "_blank" && el.rel.includes("noopener"))));
       assert.equal(await page.locator("form,input,textarea,select").count(), 0);
-      assert.equal(await page.locator(".line-preparing").count(), 1);
+      assert.equal(await page.locator(".line-preparing").count(), 0);
       if (width <= 600) {
         const sticky = page.getByRole("navigation", {
           name: "スマートフォンの受講相談",
         });
         assert.equal(
           await sticky.locator("a").first().getAttribute("href"),
-          "tel:0985747643",
+          "https://lin.ee/O3tJo01",
         );
         assert.equal(
           await sticky.locator("a").last().getAttribute("href"),
-          "#contact",
+          "tel:0985747643",
         );
         const taps = await sticky.locator("a").evaluateAll((nodes) =>
           nodes.map((node) => ({
@@ -360,7 +358,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
         );
         assert.ok(taps.every((rect) => rect.width >= 44 && rect.height >= 44));
         assert.ok(await sticky.locator("a").evaluateAll(nodes => nodes.every(el => el.scrollWidth <= el.clientWidth + 1)), `sticky CTA text overflow at ${width}`);
-        await sticky.locator("a").last().click();
+        await page.locator(".faq-consultation a[href='#contact']").click();
         assert.ok(page.url().endsWith("#contact"));
         await page.evaluate(() =>
           scrollTo(0, document.documentElement.scrollHeight),

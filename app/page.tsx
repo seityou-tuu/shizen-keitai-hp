@@ -118,10 +118,10 @@ function ConsultationCallout({ text }: { text: string }) {
     <aside className="consultation-callout">
       <p>{text}</p>
       <div className="consultation-actions">
-        <a className="renewal-button" href={CONTACT_TEL}>
-          受講について電話で相談する <span aria-hidden="true">↗</span>
+        <LineConsultationLink className="renewal-button" />
+        <a className="consultation-phone-link" href={CONTACT_TEL}>
+          電話で相談する <span aria-hidden="true">↗</span>
         </a>
-        <LineConsultationLink />
         <a className="consultation-details-link" href="#contact">
           電話番号・窓口案内を見る <span aria-hidden="true">↓</span>
         </a>
@@ -165,13 +165,13 @@ export default function Home() {
                   その技術を、あなた自身の手に。
                 </p>
               </div>
-              <a className="renewal-button" href="#roadmap">
+              <LineConsultationLink className="renewal-button" />
+              <a className="renewal-text-link" href="#roadmap">
                 資格取得プログラムを見る <span aria-hidden="true">↗</span>
               </a>
               <a className="renewal-text-link" href={CONTACT_TEL}>
                 受講について電話で相談する <span aria-hidden="true">↗</span>
               </a>
-              <LineConsultationLink />
             </div>
             <div className="hero-photograph">
               <span className="photo-overline">THE ART OF A GENTLE TOUCH</span>
@@ -739,6 +739,7 @@ export default function Home() {
               ))}
               <aside className="faq-consultation">
                 <p>ほかにも気になることがありましたら、お気軽にご相談ください。</p>
+                <LineConsultationLink />
                 <a className="renewal-text-link" href="#contact">
                   受講相談の窓口を見る <span aria-hidden="true">↗</span>
                 </a>
@@ -759,42 +760,27 @@ export default function Home() {
               次の一歩に。
             </h2>
             <p>
-              受講内容や研修についてのご質問は、お電話でご相談ください。
+              受講内容や研修についてのご質問は、公式LINEまたはお電話でご相談ください。
               <br />
               正式な受講申込みや決済のお手続きではありません。
             </p>
             <div className="contact-layout">
-              <div className="contact-by-phone">
-                <h3>受講について電話で相談する</h3>
-                <a className="contact-phone" href={CONTACT_TEL}>
-                  {CONTACT_PHONE}
-                </a>
-                <p>
-                  現在の正式なお問い合わせ窓口は、お電話です。スマートフォンではタップして発信できます。
-                </p>
-                <p className="renewal-note">
-                  受付時間・休業日は確認後にご案内します。通話料はお客様のご負担となります。
-                </p>
+              <div className="contact-by-line">
+                <h3>LINEで受講相談</h3>
+                <p>受講内容・研修の進め方・料金など、気になることをお聞かせください。</p>
+                <LineConsultationLink className="renewal-button" />
+                <p className="renewal-note">受講相談・お問い合わせの窓口です。LINEでの相談だけで正式な受講申込みや決済が行われることはありません。</p>
               </div>
               <div className="contact-guidance">
-                <h3>ご相談の際に</h3>
-                <p>
-                  受講内容・研修の進め方・料金など、気になることをお聞かせください。
-                </p>
-                <p>
-                  お問い合わせだけで正式な受講申込みや決済が行われることはありません。
-                </p>
+                <h3>電話でのご相談</h3>
+                <a className="contact-phone" href={CONTACT_TEL}>{CONTACT_PHONE}</a>
+                <p>スマートフォンではタップして発信できます。</p>
+                <p className="renewal-note">受付時間・休業日は確認後にご案内します。通話料はお客様のご負担となります。</p>
                 <ul className="consultation-topics" aria-label="相談前に確認できる内容">
                   <li><a href="#training">実技・理論の学び方を確認する</a></li>
                   <li><a href="#roadmap">資格取得のステップを確認する</a></li>
                   <li><a href="#courses">各コースの受講料金を確認する</a></li>
                 </ul>
-                <LineConsultationLink />
-                {!getOfficialLineUrl() && (
-                  <p className="renewal-note line-preparing">
-                    公式LINEでのご相談は準備中です。
-                  </p>
-                )}
                 <a className="renewal-contact-link" href="#faq">
                   よくある質問を確認する <span aria-hidden="true">↗</span>
                 </a>
@@ -874,6 +860,7 @@ export default function Home() {
               <a className="footer-contact-link" href="#contact">
                 お問い合わせはこちら ↗
               </a>
+              <LineConsultationLink className="footer-line-contact" />
             </div>
             <a href="#main" className="back-top">
               PAGE TOP <span>↑</span>
@@ -887,6 +874,7 @@ export default function Home() {
       </footer>
       {measurementId && <AnalyticsConsent measurementId={measurementId} />}
       <nav className="mobile-consult-bar" aria-label="スマートフォンの受講相談">
+        {getOfficialLineUrl() ? <LineConsultationLink className="mobile-line-link" label="LINEで相談" /> : <a href="#contact">窓口案内を見る</a>}
         <a
           href={CONTACT_TEL}
           aria-label={`電話で受講相談する（${CONTACT_PHONE}へ発信）`}
@@ -894,15 +882,8 @@ export default function Home() {
           <svg className="phone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true" focusable="false">
             <path d="M7 3H4.5C3.7 3 3 3.7 3 4.5 3 13.6 10.4 21 19.5 21c.8 0 1.5-.7 1.5-1.5V17l-5-2-2 2a14 14 0 0 1-7-7l2-2-2-5Z" />
           </svg>
-          <span className="phone-action">電話で相談する<small>{CONTACT_PHONE}</small></span>
+          <span className="phone-action">電話相談<small>{CONTACT_PHONE}</small></span>
         </a>
-        {getOfficialLineUrl() ? (
-          <LineConsultationLink className="mobile-line-link" />
-        ) : (
-          <a href="#contact" aria-label="受講相談の窓口案内へ移動">
-            窓口案内を見る <span aria-hidden="true">↓</span>
-          </a>
-        )}
       </nav>
     </>
   );

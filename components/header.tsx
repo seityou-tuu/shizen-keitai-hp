@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState, type MouseEvent } from "react";
+import { LineConsultationLink } from "@/components/line-consultation-link";
 const links = [
   ["自然形体療法とは", "/#about"],
   ["研修内容", "/#training"],
@@ -61,9 +62,10 @@ export function Header() {
             {label}
           </a>
         ))}
-        <a className="header-contact" href="/#contact">
+        <a className="header-contact-details" href="/#contact">
           お問い合わせ <span aria-hidden="true">↗</span>
         </a>
+        <LineConsultationLink className="header-contact header-line-contact" />
       </nav>
       <button
         ref={toggleRef}
@@ -88,6 +90,7 @@ export function Header() {
             <span aria-hidden="true">↗</span>
           </a>
         ))}
+        <LineConsultationLink className="header-line-contact" onClick={() => setOpen(false)} />
       </nav>
     </header>
   );

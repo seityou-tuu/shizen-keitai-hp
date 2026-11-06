@@ -1,4 +1,13 @@
 /* Contact and mobile refinements; no policy text or existing legal data changes. */
+.site-header .desktop-nav { gap: 16px; }
+.site-header .header-line-contact { white-space: nowrap; }
+.homepage-quality .consultation-phone-link { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 44px; color: #24493d; font-size: 14px; text-decoration: underline; text-underline-offset: 5px; }
+.homepage-quality .renewal-roadmap .consultation-phone-link { color: #dbc89a; }
+.homepage-quality .contact-by-line .renewal-button { margin-block: 24px 12px; background: #dbc89a; border-color: #dbc89a; color: #102f28; }
+.homepage-quality .contact-by-line .renewal-button > span { color: inherit; }
+.homepage-quality .hero-statement > .renewal-text-link { margin-right: 16px; }
+.homepage-quality .faq-consultation .line-consult-link { margin: 20px 20px 0 0; }
+.home-footer .footer-line-contact { display: flex; align-items: center; gap: 12px; width: fit-content; min-height: 44px; color: #173f35; text-decoration: underline; text-underline-offset: 4px; margin-top: 8px; }
 :root {
   scroll-padding-top: 112px;
 }

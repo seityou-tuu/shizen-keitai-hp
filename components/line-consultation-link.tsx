@@ -1,9 +1,14 @@
 import { getOfficialLineUrl } from "@/lib/contact";
+import type { MouseEventHandler } from "react";
 
 export function LineConsultationLink({
   className = "line-consult-link",
+  label = "LINEで受講相談",
+  onClick,
 }: {
   className?: string;
+  label?: string;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
 }) {
   const url = getOfficialLineUrl();
   if (!url) return null;
@@ -13,8 +18,9 @@ export function LineConsultationLink({
       href={url}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={onClick}
     >
-      公式LINEで相談する<span className="sr-only">（別タブで開きます）</span>
+      {label}<span className="sr-only">（別タブで開きます）</span>
       <span aria-hidden="true">↗</span>
     </a>
   );
