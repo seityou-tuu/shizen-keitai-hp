@@ -6,6 +6,9 @@
 .recruitment-page .cohort-intake-story p { color: #58675e; }
 .recruitment-page .cohort-film-grid { gap: 36px; }
 .recruitment-page .cohort-film .evidence-video-link { border-color: #6a8070; }
+/* Match the taller source image; contain keeps both original thumbnails intact. */
+.recruitment-page .cohort-film img { aspect-ratio: 1179 / 904; object-fit: contain; background: #183c32; }
+.recruitment-page .cohort-film figcaption p { min-block-size: 3.8em; margin: 0; }
 .recruitment-page .cohort-film-learning { margin-top: 24px; gap: 16px; }
 .recruitment-page .cohort-film-note { margin-top: 12px; }
 
@@ -52,11 +55,6 @@
   .recruitment-page .cohort-film h3 { margin-top: 14px; margin-bottom: 6px; font-size: 17px; text-wrap: pretty; }
   .recruitment-page .cohort-film p { font-size: 14px; line-height: 1.8; }
   .recruitment-page .cohort-film .evidence-video-action { min-height: 44px; padding: 10px 14px; align-items: center; }
-  .recruitment-page .cohort-film:last-child { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; padding-top: 24px; border-top: 1px solid #6a8070; align-items: center; }
-  .recruitment-page .cohort-film:last-child .evidence-video-action { padding: 8px 6px; font-size: 12px; gap: 4px; }
-  .recruitment-page .cohort-film:last-child .evidence-play { width: 32px; height: 32px; top: 30%; }
-  .recruitment-page .cohort-film:last-child h3 { font-size: 16px; margin: 0 0 8px; }
-  .recruitment-page .cohort-film:last-child p { margin: 0; }
   .recruitment-page .cohort-film-learning { margin-top: 20px; }
   .recruitment-page .cohort-film-note { font-size: 12px; line-height: 1.85; }
 
@@ -116,12 +114,9 @@
 }
 @media (max-width: 359px) {
   .recruitment-page .cohort-launch-facts small { display: block; margin-left: 0; }
-  .recruitment-page .cohort-film:last-child { grid-template-columns: 108px minmax(0, 1fr); gap: 12px; }
   .recruitment-page .cohort-teacher-metrics > div { padding-inline: 10px; }
   .recruitment-page .cohort-teacher-metrics dd { font-size: 26px; }
 }
 @media (max-width: 700px) {
-  .recruitment-page .cohort-film:last-child .evidence-video-action { display: block; white-space: nowrap; }
-  .recruitment-page .cohort-film:last-child .evidence-video-action > span { display: none; }
   .recruitment-page .cohort-teacher-heading > p > span { display: inline-block; }
 }

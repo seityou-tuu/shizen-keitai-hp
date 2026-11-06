@@ -32,6 +32,8 @@ const expected = {
       const page = await context.newPage();
       page.on("pageerror", error => report.errors.push(error.message));
       const response = await page.goto(target, { waitUntil: "networkidle" });
+      // Avoid smooth-scroll capture offsets while measuring and taking screenshots.
+      await page.addStyleTag({ content: "html,body { scroll-behavior: auto !important; }" });
       assert.equal(response.status(), 200);
       assert.match(response.headers()["x-robots-tag"], /noindex/);
       assert.match(await page.locator('meta[name="robots"]').getAttribute("content"), /noindex/);
@@ -77,7 +79,8 @@ const expected = {
       assert.equal(await page.locator(".program-photo img").count(), 4);
       const films = await page.locator(".cohort-film").evaluateAll(nodes => nodes.map(el => ({ width: el.getBoundingClientRect().width, height: el.getBoundingClientRect().height })));
       if (width <= 700) {
-        assert.ok(films[1].height < films[0].height * .7, "mobile secondary film stays compact");
+        assert.ok(Math.abs(films[0].height - films[1].height) < 1, "mobile films retain equal heights");
+        assert.ok(Math.abs(films[0].width - films[1].width) < 1, "mobile films retain equal widths");
         assert.ok(await page.locator(".cohort-film .evidence-video-link").evaluateAll(nodes => nodes.every(el => el.getBoundingClientRect().height >= 44)));
         assert.ok(await page.locator(".recruitment-contact-bar").evaluate(el => el.getBoundingClientRect().height <= 65));
         for (const copy of await page.locator(".cohort-next-step-copy p > span").all()) {
@@ -85,6 +88,7 @@ const expected = {
         }
       } else {
         assert.ok(Math.abs(films[0].width - films[1].width) < 1, "desktop films retain equal columns");
+        assert.ok(Math.abs(films[0].height - films[1].height) < 1, "desktop films retain equal heights");
       }
       for (const href of ["https://youtu.be/yp_P0a_oedY", "https://youtu.be/yudalXPijCk"]) {
         const videoLink = page.locator(`.cohort-film a[href="${href}"]`);
@@ -101,7 +105,7 @@ const expected = {
       assert.equal(await page.locator("iframe").count(), 0);
       for (const image of await page.locator(".cohort-film img").all()) {
         await image.scrollIntoViewIfNeeded(); await image.evaluate(img => img.decode());
-        assert.ok(await image.evaluate(img => Math.abs(img.naturalWidth / img.naturalHeight - img.width / img.height) < .015));
+        assert.ok(await image.evaluate(img => getComputedStyle(img).objectFit === "contain"));
       }
       const nextStep = page.getByRole("region", { name: /次は、あなたが\s*この技術を\s*身につける番。/ });
       assert.equal(await nextStep.count(), 1);

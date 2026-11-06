@@ -93,7 +93,7 @@ export default function FirstRecruitmentPage() {
             <div className="cohort-film-grid">
               {([
                 { image: youtube860k, count: "86万回", title: "技術への関心を、ここから。", text: "まずは施術の映像から、技術に触れてみてください。" },
-                { image: youtube1320k, count: "132万回", title: "映像から、自分の学びへ。", text: "気になった点を、自分なら何を学びたいか考えるきっかけに。" },
+                { image: youtube1320k, count: "132万回", title: "映像から、自分の学びへ。", text: "気になった技術を、これからの学びのきっかけに。" },
               ] as const).map(({ image, count, title, text }) => (
                 <figure className="cohort-film" key={count}>
                   <YoutubeVideoLink count={count}>
