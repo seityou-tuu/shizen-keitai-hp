@@ -1,0 +1,116 @@
+[
+  {
+    "width": 320,
+    "section": "features",
+    "contrastMinimum": 6.5831167310569185,
+    "textClipping": false,
+    "textUnchanged": "not compared at this width"
+  },
+  {
+    "width": 320,
+    "section": "audience",
+    "contrastMinimum": 4.515101833507354,
+    "textClipping": false,
+    "textUnchanged": "not compared at this width"
+  },
+  {
+    "width": 320,
+    "section": "future",
+    "contrastMinimum": 4.807873504999488,
+    "textClipping": false,
+    "textUnchanged": "not compared at this width"
+  },
+  {
+    "width": 390,
+    "section": "features",
+    "contrastMinimum": 6.5831167310569185,
+    "textClipping": false,
+    "textUnchanged": true
+  },
+  {
+    "width": 390,
+    "section": "audience",
+    "contrastMinimum": 4.515101833507354,
+    "textClipping": false,
+    "textUnchanged": true
+  },
+  {
+    "width": 390,
+    "section": "future",
+    "contrastMinimum": 4.807873504999488,
+    "textClipping": false,
+    "textUnchanged": true
+  },
+  {
+    "width": 768,
+    "section": "features",
+    "contrastMinimum": 6.5831167310569185,
+    "textClipping": false,
+    "textUnchanged": "not compared at this width"
+  },
+  {
+    "width": 768,
+    "section": "audience",
+    "contrastMinimum": 4.515101833507354,
+    "textClipping": false,
+    "textUnchanged": "not compared at this width"
+  },
+  {
+    "width": 768,
+    "section": "future",
+    "contrastMinimum": 4.807873504999488,
+    "textClipping": false,
+    "textUnchanged": "not compared at this width"
+  },
+  {
+    "width": 1024,
+    "section": "features",
+    "contrastMinimum": 6.5831167310569185,
+    "textClipping": false,
+    "textUnchanged": "not compared at this width"
+  },
+  {
+    "width": 1024,
+    "section": "audience",
+    "contrastMinimum": 4.515101833507354,
+    "textClipping": false,
+    "textUnchanged": "not compared at this width"
+  },
+  {
+    "width": 1024,
+    "section": "future",
+    "contrastMinimum": 4.807873504999488,
+    "textClipping": false,
+    "textUnchanged": "not compared at this width"
+  },
+  {
+    "width": 1440,
+    "section": "features",
+    "contrastMinimum": 6.5831167310569185,
+    "textClipping": false,
+    "textUnchanged": true
+  },
+  {
+    "width": 1440,
+    "section": "audience",
+    "contrastMinimum": 4.515101833507354,
+    "textClipping": false,
+    "textUnchanged": true
+  },
+  {
+    "width": 1440,
+    "section": "future",
+    "contrastMinimum": 4.807873504999488,
+    "textClipping": false,
+    "textUnchanged": true
+  },
+  {
+    "reducedMotion": true
+  },
+  {
+    "mobileTouch": true,
+    "hoverAvailable": false,
+    "allTextVisible": true,
+    "horizontalOverflow": false
+  }
+]

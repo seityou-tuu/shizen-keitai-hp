@@ -2,6 +2,8 @@ import { InstagramSection } from "@/components/instagram-section";
 import { AnalyticsConsent } from "@/components/analytics-consent";
 import { getGa4MeasurementId } from "@/lib/analytics-config";
 import "./homepage-quality.css";
+import "./section-stories.css";
+import { PerspectiveDiagram } from "@/components/perspective-diagram";
 import { HomepageTrainingPhoto, InstructorEvidence } from "@/components/homepage-photos";
 import { HomepageMotion } from "@/components/homepage-motion";
 import { InstructorProfile } from "@/components/instructor-profile";
@@ -275,14 +277,7 @@ export default function Home() {
               {features.map(([title, text], i) => (
                 <li key={title}>
                   <span className="perspective-number">0{i + 1}</span>
-                  <span
-                    className={`perspective-mark mark-${i + 1}`}
-                    aria-hidden="true"
-                  >
-                    <i />
-                    <i />
-                    <i />
-                  </span>
+                  <PerspectiveDiagram index={i} />
                   <h3>{title}</h3>
                   <p>{text}</p>
                 </li>
@@ -300,6 +295,7 @@ export default function Home() {
             </SectionHeading>
             <div className="renewal-audience-grid">
               <article>
+                <div className="audience-motif motif-layers" aria-hidden="true"><i /><i /><i /></div>
                 <p className="renewal-kicker">FOR PRACTITIONERS</p>
                 <span className="audience-subject">
                   接骨院・整体院などで施術を行っている方へ
@@ -314,6 +310,7 @@ export default function Home() {
                 </p>
               </article>
               <article>
+                <div className="audience-motif motif-origin" aria-hidden="true"><i /><i /><i /></div>
                 <p className="renewal-kicker">FOR BEGINNERS</p>
                 <span className="audience-subject">
                   これから施術を学びたい方へ
@@ -604,6 +601,10 @@ export default function Home() {
               {future.map(([title, text], i) => (
                 <li key={title}>
                   <span>0{i + 1}</span>
+                  {i === 0 && <svg className="future-branches" viewBox="0 0 180 100" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M22 50h38c30 0 30-32 60-32h36M60 50h96M60 50c30 0 30 32 60 32h36" />
+                    <circle cx="22" cy="50" r="5" /><circle cx="156" cy="18" r="4" /><circle cx="156" cy="50" r="4" /><circle cx="156" cy="82" r="4" />
+                  </svg>}
                   <div>
                     <h3>{title}</h3>
                     <p>{text}</p>
