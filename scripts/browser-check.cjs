@@ -67,9 +67,11 @@ if (out) fs.mkdirSync(out, { recursive: true });
       assert.match(response.headers()["x-robots-tag"], /noindex/);
       await page.waitForTimeout(150);
       const profileText = await page.locator("#instructors .instructor-details").innerText();
-      for (const fact of ["柔道整復師（2012年取得）", "2017年 ながとも整骨院開院", "15年", "自然形体療法 理事", "YouTube総再生回数220万回", "2024年 FANCHANNEL グランプリ"]) {
+      for (const fact of ["柔道整復師（2012年取得）", "2017年 ながとも整骨院開院", "15年", "自然形体療法 理事"]) {
         assert.equal(profileText.split(fact).length - 1, 1, `profile fact at ${width}: ${fact}`);
       }
+      assert.ok(!profileText.includes("220万"));
+      assert.ok(!profileText.includes("2024年"));
       assert.ok(await page.locator("#about .section-heading, #about h2").evaluateAll(nodes => nodes.every(el => getComputedStyle(el).animationName === "none")), "reduced-motion headings must not animate");
       const initial = await page.evaluate(() => ({
         ...window.__qaMetrics,
@@ -180,7 +182,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
       ]) {
         if (width <= 1100)
           await page.getByRole("button", { name: "メニューを開く" }).click();
-        const link = nav.getByRole("link", { name: label, exact: true });
+        const link = nav.locator("a").filter({ hasText: label });
         const target = new URL(await link.getAttribute("href"), base).hash;
         await link.click();
         assert.ok(
@@ -210,15 +212,15 @@ if (out) fs.mkdirSync(out, { recursive: true });
       }
       const trainingLayout = await page.locator("#training").evaluate(el => {
         const rect = selector => { const r = el.querySelector(selector).getBoundingClientRect(); return {left:r.left,right:r.right,top:r.top,bottom:r.bottom}; };
-        return {heading:rect(".training-practical-details .section-heading"),photo:rect(".training-main-photo > .program-photo"),copy:rect(".training-practical-details > .training-story-copy"),secondary:rect(".training-secondary-photo")};
+        return {heading:rect(".training-section-intro"),photo:rect(".training-main-photo > .program-photo"),copy:rect(".training-practical-details > .training-story-copy"),secondary:rect(".training-secondary-photo")};
       });
       if (width > 900) {
-        assert.ok(trainingLayout.photo.right < trainingLayout.heading.left, `training must be side by side at ${width}`);
-        assert.ok(Math.abs(trainingLayout.photo.top - trainingLayout.heading.top) < 2, `training heading/photo top alignment at ${width}`);
+        assert.ok(trainingLayout.photo.right < trainingLayout.copy.left, `training must be side by side at ${width}`);
+        assert.ok(trainingLayout.heading.bottom <= trainingLayout.photo.top, `training introduction precedes photos at ${width}`);
       } else {
         assert.ok(trainingLayout.heading.bottom <= trainingLayout.photo.top + 1, `training heading before photo at ${width}`);
         assert.ok(trainingLayout.photo.bottom <= trainingLayout.copy.top + 1, `training copy after photo at ${width}`);
-        assert.ok(trainingLayout.copy.bottom <= trainingLayout.secondary.top + 1, `training secondary after copy at ${width}`);
+        assert.ok(trainingLayout.secondary.bottom <= trainingLayout.copy.top + 1, `training photographs precede copy at ${width}`);
       }
       const sections = [];
       for (const section of await page.locator("#main > section").all()) {
@@ -299,7 +301,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
         .locator('a[href^="tel:"]')
         .evaluateAll((nodes) => nodes.map((node) => node.getAttribute("href")));
       assert.ok(
-        phones.length >= 7 && phones.every((href) => href === "tel:0985747643"),
+        phones.length >= 6 && phones.every((href) => href === "tel:0985747643"),
       );
       assert.equal(
         await page.locator('a[href*="lin.ee"],a[href*="line.me"]').count(),
@@ -345,11 +347,12 @@ if (out) fs.mkdirSync(out, { recursive: true });
           `footer hidden by sticky CTA at ${width}`,
         );
       }
-      for (const photo of await page.locator(".program-photo img").all()) {
+      for (const photo of await page.locator(".program-photo img, .instructor-evidence img").all()) {
         await photo.scrollIntoViewIfNeeded();
         await photo.evaluate((img) => img.decode());
         const ratio = await photo.evaluate((img) => ({
           natural: img.naturalWidth / img.naturalHeight,
+          intrinsic: Number(img.getAttribute("width")) / Number(img.getAttribute("height")),
           fit: getComputedStyle(img).objectFit,
           name: img.closest("figure").dataset.photo,
           displayed:
@@ -357,25 +360,35 @@ if (out) fs.mkdirSync(out, { recursive: true });
             img.getBoundingClientRect().height,
         }));
         assert.ok(
-          Math.abs(ratio.natural - ratio.displayed) < 0.015 ||
+          Math.abs(ratio.intrinsic / ratio.displayed - 1) < 0.01 ||
           (ratio.fit === "cover" && ["treatment-main", "instructor-portrait", "practical-hands-on"].includes(ratio.name)),
-          `image distortion or unintended cropping at ${width}`,
+          `image distortion or unintended cropping at ${width}: ${JSON.stringify(ratio)}`,
         );
       }
       assert.equal(await page.locator(".program-photo img").count(), 8);
+      assert.equal(await page.locator(".instructor-evidence img").count(), 3);
+      const evidence = await page.locator(".instructor-evidence").innerText();
+      for (const fact of ["86万回", "132万回", "提供画像の表示時点", "チャンネル全体", "受講生の集合写真ではありません"])
+        assert.ok(evidence.includes(fact), `evidence context at ${width}: ${fact}`);
+      assert.equal(await page.locator(".instructor-evidence iframe, .instructor-evidence a").count(), 0);
+      assert.ok(evidence.includes("受賞年・賞の正式名称は確認中です"));
+      const allInstructorText = await page.locator("#instructors").innerText();
+      for (const unconfirmed of ["220万", "2024年", "FANCHANNEL グランプリ"])
+        assert.ok(!allInstructorText.includes(unconfirmed), `unconfirmed assertion at ${width}: ${unconfirmed}`);
+
+
       for (const course of await page.locator(".tuition-course").all()) {
         const text = (await course.innerText()).replace(/\s/g, "");
         for (const value of [
           "990,000円（税込）",
           "税抜900,000円",
           "6ヶ月",
-          "月1回",
-          "9:00〜17:00",
-          "オンライン",
-          "1回2時間",
         ])
           assert.ok(text.includes(value), value);
       }
+      const shared = (await page.locator(".tuition-shared").innerText()).replace(/\s/g, "");
+      for (const value of ["月1回", "9:00〜17:00", "オンライン", "1回2時間"])
+        assert.ok(shared.includes(value), value);
       assert.match(
         await page.locator(".tuition-total").innerText(),
         /2,970,000/,

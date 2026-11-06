@@ -16,7 +16,8 @@ export const instructorProfile: InstructorProfile = {
   formalName: "",
   background: ["2017年 ながとも整骨院開院"],
   role: "自然形体療法 理事",
-  achievements: ["YouTube総再生回数220万回", "2024年 FANCHANNEL グランプリ"],
+  // Channel-wide views and the formal award name/year await confirmation.
+  achievements: [],
   qualifications: ["柔道整復師（2012年取得）"],
   practiceExperience: "15年",
   teachingExperience: "",
