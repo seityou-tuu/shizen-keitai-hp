@@ -345,11 +345,12 @@ if (out) fs.mkdirSync(out, { recursive: true });
           `footer hidden by sticky CTA at ${width}`,
         );
       }
-      for (const photo of await page.locator(".program-photo img").all()) {
+      for (const photo of await page.locator(".program-photo img, .instructor-evidence img").all()) {
         await photo.scrollIntoViewIfNeeded();
         await photo.evaluate((img) => img.decode());
         const ratio = await photo.evaluate((img) => ({
           natural: img.naturalWidth / img.naturalHeight,
+          intrinsic: Number(img.getAttribute("width")) / Number(img.getAttribute("height")),
           fit: getComputedStyle(img).objectFit,
           name: img.closest("figure").dataset.photo,
           displayed:
@@ -357,12 +358,18 @@ if (out) fs.mkdirSync(out, { recursive: true });
             img.getBoundingClientRect().height,
         }));
         assert.ok(
-          Math.abs(ratio.natural - ratio.displayed) < 0.015 ||
+          Math.abs(ratio.intrinsic / ratio.displayed - 1) < 0.01 ||
           (ratio.fit === "cover" && ["treatment-main", "instructor-portrait", "practical-hands-on"].includes(ratio.name)),
-          `image distortion or unintended cropping at ${width}`,
+          `image distortion or unintended cropping at ${width}: ${JSON.stringify(ratio)}`,
         );
       }
       assert.equal(await page.locator(".program-photo img").count(), 8);
+      assert.equal(await page.locator(".instructor-evidence img").count(), 3);
+      const evidence = await page.locator(".instructor-evidence").innerText();
+      for (const fact of ["86万回", "132万回", "提供画像の表示時点", "チャンネル全体", "受講生の集合写真ではありません"])
+        assert.ok(evidence.includes(fact), `evidence context at ${width}: ${fact}`);
+      assert.equal(await page.locator(".instructor-evidence iframe, .instructor-evidence a").count(), 0);
+
       for (const course of await page.locator(".tuition-course").all()) {
         const text = (await course.innerText()).replace(/\s/g, "");
         for (const value of [

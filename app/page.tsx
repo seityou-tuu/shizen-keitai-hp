@@ -1,4 +1,5 @@
 import "./homepage-quality.css";
+import { HomepageTrainingPhoto, InstructorEvidence } from "@/components/homepage-photos";
 import { HomepageMotion } from "@/components/homepage-motion";
 import { InstructorProfile } from "@/components/instructor-profile";
 import { instructorProfile } from "@/lib/instructor";
@@ -431,10 +432,7 @@ export default function Home() {
                   sizes="(max-width: 900px) calc(100vw - 40px), (max-width: 1392px) 50vw, 680px"
                 />
                 <div className="training-secondary-photo">
-                  <ProgramPhoto
-                    name="practical-observation"
-                    caption="手の位置や身体への触れ方を確認する様子"
-                  />
+                  <HomepageTrainingPhoto name="observation" />
                 </div>
               </div>
             </article>
@@ -494,10 +492,7 @@ export default function Home() {
                   施術見学は確約されたカリキュラムではありません。公開施術の開催日・場所・実施者・参加条件、本プログラムへの参加・見学等の包含は未確定です。
                 </p>
               </div>
-              <ProgramPhoto
-                name="group-guidance"
-                caption="研修での指導・学び合いの雰囲気"
-              />
+              <HomepageTrainingPhoto name="guidance" />
             </div>
           </div>
         </section>
@@ -563,6 +558,7 @@ export default function Home() {
                 />
               </div>
             </div>
+            <InstructorEvidence />
           </div>
         </section>
 
