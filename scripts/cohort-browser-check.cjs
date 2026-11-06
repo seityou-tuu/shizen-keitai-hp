@@ -63,7 +63,7 @@ const expected = {
       assert.equal(await page.getByRole("tab", { name: "全会場を比較", exact: true }).getAttribute("aria-selected"), "true");
       assert.equal(await page.locator(".cohort-venue-panel:visible time").count(), 18);
       assert.equal(await page.locator(".cohort-venue-panel:visible").count(), 3);
-      const clipping = await page.locator("main h1,main h2,main h3,main p,main a,main button,main dd,main dt,main time").evaluateAll(nodes => nodes.filter(el => {
+      const clipping = await page.locator("main h1,main h2,main h3,main h4,main p,main a,main button,main dd,main dt,main time").evaluateAll(nodes => nodes.filter(el => {
         if (!el.getClientRects().length) return false;
         const rect = el.getBoundingClientRect();
         return rect.left < -1 || rect.right > innerWidth + 1 || el.scrollWidth > el.clientWidth + 2;
@@ -80,6 +80,11 @@ const expected = {
       assert.match(instructor, /220万回/);
       assert.match(instructor, /最新の再生数を示すものではなく/);
       assert.ok(!instructor.includes("2024年"));
+      assert.equal(await page.locator(".cohort-learning-path li").count(), 3);
+      const nextStep = page.getByRole("region", { name: /その技術を、\s*見るだけで\s*終わらせない。/ });
+      assert.equal(await nextStep.count(), 1);
+      await nextStep.getByRole("link").click();
+      assert.ok(page.url().endsWith("#cohort-schedule"));
       for (const question of await page.locator(".recruitment-faq details").all()) {
         await question.locator("summary").click(); assert.equal(await question.evaluate(el => el.open), true);
         await question.locator("summary").focus(); await page.keyboard.press("Space"); assert.equal(await question.evaluate(el => el.open), false);

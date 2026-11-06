@@ -1,0 +1,26 @@
+{
+  "screens": [
+    {
+      "width": 320,
+      "minContrast": 7.082522174056545,
+      "focusVisible": true
+    },
+    {
+      "width": 390,
+      "minContrast": 7.082522174056545,
+      "focusVisible": true
+    },
+    {
+      "width": 768,
+      "minContrast": 7.082522174056545,
+      "focusVisible": true
+    },
+    {
+      "width": 1440,
+      "minContrast": 7.082522174056545,
+      "focusVisible": true
+    }
+  ],
+  "normalMotion": true,
+  "noNewImages": true
+}

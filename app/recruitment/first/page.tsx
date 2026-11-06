@@ -83,7 +83,7 @@ export default function FirstRecruitmentPage() {
               <li><span aria-hidden="true">00</span><div><h3>0期生の研修が、始まっています。</h3><p>理論を理解し、実技で確かめる学びが、すでに動き始めています。</p></div></li>
               <li><span aria-hidden="true">01</span><div><h3>{summary.startYear}年{summary.startMonth}月、第1期生へ。</h3><p>次の学びの一歩を、同じ技術に向き合う仲間と。{summary.locations}の{summary.venueCount}会場で開催します。</p></div></li>
             </ol>
-            <div className="cohort-small-group"><p className="recruitment-eyebrow">FIRST COHORT</p><h3>各会場<span>{facts.venues[0].capacity}</span>名の募集</h3><p>自然形体療法を学ぶ、新しい仲間との出会いを。</p><p>{facts.eligible}です。</p></div>
+            <div className="cohort-small-group"><p className="recruitment-eyebrow">FIRST COHORT</p><h3>各会場<span>{facts.venues[0].capacity}</span>名の募集</h3><p>同じ技術を学ぶ仲間と、ひとつずつ理解を重ねる。自然形体療法を学ぶ、新しい出会いを。</p><p>{facts.eligible}です。</p></div>
           </div>
           <dl className="cohort-overview-facts">
             <div><dt>開催期間</dt><dd>{summary.period}</dd></div>
@@ -116,6 +116,20 @@ export default function FirstRecruitmentPage() {
           <a className="recruitment-text-link" href="#cohort-schedule">募集日程・条件を確認する ↓</a>
         </section>
         <CohortInstructor />
+        <section className="cohort-next-step" aria-labelledby="cohort-next-step-title">
+          <div className="recruitment-wrap cohort-next-step-grid">
+            <div>
+              <p className="recruitment-eyebrow">FROM WATCHING TO LEARNING</p>
+              <h2 id="cohort-next-step-title">その技術を、<br /><em>見るだけで</em><br />終わらせない。</h2>
+            </div>
+            <div className="cohort-next-step-copy">
+              <p className="cohort-next-step-lead">動画や施術紹介で気になった技術を、<br />今度は、自分の学びへ。</p>
+              <p>永友先生の技術と、その背景にある考え方に触れる。理論と実技を重ねながら、理解を深めていく。</p>
+              <p>{summary.startYear}年{summary.startMonth}月、{summary.locations}で始まる第1期生。あなたの新しい一歩を、ここから。</p>
+              <a className="recruitment-text-link" href="#cohort-schedule">学ぶ会場と日程を見てみる <span aria-hidden="true">↓</span></a>
+            </div>
+          </div>
+        </section>
         <section id="cohort-schedule" className="recruitment-section recruitment-soft">
           <div className="recruitment-wrap">
             <p className="recruitment-eyebrow">SCHEDULE & LOCATION</p>
@@ -155,8 +169,8 @@ export default function FirstRecruitmentPage() {
         </section>
         <section id="cohort-contact" className="recruitment-section recruitment-contact">
           <div className="recruitment-wrap">
-            <p className="recruitment-eyebrow">CONSULTATION</p><h2>第1期生について、<br />まずはご相談ください。</h2>
-            <p>日程や学び方、料金など、気になることを公式LINEでお聞かせください。</p>
+            <p className="recruitment-eyebrow">CONSULTATION</p><h2>「学んでみたい」を、<br />相談するところから。</h2>
+            <p>学び方、会場選び、受講料金。気になったことから、公式LINEでご質問ください。</p>
             <LineConsultationLink className="recruitment-button" />
             <p className="recruitment-note">LINE相談や友だち追加だけで、正式な受講申込み・契約・決済が完了するものではありません。</p>
             <p>電話でもご相談いただけます。</p><a className="recruitment-phone" href={CONTACT_TEL}>{CONTACT_PHONE}</a>

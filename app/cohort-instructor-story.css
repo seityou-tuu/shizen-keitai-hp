@@ -36,7 +36,24 @@
 .recruitment-page .cohort-small-group h3 span { font: 72px/1.2 Georgia, serif; color: #dbc89a; }
 .recruitment-page .cohort-small-group > p:not(.recruitment-eyebrow) { color: #d3dfd2; font-size: 14px; }
 .recruitment-page .cohort-small-group > p + p { margin-top: 16px; }
+.recruitment-page .cohort-learning-path { margin: 0; padding: 0; list-style: none; }
+.recruitment-page .cohort-learning-path li { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 14px; padding-block: 16px; border-top: 1px solid #6a8070; }
+.recruitment-page .cohort-learning-path li:last-child { padding-bottom: 0; }
+.recruitment-page .cohort-learning-path li > span { color: #dbc89a; font: 18px/1.7 Georgia, serif; }
+.recruitment-page .cohort-learning-path h4 { color: #fff; font-size: 16px; margin: 0 0 6px; font-weight: 500; }
+.recruitment-page .cohort-learning-path p { color: #d3dfd2; font-size: 14px; margin: 0; }
+.recruitment-page .cohort-next-step { background: #102f28; color: #fff; padding-block: 88px; border-block: 1px solid #897449; }
+.recruitment-page .cohort-next-step-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 72px; align-items: center; }
+.recruitment-page .cohort-next-step .recruitment-eyebrow { color: #dbc89a; }
+.recruitment-page .cohort-next-step h2 { font-size: clamp(32px, 3.7vw, 48px); line-height: 1.65; margin: 24px 0 0; letter-spacing: .04em; }
+.recruitment-page .cohort-next-step h2 em { color: #dbc89a; font-style: normal; }
+.recruitment-page .cohort-next-step-copy { border-left: 1px solid #897449; padding-left: 32px; }
+.recruitment-page .cohort-next-step-copy p { color: #d3dfd2; font-size: 15px; margin: 0 0 20px; }
+.recruitment-page .cohort-next-step-copy .cohort-next-step-lead { color: #fff; font-size: 20px; line-height: 1.9; }
+.recruitment-page .cohort-next-step .recruitment-text-link { color: #dbc89a; margin-top: 8px; }
+.recruitment-page .cohort-next-step a:focus-visible { outline-color: #dbc89a; }
 @media (max-width: 900px) {
+  .recruitment-page .cohort-next-step-grid { gap: 32px; }
   .recruitment-page #cohort-instructor { gap: 32px; }
   .recruitment-page .cohort-teacher-heading { gap: 32px; }
   .recruitment-page .cohort-story-layout { gap: 28px; }
@@ -45,6 +62,10 @@
   .recruitment-page .cohort-teacher-metrics > div { padding: 16px; }
 }
 @media (max-width: 700px) {
+  .recruitment-page .cohort-next-step { padding-block: 56px; }
+  .recruitment-page .cohort-next-step-grid { grid-template-columns: 1fr; gap: 28px; }
+  .recruitment-page .cohort-next-step-copy { padding: 24px 0 0; border-left: 0; border-top: 1px solid #897449; }
+  .recruitment-page .cohort-next-step-copy .cohort-next-step-lead { font-size: 18px; }
   .recruitment-page #cohort-instructor { grid-template-columns: 1fr; gap: 28px; }
   .recruitment-page .cohort-teacher-heading { grid-template-columns: 1fr; gap: 24px; }
   .recruitment-page .cohort-teacher-portrait { max-width: 440px; margin: auto; }
