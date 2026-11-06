@@ -1,0 +1,62 @@
+[
+  {
+    "width": 390,
+    "skipLink": true,
+    "contrast": [
+      {
+        "selector": ".program-shortcuts a",
+        "ratio": 14.39067685702037
+      },
+      {
+        "selector": ".step-fee-link",
+        "ratio": 8.730579165235385
+      },
+      {
+        "selector": ".renewal-roadmap .consultation-details-link",
+        "ratio": 5.87053226697789
+      },
+      {
+        "selector": ".renewal-tuition .consultation-details-link",
+        "ratio": 9.343139505258089
+      },
+      {
+        "selector": ".instagram-reel-subject",
+        "ratio": 9.569449068128412
+      },
+      {
+        "selector": ".evidence-video-action",
+        "ratio": 9.343139505258089
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "skipLink": true,
+    "contrast": [
+      {
+        "selector": ".program-shortcuts a",
+        "ratio": 14.39067685702037
+      },
+      {
+        "selector": ".step-fee-link",
+        "ratio": 8.730579165235385
+      },
+      {
+        "selector": ".renewal-roadmap .consultation-details-link",
+        "ratio": 5.87053226697789
+      },
+      {
+        "selector": ".renewal-tuition .consultation-details-link",
+        "ratio": 9.343139505258089
+      },
+      {
+        "selector": ".instagram-reel-subject",
+        "ratio": 9.569449068128412
+      },
+      {
+        "selector": ".evidence-video-action",
+        "ratio": 9.343139505258089
+      }
+    ]
+  }
+]

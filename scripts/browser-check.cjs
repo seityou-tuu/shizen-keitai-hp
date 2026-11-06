@@ -65,6 +65,12 @@ if (out) fs.mkdirSync(out, { recursive: true });
       assert.equal(await page.locator('img:not([alt]), img[alt=""]').count(), 0);
 
       assert.match(response.headers()["x-robots-tag"], /noindex/);
+      const graph = await page.locator('script[type="application/ld+json"]').evaluate(el => JSON.parse(el.textContent)["@graph"]);
+      const webpage = graph.find(item => item["@type"] === "WebPage");
+      assert.equal(webpage.url, "https://shizen-keitai-hp.vercel.app");
+      assert.ok(graph.some(item => item["@id"] === webpage.isPartOf["@id"]));
+      assert.ok(graph.some(item => item["@id"] === webpage.about["@id"]));
+      assert.ok(!graph.some(item => ["Review", "AggregateRating", "Course", "MedicalBusiness"].includes(item["@type"])));
       await page.waitForTimeout(150);
       const profileText = await page.locator("#instructors .instructor-details").innerText();
       for (const fact of ["柔道整復師（2012年取得）", "2017年 ながとも整骨院開院", "15年", "自然形体療法 理事"]) {
@@ -188,6 +194,10 @@ if (out) fs.mkdirSync(out, { recursive: true });
         const link = nav.locator("a").filter({ hasText: label });
         const target = new URL(await link.getAttribute("href"), base).hash;
         await link.click();
+        if (width <= 1100) {
+          assert.equal(await page.evaluate(() => document.activeElement.id), target.slice(1), `menu focus for ${label} at ${width}`);
+          assert.equal(await page.getByRole("button", { name: "メニューを開く" }).getAttribute("aria-expanded"), "false");
+        }
         assert.ok(
           page.url().endsWith(target),
           `menu target ${label} at ${width}`,
@@ -224,6 +234,14 @@ if (out) fs.mkdirSync(out, { recursive: true });
         assert.ok(trainingLayout.heading.bottom <= trainingLayout.photo.top + 1, `training heading before photo at ${width}`);
         assert.ok(trainingLayout.photo.bottom <= trainingLayout.copy.top + 1, `training copy after photo at ${width}`);
         assert.ok(trainingLayout.secondary.bottom <= trainingLayout.copy.top + 1, `training photographs precede copy at ${width}`);
+      }
+      for (const link of await page.locator(".program-shortcuts a, .step-fee-link, .consultation-details-link, .consultation-topics a").all()) {
+        const hash = await link.getAttribute("href");
+        await link.click();
+        assert.ok(page.url().endsWith(hash));
+        const bounds = await page.locator(hash).evaluate(el => ({ top: el.getBoundingClientRect().top, header: document.querySelector(".site-header").getBoundingClientRect().bottom }));
+        assert.ok(bounds.top >= bounds.header - 1, `shortcut target hidden: ${hash} at ${width}`);
+        assert.ok(await link.evaluate(el => el.getBoundingClientRect().height >= 44), `shortcut touch target: ${hash}`);
       }
       const sections = [];
       for (const section of await page.locator("#main > section").all()) {
@@ -471,6 +489,26 @@ if (out) fs.mkdirSync(out, { recursive: true });
     assert.equal(await motionPage.locator("#about .section-heading").evaluate(el => getComputedStyle(el).opacity), "1", "scroll enhancement must keep content opaque");
     assert.ok(await motionPage.locator("#about h2").isVisible());
     await motionPage.close();
+    const landscape = await browser.newPage({ viewport: { width: 667, height: 375 }, reducedMotion: "reduce" });
+    await landscape.goto(base.href, { waitUntil: "networkidle" });
+    await landscape.getByRole("button", { name: "メニューを開く" }).click();
+    const lastMenuLink = landscape.getByRole("navigation", { name: "モバイルナビゲーション" }).getByRole("link", { name: "お問い合わせ" });
+    await lastMenuLink.scrollIntoViewIfNeeded();
+    assert.ok(await lastMenuLink.evaluate(el => el.getBoundingClientRect().bottom <= innerHeight + 1));
+    await lastMenuLink.click();
+    assert.equal(await landscape.evaluate(() => document.activeElement.id), "contact");
+    await landscape.close();
+    const noJs = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 900 }, reducedMotion: "reduce" });
+    const staticPage = await noJs.newPage();
+    await staticPage.goto(base.href, { waitUntil: "networkidle" });
+    assert.equal(await staticPage.locator("#main > section").count(), 13); // Original twelve + PR #12 Instagram.
+    await staticPage.locator(".program-shortcuts a[href='#courses']").click();
+    assert.ok(staticPage.url().endsWith("#courses"));
+    await staticPage.locator(".renewal-faq-list summary").first().click();
+    assert.equal(await staticPage.locator(".renewal-faq-list details").first().getAttribute("open"), "");
+    assert.equal(await staticPage.locator(".contact-phone").getAttribute("href"), "tel:0985747643");
+    await noJs.close();
+    report.qualityChecks = { structuredData: true, shortcutNavigation: true, mobileMenuFocus: true, landscapeMenu: true, withoutJavaScript: true };
     assert.deepEqual(report.errors, []);
     if (out)
       fs.writeFileSync(

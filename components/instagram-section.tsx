@@ -36,7 +36,7 @@ export function InstagramSection() {
           {instagramReels.map((reel, index) => (
             <li key={reel.id}>
               <a className="instagram-reel" href={instagramReelUrl(reel.id)} target="_blank" rel="noopener noreferrer"
-                aria-label={`Instagramリール${index + 1}を見る（新しいタブで開きます）`}>
+                aria-label={`Instagramリール${index + 1}を見る：提供画像の見出し「${reel.coverLabel}」（新しいタブで開きます）`}>
                 <div className="instagram-reel-image">
                   <Image src={images[reel.image]} alt={`Instagramリールの提供画像（${reel.coverLabel}の見出し）`}
                     sizes="(max-width: 700px) 280px, (max-width: 1100px) 28vw, 300px" />
@@ -46,12 +46,13 @@ export function InstagramSection() {
                   </span>
                 </div>
                 <span className="instagram-reel-caption"><span>REEL 0{index + 1}</span>映像を見る <span aria-hidden="true">↗</span></span>
+                <span className="instagram-reel-subject">提供画像の見出し：{reel.coverLabel}</span>
               </a>
             </li>
           ))}
         </ul>
         <div className="instagram-footer">
-          <p className="instagram-note">サムネイルは提供画像です。画像内の表現や再生数は提供画像の表示時点のものであり、施術効果を保証するものではありません。</p>
+          <p className="instagram-note">サムネイルは提供画像です。画像内の表現や再生数は提供画像の表示時点のものであり、施術効果を保証するものではありません。映像はInstagram（外部サイト）で開きます。</p>
           <a className="instagram-account" href={INSTAGRAM_PROFILE_URL} target="_blank" rel="noopener noreferrer"
             aria-label="Instagramを見る（新しいタブで開きます）"><InstagramIcon />Instagramを見る<span aria-hidden="true">↗</span></a>
         </div>
