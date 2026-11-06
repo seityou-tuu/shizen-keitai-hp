@@ -457,6 +457,28 @@ if (out) fs.mkdirSync(out, { recursive: true });
       assert.ok(await recruitment.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `recruitment overflow at ${width}`);
       const clipped = await recruitment.locator("main h1,main h2,main h3,main p,main a,main dd,main dt").evaluateAll(nodes => nodes.filter(el => { const r=el.getBoundingClientRect(); return r.left < -1 || r.right > innerWidth+1 || el.scrollWidth > el.clientWidth+2; }).map(el=>el.textContent));
       assert.deepEqual(clipped, [], `recruitment text clipping at ${width}`);
+      const cohortMenu = recruitment.locator(width <= 1100 ? ".site-header .mobile-nav" : ".site-header .desktop-nav");
+      for (const [label, hash] of [["研修内容","#cohort-learning"],["募集情報","#cohort-schedule"],["受講料金","#cohort-tuition"],["よくある質問","#cohort-faq"],["お問い合わせ","#cohort-contact"]]) {
+        if (width <= 1100) await recruitment.getByRole("button",{name:"メニューを開く"}).click();
+        const link=cohortMenu.getByRole("link",{name:label,exact:true});
+        assert.equal(await link.getAttribute("href"),hash);
+        await link.click();
+        assert.equal(new URL(recruitment.url()).pathname,"/recruitment/first",`cohort menu left the page at ${width}: ${label}`);
+        assert.equal(new URL(recruitment.url()).hash,hash);
+        assert.ok(await recruitment.locator(hash).evaluate(el=>el.getBoundingClientRect().top>=document.querySelector(".site-header").getBoundingClientRect().bottom-1),`cohort menu hidden heading at ${width}`);
+        if (width <= 1100) assert.equal(await recruitment.getByRole("button",{name:"メニューを開く"}).getAttribute("aria-expanded"),"false");
+      }
+      assert.equal(await cohortMenu.locator('a[href="/#about"]').getAttribute("href"),"/#about");
+      const cohortDestinations=await recruitment.locator('a[href]').evaluateAll(nodes=>nodes.map(el=>el.getAttribute("href")));
+      const allowedCohortLinks=new Set(["/","/#about","/company","/legal","/privacy","/terms","tel:0985747643","#recruitment-main","#cohort-learning","#cohort-schedule","#cohort-tuition","#cohort-faq","#cohort-contact"]);
+      assert.ok(cohortDestinations.every(href=>allowedCohortLinks.has(href)), `unexpected recruitment link at ${width}`);
+      for (const link of await recruitment.locator('main a[href^="#"], .recruitment-contact-bar a[href^="#"]').all()) {
+        const hash=await link.getAttribute("href");
+        if (!(await link.isVisible())) continue;
+        await link.click();
+        assert.equal(new URL(recruitment.url()).pathname,"/recruitment/first");
+        assert.equal(new URL(recruitment.url()).hash,hash);
+      }
       for (const link of await recruitment.locator(".recruitment-quick-nav a").all()) {
         const hash = await link.getAttribute("href");
         await link.click();
@@ -487,6 +509,12 @@ if (out) fs.mkdirSync(out, { recursive: true });
       await recruitment.evaluate(()=>scrollTo(0,0));
       if (out && [320,390,768,1440].includes(width)) await recruitment.screenshot({path:path.join(out,`recruitment-${width}.png`),fullPage:true});
       report.recruitmentWidths.push({ width, passed:true });
+      if ([390,1440].includes(width)) {
+        if (width <= 1100) await recruitment.getByRole("button",{name:"メニューを開く"}).click();
+        await cohortMenu.getByRole("link",{name:"自然形体療法とは",exact:true}).click();
+        await recruitment.waitForURL(url=>url.pathname==="/" && url.hash==="#about");
+        assert.ok(await recruitment.locator("#about").isVisible());
+      }
     }
     await recruitment.close();
     const motionPage = await browser.newPage({ viewport: { width: 390, height: 900 }, reducedMotion: "no-preference" });
@@ -495,9 +523,14 @@ if (out) fs.mkdirSync(out, { recursive: true });
     assert.equal(await motionPage.locator("#about .section-heading").evaluate(el => getComputedStyle(el).opacity), "1", "scroll enhancement must keep content opaque");
     assert.ok(await motionPage.locator("#about h2").isVisible());
     await motionPage.goto(new URL("/recruitment/first", base).href, { waitUntil: "networkidle" });
+    assert.equal(await motionPage.evaluate(()=>getComputedStyle(document.documentElement).scrollBehavior),"smooth");
+    await motionPage.locator('.cohort-hero-actions a[href="#cohort-schedule"]').click();
+    await motionPage.waitForFunction(()=>{const top=document.querySelector("#cohort-schedule").getBoundingClientRect().top;const header=document.querySelector(".site-header").getBoundingClientRect().bottom;return top>=header-1 && top<header+80;});
+    assert.equal(new URL(motionPage.url()).pathname,"/recruitment/first");
     await motionPage.locator(".cohort-observation-photo").scrollIntoViewIfNeeded();
     assert.ok(await motionPage.locator(".cohort-observation-photo").evaluate(el=>Number(getComputedStyle(el).opacity)>=.95), "recruitment scroll photo remains visible");
     await motionPage.emulateMedia({ reducedMotion: "reduce" });
+    assert.equal(await motionPage.evaluate(()=>getComputedStyle(document.documentElement).scrollBehavior),"auto");
     assert.ok(await motionPage.locator(".cohort-photo, #cohort-learning h2").evaluateAll(nodes=>nodes.every(el=>getComputedStyle(el).animationName==="none")), "recruitment reduced motion disables animation");
     await motionPage.close();
     assert.deepEqual(report.errors, []);

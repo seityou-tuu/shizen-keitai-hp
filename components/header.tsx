@@ -1,13 +1,22 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-const links = [
+const programLinks = [
   ["自然形体療法とは", "/#about"],
   ["研修内容", "/#training"],
   ["資格取得コース", "/#roadmap"],
   ["受講料金", "/#courses"],
   ["よくある質問", "/#faq"],
 ];
-export function Header() {
+const recruitmentLinks = [
+  ["自然形体療法とは", "/#about"],
+  ["研修内容", "#cohort-learning"],
+  ["募集情報", "#cohort-schedule"],
+  ["受講料金", "#cohort-tuition"],
+  ["よくある質問", "#cohort-faq"],
+];
+export function Header({ variant = "program" }: { variant?: "program" | "first-cohort" }) {
+  const links = variant === "first-cohort" ? recruitmentLinks : programLinks;
+  const contactHref = variant === "first-cohort" ? "#cohort-contact" : "/#contact";
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   useEffect(() => {
@@ -49,7 +58,7 @@ export function Header() {
             {label}
           </a>
         ))}
-        <a className="header-contact" href="/#contact">
+        <a className="header-contact" href={contactHref}>
           お問い合わせ <span aria-hidden="true">↗</span>
         </a>
       </nav>
@@ -70,7 +79,7 @@ export function Header() {
         className="mobile-nav"
         aria-label="モバイルナビゲーション"
       >
-        {[...links, ["お問い合わせ", "/#contact"]].map(([label, href]) => (
+        {[...links, ["お問い合わせ", contactHref]].map(([label, href]) => (
           <a key={href} href={href} onClick={() => setOpen(false)}>
             {label}
             <span aria-hidden="true">↗</span>

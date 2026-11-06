@@ -34,7 +34,7 @@ export default function FirstRecruitmentPage() {
   return (
     <>
       <a className="skip-link" href="#recruitment-main">本文へ移動</a>
-      <Header />
+      <Header variant="first-cohort" />
       <main id="recruitment-main" className="recruitment-page">
         <header className="recruitment-hero">
           <div className="recruitment-wrap cohort-hero-grid">
@@ -92,7 +92,7 @@ export default function FirstRecruitmentPage() {
             <article><span>03</span><h3>復習と質問</h3><p>主催者が提供する復習用動画で振り返り、研修日以外にも疑問を質問できます。</p><p className="recruitment-fact-line">研修の振り返りと<br />研修日以外の質問</p></article>
           </div>
           <p className="recruitment-note">上記は既存のプログラム共通情報です。第1期生の詳細や動画・質問の利用条件は未確定です。募集情報欄をご確認ください。施術見学を確約するものではありません。</p>
-          <a className="recruitment-text-link" href="/#training">研修内容を詳しく見る ↗</a>
+          <a className="recruitment-text-link" href="#cohort-schedule">募集日程・条件を確認する ↓</a>
         </section>
         <section id="cohort-schedule" className="recruitment-section recruitment-soft">
           <div className="recruitment-wrap">
@@ -121,7 +121,7 @@ export default function FirstRecruitmentPage() {
             <div className="recruitment-total"><p>3コースすべてを受講した場合の受講料合計</p><p>2,970,000円（税込）<small>税抜2,700,000円</small></p></div>
             <p className="recruitment-note">コースごとの詳しいカリキュラム・認定基準、3コースすべての受講が必須かどうかは未確定です。税込額は消費税10％前提です。</p>
             <p className="recruitment-note">支払・追加費用・キャンセル等の条件は募集情報欄をご確認ください。クレジットカード分割払いは導入準備中です。</p>
-            <a className="recruitment-text-link" href="/#courses">プログラムの料金案内を確認する ↗</a>
+            <a className="recruitment-text-link" href="#cohort-contact">料金・受講条件について相談する ↗</a>
           </div>
         </section>
         <section id="cohort-flow" className="recruitment-section recruitment-wrap">

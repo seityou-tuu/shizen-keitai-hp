@@ -69,3 +69,22 @@ test("recruitment page retains known fees and phone with only the approved exist
   assert.equal((html.match(/確定後にご案内します/g) || []).length, 0);
   assert.ok(!/lin\.ee|line\.me|募集受付中/.test(html));
 });
+
+
+test("program header keeps its original navigation destinations", () => {
+  const { Header } = require("../components/header.tsx");
+  const html = renderToStaticMarkup(React.createElement(Header));
+  const nav = html.match(/<nav aria-label="メインナビゲーション"[^>]*>(.*?)<\/nav>/s)[1];
+  assert.deepEqual([...nav.matchAll(/href="([^"]+)"/g)].map(match=>match[1]), ["/#about", "/#training", "/#roadmap", "/#courses", "/#faq", "/#contact"]);
+});
+
+test("first cohort menus and content links use the dedicated page sections", () => {
+  const html = renderToStaticMarkup(React.createElement(FirstPage));
+  for (const label of ["メインナビゲーション", "モバイルナビゲーション"]) {
+    const nav = html.match(new RegExp(`<nav[^>]*aria-label="${label}"[^>]*>(.*?)</nav>`, "s"))[1];
+    assert.deepEqual([...nav.matchAll(/href="([^"]+)"/g)].map(match=>match[1]), ["/#about", "#cohort-learning", "#cohort-schedule", "#cohort-tuition", "#cohort-faq", "#cohort-contact"]);
+  }
+  for (const oldDestination of ["/#training", "/#roadmap", "/#courses", "/#faq", "/#contact"]) assert.ok(!html.includes(`href="${oldDestination}"`));
+  const ids = new Set([...html.matchAll(/id="([^"]+)"/g)].map(match=>match[1]));
+  for (const [, hash] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.has(hash), hash);
+});
