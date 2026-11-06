@@ -6,7 +6,7 @@ import { InstructorProfile } from "@/components/instructor-profile";
 import { instructorProfile } from "@/lib/instructor";
 import { CONTACT_PHONE, CONTACT_TEL, getOfficialLineUrl } from "@/lib/contact";
 import { LineConsultationLink } from "@/components/line-consultation-link";
-import { SITE_NAME, SITE_URL } from "@/lib/site-config";
+import { SITE_NAME, SITE_URL, SITE_DESCRIPTION } from "@/lib/site-config";
 import { operator } from "@/lib/site-information";
 import { Header } from "@/components/header";
 import { InformationLinks } from "@/components/information-links";
@@ -118,6 +118,9 @@ function ConsultationCallout({ text }: { text: string }) {
           受講について電話で相談する <span aria-hidden="true">↗</span>
         </a>
         <LineConsultationLink />
+        <a className="consultation-details-link" href="#contact">
+          電話番号・窓口案内を見る <span aria-hidden="true">↓</span>
+        </a>
       </div>
     </aside>
   );
@@ -130,7 +133,7 @@ export default function Home() {
         本文へ移動
       </a>
       <Header />
-      <main id="main" className="program-renewal cinematic-program homepage-quality">
+      <main id="main" tabIndex={-1} className="program-renewal cinematic-program homepage-quality">
         <HomepageMotion />
         <section className="renewal-hero" aria-labelledby="hero-title">
           <div className="renewal-wrap hero-composition">
@@ -171,7 +174,7 @@ export default function Home() {
                 name="treatment-main"
                 caption="自然形体療法の施術風景"
                 priority
-                sizes="(max-width: 1100px) 115vw, 90vw"
+                sizes="(max-width: 1100px) 100vw, 65vw"
               />
               <p className="hero-photo-word">その手で、学びを深める。</p>
               <p className="hero-photo-detail">理論を知る。実技で確かめる。</p>
@@ -201,6 +204,15 @@ export default function Home() {
               </div>
             </dl>
           </div>
+          <nav className="program-shortcuts renewal-wrap" aria-label="プログラムの確認ポイント">
+            <p>気になる内容から確認する</p>
+            <ul>
+              <li><a href="#training">研修内容<span aria-hidden="true">↓</span></a></li>
+              <li><a href="#instructors">講師・映像紹介<span aria-hidden="true">↓</span></a></li>
+              <li><a href="#courses">受講料金<span aria-hidden="true">↓</span></a></li>
+              <li><a href="#faq">よくある質問<span aria-hidden="true">↓</span></a></li>
+            </ul>
+          </nav>
         </section>
 
         <section id="about" className="story-section renewal-about">
@@ -522,6 +534,9 @@ export default function Home() {
                   <p className="step-period">
                     受講期間 <strong>6ヶ月</strong>
                   </p>
+                  <a className="step-fee-link" href={`#tuition-${c.step}`}>
+                    {c.title}の料金を見る <span aria-hidden="true">↓</span>
+                  </a>
                 </li>
               ))}
             </ol>
@@ -615,7 +630,7 @@ export default function Home() {
             </div>
             <div className="tuition-courses">
               {courses.map((c) => (
-                <article key={c.step} className="tuition-course">
+                <article key={c.step} id={`tuition-${c.step}`} className="tuition-course">
                   <div>
                     <p className="renewal-kicker">STEP {c.step}</p>
                     <h3>{c.title}</h3>
@@ -764,6 +779,11 @@ export default function Home() {
                 <p>
                   お問い合わせだけで正式な受講申込みや決済が行われることはありません。
                 </p>
+                <ul className="consultation-topics" aria-label="相談前に確認できる内容">
+                  <li><a href="#training">実技・理論の学び方を確認する</a></li>
+                  <li><a href="#roadmap">資格取得のステップを確認する</a></li>
+                  <li><a href="#courses">各コースの受講料金を確認する</a></li>
+                </ul>
                 <LineConsultationLink />
                 {!getOfficialLineUrl() && (
                   <p className="renewal-note line-preparing">
@@ -785,12 +805,25 @@ export default function Home() {
               "@graph": [
                 {
                   "@type": "WebSite",
+                  "@id": `${SITE_URL}/#website`,
                   name: SITE_NAME,
                   url: SITE_URL,
                   inLanguage: "ja",
+                  publisher: { "@id": `${SITE_URL}/#organization` },
+                },
+                {
+                  "@type": "WebPage",
+                  "@id": `${SITE_URL}/#webpage`,
+                  name: SITE_NAME,
+                  url: SITE_URL,
+                  description: SITE_DESCRIPTION,
+                  inLanguage: "ja",
+                  isPartOf: { "@id": `${SITE_URL}/#website` },
+                  about: { "@id": `${SITE_URL}/#organization` },
                 },
                 {
                   "@type": "Organization",
+                  "@id": `${SITE_URL}/#organization`,
                   name: operator.name,
                   url: SITE_URL,
                   telephone: CONTACT_PHONE,

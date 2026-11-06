@@ -1,4 +1,25 @@
 /* Home only: independent of PR #9's recruitment styles and shared site shell. */
+.homepage-quality .program-shortcuts { padding-block: 24px; }
+.homepage-quality .program-shortcuts > p { color: #c9d6cb; font-size: 13px; margin-bottom: 12px; }
+.homepage-quality .program-shortcuts ul { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; padding: 0; margin: 0; list-style: none; }
+.homepage-quality .program-shortcuts a { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; border-bottom: 1px solid #dbc89a80; color: #fff; font-size: 14px; }
+.homepage-quality .program-shortcuts a > span { color: #dbc89a; }
+.homepage-quality .program-shortcuts a:focus-visible { outline-color: #dbc89a; }
+.homepage-quality .step-fee-link { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 48px; color: #dbc89a; font-size: 13px; text-decoration: underline; text-underline-offset: 5px; }
+.homepage-quality .evidence-video-action { display: flex; justify-content: space-between; align-items: center; min-height: 44px; gap: 8px; color: #24493d; font-size: 12px; text-decoration: underline; text-underline-offset: 4px; }
+.homepage-quality .evidence-video-link .evidence-play { bottom: 54px; }
+.homepage-quality .tuition-course[id] { scroll-margin-top: 124px; }
+.homepage-quality .consultation-actions { align-items: center; }
+.homepage-quality .consultation-details-link { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; color: #24493d; font-size: 14px; text-decoration: underline; text-underline-offset: 5px; }
+.homepage-quality .renewal-roadmap .consultation-details-link { color: #dbc89a; }
+.homepage-quality .consultation-topics { list-style: none; padding: 0; margin: 20px 0; }
+.homepage-quality .consultation-topics a { display: flex; align-items: center; min-height: 44px; padding-block: 8px; color: #f6f2e8; text-decoration: underline; text-underline-offset: 5px; }
+@media (max-width: 700px) {
+  .homepage-quality .program-shortcuts ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 20px; }
+  .homepage-quality .program-shortcuts a { font-size: 13px; }
+  .homepage-quality .consultation-actions { flex-direction: column; align-items: stretch; }
+  .homepage-quality .consultation-details-link { justify-content: center; }
+}
 .homepage-quality .story-section .section-heading h2,
 .homepage-quality .story-section .program-photo img { animation: none; }
 .homepage-quality .story-section .program-photo img { scale: 1; }

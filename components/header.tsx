@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 const links = [
   ["自然形体療法とは", "/#about"],
   ["研修内容", "/#training"],
@@ -10,6 +10,18 @@ const links = [
 export function Header() {
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
+  const followMobileLink = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    setOpen(false);
+    const destination = new URL(event.currentTarget.href);
+    if (destination.pathname !== window.location.pathname) return;
+    const target = document.getElementById(destination.hash.slice(1));
+    if (target) {
+      // The clicked link becomes hidden: continue keyboard navigation at its destination.
+      target.setAttribute("tabindex", "-1");
+      target.focus({ preventScroll: true });
+    }
+  };
   useEffect(() => {
     if (!open) return;
     const closeOnEscape = (event: KeyboardEvent) => {
@@ -71,7 +83,7 @@ export function Header() {
         aria-label="モバイルナビゲーション"
       >
         {[...links, ["お問い合わせ", "/#contact"]].map(([label, href]) => (
-          <a key={href} href={href} onClick={() => setOpen(false)}>
+          <a key={href} href={href} onClick={followMobileLink}>
             {label}
             <span aria-hidden="true">↗</span>
           </a>

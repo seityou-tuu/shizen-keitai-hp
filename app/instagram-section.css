@@ -9,6 +9,7 @@
 .homepage-quality .instagram-reels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; width: min(100%, 940px); margin: 40px auto 0; padding: 0; list-style: none; }
 .homepage-quality .instagram-reels li { min-width: 0; }
 .homepage-quality .instagram-reel { display: block; color: #fff; text-decoration: none; }
+.homepage-quality .instagram-reel-subject { display: block; color: #c9d6cb; font-size: 12px; line-height: 1.8; padding-top: 10px; }
 .homepage-quality .instagram-reel-image { position: relative; aspect-ratio: 9 / 14; background: #0b251f; overflow: hidden; }
 .homepage-quality .instagram-reel-image img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .homepage-quality .instagram-reel-icon { position: absolute; top: 12px; left: 12px; width: 28px; height: 28px; display: grid; place-items: center; background: #102f28e8; border: 1px solid #dbc89a80; border-radius: 50%; color: #fff; }
@@ -33,7 +34,7 @@
 @media (max-width: 700px) {
   .homepage-quality .instagram-section { padding-block: 64px; }
   .homepage-quality .instagram-intro h2 { font-size: clamp(27px, 7vw, 34px); text-wrap: initial; }
-  .homepage-quality .instagram-reels { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: min(78vw, 280px); gap: 16px; overflow-x: auto; padding: 4px 4px 16px; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: #dbc89a80 #173f35; margin-top: 12px; }
+  .homepage-quality .instagram-reels { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: min(78vw, 280px); gap: 16px; overflow-x: auto; padding: 6px 6px 16px; scroll-snap-type: x proximity; scroll-padding-inline: 6px; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: #dbc89a80 #173f35; margin-top: 12px; }
   .homepage-quality .instagram-reels li { scroll-snap-align: start; }
   .homepage-quality .instagram-swipe { display: block; color: #dbc89a; font-size: 11px; margin-top: 28px; }
   .homepage-quality .instagram-account { width: 100%; }
