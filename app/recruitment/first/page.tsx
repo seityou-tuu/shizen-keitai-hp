@@ -1,3 +1,5 @@
+import { programCourses } from "@/lib/program-courses";
+import "@/app/learning-value.css";
 import Image from "next/image";
 import { YoutubeVideoLink } from "@/components/youtube-video-link";
 import youtube860k from "@/public/images/homepage/youtube-860k.webp";
@@ -106,13 +108,13 @@ export default function FirstRecruitmentPage() {
         </section>
         <section id="cohort-learning" className="recruitment-section recruitment-wrap">
           <p className="recruitment-eyebrow">LEARNING</p><h2>理論と実技を、重ねて学ぶ。</h2>
-          <p className="cohort-learning-lead">触れ方や力加減から、技術の背景にある考え方まで。<br />学んで、試して、振り返る。その積み重ねを大切にしています。</p>
+          <p className="cohort-learning-lead">身体をどう捉え、どのように触れるか。<br />実技で確かめ、理論で考え、復習で理解を重ねる6ヶ月。</p>
           <div className="cohort-training-spread">
             <div className="cohort-observation-photo cohort-photo"><ProgramPhoto name="practical-observation" caption="手の位置や身体への触れ方を確認する研修紹介写真" sizes="(max-width: 900px) calc(100vw - 40px), 650px" /></div>
             <div className="cohort-training-copy">
               <p className="recruitment-eyebrow">SEE / PRACTICE / REFLECT</p>
               <h3>目で見て、<br />手で確かめる。</h3>
-              <p>講師の技術を間近で見ながら、実際に手を動かして学びます。手の位置、力加減、身体への触れ方など、言葉だけでは伝わりにくい細かな部分を確認していきます。</p>
+              <p>手の位置や力加減を確かめ、身体の反応を観察する。実際に手を動かしながら、施術を考えるための視点を学びます。</p>
               <p>なぜ、その施術を行うのか。理論で考え方を理解し、実技で身体の反応を確かめます。</p>
             </div>
             <div className="cohort-community-photo cohort-photo"><ProgramPhoto name="group-guidance" caption="指導・学び合いの雰囲気を伝える研修紹介写真" sizes="(max-width: 700px) 75vw, 440px" /></div>
@@ -158,12 +160,8 @@ export default function FirstRecruitmentPage() {
         </section>
         <section id="cohort-tuition" className="recruitment-section recruitment-soft">
           <div className="recruitment-wrap">
-            <p className="recruitment-eyebrow">TUITION</p><h2>受講料金</h2><p className="recruitment-section-lead">既存プログラムの受講料金です。各コースの受講期間は6ヶ月です。</p>
-            <div className="recruitment-fees">{[
-              ["準師範コース", "資格取得の第一歩となるコース。実技と理論を組み合わせ、学びを積み重ねていきます。"],
-              ["師範コース", "準師範コースに続く、次の段階。継続した研修を通じて、自然形体療法への理解を深めます。"],
-              ["本部師範コース", "3段階のロードマップの最終コース。実技と理論の両面から、さらに学びを重ねます。"],
-            ].map(([name, text], i) => <article key={name}><span className="recruitment-eyebrow">STEP 0{i + 1}</span><h3>{name}</h3><p className="cohort-course-description">{text}</p><p className="recruitment-fee">990,000<small>円（税込）</small></p><p>税抜900,000円／受講期間6ヶ月</p></article>)}</div>
+            <p className="recruitment-eyebrow">TUITION</p><h2>受講料金</h2><p className="recruitment-section-lead">各コースの受講期間は6ヶ月です。対面の実技・オンライン理論に、復習用動画と研修日以外の質問を組み合わせて学びます。</p>
+            <div className="recruitment-fees">{programCourses.map((course, i) => <article key={course.title}><span className="recruitment-eyebrow">STEP 0{i + 1}</span><h3>{course.title}</h3><p className="cohort-course-description">{course.lead}{course.text}</p><p className="recruitment-fee">990,000<small>円（税込）</small></p><p>税抜900,000円／受講期間6ヶ月</p></article>)}</div>
             <div className="recruitment-total"><p>3コースすべてを受講した場合の受講料合計</p><p>2,970,000円（税込）<small>税抜2,700,000円</small></p></div>
             <p className="recruitment-note">コースごとの詳しいカリキュラム・認定基準、3コースすべての受講が必須かどうかは未確定です。税込額は消費税10％前提です。</p>
             <p className="recruitment-note">支払・追加費用・キャンセル等の条件は募集情報欄をご確認ください。クレジットカード分割払いは導入準備中です。</p>
