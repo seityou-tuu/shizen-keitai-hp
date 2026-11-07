@@ -3,7 +3,7 @@ const { test } = require("node:test");
 const assert = require("node:assert/strict");
 const React = require("react");
 const { renderToStaticMarkup } = require("react-dom/server");
-const { firstCohortConfig, firstCohortDetails, getFirstCohort, getFirstCohortSummary, formatSessionDate, isFirstCohortPreview } = require("../lib/recruitment.ts");
+const { firstCohortConfig, firstCohortDetails, firstCohortMinimumNotice, getFirstCohort, getFirstCohortSummary, formatSessionDate, isFirstCohortPreview } = require("../lib/recruitment.ts");
 // Static image imports are transformed by Next in production; use metadata stubs
 // for this Node-only text/price test. Real image ratios are checked in Chromium.
 require.extensions[".jpg"] = (module, filename) => {
@@ -178,4 +178,21 @@ test("first cohort menus and content links use the dedicated page sections", () 
   for (const oldDestination of ["/#training", "/#roadmap", "/#courses", "/#faq", "/#contact"]) assert.ok(!html.includes(`href="${oldDestination}"`));
   const ids = new Set([...html.matchAll(/id="([^"]+)"/g)].map(match=>match[1]));
   for (const [, hash] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.has(hash), hash);
+});
+
+test("minimum attendance is explicit for all three venues and does not change capacity", () => {
+  assert.equal(firstCohortDetails.minimumParticipantsPerVenue, 3);
+  assert.equal(firstCohortMinimumNotice, "各会場の申込人数が3名に満たない場合、開催を中止する場合がございます。");
+  const html = renderToStaticMarkup(React.createElement(FirstPage)).replace(/<!--.*?-->/g, "");
+  assert.ok(html.replace(/<[^>]+>/g, "").includes("各会場6名（最少催行人数3名）・合計18名"));
+  assert.equal((html.match(/class="cohort-minimum-notice"/g) || []).length, 2);
+  const launchFacts = html.match(/<dl class="cohort-launch-facts">(.*?)<\/dl>/s)[1];
+  assert.ok(launchFacts.replace(/<[^>]+>/g, "").includes("最少催行人数：各会場3名"));
+  assert.ok(launchFacts.indexOf('class="cohort-hero-minimum"') > launchFacts.indexOf("合計"));
+  for (const venue of firstCohortDetails.venues) {
+    const panel = html.match(new RegExp(`<article[^>]*id="schedule-${venue.id}"[^>]*>(.*?)</article>`, "s"))[1];
+    assert.ok(panel.includes("最少催行人数3名"), venue.name);
+    assert.ok(panel.includes("定員 <strong>6</strong>名"), venue.name);
+    assert.equal((panel.match(/<time/g) || []).length, 6);
+  }
 });

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
-import { firstCohortDetails, formatSessionDate, getFirstCohortSummary } from "@/lib/recruitment";
+import { firstCohortDetails, firstCohortMinimumNotice, formatSessionDate, getFirstCohortSummary } from "@/lib/recruitment";
 
 const venues = firstCohortDetails.venues;
 const choices = [...venues.map(venue => ({ id: venue.id as string, label: `${venue.name}会場` })), { id: "all", label: "全会場を比較" }];
@@ -44,12 +44,13 @@ export function CohortSchedule() {
         {venues.map(venue => <a href={`#schedule-${venue.id}`} key={venue.id}>{venue.name}会場</a>)}
       </nav>}
       {enhanced && <p className="cohort-selection" role="status">{all ? `${summary.locations}の全日程を表示しています。` : `${venues.find(venue => venue.id === selected)?.name}会場の全6回を表示しています。`}</p>}
+      <p className="cohort-minimum-notice">{firstCohortMinimumNotice}</p>
       <div id="schedule-collection" className={`cohort-venue-panels ${!enhanced || all ? "compare-venues" : ""}`}
         role={enhanced && all ? "tabpanel" : undefined} aria-labelledby={enhanced && all ? "venue-tab-all" : undefined}>
         {venues.map(venue => <article key={venue.id} id={`schedule-${venue.id}`} className="cohort-venue-panel"
           role={enhanced && !all ? "tabpanel" : undefined} aria-labelledby={enhanced && !all ? `venue-tab-${venue.id}` : undefined}
           hidden={enhanced && !all && selected !== venue.id} tabIndex={enhanced ? 0 : undefined}>
-          <div className="cohort-venue-heading"><div><p className="recruitment-eyebrow">{summary.period}</p><h3>{venue.name}会場</h3></div><p>定員 <strong>{venue.capacity}</strong>名</p></div>
+          <div className="cohort-venue-heading"><div><p className="recruitment-eyebrow">{summary.period}</p><h3>{venue.name}会場</h3></div><p>定員 <strong>{venue.capacity}</strong>名<small className="cohort-minimum-count">最少催行人数{firstCohortDetails.minimumParticipantsPerVenue}名</small></p></div>
           <ol className="cohort-session-list">{venue.dates.map((date, index) => <li key={date}>
             <span>第{index + 1}回</span><time dateTime={date} aria-label={`${date.slice(0, 4)}年${formatSessionDate(date)}`}>{formatSessionDate(date)}</time>
           </li>)}</ol>
