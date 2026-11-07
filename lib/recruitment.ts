@@ -25,6 +25,7 @@ const unconfirmed: RecruitmentFacts = {
 // Only the dated information received from the organizer; no venue address or time inferred.
 export const firstCohortDetails = {
   deadline: "2027-01-10",
+  minimumParticipantsPerVenue: 3,
   eligible: "施術経験者・未経験者のどちらも受講可能",
   application: { status: "preparing", url: null },
   venues: [
@@ -36,6 +37,8 @@ export const firstCohortDetails = {
       dates: ["2027-01-18", "2027-02-12", "2027-03-12", "2027-04-23", "2027-05-21", "2027-06-25"] },
   ],
 } as const;
+
+export const firstCohortMinimumNotice = `各会場の申込人数が${firstCohortDetails.minimumParticipantsPerVenue}名に満たない場合、開催を中止する場合がございます。`;
 
 export function getFirstCohortSummary() {
   const dates = firstCohortDetails.venues.flatMap(venue => [...venue.dates]).sort();

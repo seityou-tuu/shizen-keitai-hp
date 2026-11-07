@@ -13,7 +13,7 @@ import { Header } from "@/components/header";
 import { InformationLinks } from "@/components/information-links";
 import { CONTACT_PHONE, CONTACT_TEL } from "@/lib/contact";
 import { informationMetadata } from "@/lib/information-metadata";
-import { FIRST_COHORT_PATH, firstCohortDetails, formatRecruitmentDate, getFirstCohort, getFirstCohortSummary } from "@/lib/recruitment";
+import { FIRST_COHORT_PATH, firstCohortDetails, firstCohortMinimumNotice, formatRecruitmentDate, getFirstCohort, getFirstCohortSummary } from "@/lib/recruitment";
 import { operator } from "@/lib/site-information";
 
 export function generateMetadata() {
@@ -136,7 +136,7 @@ export default function FirstRecruitmentPage() {
           <dl className="cohort-overview-facts">
             <div><dt>開催期間</dt><dd>{summary.period}</dd></div>
             <div><dt>開催地域</dt><dd>{summary.locations}の{summary.venueCount}会場</dd></div>
-            <div><dt>募集定員</dt><dd>{summary.capacityLabel}・合計{summary.totalCapacity}名</dd></div>
+            <div><dt>募集定員</dt><dd>{summary.capacityLabel}<span className="cohort-minimum-label">（最少催行人数{facts.minimumParticipantsPerVenue}名）</span>・合計{summary.totalCapacity}名<p className="cohort-minimum-notice">{firstCohortMinimumNotice}</p></dd></div>
             <div><dt>募集締切</dt><dd>{formatRecruitmentDate(facts.deadline)}</dd></div>
             <div><dt>受講対象</dt><dd>{facts.eligible}</dd></div>
             <div><dt>受講料金</dt><dd>各コース990,000円（税込）／税抜900,000円 <a href="#cohort-tuition">料金の詳細を見る ↓</a></dd></div>

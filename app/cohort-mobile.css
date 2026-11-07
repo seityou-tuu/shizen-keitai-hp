@@ -120,3 +120,10 @@
 @media (max-width: 700px) {
   .recruitment-page .cohort-teacher-heading > p > span { display: inline-block; }
 }
+
+/* Confirmed minimum attendance applies separately to every venue. */
+.recruitment-page .cohort-minimum-notice { font-size: 13px; line-height: 1.85; color: #58675e; margin-top: 12px; text-wrap: pretty; }
+.recruitment-page .cohort-schedule-switcher > .cohort-minimum-notice { margin: 0 0 20px; }
+.recruitment-page .cohort-minimum-count { display: block; font-size: 13px; line-height: 1.8; color: #58675e; margin-top: 4px; white-space: nowrap; }
+
+.recruitment-page .cohort-minimum-label { display: inline-block; }
