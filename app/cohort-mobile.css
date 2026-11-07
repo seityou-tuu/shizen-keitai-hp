@@ -127,3 +127,6 @@
 .recruitment-page .cohort-minimum-count { display: block; font-size: 13px; line-height: 1.8; color: #58675e; margin-top: 4px; white-space: nowrap; }
 
 .recruitment-page .cohort-minimum-label { display: inline-block; }
+
+.recruitment-page .cohort-launch-facts .cohort-hero-minimum { display: block; margin-top: 8px; font-size: 12px; line-height: 1.8; color: #d3dfd2; }
+.recruitment-page .cohort-launch-facts dd .cohort-hero-minimum span { display: inline-block; font: inherit; color: inherit; margin-left: 0; }

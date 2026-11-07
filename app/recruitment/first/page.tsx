@@ -66,7 +66,7 @@ export default function FirstRecruitmentPage() {
             <dl className="cohort-launch-facts">
               <div><dt>開講</dt><dd>{summary.startYear}年<span>{summary.startMonth}月</span></dd></div>
               <div><dt>開催地域</dt><dd>{summary.locations}</dd></div>
-              <div><dt>定員</dt><dd><strong>{summary.capacityLabel}</strong><small>合計{summary.totalCapacity}名</small></dd></div>
+              <div><dt>定員</dt><dd><strong>{summary.capacityLabel}</strong><small>合計{summary.totalCapacity}名</small><p className="cohort-hero-minimum">最少催行人数：<span>各会場{facts.minimumParticipantsPerVenue}名</span></p></dd></div>
               <div><dt>募集締切</dt><dd><time dateTime={facts.deadline}>{formatRecruitmentDate(facts.deadline)}</time></dd></div>
             </dl>
           </div>
