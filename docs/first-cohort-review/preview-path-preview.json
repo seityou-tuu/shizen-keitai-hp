@@ -1,0 +1,21 @@
+{
+  "aliasStatus": 307,
+  "destination": "/recruitment/first",
+  "canonicalStatus": 200,
+  "devices": [
+    {
+      "width": 390,
+      "aliasToCanonical": true,
+      "status": 200,
+      "all18Dates": true,
+      "noindex": true
+    },
+    {
+      "width": 1440,
+      "aliasToCanonical": true,
+      "status": 200,
+      "all18Dates": true,
+      "noindex": true
+    }
+  ]
+}

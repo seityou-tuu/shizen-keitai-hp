@@ -1,0 +1,14 @@
+[
+  {
+    "path": "/",
+    "mobileMenuLine": true,
+    "menuCloses": true,
+    "safeNewTab": true
+  },
+  {
+    "path": "/recruitment/first",
+    "mobileMenuLine": true,
+    "menuCloses": true,
+    "safeNewTab": true
+  }
+]

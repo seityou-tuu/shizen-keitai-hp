@@ -1,0 +1,27 @@
+{
+  "/": {
+    "status": 200,
+    "robots": null,
+    "recruitmentLink": false
+  },
+  "/recruitment/first": {
+    "status": 404,
+    "robots": "noindex, nofollow",
+    "recruitmentLink": false
+  },
+  "/first-cohort": {
+    "status": 404,
+    "robots": "noindex, nofollow",
+    "recruitmentLink": false
+  },
+  "/sitemap.xml": {
+    "status": 200,
+    "robots": null,
+    "recruitmentLink": false
+  },
+  "/robots.txt": {
+    "status": 200,
+    "robots": null,
+    "recruitmentLink": false
+  }
+}

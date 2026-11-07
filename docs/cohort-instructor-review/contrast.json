@@ -1,0 +1,22 @@
+[
+  {
+    "width": 320,
+    "minContrast": 5.0566889242930735,
+    "checked": 30
+  },
+  {
+    "width": 390,
+    "minContrast": 5.0566889242930735,
+    "checked": 30
+  },
+  {
+    "width": 768,
+    "minContrast": 5.0566889242930735,
+    "checked": 30
+  },
+  {
+    "width": 1440,
+    "minContrast": 5.0566889242930735,
+    "checked": 30
+  }
+]

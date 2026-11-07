@@ -8,7 +8,16 @@ const links = [
   ["受講料金", "/#courses"],
   ["よくある質問", "/#faq"],
 ];
-export function Header() {
+const cohortLinks = [
+  ["自然形体療法とは", "/#about"],
+  ["研修内容", "#cohort-learning"],
+  ["日程・会場", "#cohort-schedule"],
+  ["受講料金", "#cohort-tuition"],
+  ["よくある質問", "#cohort-faq"],
+];
+export function Header({ variant = "program" }: { variant?: "program" | "first-cohort" }) {
+  const navigation = variant === "first-cohort" ? cohortLinks : links;
+  const contactHref = variant === "first-cohort" ? "#cohort-contact" : "/#contact";
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const followMobileLink = (event: MouseEvent<HTMLAnchorElement>) => {
@@ -57,12 +66,12 @@ export function Header() {
         </span>
       </a>
       <nav aria-label="メインナビゲーション" className="desktop-nav">
-        {links.map(([label, href]) => (
+        {navigation.map(([label, href]) => (
           <a key={href} href={href}>
             {label}
           </a>
         ))}
-        <a className="header-contact-details" href="/#contact">
+        <a className="header-contact-details" href={contactHref}>
           お問い合わせ <span aria-hidden="true">↗</span>
         </a>
         <LineConsultationLink className="header-contact header-line-contact" />
@@ -84,7 +93,7 @@ export function Header() {
         className="mobile-nav"
         aria-label="モバイルナビゲーション"
       >
-        {[...links, ["お問い合わせ", "/#contact"]].map(([label, href]) => (
+        {[...navigation, ["お問い合わせ", contactHref]].map(([label, href]) => (
           <a key={href} href={href} onClick={followMobileLink}>
             {label}
             <span aria-hidden="true">↗</span>

@@ -1,0 +1,122 @@
+/* First-cohort polish only; shared homepage and contact styles stay unchanged. */
+.recruitment-page .cohort-program-title,
+.recruitment-page .recruitment-hero h1 em { display: block; }
+.recruitment-page .cohort-next-step-copy p > span { display: inline-block; }
+.recruitment-page .cohort-intake-story h3 { font-size: 24px; margin-bottom: 16px; }
+.recruitment-page .cohort-intake-story p { color: #58675e; }
+.recruitment-page .cohort-film-grid { gap: 36px; }
+.recruitment-page .cohort-film .evidence-video-link { border-color: #6a8070; }
+/* Match the taller source image; contain keeps both original thumbnails intact. */
+.recruitment-page .cohort-film img { aspect-ratio: 1179 / 904; object-fit: contain; background: #183c32; }
+.recruitment-page .cohort-film figcaption p { min-block-size: 3.8em; margin: 0; }
+.recruitment-page .cohort-film-learning { margin-top: 24px; gap: 16px; }
+.recruitment-page .cohort-film-note { margin-top: 12px; }
+
+@media (max-width: 700px) {
+  .recruitment-page { line-height: 1.9; }
+  .recruitment-page p { text-wrap: pretty; overflow-wrap: normal; }
+  .recruitment-page .recruitment-section { padding-block: 44px; }
+  .recruitment-page h2 { margin-top: 12px; margin-bottom: 20px; font-size: clamp(25px, 6.5vw, 30px); line-height: 1.6; letter-spacing: .02em; }
+  .recruitment-page .recruitment-note,
+  .recruitment-page .cohort-photo-note { font-size: 12px; line-height: 1.85; margin-top: 16px; }
+  .recruitment-page .recruitment-hero { padding-block: 16px 32px; }
+  .recruitment-page .cohort-hero-grid { gap: 20px; }
+  .recruitment-page .cohort-hero-heading .recruitment-back { margin-bottom: 0; }
+  .recruitment-page .cohort-hero-heading > .recruitment-eyebrow { display: none; }
+  .recruitment-page .recruitment-hero .recruitment-status { margin-top: 8px; }
+  .recruitment-page .cohort-hero-grid .cohort-hero-heading h1 { margin-block: 16px; line-height: 1.5; }
+  .recruitment-page .cohort-program-title { font-size: clamp(22px, 6vw, 27px); line-height: 1.5; }
+  .recruitment-page .recruitment-hero h1 em { font-size: clamp(32px, 9vw, 40px); line-height: 1.5; margin-top: 8px; letter-spacing: .04em; }
+  .recruitment-page .recruitment-lead { margin-bottom: 0; font-size: 15px; }
+  .recruitment-page .cohort-launch-facts { padding-top: 18px; gap: 14px 12px; }
+  .recruitment-page .cohort-launch-facts > div { padding-left: 10px; }
+  .recruitment-page .cohort-launch-facts dt { margin-bottom: 3px; }
+  .recruitment-page .cohort-launch-facts dd { font-size: 14px; line-height: 1.65; }
+  .recruitment-page .cohort-launch-facts dd span,
+  .recruitment-page .cohort-launch-facts dd strong { font-size: 21px; }
+  .recruitment-page .cohort-launch-facts small { display: inline-block; margin-left: 8px; }
+  .recruitment-page .cohort-hero-photo { padding: 8px; max-width: 480px; justify-self: center; }
+  .recruitment-page .cohort-photo figcaption { padding-top: 8px; }
+  .recruitment-page .cohort-photo-note { margin-top: 8px; }
+  .recruitment-page .cohort-hero-details > p { font-size: 14px; }
+  .recruitment-page .cohort-hero-actions { margin-top: 20px; gap: 8px; }
+  .recruitment-page .recruitment-button { min-height: 52px; padding: 12px 16px; gap: 12px; line-height: 1.7; }
+  .recruitment-page .cohort-hero-details .recruitment-hero-note { font-size: 12px; margin-top: 12px; }
+  .recruitment-page .recruitment-quick-nav a { min-height: 52px; padding-block: 12px; font-size: 14px; }
+
+  .recruitment-page .cohort-next-step { padding-block: 40px; }
+  .recruitment-page .cohort-next-step-grid { gap: 22px; margin-top: 20px; }
+  .recruitment-page .cohort-next-step h2 { font-size: clamp(28px, 7.8vw, 34px); line-height: 1.6; letter-spacing: .025em; }
+  .recruitment-page .cohort-next-step-copy { padding-top: 20px; }
+  .recruitment-page .cohort-next-step-copy p { margin-bottom: 12px; font-size: 15px; line-height: 1.9; }
+  .recruitment-page .cohort-next-step-copy p:last-child { margin-bottom: 0; }
+  .recruitment-page .cohort-next-step-copy .cohort-next-step-lead { font-size: 16px; line-height: 1.9; }
+  .recruitment-page .cohort-film-grid { margin-top: 26px; gap: 24px; }
+  .recruitment-page .cohort-film h3 { margin-top: 14px; margin-bottom: 6px; font-size: 17px; text-wrap: pretty; }
+  .recruitment-page .cohort-film p { font-size: 14px; line-height: 1.8; }
+  .recruitment-page .cohort-film .evidence-video-action { min-height: 44px; padding: 10px 14px; align-items: center; }
+  .recruitment-page .cohort-film-learning { margin-top: 20px; }
+  .recruitment-page .cohort-film-note { font-size: 12px; line-height: 1.85; }
+
+  .recruitment-page .cohort-learning-lead { margin-bottom: 24px; }
+  .recruitment-page .cohort-training-spread { gap: 24px; }
+  .recruitment-page .cohort-training-copy h3 { font-size: 27px; margin-block: 14px 18px; }
+  .recruitment-page .recruitment-learning { margin-top: 32px; gap: 24px; }
+  .recruitment-page .recruitment-learning article { padding-top: 18px; }
+  .recruitment-page .recruitment-learning article > span { font-size: 28px; }
+  .recruitment-page .recruitment-learning h3 { margin-block: 12px; }
+  .recruitment-page .recruitment-fact-line { margin-top: 16px; padding-top: 12px; }
+  .recruitment-page #cohort-instructor { gap: 24px; }
+  .recruitment-page .cohort-teacher-heading { gap: 16px; }
+  .recruitment-page .cohort-teacher-heading > p { margin: 0; }
+  .recruitment-page .cohort-teacher-portrait { max-width: 340px; padding: 10px; }
+  .recruitment-page .cohort-teacher-metrics { margin-top: 16px; }
+  .recruitment-page .cohort-teacher-metrics > div { padding: 14px 12px; }
+  .recruitment-page .cohort-teacher-metrics dt { font-size: 12px; }
+  .recruitment-page .cohort-teacher-metrics dd { margin-top: 6px; font-size: 28px; }
+  .recruitment-page .cohort-teacher-bio > h3 { margin-block: 10px 20px; }
+  .recruitment-page .cohort-teacher-history > div { padding-block: 14px; gap: 12px; }
+  .recruitment-page .cohort-teacher-method { margin-top: 20px; padding: 22px 20px; }
+  .recruitment-page .cohort-story-layout { gap: 20px; }
+  .recruitment-page .cohort-intake-story h3 { font-size: 22px; margin-bottom: 10px; }
+  .recruitment-page .cohort-small-group { padding: 24px; }
+  .recruitment-page .cohort-small-group h3 { margin-block: 10px 14px; }
+  .recruitment-page .cohort-small-group h3 span { font-size: 56px; }
+  .recruitment-page .cohort-overview-facts { margin-top: 24px; grid-template-columns: 1fr; }
+  .recruitment-page .cohort-overview-facts > div { display: grid; grid-template-columns: 5em minmax(0, 1fr); gap: 12px; padding: 14px 0; align-items: baseline; }
+  .recruitment-page .cohort-overview-facts dt { margin: 0; }
+  .recruitment-page .cohort-overview-facts dd { font-size: 15px; text-wrap: balance; }
+  .recruitment-page .cohort-venue-tabs { margin-top: 24px; gap: 10px; }
+  .recruitment-page .cohort-venue-tabs :is(button,a) { min-height: 58px; padding: 10px; }
+  .recruitment-page .cohort-venue-heading { margin-bottom: 20px; padding-bottom: 18px; }
+  .recruitment-page .cohort-venue-heading strong { font-size: 34px; }
+  .recruitment-page .cohort-session-list { gap: 10px; }
+  .recruitment-page .cohort-session-list li { padding: 12px 10px; }
+  .recruitment-page .cohort-pending-panel { padding: 20px 18px; }
+  .recruitment-page .cohort-pending-panel h3 { font-size: 20px; margin-bottom: 12px; }
+  .recruitment-page .recruitment-section-lead { margin-bottom: 24px; }
+  .recruitment-page .recruitment-fees article { padding: 22px 20px; }
+  .recruitment-page .recruitment-fees h3 { margin-block: 14px; }
+  .recruitment-page .cohort-course-description { margin-bottom: 16px; }
+  .recruitment-page .recruitment-fee { font-size: clamp(30px, 8.5vw, 36px); line-height: 1.6; }
+  .recruitment-page .recruitment-flow { gap: 24px; }
+  .recruitment-page .recruitment-flow li { padding-top: 18px; }
+  .recruitment-page .recruitment-flow h3 { margin-block: 12px; font-size: 20px; }
+  .recruitment-page .recruitment-faq summary { padding-block: 20px; grid-template-columns: 34px minmax(0, 1fr) 18px; gap: 10px; line-height: 1.8; }
+  .recruitment-page .recruitment-faq details > p { padding: 0 12px 20px; }
+  .recruitment-page .recruitment-contact .recruitment-button { margin-top: 20px; }
+  .recruitment-page .recruitment-contact .recruitment-phone { margin-top: 12px; }
+  .recruitment-page :is(a, summary, [tabindex]) { scroll-margin-bottom: calc(88px + env(safe-area-inset-bottom, 0px)); }
+  .recruitment-footer { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+  .recruitment-contact-bar { gap: 8px; padding: 6px 10px calc(6px + env(safe-area-inset-bottom, 0px)); background: #f8f7f2; }
+  .recruitment-contact-bar a { min-height: 48px; font-size: 13px; line-height: 1.45; }
+  .recruitment-contact-bar small { font-size: 11px; }
+}
+@media (max-width: 359px) {
+  .recruitment-page .cohort-launch-facts small { display: block; margin-left: 0; }
+  .recruitment-page .cohort-teacher-metrics > div { padding-inline: 10px; }
+  .recruitment-page .cohort-teacher-metrics dd { font-size: 26px; }
+}
+@media (max-width: 700px) {
+  .recruitment-page .cohort-teacher-heading > p > span { display: inline-block; }
+}

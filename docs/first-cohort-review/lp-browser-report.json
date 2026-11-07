@@ -1,0 +1,89 @@
+{
+  "conditions": "Local preview build, Chromium, DPR 1; no real phone calls or external playback",
+  "widths": [
+    {
+      "width": 320,
+      "all18Dates": true,
+      "keyboardTabs": true,
+      "compareAll": true,
+      "feesMatchHomepage": true,
+      "passed": true
+    },
+    {
+      "width": 360,
+      "all18Dates": true,
+      "keyboardTabs": true,
+      "compareAll": true,
+      "feesMatchHomepage": true,
+      "passed": true
+    },
+    {
+      "width": 375,
+      "all18Dates": true,
+      "keyboardTabs": true,
+      "compareAll": true,
+      "feesMatchHomepage": true,
+      "passed": true
+    },
+    {
+      "width": 390,
+      "all18Dates": true,
+      "keyboardTabs": true,
+      "compareAll": true,
+      "feesMatchHomepage": true,
+      "passed": true
+    },
+    {
+      "width": 400,
+      "all18Dates": true,
+      "keyboardTabs": true,
+      "compareAll": true,
+      "feesMatchHomepage": true,
+      "passed": true
+    },
+    {
+      "width": 414,
+      "all18Dates": true,
+      "keyboardTabs": true,
+      "compareAll": true,
+      "feesMatchHomepage": true,
+      "passed": true
+    },
+    {
+      "width": 430,
+      "all18Dates": true,
+      "keyboardTabs": true,
+      "compareAll": true,
+      "feesMatchHomepage": true,
+      "passed": true
+    },
+    {
+      "width": 768,
+      "all18Dates": true,
+      "keyboardTabs": true,
+      "compareAll": true,
+      "feesMatchHomepage": true,
+      "passed": true
+    },
+    {
+      "width": 1024,
+      "all18Dates": true,
+      "keyboardTabs": true,
+      "compareAll": true,
+      "feesMatchHomepage": true,
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "all18Dates": true,
+      "keyboardTabs": true,
+      "compareAll": true,
+      "feesMatchHomepage": true,
+      "passed": true
+    }
+  ],
+  "externalRequests": [],
+  "errors": [],
+  "noJavaScriptAll18Dates": true,
+  "noJavaScriptAll18DatesVisible": true
+}
