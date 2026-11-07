@@ -66,7 +66,7 @@ test("approved cohort page renders in production and local production without op
       assert.deepEqual(metadata.robots, { index: false, follow: false });
     }
   } finally { if (previous === undefined) delete process.env.VERCEL_ENV; else process.env.VERCEL_ENV = previous; }
-  // The preview-only legacy alias and homepage callout remain unchanged.
+  // The preview-only legacy alias and search indexing policy remain unchanged.
   assert.equal(isFirstCohortPreview({ VERCEL_ENV: "production", NODE_ENV: "development" }), false);
   assert.equal(isFirstCohortPreview({ VERCEL_ENV: "preview", NODE_ENV: "production" }), true);
   assert.equal(isFirstCohortPreview({ NODE_ENV: "development" }), true);
@@ -74,7 +74,9 @@ test("approved cohort page renders in production and local production without op
   assert.equal(isFirstCohortPreview({}), false);
   assert.ok(!require("../lib/site-config.ts").PUBLIC_PATHS.includes("/recruitment/first"));
   const callout = require("../components/first-cohort-callout.tsx").FirstCohortCallout;
-  assert.equal(renderToStaticMarkup(React.createElement(callout)), "");
+  const announcement = renderToStaticMarkup(React.createElement(callout));
+  for (const text of ["第1期生募集案内", "募集準備中", "2027年1月", "東京・大阪・福岡", "各会場6名／合計18名", "2027年1月10日"]) assert.ok(announcement.includes(text), text);
+  assert.ok(!announcement.includes("募集受付中"));
 });
 function config() { return structuredClone(firstCohortConfig); }
 
@@ -161,6 +163,10 @@ test("program header keeps its original navigation destinations", () => {
   const html = renderToStaticMarkup(React.createElement(Header));
   const nav = html.match(/<nav aria-label="メインナビゲーション"[^>]*>(.*?)<\/nav>/s)[1];
   assert.deepEqual([...nav.matchAll(/href="([^"]+)"/g)].map(match=>match[1]), ["/#about", "/#training", "/#roadmap", "/#courses", "/#faq", "/#contact", "https://lin.ee/O3tJo01"]);
+  const homeHeader = renderToStaticMarkup(React.createElement(Header, { showFirstCohort: true }));
+  assert.equal((homeHeader.match(/href="\/recruitment\/first"/g) || []).length, 2);
+  assert.equal((homeHeader.match(/class="header-cohort-link"/g) || []).length, 2);
+
 });
 
 test("first cohort menus and content links use the dedicated page sections", () => {

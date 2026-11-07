@@ -1,0 +1,31 @@
+/* Homepage entry points only; the published recruitment page stays unchanged. */
+.homepage-quality .home-cohort-notice { display: grid; grid-template-columns: 1.2fr 1fr auto; gap: 28px; align-items: center; margin-block: 40px 0; padding: 28px 32px; background: #173f35; color: #fff; border: 1px solid #6a8070; border-left: 3px solid #dbc89a; }
+.homepage-quality .home-cohort-kicker { font-size: 12px; color: #d3dfd2; line-height: 1.8; }
+.homepage-quality .home-cohort-title { font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: 27px; line-height: 1.6; margin-top: 8px; }
+.homepage-quality .home-cohort-title > span { display: inline-block; vertical-align: middle; font: 12px/1.6 "Yu Gothic", sans-serif; color: #dbc89a; border: 1px solid #897449; padding: 4px 8px; margin-left: 8px; white-space: nowrap; }
+.homepage-quality .home-cohort-lead { font-size: 14px; margin-top: 10px; line-height: 1.8; text-wrap: pretty; }
+.homepage-quality .home-cohort-facts { margin: 0; display: grid; gap: 8px; }
+.homepage-quality .home-cohort-facts > div { display: grid; grid-template-columns: 4em minmax(0, 1fr); gap: 12px; align-items: baseline; }
+.homepage-quality .home-cohort-facts dt { font-size: 12px; color: #d3dfd2; }
+.homepage-quality .home-cohort-facts dd { margin: 0; font-size: 14px; line-height: 1.8; }
+.homepage-quality .home-cohort-button { display: inline-flex; gap: 20px; align-items: center; justify-content: space-between; min-height: 48px; padding: 14px 20px; background: #dbc89a; color: #102f28; font-size: 14px; line-height: 1.8; }
+.homepage-quality .home-cohort-button:focus-visible { outline-color: #dbc89a; }
+.homepage-quality .home-cohort-section-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 48px; margin-top: 28px; color: #24493d; font-size: 15px; text-decoration: underline; text-underline-offset: 6px; }
+.home-cohort-header .header-cohort-link { color: #765e30; font-weight: 600; white-space: nowrap; }
+.home-cohort-header .desktop-nav > a { min-height: 44px; display: inline-flex; align-items: center; }
+@media (min-width: 1101px) and (max-width: 1360px) {
+  .home-cohort-header .desktop-nav { gap: 12px; }
+  .home-cohort-header .header-contact { padding-inline: 14px; }
+  .home-cohort-header .header-contact span { margin-left: 10px; }
+}
+@media (max-width: 1100px) {
+  .homepage-quality .home-cohort-notice { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .homepage-quality .home-cohort-button { grid-column: 1 / -1; justify-self: start; }
+}
+@media (max-width: 700px) {
+  .homepage-quality .home-cohort-notice { grid-template-columns: minmax(0, 1fr); margin-top: 28px; padding: 24px 20px; gap: 20px; }
+  .homepage-quality .home-cohort-title { font-size: 24px; }
+  .homepage-quality .home-cohort-title > span { margin-left: 6px; font-size: 11px; }
+  .homepage-quality .home-cohort-button { width: 100%; justify-self: stretch; }
+  .homepage-quality .home-cohort-section-link { font-size: 14px; gap: 16px; }
+}

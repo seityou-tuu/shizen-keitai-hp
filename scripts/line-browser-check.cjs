@@ -19,7 +19,7 @@ const line = "https://lin.ee/O3tJo01";
       const page = await context.newPage(); page.on("pageerror", error => errors.push(error.message));
       const response = await page.goto(new URL(routePath, base).href, { waitUntil: "networkidle" });
       assert.equal(response.status(), 200);
-      if (routePath === "/") assert.equal(await page.locator('a[href="/recruitment/first"]').count(), 0);
+      if (routePath === "/") assert.equal(await page.locator('a[href="/recruitment/first"]').count(), 4);
       const links = page.locator('a[href*="lin.ee"],a[href*="line.me"]');
       assert.ok(await links.count() >= 5);
       for (const link of await links.all()) {

@@ -314,7 +314,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
         const url = new URL(href, base);
         assert.equal(url.origin, base.origin);
         assert.ok(
-          ["/", "/company", "/legal", "/privacy", "/terms"].includes(
+          ["/", "/company", "/legal", "/privacy", "/terms", "/recruitment/first"].includes(
             url.pathname,
           ),
         );
