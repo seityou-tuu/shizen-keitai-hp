@@ -24,12 +24,12 @@ export function InstructorProfile({
   return (
     <div className="renewal-prose">
       <h3 className="instructor-name">{profile.displayName}</h3>
-      <p>
-        自然形体療法の技術を、{profile.displayName}の施術を見ながら学びます。
-      </p>
-      <p>
-        細かな触れ方や身体の反応を確認しながら、技術への理解を深めていきます。
-      </p>
+      <p className="instructor-learning-lead">技術を覚えるだけで終わらない。</p>
+      <p>目の前の身体をどう捉え、どのように触れるか。{profile.displayName}の技術を見ながら、その背景にある考え方を学びます。</p>
+      <div className="instructor-teaching-view" aria-label="研修で学ぶ視点">
+        <p><strong>実技で確かめる</strong><span>触れ方と力加減、身体の反応を観察する。</span></p>
+        <p><strong>理論で考える</strong><span>なぜその施術を行うのか、理由への理解を深める。</span></p>
+      </div>
       {hasDetails ? (
         <>
           {hasBiography && (

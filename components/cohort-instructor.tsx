@@ -26,10 +26,13 @@ export function CohortInstructor() {
         </dl>
         <aside className="cohort-teacher-method" aria-labelledby="cohort-method-title">
           <p className="recruitment-eyebrow">THE WAY WE LEARN</p>
-          <h3 id="cohort-method-title">技術の背景まで、<br />理解を深める。</h3>
-          <p>技術だけでなく、身体をどう捉え、なぜその施術を行うのか。実技と理論を通して、考え方への理解も深めていきます。</p>
+          <h3 id="cohort-method-title">見た技術を、<br />自分の学びへ。</h3>
+          <p>実技で確認した触れ方を、理論と照らして振り返る。復習用動画や研修日以外の質問も活用し、疑問をひとつずつ確かめていきます。</p>
         </aside>
-        <a className="recruitment-text-link" href="#cohort-learning">実技と理論の学び方を確認する <span aria-hidden="true">↗</span></a>
+        <div className="cohort-teacher-next-links">
+          <a className="recruitment-text-link" href="#cohort-learning">実技と理論の学び方を確認する <span aria-hidden="true">↗</span></a>
+          <a className="recruitment-text-link" href="#cohort-contact">受講前の疑問を相談する <span aria-hidden="true">↓</span></a>
+        </div>
       </div>
     </section>
   );
