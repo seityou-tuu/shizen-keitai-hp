@@ -1,3 +1,6 @@
+import { FirstCohortCallout } from "@/components/first-cohort-callout";
+import { FIRST_COHORT_PATH } from "@/lib/recruitment";
+import "./home-cohort-links.css";
 import { InstagramSection } from "@/components/instagram-section";
 import { AnalyticsConsent } from "@/components/analytics-consent";
 import { getGa4MeasurementId } from "@/lib/analytics-config";
@@ -137,7 +140,7 @@ export default function Home() {
       <a className="skip-link" href="#main">
         本文へ移動
       </a>
-      <Header />
+      <Header showFirstCohort />
       <main id="main" tabIndex={-1} className="program-renewal cinematic-program homepage-quality">
         <HomepageMotion />
         <section className="renewal-hero" aria-labelledby="hero-title">
@@ -166,8 +169,8 @@ export default function Home() {
                 </p>
               </div>
               <LineConsultationLink className="renewal-button" />
-              <a className="renewal-text-link" href="#roadmap">
-                資格取得プログラムを見る <span aria-hidden="true">↗</span>
+              <a className="renewal-text-link" href={FIRST_COHORT_PATH}>
+                第1期生の詳細を見る <span aria-hidden="true">↗</span>
               </a>
               <a className="renewal-text-link" href={CONTACT_TEL}>
                 受講について電話で相談する <span aria-hidden="true">↗</span>
@@ -219,6 +222,8 @@ export default function Home() {
             </ul>
           </nav>
         </section>
+
+        <FirstCohortCallout />
 
         <section id="about" className="story-section renewal-about">
           <div className="renewal-wrap editorial-split">
@@ -507,6 +512,7 @@ export default function Home() {
               </div>
               <HomepageTrainingPhoto name="guidance" />
             </div>
+            <a className="home-cohort-section-link" href={`${FIRST_COHORT_PATH}#cohort-schedule`}>第1期生の日程・会場を見る <span aria-hidden="true">↗</span></a>
           </div>
         </section>
 
@@ -712,6 +718,7 @@ export default function Home() {
               </ol>
               <p className="renewal-note">このサイトでは、正式な受講申込み・決済は受け付けていません。</p>
             </div>
+            <a className="home-cohort-section-link" href={`${FIRST_COHORT_PATH}#cohort-tuition`}>第1期生の募集詳細を見る <span aria-hidden="true">↗</span></a>
             <div className="tuition-information">
               <p>お申し込み前にご確認いただく情報</p>
               <InformationLinks />

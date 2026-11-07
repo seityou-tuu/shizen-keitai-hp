@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState, type MouseEvent } from "react";
+import { FIRST_COHORT_PATH } from "@/lib/recruitment";
 import { LineConsultationLink } from "@/components/line-consultation-link";
 const links = [
   ["自然形体療法とは", "/#about"],
@@ -15,8 +16,8 @@ const cohortLinks = [
   ["受講料金", "#cohort-tuition"],
   ["よくある質問", "#cohort-faq"],
 ];
-export function Header({ variant = "program" }: { variant?: "program" | "first-cohort" }) {
-  const navigation = variant === "first-cohort" ? cohortLinks : links;
+export function Header({ variant = "program", showFirstCohort = false }: { variant?: "program" | "first-cohort"; showFirstCohort?: boolean }) {
+  const navigation = variant === "first-cohort" ? cohortLinks : showFirstCohort ? [...links, ["第1期生募集", FIRST_COHORT_PATH]] : links;
   const contactHref = variant === "first-cohort" ? "#cohort-contact" : "/#contact";
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
@@ -52,7 +53,7 @@ export function Header({ variant = "program" }: { variant?: "program" | "first-c
     };
   }, [open]);
   return (
-    <header className="site-header">
+    <header className={showFirstCohort ? "site-header home-cohort-header" : "site-header"}>
       <a
         href="/"
         className="brand"
@@ -67,7 +68,7 @@ export function Header({ variant = "program" }: { variant?: "program" | "first-c
       </a>
       <nav aria-label="メインナビゲーション" className="desktop-nav">
         {navigation.map(([label, href]) => (
-          <a key={href} href={href}>
+          <a key={href} href={href} className={href === FIRST_COHORT_PATH ? "header-cohort-link" : undefined}>
             {label}
           </a>
         ))}
@@ -94,7 +95,7 @@ export function Header({ variant = "program" }: { variant?: "program" | "first-c
         aria-label="モバイルナビゲーション"
       >
         {[...navigation, ["お問い合わせ", contactHref]].map(([label, href]) => (
-          <a key={href} href={href} onClick={followMobileLink}>
+          <a key={href} href={href} onClick={followMobileLink} className={href === FIRST_COHORT_PATH ? "header-cohort-link" : undefined}>
             {label}
             <span aria-hidden="true">↗</span>
           </a>

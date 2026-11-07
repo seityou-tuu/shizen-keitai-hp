@@ -21,7 +21,7 @@ const expected = {
     const normalize = value => value.replace(/\s/g, "");
     const mainFees = (await main.locator(".tuition-amount p").allTextContents()).map(normalize);
     assert.equal(mainFees.length, 3);
-    assert.equal(await main.locator('a[href="/recruitment/first"]').count(), 0);
+    assert.equal(await main.locator('a[href="/recruitment/first"]').count(), 4);
     await main.close();
     for (const width of [320, 360, 375, 390, 400, 414, 430, 768, 1024, 1280, 1440]) {
       const context = await browser.newContext({ viewport: { width, height: 1000 }, reducedMotion: "reduce" });
