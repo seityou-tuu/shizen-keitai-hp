@@ -123,3 +123,42 @@
   .recruitment-page .cohort-teacher-metrics { gap: 14px; }
   .recruitment-page .cohort-teacher-metrics dd { font-size: 28px; }
 }
+
+/* Final mobile polish; desktop composition and motion remain intact. */
+@media (max-width: 700px) {
+  .recruitment-page .cohort-teacher-visual,
+  .recruitment-page .cohort-teacher-bio { display: contents; }
+  .recruitment-page .cohort-teacher-heading { order: 0; }
+  .recruitment-page .cohort-teacher-portrait { order: 1; width: 100%; }
+  .recruitment-page .cohort-teacher-bio > * { order: 2; }
+  .recruitment-page .cohort-teacher-award-record { order: 3; margin-top: 0; }
+  .recruitment-page .cohort-teacher-method,
+  .recruitment-page .cohort-teacher-next-links { order: 4; }
+  .recruitment-page #cohort-instructor { row-gap: 16px; }
+  .recruitment-page .cohort-teacher-role { margin-top: 4px; }
+  .recruitment-page .cohort-teacher-bio > h3 { margin: 0; }
+  .recruitment-page .cohort-teacher-award { margin-top: 0; }
+  .recruitment-page .cohort-teacher-source { margin-top: 0; }
+  .recruitment-page .cohort-capacity-number { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+  .recruitment-page .cohort-capacity-number strong { margin-inline: 4px; font-size: 62px; }
+  .recruitment-page .cohort-capacity-number > span { flex-basis: 100%; margin: 4px 0 0; }
+  .recruitment-page .cohort-overview-facts { grid-template-columns: 1fr; }
+  .recruitment-page .cohort-overview-facts > div { display: grid; grid-template-columns: 5em minmax(0, 1fr); gap: 12px; padding-block: 14px; align-items: baseline; }
+  .recruitment-page .cohort-overview-facts dt { margin: 0; }
+  .recruitment-page .cohort-overview-price strong { margin-left: 0; font-size: 27px; }
+  .recruitment-page .cohort-overview-price dd { font-size: 13px; }
+  .recruitment-page .cohort-course-english { display: none; }
+  .recruitment-page .cohort-course-step b { font-size: 30px; }
+  .recruitment-page .recruitment-fees article > .cohort-course-step { padding-bottom: 8px; }
+  .recruitment-page .recruitment-fees h3 { margin: 12px 0 10px; font-size: 23px; }
+  .recruitment-page .cohort-course-description { margin-bottom: 12px; }
+  .recruitment-page .cohort-course-description strong { margin-bottom: 4px; }
+  .recruitment-page .cohort-course-price { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 0 12px; }
+  .recruitment-page .cohort-course-duration { grid-column: 2; grid-row: 1; }
+  .recruitment-page .cohort-course-duration strong { margin-left: 4px; }
+  .recruitment-page .recruitment-fee { grid-column: 1; grid-row: 1; font-size: 36px; }
+  .recruitment-page .cohort-course-tax { grid-column: 1 / -1; }
+  .recruitment-page .recruitment-fees article,
+  .recruitment-page .recruitment-fees article:nth-child(2),
+  .recruitment-page .recruitment-fees article + article { padding-bottom: 18px; }
+}
