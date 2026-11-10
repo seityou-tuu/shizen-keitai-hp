@@ -1775,3 +1775,5 @@ details[open] .faq-toggle:after {
 /* Readable muted gold on light surfaces. */
 .brand-symbol { color: #765e30; }
 .training-atmosphere-story .renewal-kicker { color: #765e30; }
+
+.homepage-quality .training-atmosphere-story .renewal-kicker { color: #765e30; }

@@ -192,7 +192,7 @@ test("minimum attendance is explicit for all three venues and does not change ca
   assert.ok(launchFacts.replace(/<[^>]+>/g, "").includes("最少催行人数：各会場3名"));
   assert.ok(launchFacts.indexOf('class="cohort-hero-minimum"') > launchFacts.indexOf("合計"));
   for (const venue of firstCohortDetails.venues) {
-    const panel = html.match(new RegExp(`<article[^>]*id="schedule-${venue.id}"[^>]*>(.*?)</article>`, "s"))[1];
+    const panel = html.match(new RegExp(`<div[^>]*id="schedule-${venue.id}"[^>]*>(.*?)</ol>`, "s"))[1];
     assert.ok(panel.includes("最少催行人数3名"), venue.name);
     assert.ok(panel.includes("定員 <strong>6</strong>名"), venue.name);
     assert.equal((panel.match(/<time/g) || []).length, 6);

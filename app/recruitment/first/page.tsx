@@ -214,7 +214,7 @@ export default function FirstRecruitmentPage() {
         </section>
       </main>
       <footer className="recruitment-footer"><div className="recruitment-wrap"><InformationLinks /><p>{operator.name} · 代表取締役 {operator.representative}</p><p>掲載情報・各種方針には確認中の項目が含まれます。</p></div></footer>
-      <nav className="recruitment-contact-bar" aria-label="第1期生の相談窓口"><LineConsultationLink className="cohort-sticky-line" label="LINEで相談" /><a href={CONTACT_TEL} aria-label={`電話相談（${CONTACT_PHONE}へ発信）`}>電話相談<small>{CONTACT_PHONE}</small></a></nav>
+      <nav className="recruitment-contact-bar" aria-label="第1期生の相談窓口"><LineConsultationLink className="cohort-sticky-line" label="LINEで相談" /><a href={CONTACT_TEL} >電話相談<small>{CONTACT_PHONE}</small></a></nav>
     </>
   );
 }
