@@ -1,0 +1,72 @@
+[
+  {
+    "width": 375,
+    "route": "/",
+    "once": true,
+    "reducedMotion": true,
+    "cls": 0
+  },
+  {
+    "width": 375,
+    "route": "/recruitment/first",
+    "once": true,
+    "reducedMotion": true,
+    "cls": 0
+  },
+  {
+    "width": 390,
+    "route": "/",
+    "once": true,
+    "reducedMotion": true,
+    "cls": 0
+  },
+  {
+    "width": 390,
+    "route": "/recruitment/first",
+    "once": true,
+    "reducedMotion": true,
+    "cls": 0
+  },
+  {
+    "width": 400,
+    "route": "/",
+    "once": true,
+    "reducedMotion": true,
+    "cls": 0
+  },
+  {
+    "width": 400,
+    "route": "/recruitment/first",
+    "once": true,
+    "reducedMotion": true,
+    "cls": 0
+  },
+  {
+    "width": 768,
+    "route": "/",
+    "once": true,
+    "reducedMotion": true,
+    "cls": 0
+  },
+  {
+    "width": 768,
+    "route": "/recruitment/first",
+    "once": true,
+    "reducedMotion": true,
+    "cls": 0
+  },
+  {
+    "width": 1440,
+    "route": "/",
+    "once": true,
+    "reducedMotion": true,
+    "cls": 0
+  },
+  {
+    "width": 1440,
+    "route": "/recruitment/first",
+    "once": true,
+    "reducedMotion": true,
+    "cls": 0
+  }
+]

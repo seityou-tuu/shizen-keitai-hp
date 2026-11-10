@@ -185,8 +185,9 @@ test("minimum attendance is explicit for all three venues and does not change ca
   assert.equal(firstCohortDetails.minimumParticipantsPerVenue, 3);
   assert.equal(firstCohortMinimumNotice, "各会場の申込人数が3名に満たない場合、開催を中止する場合がございます。");
   const html = renderToStaticMarkup(React.createElement(FirstPage)).replace(/<!--.*?-->/g, "");
-  assert.ok(html.replace(/<[^>]+>/g, "").includes("各会場6名（最少催行人数3名）・合計18名"));
-  assert.equal((html.match(/class="cohort-minimum-notice"/g) || []).length, 2);
+  const capacity = html.match(/<div class="cohort-intake-capacity">(.*?)<\/div>/s)[1].replace(/<[^>]+>/g, "");
+  for (const fact of ["各会場6名", "合計 18 名", "最少催行人数：各会場3名"]) assert.ok(capacity.includes(fact), fact);
+  assert.equal((html.match(/class="cohort-minimum-notice(?: recruitment-note)?"/g) || []).length, 2);
   const launchFacts = html.match(/<dl class="cohort-launch-facts">(.*?)<\/dl>/s)[1];
   assert.ok(launchFacts.replace(/<[^>]+>/g, "").includes("最少催行人数：各会場3名"));
   assert.ok(launchFacts.indexOf('class="cohort-hero-minimum"') > launchFacts.indexOf("合計"));

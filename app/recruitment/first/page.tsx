@@ -12,6 +12,7 @@ import { CohortInstructor } from "@/components/cohort-instructor";
 import "@/app/recruitment.css";
 import "@/app/cohort-instructor-story.css";
 import "@/app/cohort-mobile.css";
+import "@/app/cohort-premium.css";
 import { Header } from "@/components/header";
 import { InformationLinks } from "@/components/information-links";
 import { CONTACT_PHONE, CONTACT_TEL } from "@/lib/contact";
@@ -130,21 +131,26 @@ export default function FirstRecruitmentPage() {
           <a className="recruitment-text-link" href="#cohort-schedule">募集日程・条件を確認する ↓</a>
         </section>
         <CohortInstructor />
-        <section className="recruitment-section recruitment-wrap" aria-labelledby="cohort-overview">
-          <p className="recruitment-eyebrow">OVERVIEW</p>
-          <h2 id="cohort-overview">続いていく学びに、<br />あなたの一歩を。</h2>
-          <div className="cohort-story-layout">
-            <div className="cohort-intake-story"><h3>{summary.startYear}年{summary.startMonth}月、第1期生へ。</h3><p>同じ技術に向き合う仲間と、新しい学びを。{summary.locations}の{summary.venueCount}会場で始まります。</p></div>
-            <div className="cohort-small-group"><p className="recruitment-eyebrow">FIRST COHORT</p><h3>各会場<span>{facts.venues[0].capacity}</span>名の募集</h3><p>同じ技術を学ぶ仲間と、ひとつずつ理解を重ねる。自然形体療法を学ぶ、新しい出会いを。</p><p>{facts.eligible}です。</p></div>
+        <section className="recruitment-section recruitment-wrap cohort-overview" aria-labelledby="cohort-overview">
+          <p className="recruitment-eyebrow">OVERVIEW / FIRST COHORT</p>
+          <h2 id="cohort-overview">第1期生、募集概要。</h2>
+          <p className="cohort-overview-intro">自然形体療法を学ぶ、新しい一歩を。</p>
+          <div className="cohort-overview-spread">
+            <div className="cohort-intake-capacity">
+              <p className="recruitment-eyebrow">TOKYO / OSAKA / FUKUOKA</p>
+              <p className="cohort-capacity-number">各会場<strong>{facts.venues[0].capacity}</strong>名<span>合計 <b>{summary.totalCapacity}</b> 名</span></p>
+              <p>{summary.locations}の{summary.venueCount}会場で開催</p>
+              <p className="cohort-capacity-minimum">最少催行人数：各会場{facts.minimumParticipantsPerVenue}名</p>
+            </div>
+            <dl className="cohort-overview-facts">
+              <div><dt>開催期間</dt><dd>{summary.period}</dd></div>
+              <div><dt>開催地域</dt><dd>{summary.locations}</dd></div>
+              <div><dt>募集締切</dt><dd><time dateTime={facts.deadline}>{formatRecruitmentDate(facts.deadline)}</time></dd></div>
+              <div><dt>受講対象</dt><dd>{facts.eligible}</dd></div>
+              <div className="cohort-overview-price"><dt>受講料金</dt><dd>各コース<strong>990,000</strong>円（税込）<small>税抜900,000円</small><a href="#cohort-tuition">3コースの詳細を見る ↓</a></dd></div>
+            </dl>
           </div>
-          <dl className="cohort-overview-facts">
-            <div><dt>開催期間</dt><dd>{summary.period}</dd></div>
-            <div><dt>開催地域</dt><dd>{summary.locations}の{summary.venueCount}会場</dd></div>
-            <div><dt>募集定員</dt><dd>{summary.capacityLabel}<span className="cohort-minimum-label">（最少催行人数{facts.minimumParticipantsPerVenue}名）</span>・合計{summary.totalCapacity}名<p className="cohort-minimum-notice">{firstCohortMinimumNotice}</p></dd></div>
-            <div><dt>募集締切</dt><dd>{formatRecruitmentDate(facts.deadline)}</dd></div>
-            <div><dt>受講対象</dt><dd>{facts.eligible}</dd></div>
-            <div><dt>受講料金</dt><dd>各コース990,000円（税込）／税抜900,000円 <a href="#cohort-tuition">料金の詳細を見る ↓</a></dd></div>
-          </dl>
+          <p className="cohort-minimum-notice recruitment-note">{firstCohortMinimumNotice}</p>
         </section>
 
         <section id="cohort-schedule" className="recruitment-section recruitment-soft">
@@ -162,9 +168,24 @@ export default function FirstRecruitmentPage() {
         </section>
         <section id="cohort-tuition" className="recruitment-section recruitment-soft">
           <div className="recruitment-wrap">
-            <p className="recruitment-eyebrow">TUITION</p><h2>受講料金</h2><p className="recruitment-section-lead">各コースの受講期間は6ヶ月です。対面の実技・オンライン理論に、復習用動画と研修日以外の質問を組み合わせて学びます。</p>
-            <div className="recruitment-fees">{programCourses.map((course, i) => <article key={course.title}><span className="recruitment-eyebrow">STEP 0{i + 1}</span><h3>{course.title}</h3><p className="cohort-course-description">{course.lead}{course.text}</p><p className="recruitment-fee">990,000<small>円（税込）</small></p><p>税抜900,000円／受講期間6ヶ月</p></article>)}</div>
-            <div className="recruitment-total"><p>3コースすべてを受講した場合の受講料合計</p><p>2,970,000円（税込）<small>税抜2,700,000円</small></p></div>
+            <div className="cohort-tuition-heading">
+              <p className="recruitment-eyebrow">TUITION / LEARNING ROADMAP</p>
+              <h2>学びを深める、3つのコース。</h2>
+              <p className="recruitment-section-lead">実技と理論を重ねる、各6ヶ月の学び。<br />それぞれの段階と受講料金をご案内します。</p>
+            </div>
+            <div className="recruitment-fees">{programCourses.map((course, i) => <article key={course.title}>
+              <span className="recruitment-eyebrow cohort-course-step">STEP <b>0{i + 1}</b></span>
+              <p className="cohort-course-english">{course.english}</p>
+              <h3>{course.title}</h3>
+              <p className="cohort-course-description"><strong>{course.lead}</strong>{course.text}</p>
+              <div className="cohort-course-price"><p className="cohort-course-duration">受講期間 <strong>6ヶ月</strong></p><p className="recruitment-fee">990,000<small>円<span>（税込）</span></small></p><p className="cohort-course-tax">税抜900,000円</p></div>
+            </article>)}</div>
+            <p className="recruitment-note cohort-roadmap-note">STEPは既存の3段階の構成を示しています。受講順序・受講資格・進級条件の詳細は確認後にご案内します。</p>
+            <div className="cohort-tuition-learning">
+              <div><p className="recruitment-eyebrow">SIX MONTHS OF LEARNING</p><h3>6ヶ月の学びを支える環境。</h3></div>
+              <div><ul><li>月1回の対面実技</li><li>月1回のオンライン理論</li><li>復習用動画</li><li>研修日以外の質問環境</li></ul><p>実技と理論を組み合わせた、既存プログラム共通の学習案内です。各コースとの対応や、第1期生の具体的な実施方法・条件は確認後にご案内します。</p><a className="recruitment-text-link" href="#cohort-learning">6ヶ月の学び方を見る ↓</a></div>
+            </div>
+            <div className="recruitment-total"><p>参考：3コースすべてを受講した場合の受講料合計</p><p>2,970,000円（税込）<small>税抜2,700,000円</small></p></div>
             <p className="recruitment-note">コースごとの詳しいカリキュラム・認定基準、3コースすべての受講が必須かどうかは未確定です。税込額は消費税10％前提です。</p>
             <p className="recruitment-note">支払・追加費用・キャンセル等の条件は募集情報欄をご確認ください。クレジットカード分割払いは導入準備中です。</p>
             <a className="recruitment-text-link" href="#cohort-contact">料金・受講条件について相談する ↗</a>
