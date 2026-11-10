@@ -1,0 +1,24 @@
+/* Scoped controls only; no continuous effects, geometry changes, or hover dependency. */
+:is(.homepage-quality, .recruitment-page) :is(.renewal-button, .recruitment-button, .recruitment-text-link, .home-cohort-section-link),
+.site-header :is(.header-contact, .header-cohort-link), .mobile-consult-bar a {
+  transition: background-color .22s ease, border-color .22s ease, color .22s ease, box-shadow .22s ease;
+}
+:is(.homepage-quality, .recruitment-page) :is(.renewal-button, .recruitment-button, .recruitment-text-link, .home-cohort-section-link) > span[aria-hidden="true"] { display: inline-block; transition: transform .22s ease; }
+@media (hover: hover) and (pointer: fine) {
+  :is(.homepage-quality, .recruitment-page) :is(.renewal-button, .recruitment-button):hover { background-color: #dbc79b; color: #173f35; border-color: #a68b58; }
+  :is(.homepage-quality, .recruitment-page) :is(.renewal-button, .recruitment-button, .recruitment-text-link, .home-cohort-section-link):hover > span[aria-hidden="true"] { transform: translateX(3px); }
+}
+:is(.homepage-quality, .recruitment-page) :is(.renewal-button, .recruitment-button):active,
+.mobile-consult-bar a:active { box-shadow: inset 0 0 0 2px #a68b58; }
+:is(.homepage-quality, .recruitment-page, .site-header, .mobile-consult-bar) :is(a, button, summary):focus-visible { outline: 2px solid #a68b58; outline-offset: 4px; }
+.recruitment-page .cohort-session-list li { position: relative; }
+.recruitment-page .cohort-session-list .cohort-month { font-size: 11px; font-family: "Yu Gothic", sans-serif; color: #765e30; margin-left: 8px; white-space: nowrap; }
+@media (max-width: 700px) {
+  #cohort-schedule .cohort-venue-panel .cohort-session-list { grid-template-columns: 1fr; gap: 8px; }
+  .recruitment-page .cohort-session-list li { display: flex; justify-content: space-between; align-items: center; gap: 12px; border-top: 0; border-left: 2px solid #a68b58; padding: 14px 16px; }
+  .recruitment-page .cohort-session-list span { margin: 0; }
+  .recruitment-page .cohort-session-list time { font-size: 19px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(.homepage-quality, .recruitment-page, .site-header, .mobile-consult-bar) *, :is(.homepage-quality, .recruitment-page) *::before { transition: none !important; animation: none !important; }
+}

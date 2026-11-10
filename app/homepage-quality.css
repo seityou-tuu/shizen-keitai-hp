@@ -225,10 +225,6 @@
   .homepage-quality .tuition-shared { display: grid; gap: 12px; padding: 24px; font-size: 13px; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .homepage-quality .arrival-ready { opacity: 0; transform: translateY(18px); transition: opacity .75s ease, transform .75s cubic-bezier(.2,.65,.3,1); }
-  .homepage-quality figure.arrival-ready { transform: translateY(10px); transition-duration: .95s; }
-  .homepage-quality .arrival-visible { opacity: 1; transform: none; }
-  .homepage-quality .renewal-roadmap .section-heading.arrival-ready { transform: none; }
   @media (hover: hover) {
     .homepage-quality .roadmap-fee-link span { transition: transform .2s ease; }
     .homepage-quality .roadmap-fee-link:hover span { transform: translateY(3px); }

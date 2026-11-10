@@ -52,7 +52,7 @@ export function CohortSchedule() {
           hidden={enhanced && !all && selected !== venue.id} tabIndex={enhanced ? 0 : undefined}>
           <div className="cohort-venue-heading"><div><p className="recruitment-eyebrow">{summary.period}</p><h3>{venue.name}会場</h3></div><p>定員 <strong>{venue.capacity}</strong>名<small className="cohort-minimum-count">最少催行人数{firstCohortDetails.minimumParticipantsPerVenue}名</small></p></div>
           <ol className="cohort-session-list">{venue.dates.map((date, index) => <li key={date}>
-            <span>第{index + 1}回</span><time dateTime={date} aria-label={`${date.slice(0, 4)}年${formatSessionDate(date)}`}>{formatSessionDate(date)}</time>
+            <span>第{index + 1}回<small className="cohort-month">{index + 1}ヶ月目</small></span><time dateTime={date} aria-label={`${date.slice(0, 4)}年${formatSessionDate(date)}`}>{formatSessionDate(date)}</time>
           </li>)}</ol>
           <p className="recruitment-note">会場住所・開始時刻・終了時刻は確認後にご案内します。</p>
         </article>)}

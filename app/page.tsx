@@ -10,7 +10,7 @@ import "./homepage-quality.css";
 import "./section-stories.css";
 import { PerspectiveDiagram } from "@/components/perspective-diagram";
 import { HomepageTrainingPhoto, InstructorEvidence } from "@/components/homepage-photos";
-import { HomepageMotion } from "@/components/homepage-motion";
+import { PageMotion } from "@/components/page-motion";
 import { InstructorProfile } from "@/components/instructor-profile";
 import { instructorProfile } from "@/lib/instructor";
 import { CONTACT_PHONE, CONTACT_TEL, getOfficialLineUrl } from "@/lib/contact";
@@ -115,7 +115,7 @@ export default function Home() {
       </a>
       <Header showFirstCohort splash />
       <main id="main" tabIndex={-1} className="program-renewal cinematic-program homepage-quality">
-        <HomepageMotion />
+        <PageMotion variant="home" />
         <section className="renewal-hero" aria-labelledby="hero-title">
           <div className="renewal-wrap hero-composition">
             <div className="hero-statement">

@@ -409,20 +409,8 @@
   .information-contact .information-phone { font-size: 14px; }
 }
 
-/* Native progressive animation; no scroll hijacking and no hidden-content dependency. */
+/* Subtle pointer-only photo response; scroll arrivals live in PageMotion. */
 @media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: view()) {
-    .cinematic-program .story-section .section-heading h2 {
-      animation: editorial-arrival linear both;
-      animation-timeline: view(); animation-range: entry 0% entry 100%;
-    }
-    .cinematic-program .story-section .program-photo img {
-      animation: photograph-arrival linear both;
-      animation-timeline: view(); animation-range: entry 0% entry 100%;
-    }
-    @keyframes editorial-arrival { from { opacity: .86; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-    @keyframes photograph-arrival { from { filter: brightness(.92); } to { filter: brightness(1); } }
-  }
   @media (hover: hover) {
     .cinematic-program .story-section .program-photo img { transition: scale .6s ease; }
     .cinematic-program .story-section .program-photo:hover img { scale: 1.015; }
