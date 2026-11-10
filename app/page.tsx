@@ -140,7 +140,7 @@ export default function Home() {
       <a className="skip-link" href="#main">
         本文へ移動
       </a>
-      <Header showFirstCohort />
+      <Header showFirstCohort splash />
       <main id="main" tabIndex={-1} className="program-renewal cinematic-program homepage-quality">
         <HomepageMotion />
         <section className="renewal-hero" aria-labelledby="hero-title">

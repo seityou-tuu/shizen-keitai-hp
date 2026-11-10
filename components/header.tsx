@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { FIRST_COHORT_PATH } from "@/lib/recruitment";
 import { LineConsultationLink } from "@/components/line-consultation-link";
+import { BrandSplash } from "@/components/brand-splash";
 const links = [
   ["自然形体療法とは", "/#about"],
   ["研修内容", "/#training"],
@@ -16,7 +17,7 @@ const cohortLinks = [
   ["受講料金", "#cohort-tuition"],
   ["よくある質問", "#cohort-faq"],
 ];
-export function Header({ variant = "program", showFirstCohort = false }: { variant?: "program" | "first-cohort"; showFirstCohort?: boolean }) {
+export function Header({ variant = "program", showFirstCohort = false, splash = false }: { variant?: "program" | "first-cohort"; showFirstCohort?: boolean; splash?: boolean }) {
   const navigation = variant === "first-cohort" ? cohortLinks : showFirstCohort ? [...links, ["第1期生募集", FIRST_COHORT_PATH]] : links;
   const contactHref = variant === "first-cohort" ? "#cohort-contact" : "/#contact";
   const [open, setOpen] = useState(false);
@@ -54,6 +55,7 @@ export function Header({ variant = "program", showFirstCohort = false }: { varia
   }, [open]);
   return (
     <header className={showFirstCohort ? "site-header home-cohort-header" : "site-header"}>
+      {splash && <BrandSplash />}
       <a
         href="/"
         className="brand"
