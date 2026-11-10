@@ -247,8 +247,6 @@ export default function Home() {
               </p>
             </div>
             <div className="essential-system">
-              <svg className="essential-connections" viewBox="0 0 1000 600" preserveAspectRatio="none" fill="none" aria-hidden="true" focusable="false"><ellipse cx="500" cy="300" rx="270" ry="230"/><path d="M500 300 180 100M500 300 820 100M500 300 180 500M500 300 820 500"/></svg>
-              <div className="essential-center"><span>SHIZEN KEITAI</span><p>自然形体療法</p><small>4つの重要な視点</small></div>
             <ol className="essential-perspectives">
               {features.map(([title, text], i) => (
                 <li key={title}>
