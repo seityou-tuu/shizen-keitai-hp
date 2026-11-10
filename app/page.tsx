@@ -1,3 +1,5 @@
+import { programCourses as courses } from "@/lib/program-courses";
+import "./learning-value.css";
 import { FirstCohortCallout } from "@/components/first-cohort-callout";
 import { FIRST_COHORT_PATH } from "@/lib/recruitment";
 import "./home-cohort-links.css";
@@ -20,29 +22,6 @@ import { InformationLinks } from "@/components/information-links";
 import { ProgramPhoto } from "@/components/program-photo";
 import { SectionHeading } from "@/components/ui";
 
-const courses = [
-  {
-    step: "01",
-    title: "準師範コース",
-    english: "JUNIOR INSTRUCTOR",
-    lead: "資格取得の第一歩となるコース。",
-    text: "実技と理論を組み合わせ、学びを積み重ねていきます。",
-  },
-  {
-    step: "02",
-    title: "師範コース",
-    english: "INSTRUCTOR",
-    lead: "準師範コースに続く、次の段階。",
-    text: "継続した研修を通じて、自然形体療法への理解を深めます。",
-  },
-  {
-    step: "03",
-    title: "本部師範コース",
-    english: "HEADQUARTERS INSTRUCTOR",
-    lead: "3段階のロードマップの最終コース。",
-    text: "実技と理論の両面から、さらに学びを重ねます。",
-  },
-];
 const features = [
   ["身体にやさしい施術", "強い刺激を避け、身体の状態に合わせて施術する。"],
   ["身体の変化を体感", "施術前後の動きや反応を丁寧に確認する。"],
@@ -62,17 +41,11 @@ const support = [
   ],
 ];
 const future = [
-  ["施術の選択肢が広がる", "これまでの施術に、新たな技術や視点を取り入れる。"],
-  [
-    "技術への理解を深める",
-    "理論と実践を重ねながら、自分の判断力や技術を磨く。",
-  ],
-  [
-    "独立・開業にも活かせる",
-    "将来の施術活動や開業に向けて、学んだ技術を活かす可能性を広げる。",
-  ],
-  ["資格取得後も学べる", "取得後のフォローを通して、技術を継続して深める。"],
-  ["仲間とつながる", "同じ技術を学ぶ人たちとの交流や学び合いにつなげる。"],
+  ["身体の動きや反応を見る", "施術前後の違いを観察し、身体を捉える視点を学びに加える。"],
+  ["力加減を考えて触れる", "強い刺激を避ける考え方と、手の位置・触れ方を振り返る。"],
+  ["理論と実技を結びつける", "なぜその技術を使うのか。実技で確かめ、理論で理由を考える。"],
+  ["復習と質問を習慣にする", "復習用動画で振り返り、研修日以外の質問を次の学びにつなげる。"],
+  ["仲間と学びを重ねる", "同じ技術に向き合う人たちと、気づきを共有しながら学ぶ。"],
 ];
 const faqs = [
   [
@@ -562,9 +535,9 @@ export default function Home() {
         <section id="instructors" className="story-section renewal-instructors">
           <div className="renewal-wrap">
             <SectionHeading number="08" english="INSTRUCTORS">
-              一つひとつの技術に、
+              技術と、その理由を。
               <br />
-              向き合う。
+              永友先生から学ぶ。
             </SectionHeading>
             <div className="instructor-introduction">
               <InstructorProfile />
@@ -581,6 +554,10 @@ export default function Home() {
               </div>
             </div>
             <InstructorEvidence />
+            <div className="instructor-study-bridge">
+              <p>永友先生から直接学ぶ、第1期生の6ヶ月。<br />実技・理論・復習の進め方をご紹介します。</p>
+              <a className="home-cohort-section-link" href={`${FIRST_COHORT_PATH}#cohort-learning`}>第1期生の学び方を見る <span aria-hidden="true">↗</span></a>
+            </div>
           </div>
         </section>
 
@@ -590,16 +567,16 @@ export default function Home() {
           <div className="renewal-wrap future-composition">
             <div>
               <SectionHeading number="09" english="BEYOND CERTIFICATION">
-                技術を身につけた、
+                学びの先に、
                 <br />
-                その先へ。
+                目指したい姿。
               </SectionHeading>
               <div className="renewal-prose">
                 <p>資格取得は、学びの終わりではありません。</p>
                 <p>
-                  身につけた技術を日々の施術に活かし、さらに理解を深めていく。
+                  6ヶ月の実技・理論・復習を、これからの施術を考える土台に。
                 </p>
-                <p>独立や開業を目指す人も、仲間と学び続けたい人も。</p>
+                <p>日々の施術に活かしたい方も、これから学び始める方も。</p>
                 <p>自然形体療法を、これからの可能性につなげていく。</p>
               </div>
             </div>
@@ -645,6 +622,7 @@ export default function Home() {
                     <p className="renewal-kicker">STEP {c.step}</p>
                     <h3>{c.title}</h3>
                   </div>
+                  <p className="tuition-course-purpose">{c.lead}</p>
                   <p className="tuition-duration">受講期間 <strong>6ヶ月</strong></p>
                   <div className="tuition-amount">
                     <span>受講料 / 1コース</span>
@@ -660,7 +638,9 @@ export default function Home() {
               <p className="renewal-kicker">各コース共通の研修</p>
               <p><strong>実技</strong>月1回・対面 9:00〜17:00</p>
               <p><strong>理論</strong>月1回・オンライン 1回2時間</p>
+              <p><strong>復習と質問</strong>復習用動画・研修日以外の質問</p>
             </div>
+            <p className="renewal-note">上記はプログラム共通の学び方です。第1期生の実技の開始・終了時刻、動画・質問対応の利用条件は確認後にご案内します。</p>
             <div className="tuition-total">
               <p>3コースすべての受講料合計</p>
               <p>
@@ -669,7 +649,7 @@ export default function Home() {
               </p>
             </div>
             <p className="renewal-note">
-              合計は3コースすべてを受講した場合の受講料です。3コースの受講が必須かどうか、各コースの認定条件は確認後にご案内します。
+              合計は3コースすべてを受講した場合の受講料です。各コースの具体的な学習項目・認定基準・進級条件、3コースの受講が必須かどうかは確認後にご案内します。
             </p>
             <p className="renewal-note">
               税込額は消費税10％前提です。支払い方法・支払時期、教材費・交通費等の受講料以外の費用の有無、キャンセル規定は、正式な募集案内でご確認ください。

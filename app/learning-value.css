@@ -1,0 +1,21 @@
+/* Editorial refinements only; all existing photos, video frames and facts remain. */
+.homepage-quality .renewal-prose .instructor-learning-lead { color: #765e30; font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: clamp(21px, 2vw, 26px); line-height: 1.7; margin-top: 18px; text-wrap: pretty; }
+.homepage-quality .instructor-teaching-view { border-block: 1px solid #bdc6b4; margin-top: 24px; }
+.homepage-quality .instructor-teaching-view p { display: grid; grid-template-columns: 7em minmax(0, 1fr); gap: 16px; padding-block: 14px; margin: 0; }
+.homepage-quality .instructor-teaching-view p + p { border-top: 1px solid #d0d5c9; }
+.homepage-quality .instructor-teaching-view strong { font-size: 14px; font-weight: 500; color: #24493d; }
+.homepage-quality .instructor-teaching-view span { font-size: 14px; line-height: 1.85; }
+.homepage-quality .instructor-study-bridge { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; gap: 32px; border-top: 1px solid #a68b58; padding-top: 28px; margin-top: 32px; }
+.homepage-quality .instructor-study-bridge p { font-size: 16px; line-height: 1.9; }
+.homepage-quality .instructor-study-bridge .home-cohort-section-link { margin: 0; flex-shrink: 0; }
+.homepage-quality .tuition-course-purpose { font-size: 15px; line-height: 1.85; color: #455b4b; text-wrap: pretty; }
+.homepage-quality .tuition-course .tuition-amount { margin-top: auto; }
+.recruitment-page .cohort-teacher-next-links { display: flex; flex-wrap: wrap; gap: 0 24px; }
+@media (max-width: 700px) {
+  .homepage-quality .renewal-prose .instructor-learning-lead { font-size: 21px; }
+  .homepage-quality .instructor-teaching-view p { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .homepage-quality .instructor-study-bridge { display: block; padding-top: 24px; margin-top: 24px; }
+  .homepage-quality .instructor-study-bridge .home-cohort-section-link { margin-top: 12px; }
+  .homepage-quality .tuition-course-purpose { font-size: 15px; }
+  .recruitment-page .cohort-teacher-next-links { display: block; }
+}
