@@ -199,7 +199,7 @@ export default function FirstRecruitmentPage() {
           <InformationLinks />
         </section>
         <section id="cohort-faq" className="recruitment-section recruitment-soft">
-          <div className="recruitment-wrap"><p className="recruitment-eyebrow">QUESTIONS</p><h2>よくある質問</h2><div className="recruitment-faq">{faq.map(([q, a], i) => <details key={q}><summary><span>Q0{i + 1}</span><span>{q}</span><b aria-hidden="true">＋</b></summary><p>{a}</p></details>)}</div></div>
+          <div className="recruitment-wrap"><p className="recruitment-eyebrow">QUESTIONS</p><h2>よくある質問</h2><div className="recruitment-faq">{faq.map(([q, a], i) => <details key={q}><summary><span>Q0{i + 1}</span><span>{q}</span><b aria-hidden="true">＋</b></summary><p>{a}</p></details>)}</div><aside className="cohort-faq-consultation"><h3>ご自身の場合について、相談したい方へ。</h3><p>学び方・会場・料金など、気になる点を公式LINEでご相談いただけます。相談だけで申込み・契約が完了することはありません。</p><LineConsultationLink className="recruitment-button" label="疑問をLINEで相談する" /></aside></div>
         </section>
         <section id="cohort-contact" className="recruitment-section recruitment-contact">
           <div className="recruitment-wrap">
