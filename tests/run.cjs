@@ -9,3 +9,4 @@ require("./instagram.test.cjs");
 require("./analytics.test.cjs");
 require("./recruitment.test.cjs");
 require("./program-courses.test.cjs");
+require("./splash-bootstrap.test.cjs");
