@@ -96,3 +96,18 @@
   .recruitment-page .cohort-film-grid { grid-template-columns: 1fr; gap: 28px; margin-top: 32px; }
   .recruitment-page .cohort-next-step h2 { font-size: clamp(26px, 7vw, 32px); letter-spacing: .01em; }
 }
+
+/* One award accent, followed by the existing historical metrics. */
+.recruitment-page .cohort-teacher-award { margin-top: 20px; padding: 20px 24px; background: #173f35; border-left: 2px solid #a68b58; }
+.recruitment-page .cohort-teacher-award .recruitment-eyebrow { color: #dbc79b; margin: 0 0 8px; font-size: 10px; }
+.recruitment-page .cohort-teacher-award h3 { color: #dbc79b; font-size: clamp(20px, 2vw, 26px); line-height: 1.6; font-weight: 400; text-wrap: balance; margin: 0; }
+.recruitment-page .cohort-teacher-award-record { grid-column: 1 / -1; display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 32px; align-items: center; margin: 0; padding-top: 28px; border-top: 1px solid #c4c8b6; }
+.recruitment-page .cohort-teacher-award-record img { display: block; width: 240px; max-width: 100%; height: auto; }
+.recruitment-page .cohort-teacher-award-record h3 { font-size: clamp(19px, 2vw, 24px); line-height: 1.7; margin: 0 0 12px; text-wrap: pretty; }
+.recruitment-page .cohort-teacher-award-record p { font-size: 14px; line-height: 1.9; margin: 0; max-width: 40em; }
+.recruitment-page .cohort-teacher-award-record .recruitment-note { font-size: 12px; margin-top: 12px; color: #58675e; }
+@media (max-width: 700px) {
+  .recruitment-page .cohort-teacher-award { margin-top: 16px; padding: 18px 20px; }
+  .recruitment-page .cohort-teacher-award-record { grid-template-columns: 1fr; gap: 20px; padding-top: 24px; }
+  .recruitment-page .cohort-teacher-award-record img { width: 220px; }
+}

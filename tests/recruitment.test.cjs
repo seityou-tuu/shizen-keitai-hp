@@ -139,7 +139,8 @@ test("recruitment page retains known fees and phone with only the approved exist
   assert.ok(!/<form|<input/.test(html));
   for (const name of ["practical-hands-on", "practical-observation", "group-guidance"]) assert.equal(html.split(`data-photo="${name}"`).length - 1, 1);
   assert.match(html, /第1期生・第0期生の実施状況を示すものではありません/);
-  assert.equal((html.match(/<img/g) || []).length, 6);
+  assert.equal((html.match(/<img/g) || []).length, 7);
+  assert.match(html, /fannchannel-award.webp/);
   for (const url of ["https://youtu.be/yp_P0a_oedY", "https://youtu.be/yudalXPijCk"]) assert.ok(html.includes(url));
   assert.ok(!/<iframe|autoplay/.test(html));
   assert.ok(html.indexOf("cohort-next-step-title") < html.indexOf('id="cohort-learning"'));
@@ -195,4 +196,17 @@ test("minimum attendance is explicit for all three venues and does not change ca
     assert.ok(panel.includes("定員 <strong>6</strong>名"), venue.name);
     assert.equal((panel.match(/<time/g) || []).length, 6);
   }
+});
+
+test("cohort instructor highlights the organizer-approved award and uses only the existing record image", () => {
+  const { CohortInstructor } = require("../components/cohort-instructor.tsx");
+  const { instructorAward } = require("../lib/instructor.ts");
+  const html = renderToStaticMarkup(React.createElement(CohortInstructor));
+  assert.equal(instructorAward.label, "Fann Channel 2024 グランプリ");
+  assert.equal(html.split(instructorAward.label).length - 1, 1);
+  for (const text of ["220万回", "15年", "柔道整復師（2012年取得）", "自然形体療法 理事", "第1期生の6ヶ月", "受講生の集合写真ではありません", "過去情報"]) assert.ok(html.includes(text), text);
+  assert.match(html, /主催者提供の受賞時集合写真/);
+  assert.ok(!html.includes("<blockquote"));
+  assert.ok(html.includes('href="#cohort-learning"'));
+  assert.ok(html.includes('href="#cohort-contact"'));
 });

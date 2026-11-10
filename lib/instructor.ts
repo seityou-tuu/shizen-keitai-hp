@@ -23,10 +23,13 @@ export const instructorProfile: InstructorProfile = {
   formalName: "永友裕也",
   background: ["2017年 ながとも整骨院開院"],
   role: "自然形体療法 理事",
-  // The formal award name/year still await reliable confirmation.
+  // The award record is presented separately from the profile to avoid repetition.
   achievements: [`${historicalYouTubeRecord.label}${historicalYouTubeRecord.total}（${historicalYouTubeRecord.note}）`],
   qualifications: ["柔道整復師（2012年取得）"],
   practiceExperience: "15年",
   teachingExperience: "",
   message: "",
 };
+
+// Award wording supplied and approved by the organizer for PR #22.
+export const instructorAward = { label: "Fann Channel 2024 グランプリ" } as const;
