@@ -51,7 +51,7 @@
 .homepage-quality .theory-story > div:last-child { grid-column: 1; grid-row: 1; }
 .homepage-quality .training-atmosphere-story { background: #e5e9de; color: #244237; padding: 0; margin-top: 88px; grid-template-columns: 1fr 1.15fr; gap: 56px; }
 .homepage-quality .training-atmosphere-story > div { padding: 32px 0; }
-.homepage-quality .training-atmosphere-story .renewal-kicker { color: #806636; }
+.homepage-quality .training-atmosphere-story .renewal-kicker { color: #765e30; }
 .homepage-quality .training-atmosphere-story .renewal-note,
 .homepage-quality .training-atmosphere-story figcaption { color: #58675e; }
 .homepage-quality .training-atmosphere-story > .program-photo { align-self: center; }
