@@ -10,8 +10,10 @@ export function BrandSplash() {
   useLayoutEffect(() => {
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const brand = document.querySelector<HTMLAnchorElement>(".site-header .brand");
-    if (!brand || motion.matches || location.hash || window.scrollY > 0) return;
-    try { if (sessionStorage.getItem(SESSION_KEY)) return; } catch { /* Storage may be disabled. */ }
+    if (!brand || motion.matches || location.hash || window.scrollY > 0 || document.documentElement.getAttribute("data-brand-intro") !== "pending") {
+      document.documentElement.removeAttribute("data-brand-intro");
+      return;
+    }
 
     const previousFocus = document.activeElement as HTMLElement | null;
     const overlay = document.createElement("div");
@@ -32,15 +34,21 @@ export function BrandSplash() {
     skip.textContent = "イントロをスキップ";
     overlay.append(background, flying, skip);
     document.body.append(overlay);
+    document.documentElement.setAttribute("data-brand-intro", "active");
 
     // Copy computed typography, including responsive rules and inherited fonts.
+    let colors: { node: HTMLElement; from: number[]; to: number[] }[] = [];
     const syncAppearance = () => {
       const source = [brand, ...brand.querySelectorAll<HTMLElement>("*")];
       const target = [copy, ...copy.querySelectorAll<HTMLElement>("*")];
+      colors = [];
       source.forEach((node, index) => {
         const styles = getComputedStyle(node);
+        const to = (styles.color.match(/[\d.]+/g) || ["24", "63", "53"]).slice(0, 3).map(Number);
+        const from = node.classList.contains("brand-symbol") || node.tagName === "SMALL" ? [219, 199, 155] : [255, 255, 255];
+        colors.push({ node: target[index], from, to });
         for (const property of Array.from(styles)) {
-          if (property !== "visibility") target[index].style.setProperty(property, styles.getPropertyValue(property));
+          if (property !== "visibility" && property !== "-webkit-text-fill-color") target[index].style.setProperty(property, styles.getPropertyValue(property));
         }
       });
       Object.assign(copy.style, { position: "static", margin: "0", transform: "none", visibility: "visible" });
@@ -69,6 +77,7 @@ export function BrandSplash() {
       document.documentElement.style.overflow = oldOverflow;
       const restoreFocus = overlay.contains(document.activeElement);
       overlay.remove();
+      document.documentElement.removeAttribute("data-brand-intro");
       if (restoreFocus && previousFocus && previousFocus !== document.body) previousFocus.focus({ preventScroll: true });
       else if (restoreFocus && userSkipped) brand.focus({ preventScroll: true });
       try { sessionStorage.setItem(SESSION_KEY, "seen"); } catch { /* Still usable without storage. */ }
@@ -88,20 +97,28 @@ export function BrandSplash() {
     motion.addEventListener("change", finish);
     skip.addEventListener("click", skipIntro);
     void document.fonts.ready.then(() => { fontsReady = true; markDirty(); });
-    const watchdog = window.setTimeout(finish, 2900);
+    const watchdog = window.setTimeout(finish, 3550);
     let revealAt: number | undefined;
     const tick = (now: number) => {
       if (ended) return;
       if (appearanceDirty) { syncAppearance(); appearanceDirty = false; }
-      if (revealAt === undefined && (fontsReady || now - start >= 350)) revealAt = now;
+      if (revealAt === undefined && (fontsReady || now - start >= 150)) revealAt = now;
       const elapsed = revealAt === undefined ? 0 : now - revealAt;
-      const reveal = Math.min(1, elapsed / 350);
-      const progress = Math.max(0, Math.min(1, (elapsed - 700) / 1450));
+      const reveal = Math.min(1, elapsed / 400);
+      const progress = Math.max(0, Math.min(1, (elapsed - 1600) / 1600));
       // Quintic smoothstep has zero velocity at both ends, with no landing snap.
       const eased = progress * progress * progress * (progress * (progress * 6 - 15) + 10);
       const rect = brand.getBoundingClientRect();
       const scale = Math.min(2.1, (window.innerWidth - 48) / rect.width);
       const currentScale = scale + (1 - scale) * eased;
+      const bounce = elapsed < 600 ? 1 + 0.045 * Math.sin(Math.PI * elapsed / 600) : 1;
+      const symbol = copy.querySelector<HTMLElement>(".brand-symbol");
+      const title = copy.children[1] as HTMLElement;
+      const subtitle = copy.querySelector<HTMLElement>("small");
+      if (symbol) { symbol.style.opacity = String(reveal); symbol.style.transform = `scale(${bounce})`; }
+      if (title) title.style.opacity = String(Math.max(0, Math.min(1, (elapsed - 180) / 420)));
+      if (subtitle) subtitle.style.opacity = String(Math.max(0, Math.min(1, (elapsed - 480) / 420)));
+      colors.forEach(({ node, from, to }) => { node.style.color = `rgb(${from.map((value, i) => value + (to[i] - value) * eased).join(",")})`; });
       const centerX = (window.innerWidth - rect.width * scale) / 2;
       const centerY = (window.innerHeight - rect.height * scale) / 2;
       const x = centerX + (rect.left - centerX) * eased;

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { splashBootstrap, splashInitialStyle } from "@/lib/splash-bootstrap";
 import { getGoogleVerification } from "@/lib/analytics-config";
 import {
   SITE_URL,
@@ -43,7 +44,11 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ja">
+    <html lang="ja" suppressHydrationWarning>
+      <head>
+        <style dangerouslySetInnerHTML={{ __html: splashInitialStyle }} />
+        <script dangerouslySetInnerHTML={{ __html: splashBootstrap }} />
+      </head>
       <body>{children}</body>
     </html>
   );

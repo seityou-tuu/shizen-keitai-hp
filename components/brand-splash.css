@@ -1,6 +1,6 @@
 .brand-splash { position: fixed; inset: 0; z-index: 1000; isolation: isolate; }
-.brand-splash-background { position: absolute; inset: 0; background: #fdfdfa; }
+.brand-splash-background { position: absolute; inset: 0; background: #173f35; }
 .brand-splash-flight { position: fixed; left: 0; top: 0; opacity: 0; transform-origin: top left; will-change: transform, opacity; pointer-events: none; }
-.brand-splash-skip { position: absolute; right: max(24px, env(safe-area-inset-right)); bottom: max(28px, env(safe-area-inset-bottom)); min-height: 44px; padding: 10px 16px; border: 1px solid #b5a17b; background: #fdfdfa; color: #183f35; font: 13px/1.5 "Yu Gothic", sans-serif; cursor: pointer; }
-.brand-splash-skip:focus-visible { outline: 2px solid #183f35; outline-offset: 4px; }
+.brand-splash-skip { position: absolute; right: max(24px, env(safe-area-inset-right)); bottom: max(28px, env(safe-area-inset-bottom)); min-height: 44px; padding: 10px 16px; border: 1px solid #b5a17b; background: #173f35; color: #fff; font: 13px/1.5 "Yu Gothic", sans-serif; cursor: pointer; }
+.brand-splash-skip:focus-visible { outline: 2px solid #dbc79b; outline-offset: 4px; }
 @media (prefers-reduced-motion: reduce) { .brand-splash { display: none; } }
