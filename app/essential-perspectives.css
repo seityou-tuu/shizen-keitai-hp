@@ -1,0 +1,39 @@
+.homepage-quality #features .section-intro-row{display:block;max-width:800px}
+.homepage-quality #features .section-side-copy{margin-top:24px;max-width:40em}
+.essential-system{position:relative;margin-top:48px;min-height:660px}
+.essential-connections{position:absolute;inset:0;width:100%;height:100%;stroke:#b79c66;stroke-width:1;opacity:.55;pointer-events:none}
+.essential-connections ellipse{stroke-dasharray:3 8;opacity:.65}
+.essential-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:230px;height:230px;border:1px solid #b79c66;border-radius:50%;background:#102f28;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;z-index:1}
+.essential-center span{font:10px Arial,sans-serif;letter-spacing:.16em;color:#dbc89a}
+.essential-center p{font-size:27px;margin:20px 0 12px}
+.essential-center small{font-size:12px;color:#d3dfd2}
+.homepage-quality #features .essential-perspectives{display:grid;grid-template-columns:1fr 280px 1fr;grid-template-rows:1fr 1fr;gap:180px 24px;margin:0;padding:0;list-style:none}
+.homepage-quality #features .essential-perspectives li{position:relative;background:#102f28;border:0;box-shadow:none;padding:20px 24px;min-width:0;display:grid;grid-template-columns:42px 1fr;align-content:start;gap:8px 16px}
+.homepage-quality #features .essential-perspectives li:nth-child(1){grid-column:1;grid-row:1}
+.homepage-quality #features .essential-perspectives li:nth-child(2){grid-column:3;grid-row:1}
+.homepage-quality #features .essential-perspectives li:nth-child(3){grid-column:1;grid-row:2}
+.homepage-quality #features .essential-perspectives li:nth-child(4){grid-column:3;grid-row:2}
+.homepage-quality #features .essential-perspectives .essential-number{grid-column:1;font:28px Georgia,serif;color:#dbc89a;position:static}
+.homepage-quality #features .essential-perspectives .essential-illustration{grid-column:2;width:150px;height:94px;stroke:#dbe5d8;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round;margin:0}
+.homepage-quality #features .essential-perspectives .diagram-accent{stroke:#dbc89a}
+.homepage-quality #features .essential-perspectives h3{grid-column:1/-1;font-size:23px;margin:12px 0 4px;color:#fff}
+.homepage-quality #features .essential-perspectives p{grid-column:1/-1;font-size:14px;line-height:1.9;color:#d3dfd2;margin:0}
+.essential-message{text-align:center;color:#dbc89a;font-size:22px;line-height:1.8;margin:44px 0 20px}
+.essential-note{text-align:center;color:#d3dfd2;font-size:12px;line-height:1.9}
+@media(min-width:701px) and (max-width:1000px){.homepage-quality #features .essential-perspectives{grid-template-columns:1fr 160px 1fr;gap:150px 8px}.essential-center{width:170px;height:170px}.essential-center p{font-size:21px}.homepage-quality #features .essential-perspectives li{padding:16px 8px}.homepage-quality #features .essential-perspectives h3{font-size:19px}.essential-system{min-height:600px}}
+@media(max-width:700px){
+ .essential-system{margin-top:28px;min-height:0}
+ .essential-connections{display:none}
+ .essential-center{position:relative;left:auto;top:auto;transform:none;width:166px;height:166px;margin:0 auto 28px}
+ .essential-center p{font-size:22px;margin-block:14px 10px}
+ .homepage-quality #features .essential-perspectives{display:block;position:relative}
+ .homepage-quality #features .essential-perspectives::before{content:"";position:absolute;top:-28px;bottom:0;left:20px;border-left:1px solid #b79c66}
+ .homepage-quality #features .essential-perspectives li{background:transparent;padding:0 0 28px 48px;display:grid;grid-template-columns:64px minmax(0,1fr);gap:8px 14px}
+ .homepage-quality #features .essential-perspectives .essential-number{position:absolute;left:0;top:8px;width:40px;background:#102f28;text-align:center;font-size:24px;padding:6px 0}
+ .homepage-quality #features .essential-perspectives .essential-illustration{grid-column:1;width:64px;height:54px;grid-row:1}
+ .homepage-quality #features .essential-perspectives h3{grid-column:2;grid-row:1;align-self:center;margin:0;font-size:19px;line-height:1.7}
+ .homepage-quality #features .essential-perspectives p{grid-column:1/-1;font-size:14px}
+ .essential-message{text-align:left;font-size:20px;margin:12px 0 16px}
+ .essential-note{text-align:left}
+}
+@media(max-width:700px){.homepage-quality #features .essential-perspectives .essential-number{grid-column:auto;grid-row:auto;left:0;right:auto;}.homepage-quality #features .essential-perspectives .essential-illustration{overflow:visible;}}

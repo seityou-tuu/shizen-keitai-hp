@@ -1,3 +1,4 @@
+import "@/app/essential-perspectives.css";
 import { GrowthJourney } from "@/components/growth-journey";
 import { programCourses as courses } from "@/lib/program-courses";
 import "./learning-value.css";
@@ -234,7 +235,7 @@ export default function Home() {
         <section id="features" className="story-section renewal-features">
           <div className="renewal-wrap">
             <div className="section-intro-row">
-              <SectionHeading number="03" english="FOUR PERSPECTIVES">
+              <SectionHeading number="03" english="FOUR ESSENTIAL PERSPECTIVES">
                 その一手には、
                 <br />
                 理由がある。
@@ -245,16 +246,22 @@ export default function Home() {
                 技術の土台となる、4つの視点。
               </p>
             </div>
-            <ol className="perspective-grid">
+            <div className="essential-system">
+              <svg className="essential-connections" viewBox="0 0 1000 600" preserveAspectRatio="none" fill="none" aria-hidden="true" focusable="false"><ellipse cx="500" cy="300" rx="270" ry="230"/><path d="M500 300 180 100M500 300 820 100M500 300 180 500M500 300 820 500"/></svg>
+              <div className="essential-center"><span>SHIZEN KEITAI</span><p>自然形体療法</p><small>4つの重要な視点</small></div>
+            <ol className="essential-perspectives">
               {features.map(([title, text], i) => (
                 <li key={title}>
-                  <span className="perspective-number">0{i + 1}</span>
+                  <span className="essential-number">0{i + 1}</span>
                   <PerspectiveDiagram index={i} />
                   <h3>{title}</h3>
                   <p>{text}</p>
                 </li>
               ))}
             </ol>
+            </div>
+            <p className="essential-message">4つの視点を重ね、技術への理解を深めていく。</p>
+            <p className="essential-note">4つは並列の視点です。番号は優劣や施術の順序を示すものではなく、効果を保証するものではありません。</p>
           </div>
         </section>
 
