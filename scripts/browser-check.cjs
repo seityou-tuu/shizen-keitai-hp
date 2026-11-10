@@ -413,7 +413,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
         assert.equal(await link.getAttribute("rel"), "noopener noreferrer");
         assert.ok(await link.evaluate(el => el.clientWidth >= 44 && el.clientHeight >= 44));
       }
-      assert.ok(evidence.includes("受賞年・賞の正式名称は確認中です"));
+      assert.ok(evidence.includes("Fann Channel 2024 グランプリ"));
       const allInstructorText = await page.locator("#instructors").innerText();
       for (const unconfirmed of ["2024年", "FANCHANNEL グランプリ"])
         assert.ok(!allInstructorText.includes(unconfirmed), `unconfirmed assertion at ${width}: ${unconfirmed}`);

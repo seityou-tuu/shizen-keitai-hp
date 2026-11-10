@@ -701,7 +701,7 @@ export default function Home() {
             <a className="home-cohort-section-link" href={`${FIRST_COHORT_PATH}#cohort-tuition`}>第1期生の募集詳細を見る <span aria-hidden="true">↗</span></a>
             <div className="tuition-information">
               <p>お申し込み前にご確認いただく情報</p>
-              <InformationLinks />
+              <InformationLinks label="受講検討時の運営情報・各種方針" />
             </div>
           </div>
         </section>
@@ -864,7 +864,7 @@ export default function Home() {
         {getOfficialLineUrl() ? <LineConsultationLink className="mobile-line-link" label="LINEで相談" /> : <a href="#contact">窓口案内を見る</a>}
         <a
           href={CONTACT_TEL}
-          aria-label={`電話で受講相談する（${CONTACT_PHONE}へ発信）`}
+          aria-label={`電話相談（${CONTACT_PHONE}へ発信）`}
         >
           <svg className="phone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true" focusable="false">
             <path d="M7 3H4.5C3.7 3 3 3.7 3 4.5 3 13.6 10.4 21 19.5 21c.8 0 1.5-.7 1.5-1.5V17l-5-2-2 2a14 14 0 0 1-7-7l2-2-2-5Z" />

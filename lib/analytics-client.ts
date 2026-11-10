@@ -46,11 +46,12 @@ export function startAnalytics(id: string, browser = window, root = document): (
     const eventName = href === CONTACT_TEL ? "phone_click"
       : href && href === getOfficialLineUrl() ? "line_click"
       : href === "/recruitment/first" ? "cohort_visit"
-      : href && /^https:\/\/(www\.)?youtube\.com\/watch\?v=[A-Za-z0-9_-]+$/.test(href) ? "youtube_click"
-      : href && /^https:\/\/(www\.)?instagram\.com\//.test(href) ? "instagram_click"
+      : href && ["https://youtu.be/yp_P0a_oedY", "https://youtu.be/yudalXPijCk"].includes(href) ? "youtube_click"
+      : href && /^https:\/\/www\.instagram\.com\/(?:ngtmyy_1990|reel\/[A-Za-z0-9_-]+\/?)$/.test(href) ? "instagram_click"
       : href === "#contact" && anchor?.closest(".faq-consultation") ? "faq_consultation" : null;
     if (!anchor || !eventName) return;
-    const location = anchor.closest(".mobile-consult-bar") ? "sticky"
+    const location = anchor.closest(".faq-consultation") ? "faq"
+      : anchor.closest(".mobile-consult-bar") ? "sticky"
       : anchor.closest(".renewal-hero") ? "hero"
       : anchor.closest("#roadmap") ? "roadmap"
       : anchor.closest("#courses") ? "courses"

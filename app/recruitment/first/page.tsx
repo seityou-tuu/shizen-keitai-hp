@@ -196,7 +196,7 @@ export default function FirstRecruitmentPage() {
           <p className="recruitment-section-lead">受講相談は公式LINEを中心に、お電話でも承ります。正式な申込み方法・契約手順は準備中です。</p>
           <ol className="recruitment-flow"><li><h3>まずは受講相談</h3><p>ご自身の経験や、学びたいこと、気になる点をお聞かせください。</p></li><li><h3>日程・条件を確認</h3><p>開催日・会場・受講要件・料金・規約など、確定した募集案内をご確認ください。</p></li><li><h3>手続き・条件を確認する</h3><p>お申込み・支払い・受講開始までの具体的な手順は未確定です。</p></li></ol>
           <p className="recruitment-note">上記は確認する情報の案内であり、確定した契約手順ではありません。お問い合わせだけで申込み・契約成立・決済になることはありません。</p>
-          <InformationLinks />
+          <InformationLinks label="受講検討時の運営情報・各種方針" />
         </section>
         <section id="cohort-faq" className="recruitment-section recruitment-soft">
           <div className="recruitment-wrap"><p className="recruitment-eyebrow">QUESTIONS</p><h2>よくある質問</h2><div className="recruitment-faq">{faq.map(([q, a], i) => <details key={q}><summary><span>Q0{i + 1}</span><span>{q}</span><b aria-hidden="true">＋</b></summary><p>{a}</p></details>)}</div><aside className="cohort-faq-consultation"><h3>ご自身の場合について、相談したい方へ。</h3><p>学び方・会場・料金など、気になる点を公式LINEでご相談いただけます。相談だけで申込み・契約が完了することはありません。</p><LineConsultationLink className="recruitment-button" label="疑問をLINEで相談する" /></aside></div>
@@ -214,7 +214,7 @@ export default function FirstRecruitmentPage() {
         </section>
       </main>
       <footer className="recruitment-footer"><div className="recruitment-wrap"><InformationLinks /><p>{operator.name} · 代表取締役 {operator.representative}</p><p>掲載情報・各種方針には確認中の項目が含まれます。</p></div></footer>
-      <nav className="recruitment-contact-bar" aria-label="第1期生の相談窓口"><LineConsultationLink className="cohort-sticky-line" label="LINEで相談" /><a href={CONTACT_TEL} aria-label={`電話で第1期生について相談する（${CONTACT_PHONE}へ発信）`}>電話相談<small>{CONTACT_PHONE}</small></a></nav>
+      <nav className="recruitment-contact-bar" aria-label="第1期生の相談窓口"><LineConsultationLink className="cohort-sticky-line" label="LINEで相談" /><a href={CONTACT_TEL} aria-label={`電話相談（${CONTACT_PHONE}へ発信）`}>電話相談<small>{CONTACT_PHONE}</small></a></nav>
     </>
   );
 }
