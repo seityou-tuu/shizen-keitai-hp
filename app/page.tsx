@@ -1,3 +1,4 @@
+import { GrowthJourney } from "@/components/growth-journey";
 import { programCourses as courses } from "@/lib/program-courses";
 import "./learning-value.css";
 import { FirstCohortCallout } from "@/components/first-cohort-callout";
@@ -39,13 +40,6 @@ const support = [
     "研修日以外も質問できる",
     "研修日以外にも疑問を質問できるため、学びを継続できる。",
   ],
-];
-const future = [
-  ["身体の動きや反応を見る", "施術前後の違いを観察し、身体を捉える視点を学びに加える。"],
-  ["力加減を考えて触れる", "強い刺激を避ける考え方と、手の位置・触れ方を振り返る。"],
-  ["理論と実技を結びつける", "なぜその技術を使うのか。実技で確かめ、理論で理由を考える。"],
-  ["復習と質問を習慣にする", "復習用動画で振り返り、研修日以外の質問を次の学びにつなげる。"],
-  ["仲間と学びを重ねる", "同じ技術に向き合う人たちと、気づきを共有しながら学ぶ。"],
 ];
 const faqs = [
   [
@@ -563,43 +557,7 @@ export default function Home() {
 
         <InstagramSection />
 
-        <section id="future" className="story-section renewal-future">
-          <div className="renewal-wrap future-composition">
-            <div>
-              <SectionHeading number="09" english="BEYOND CERTIFICATION">
-                学びの先に、
-                <br />
-                目指したい姿。
-              </SectionHeading>
-              <div className="renewal-prose">
-                <p>資格取得は、学びの終わりではありません。</p>
-                <p>
-                  6ヶ月の実技・理論・復習を、これからの施術を考える土台に。
-                </p>
-                <p>日々の施術に活かしたい方も、これから学び始める方も。</p>
-                <p>自然形体療法を、これからの可能性につなげていく。</p>
-              </div>
-            </div>
-            <ol className="future-list">
-              {future.map(([title, text], i) => (
-                <li key={title}>
-                  <span>0{i + 1}</span>
-                  {i === 0 && <svg className="future-branches" viewBox="0 0 180 100" fill="none" aria-hidden="true" focusable="false">
-                    <path d="M22 50h38c30 0 30-32 60-32h36M60 50h96M60 50c30 0 30 32 60 32h36" />
-                    <circle cx="22" cy="50" r="5" /><circle cx="156" cy="18" r="4" /><circle cx="156" cy="50" r="4" /><circle cx="156" cy="82" r="4" />
-                  </svg>}
-                  <div>
-                    <h3>{title}</h3>
-                    <p>{text}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <p className="renewal-note future-note">
-              本プログラムの資格は、国家資格や法的な開業資格の取得を示すものではありません。収入・集客・独立開業の実現を保証するものではありません。取得後のフォロー内容・参加条件・費用等は、確認後にご案内します。
-            </p>
-          </div>
-        </section>
+        <GrowthJourney />
 
         <section id="courses" className="story-section renewal-tuition">
           <div className="renewal-wrap">
