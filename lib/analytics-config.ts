@@ -9,8 +9,12 @@ export function getGa4MeasurementId(env = process.env): string | null {
     ? id : null;
 }
 
+// Public ownership token. An explicit environment value overrides this default;
+// an empty value disables the tag. Preview and development never emit it.
+const GOOGLE_SITE_VERIFICATION_DEFAULT = "CXdSC9XNyiLa8xhu5__h3wkcnVnNHAjGJ0BEU2JW3LU";
+
 export function getGoogleVerification(env = process.env): string | undefined {
-  const token = env.GOOGLE_SITE_VERIFICATION?.trim() ?? "";
+  const token = (env.GOOGLE_SITE_VERIFICATION ?? GOOGLE_SITE_VERIFICATION_DEFAULT).trim();
   return env.VERCEL_ENV === "production" && /^[A-Za-z0-9_-]{20,256}$/.test(token)
     ? token : undefined;
 }
