@@ -59,6 +59,9 @@ test("GA4 initializes once, sanitizes events and stops phone tracking on withdra
   assert.deepEqual(events[0][2], { location: "contact", page_location: "https://shizen-keitai-hp.vercel.app/", page_referrer: "" });
   assert.ok(!JSON.stringify(commands).includes("0985747643"));
   assert.ok(!JSON.stringify(commands).includes("health=secret"));
+  for (const href of ["https://lin.ee/O3tJo01", "/recruitment/first", "https://youtu.be/yp_P0a_oedY", "https://www.instagram.com/ngtmyy_1990"]) click(href);
+  const tracked = browser.dataLayer.map(item => Array.from(item)).filter(item => item[0] === "event").map(item => item[1]);
+  for (const name of ["line_click", "cohort_visit", "youtube_click", "instagram_click"]) assert.equal(tracked.filter(value => value === name).length, 1);
   stop();
   const count = browser.dataLayer.length;
   click("tel:0985747643");

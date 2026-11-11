@@ -1,3 +1,4 @@
+import { instructorAward } from "@/lib/instructor";
 import Image from "next/image";
 import { YoutubeVideoLink } from "@/components/youtube-video-link";
 import observation from "@/public/images/homepage/practical-peer-observation.webp";
@@ -49,8 +50,8 @@ export function InstructorEvidence() {
           <Image src={award} alt="主催者提供の受賞時集合写真"
             sizes="(max-width: 700px) calc(100vw - 80px), (max-width: 1100px) 45vw, 560px" />
           <figcaption>
-            <h4>受賞時の記録</h4>
-            <p>主催者提供の受賞時集合写真です。<br />受賞年・賞の正式名称は確認中です。<br />本プログラムの受講生の集合写真ではありません。</p>
+            <h4>{instructorAward.label}</h4>
+            <p>主催者提供の受賞時集合写真です。<br />本プログラムの受講生の集合写真ではありません。</p>
           </figcaption>
         </figure>
       </div>

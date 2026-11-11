@@ -1,0 +1,36 @@
+/* Compact integrated editorial grid; no cards or central diagram. */
+.homepage-quality #features { padding-block:64px; }
+.homepage-quality #features .section-intro-row { display:block; max-width:100%; }
+.homepage-quality #features .section-heading h2 { font-size:clamp(30px,3.2vw,44px);line-height:1.5;margin-block:16px; }
+.homepage-quality #features .section-heading h2 br { display:none; }
+.homepage-quality #features .section-side-copy { margin-top:16px;max-width:48em;font-size:15px;line-height:1.9; }
+.homepage-quality #features .section-side-copy br { display:none; }
+.essential-system { margin-top:32px; }
+.homepage-quality #features .essential-perspectives { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px;list-style:none;margin:0;padding:0;border-top:1px solid #b79c6680; }
+.homepage-quality #features .essential-perspectives li { min-width:0;display:grid;grid-template-columns:42px 140px minmax(0,1fr);grid-template-rows:auto auto;gap:6px 18px;align-content:center;padding:24px 0;border-bottom:1px solid #b79c6680;position:relative; }
+.homepage-quality #features .essential-number { grid-column:1;grid-row:1 / span 2;align-self:center;font:27px/1.2 Georgia,serif;color:#dbc89a; }
+.homepage-quality #features .essential-illustration { grid-column:2;grid-row:1 / span 2;align-self:center;width:140px;height:100px;stroke:#dbe5d8;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round;overflow:visible; }
+.homepage-quality #features .diagram-accent { stroke:#dbc89a; }
+.homepage-quality #features .essential-perspectives h3 { grid-column:3;grid-row:1;align-self:end;margin:0;font-size:22px;line-height:1.6;color:#fff; }
+.homepage-quality #features .essential-perspectives p { grid-column:3;grid-row:2;margin:0;font-size:14px;line-height:1.9;color:#d3dfd2; }
+.essential-message { color:#dbc89a;font-size:21px;line-height:1.8;margin:24px 0 12px; }
+.essential-note { color:#d3dfd2;font-size:12px;line-height:1.9; }
+@media(min-width:701px) and (max-width:1000px){
+ .homepage-quality #features .essential-perspectives{gap:0 28px}
+ .homepage-quality #features .essential-perspectives li{grid-template-columns:30px 90px minmax(0,1fr);gap:8px 12px}
+ .homepage-quality #features .essential-illustration{width:90px;height:90px}
+ .homepage-quality #features .essential-perspectives h3{font-size:19px}
+}
+@media(max-width:700px){
+ .homepage-quality #features{padding-block:44px}
+ .homepage-quality #features .section-heading h2{font-size:29px;line-height:1.6}
+ .homepage-quality #features .section-heading h2 br{display:block}
+ .essential-system{margin-top:24px}
+ .homepage-quality #features .essential-perspectives{grid-template-columns:1fr;gap:0}
+ .homepage-quality #features .essential-perspectives li{grid-template-columns:30px 86px minmax(0,1fr);gap:8px 12px;padding:20px 0}
+ .homepage-quality #features .essential-number{font-size:23px;align-self:start;padding-top:5px}
+ .homepage-quality #features .essential-illustration{width:86px;height:72px;grid-row:1;align-self:center}
+ .homepage-quality #features .essential-perspectives h3{font-size:19px;align-self:center}
+ .homepage-quality #features .essential-perspectives p{grid-column:2 / -1;grid-row:2;font-size:14px}
+ .essential-message{font-size:19px;margin-top:20px}
+}

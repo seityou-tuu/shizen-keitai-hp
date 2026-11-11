@@ -1,6 +1,6 @@
 import { isGa4MeasurementId } from "./analytics-config";
 import { SITE_NAME, SITE_URL } from "./site-config";
-import { CONTACT_TEL } from "./contact";
+import { getOfficialLineUrl, CONTACT_TEL } from "./contact";
 
 declare global {
   interface Window {
@@ -42,14 +42,22 @@ export function startAnalytics(id: string, browser = window, root = document): (
   }
   const onClick = (event: MouseEvent) => {
     const anchor = (event.target as Element | null)?.closest?.("a[href]");
-    if (anchor?.getAttribute("href") !== CONTACT_TEL) return;
-    const location = anchor.closest(".mobile-consult-bar") ? "sticky"
+    const href = anchor?.getAttribute("href");
+    const eventName = href === CONTACT_TEL ? "phone_click"
+      : href && href === getOfficialLineUrl() ? "line_click"
+      : href === "/recruitment/first" ? "cohort_visit"
+      : href && ["https://youtu.be/yp_P0a_oedY", "https://youtu.be/yudalXPijCk"].includes(href) ? "youtube_click"
+      : href && /^https:\/\/www\.instagram\.com\/(?:ngtmyy_1990|reel\/[A-Za-z0-9_-]+\/?)$/.test(href) ? "instagram_click"
+      : href === "#contact" && anchor?.closest(".faq-consultation") ? "faq_consultation" : null;
+    if (!anchor || !eventName) return;
+    const location = anchor.closest(".faq-consultation") ? "faq"
+      : anchor.closest(".mobile-consult-bar") ? "sticky"
       : anchor.closest(".renewal-hero") ? "hero"
       : anchor.closest("#roadmap") ? "roadmap"
       : anchor.closest("#courses") ? "courses"
       : anchor.closest("#contact") ? "contact"
       : anchor.closest(".home-footer") ? "footer" : "other";
-    command("event", "phone_click", { location, page_location: `${SITE_URL}/`, page_referrer: "" });
+    command("event", eventName, { location, page_location: `${SITE_URL}/`, page_referrer: "" });
   };
   root.addEventListener("click", onClick, { capture: true });
   const stop = () => {

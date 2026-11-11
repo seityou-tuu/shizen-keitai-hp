@@ -36,7 +36,7 @@ export function InstagramSection() {
           {instagramReels.map((reel, index) => (
             <li key={reel.id}>
               <a className="instagram-reel" href={instagramReelUrl(reel.id)} target="_blank" rel="noopener noreferrer"
-                aria-label={`Instagramリール${index + 1}を見る：提供画像の見出し「${reel.coverLabel}」（新しいタブで開きます）`}>
+                >
                 <div className="instagram-reel-image">
                   <Image src={images[reel.image]} alt={`Instagramリールの提供画像（${reel.coverLabel}の見出し）`}
                     sizes="(max-width: 700px) 280px, (max-width: 1100px) 28vw, 300px" />

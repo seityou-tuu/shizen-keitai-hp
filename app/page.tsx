@@ -1,3 +1,5 @@
+import "@/app/essential-perspectives.css";
+import { GrowthJourney } from "@/components/growth-journey";
 import { programCourses as courses } from "@/lib/program-courses";
 import "./learning-value.css";
 import { FirstCohortCallout } from "@/components/first-cohort-callout";
@@ -10,7 +12,7 @@ import "./homepage-quality.css";
 import "./section-stories.css";
 import { PerspectiveDiagram } from "@/components/perspective-diagram";
 import { HomepageTrainingPhoto, InstructorEvidence } from "@/components/homepage-photos";
-import { HomepageMotion } from "@/components/homepage-motion";
+import { PageMotion } from "@/components/page-motion";
 import { InstructorProfile } from "@/components/instructor-profile";
 import { instructorProfile } from "@/lib/instructor";
 import { CONTACT_PHONE, CONTACT_TEL, getOfficialLineUrl } from "@/lib/contact";
@@ -39,13 +41,6 @@ const support = [
     "研修日以外も質問できる",
     "研修日以外にも疑問を質問できるため、学びを継続できる。",
   ],
-];
-const future = [
-  ["身体の動きや反応を見る", "施術前後の違いを観察し、身体を捉える視点を学びに加える。"],
-  ["力加減を考えて触れる", "強い刺激を避ける考え方と、手の位置・触れ方を振り返る。"],
-  ["理論と実技を結びつける", "なぜその技術を使うのか。実技で確かめ、理論で理由を考える。"],
-  ["復習と質問を習慣にする", "復習用動画で振り返り、研修日以外の質問を次の学びにつなげる。"],
-  ["仲間と学びを重ねる", "同じ技術に向き合う人たちと、気づきを共有しながら学ぶ。"],
 ];
 const faqs = [
   [
@@ -115,7 +110,7 @@ export default function Home() {
       </a>
       <Header showFirstCohort splash />
       <main id="main" tabIndex={-1} className="program-renewal cinematic-program homepage-quality">
-        <HomepageMotion />
+        <PageMotion variant="home" />
         <section className="renewal-hero" aria-labelledby="hero-title">
           <div className="renewal-wrap hero-composition">
             <div className="hero-statement">
@@ -240,7 +235,7 @@ export default function Home() {
         <section id="features" className="story-section renewal-features">
           <div className="renewal-wrap">
             <div className="section-intro-row">
-              <SectionHeading number="03" english="FOUR PERSPECTIVES">
+              <SectionHeading number="03" english="FOUR ESSENTIAL PERSPECTIVES">
                 その一手には、
                 <br />
                 理由がある。
@@ -251,16 +246,20 @@ export default function Home() {
                 技術の土台となる、4つの視点。
               </p>
             </div>
-            <ol className="perspective-grid">
+            <div className="essential-system">
+            <ol className="essential-perspectives">
               {features.map(([title, text], i) => (
                 <li key={title}>
-                  <span className="perspective-number">0{i + 1}</span>
+                  <span className="essential-number">0{i + 1}</span>
                   <PerspectiveDiagram index={i} />
                   <h3>{title}</h3>
                   <p>{text}</p>
                 </li>
               ))}
             </ol>
+            </div>
+            <p className="essential-message">4つの視点を重ね、技術への理解を深めていく。</p>
+            <p className="essential-note">4つは並列の視点です。番号は優劣や施術の順序を示すものではなく、効果を保証するものではありません。</p>
           </div>
         </section>
 
@@ -563,43 +562,7 @@ export default function Home() {
 
         <InstagramSection />
 
-        <section id="future" className="story-section renewal-future">
-          <div className="renewal-wrap future-composition">
-            <div>
-              <SectionHeading number="09" english="BEYOND CERTIFICATION">
-                学びの先に、
-                <br />
-                目指したい姿。
-              </SectionHeading>
-              <div className="renewal-prose">
-                <p>資格取得は、学びの終わりではありません。</p>
-                <p>
-                  6ヶ月の実技・理論・復習を、これからの施術を考える土台に。
-                </p>
-                <p>日々の施術に活かしたい方も、これから学び始める方も。</p>
-                <p>自然形体療法を、これからの可能性につなげていく。</p>
-              </div>
-            </div>
-            <ol className="future-list">
-              {future.map(([title, text], i) => (
-                <li key={title}>
-                  <span>0{i + 1}</span>
-                  {i === 0 && <svg className="future-branches" viewBox="0 0 180 100" fill="none" aria-hidden="true" focusable="false">
-                    <path d="M22 50h38c30 0 30-32 60-32h36M60 50h96M60 50c30 0 30 32 60 32h36" />
-                    <circle cx="22" cy="50" r="5" /><circle cx="156" cy="18" r="4" /><circle cx="156" cy="50" r="4" /><circle cx="156" cy="82" r="4" />
-                  </svg>}
-                  <div>
-                    <h3>{title}</h3>
-                    <p>{text}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <p className="renewal-note future-note">
-              本プログラムの資格は、国家資格や法的な開業資格の取得を示すものではありません。収入・集客・独立開業の実現を保証するものではありません。取得後のフォロー内容・参加条件・費用等は、確認後にご案内します。
-            </p>
-          </div>
-        </section>
+        <GrowthJourney />
 
         <section id="courses" className="story-section renewal-tuition">
           <div className="renewal-wrap">
@@ -701,7 +664,7 @@ export default function Home() {
             <a className="home-cohort-section-link" href={`${FIRST_COHORT_PATH}#cohort-tuition`}>第1期生の募集詳細を見る <span aria-hidden="true">↗</span></a>
             <div className="tuition-information">
               <p>お申し込み前にご確認いただく情報</p>
-              <InformationLinks />
+              <InformationLinks label="受講検討時の運営情報・各種方針" />
             </div>
           </div>
         </section>
@@ -864,7 +827,7 @@ export default function Home() {
         {getOfficialLineUrl() ? <LineConsultationLink className="mobile-line-link" label="LINEで相談" /> : <a href="#contact">窓口案内を見る</a>}
         <a
           href={CONTACT_TEL}
-          aria-label={`電話で受講相談する（${CONTACT_PHONE}へ発信）`}
+
         >
           <svg className="phone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true" focusable="false">
             <path d="M7 3H4.5C3.7 3 3 3.7 3 4.5 3 13.6 10.4 21 19.5 21c.8 0 1.5-.7 1.5-1.5V17l-5-2-2 2a14 14 0 0 1-7-7l2-2-2-5Z" />

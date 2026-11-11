@@ -59,7 +59,6 @@ export function Header({ variant = "program", showFirstCohort = false, splash = 
       <a
         href="/"
         className="brand"
-        aria-label="自然形体療法 資格取得プログラム トップ"
       >
         <span className="brand-symbol" aria-hidden="true">
           自然

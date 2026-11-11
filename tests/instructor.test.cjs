@@ -62,7 +62,7 @@ test("the confirmed profile facts and approved formal name are shown once", () =
   assert.ok(!html.includes("詳しいプロフィールは"));
 });
 
-test("approved historical channel views are qualified while unverified award details stay unpublished", () => {
+test("profile qualifies historical channel views without duplicating the separate award record", () => {
   const html = renderToStaticMarkup(InstructorProfile({}));
   assert.match(html, /YouTube総再生回数220万回/);
   assert.match(html, /過去に確認された値/);

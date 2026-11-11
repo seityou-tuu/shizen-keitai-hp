@@ -47,15 +47,15 @@ export function CohortSchedule() {
       <p className="cohort-minimum-notice">{firstCohortMinimumNotice}</p>
       <div id="schedule-collection" className={`cohort-venue-panels ${!enhanced || all ? "compare-venues" : ""}`}
         role={enhanced && all ? "tabpanel" : undefined} aria-labelledby={enhanced && all ? "venue-tab-all" : undefined}>
-        {venues.map(venue => <article key={venue.id} id={`schedule-${venue.id}`} className="cohort-venue-panel"
+        {venues.map(venue => <div key={venue.id} id={`schedule-${venue.id}`} className="cohort-venue-panel"
           role={enhanced && !all ? "tabpanel" : undefined} aria-labelledby={enhanced && !all ? `venue-tab-${venue.id}` : undefined}
           hidden={enhanced && !all && selected !== venue.id} tabIndex={enhanced ? 0 : undefined}>
           <div className="cohort-venue-heading"><div><p className="recruitment-eyebrow">{summary.period}</p><h3>{venue.name}会場</h3></div><p>定員 <strong>{venue.capacity}</strong>名<small className="cohort-minimum-count">最少催行人数{firstCohortDetails.minimumParticipantsPerVenue}名</small></p></div>
           <ol className="cohort-session-list">{venue.dates.map((date, index) => <li key={date}>
-            <span>第{index + 1}回</span><time dateTime={date} aria-label={`${date.slice(0, 4)}年${formatSessionDate(date)}`}>{formatSessionDate(date)}</time>
+            <span>第{index + 1}回<small className="cohort-month">{index + 1}ヶ月目</small></span><time dateTime={date} aria-label={`${date.slice(0, 4)}年${formatSessionDate(date)}`}>{formatSessionDate(date)}</time>
           </li>)}</ol>
           <p className="recruitment-note">会場住所・開始時刻・終了時刻は確認後にご案内します。</p>
-        </article>)}
+        </div>)}
       </div>
       <p className="recruitment-note">日程は2027年の開催予定として主催者より共有されたものです。オンライン理論研修の日程・接続方法、各回の実施内容は確認後にご案内します。</p>
     </div>

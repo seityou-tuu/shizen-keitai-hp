@@ -1,0 +1,152 @@
+{
+  "conditions": "Local preview build, Chromium, DPR 1; no real phone calls or external playback",
+  "widths": [
+    {
+      "width": 320,
+      "pageHeight": 16195,
+      "filmHeights": [
+        364,
+        364
+      ],
+      "all18Dates": true,
+      "keyboardTabs": true,
+      "compareAll": true,
+      "feesMatchHomepage": true,
+      "passed": true
+    },
+    {
+      "width": 360,
+      "pageHeight": 15759,
+      "filmHeights": [
+        394,
+        394
+      ],
+      "all18Dates": true,
+      "keyboardTabs": true,
+      "compareAll": true,
+      "feesMatchHomepage": true,
+      "passed": true
+    },
+    {
+      "width": 375,
+      "pageHeight": 15656,
+      "filmHeights": [
+        406,
+        406
+      ],
+      "all18Dates": true,
+      "keyboardTabs": true,
+      "compareAll": true,
+      "feesMatchHomepage": true,
+      "passed": true
+    },
+    {
+      "width": 390,
+      "pageHeight": 15584,
+      "filmHeights": [
+        418,
+        418
+      ],
+      "all18Dates": true,
+      "keyboardTabs": true,
+      "compareAll": true,
+      "feesMatchHomepage": true,
+      "passed": true
+    },
+    {
+      "width": 400,
+      "pageHeight": 15483,
+      "filmHeights": [
+        425,
+        425
+      ],
+      "all18Dates": true,
+      "keyboardTabs": true,
+      "compareAll": true,
+      "feesMatchHomepage": true,
+      "passed": true
+    },
+    {
+      "width": 414,
+      "pageHeight": 15381,
+      "filmHeights": [
+        436,
+        436
+      ],
+      "all18Dates": true,
+      "keyboardTabs": true,
+      "compareAll": true,
+      "feesMatchHomepage": true,
+      "passed": true
+    },
+    {
+      "width": 430,
+      "pageHeight": 15311,
+      "filmHeights": [
+        448,
+        448
+      ],
+      "all18Dates": true,
+      "keyboardTabs": true,
+      "compareAll": true,
+      "feesMatchHomepage": true,
+      "passed": true
+    },
+    {
+      "width": 768,
+      "pageHeight": 13164,
+      "filmHeights": [
+        418,
+        418
+      ],
+      "all18Dates": true,
+      "keyboardTabs": true,
+      "compareAll": true,
+      "feesMatchHomepage": true,
+      "passed": true
+    },
+    {
+      "width": 1024,
+      "pageHeight": 11258,
+      "filmHeights": [
+        516,
+        516
+      ],
+      "all18Dates": true,
+      "keyboardTabs": true,
+      "compareAll": true,
+      "feesMatchHomepage": true,
+      "passed": true
+    },
+    {
+      "width": 1280,
+      "pageHeight": 11521,
+      "filmHeights": [
+        568,
+        568
+      ],
+      "all18Dates": true,
+      "keyboardTabs": true,
+      "compareAll": true,
+      "feesMatchHomepage": true,
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "pageHeight": 11543,
+      "filmHeights": [
+        568,
+        568
+      ],
+      "all18Dates": true,
+      "keyboardTabs": true,
+      "compareAll": true,
+      "feesMatchHomepage": true,
+      "passed": true
+    }
+  ],
+  "externalRequests": [],
+  "errors": [],
+  "noJavaScriptAll18Dates": true,
+  "noJavaScriptAll18DatesVisible": true
+}
