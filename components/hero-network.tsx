@@ -21,6 +21,17 @@ export function HeroNetwork() {
     if (!canvas || !root || !ctx) return;
     const preference = matchMedia("(prefers-reduced-motion: reduce)");
     const pointer = matchMedia("(hover: hover) and (pointer: fine)");
+    // Reuse one soft glow texture instead of creating a gradient for every point/frame.
+    const glow = document.createElement("canvas");
+    glow.width = glow.height = 48;
+    const glowContext = glow.getContext("2d");
+    if (glowContext) {
+      const light = glowContext.createRadialGradient(24, 24, 0, 24, 24, 24);
+      light.addColorStop(0, "rgba(239,216,164,.38)");
+      light.addColorStop(.25, "rgba(219,199,155,.12)");
+      light.addColorStop(1, "rgba(219,199,155,0)");
+      glowContext.fillStyle = light; glowContext.fillRect(0, 0, 48, 48);
+    }
     let width = 0, height = 0, ratio = 1, frame = 0, last = 0, clock = 0;
     let userPaused = false, inView = false, particles: Particle[] = [], photos: Exclusion[] = [];
     let mouse: { x: number; y: number } | undefined;
@@ -36,8 +47,8 @@ export function HeroNetwork() {
         if (!photos.some(p => x >= p.x && x <= p.x + p.width && y >= p.y && y <= p.y + p.height)) break;
       }
       const angle = Math.random() * Math.PI * 2;
-      const speed = 2 + Math.random() * 4;
-      return { x, y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, radius: .65 + Math.random() * 1.1, phase: Math.random() * Math.PI * 2, age: fresh ? 0 : 5 };
+      const speed = 8 + Math.random() * 8;
+      return { x, y, vx: (Math.cos(angle) * .7 + .3) * speed, vy: (Math.sin(angle) * .7 - .2) * speed, radius: .8 + Math.random() * 1.1, phase: Math.random() * Math.PI * 2, age: fresh ? 0 : 5 };
     };
     const draw = () => {
       ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
@@ -45,6 +56,17 @@ export function HeroNetwork() {
       ctx.save(); ctx.beginPath(); ctx.rect(0, 0, width, height);
       photos.forEach(p => ctx.rect(p.x - 1, p.y - 1, p.width + 2, p.height + 2));
       ctx.clip("evenodd");
+      // Broad, feathered currents rise diagonally; no flashing or moving photographs.
+      for (let band = 0; band < (lowPower() ? 1 : 2); band++) {
+        const phase = clock * .18 + band * 2.8;
+        const y = height * (.76 - band * .3) + Math.sin(phase) * 48;
+        for (const [lineWidth, alpha] of [[76, .008], [42, .014], [18, .018], [3, .025]]) {
+          ctx.lineWidth = lineWidth; ctx.strokeStyle = `rgba(219,199,155,${alpha})`;
+          ctx.beginPath(); ctx.moveTo(-80, y + 80);
+          ctx.bezierCurveTo(width * .2, y - 60 + Math.cos(phase) * 45, width * .62, y + 35, width + 80, y - 190);
+          ctx.stroke();
+        }
+      }
       const points = particles.map(p => {
         let x = p.x, y = p.y;
         if (mouse && pointer.matches && !preference.matches && !userPaused && !lowPower()) {
@@ -52,17 +74,18 @@ export function HeroNetwork() {
           if (distance > 0 && distance < 110) { const force = (1 - distance / 110) * 7 * pointerStrength; x += dx / distance * force; y += dy / distance * force; }
         }
         const edge = Math.max(0, Math.min(1, x / 28, (width - x) / 28, y / 28, (height - y) / 28));
-        return { ...p, x, y, alpha: (.3 + Math.sin(clock * .35 + p.phase) * .12) * edge * Math.min(1, p.age / 3) };
+        return { ...p, x, y, alpha: (.48 + Math.sin(clock * .45 + p.phase) * .16) * edge * Math.min(1, p.age / 3) };
       });
-      const reach = lowPower() ? 100 : 140;
+      const reach = lowPower() ? 125 : 175;
       points.forEach((p, i) => {
         for (let j = i + 1; j < points.length; j++) {
           const q = points[j], distance = Math.hypot(p.x - q.x, p.y - q.y);
           if (distance >= reach) continue;
-          ctx.strokeStyle = `rgba(219,199,155,${(1 - distance / reach) * Math.min(p.alpha, q.alpha) * .85})`;
-          ctx.lineWidth = .65; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+          ctx.strokeStyle = `rgba(219,199,155,${(1 - distance / reach) * Math.min(p.alpha, q.alpha)})`;
+          ctx.lineWidth = .75; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
         }
-        ctx.fillStyle = `rgba(219,199,155,${p.alpha})`; ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); ctx.fill();
+        if (glowContext) { const size = p.radius * 10; ctx.globalAlpha = p.alpha; ctx.drawImage(glow, p.x - size / 2, p.y - size / 2, size, size); ctx.globalAlpha = 1; }
+        ctx.fillStyle = `rgba(230,208,160,${p.alpha})`; ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); ctx.fill();
       });
       ctx.restore();
     };
@@ -103,7 +126,7 @@ export function HeroNetwork() {
         const r = photo.getBoundingClientRect(); return { x: r.left - box.left, y: r.top - box.top, width: r.width, height: r.height };
       });
       const area = Math.max(0, width * height - photos.reduce((sum, p) => sum + p.width * p.height, 0));
-      particles = Array.from({ length: Math.min(lowPower() ? 18 : 42, Math.max(8, Math.round(area / 15000))) }, () => spawn());
+      particles = Array.from({ length: Math.min(lowPower() ? 22 : 56, Math.max(10, Math.round(area / 11000))) }, () => spawn());
       inView = box.bottom > 0 && box.top < innerHeight;
       sync();
     };

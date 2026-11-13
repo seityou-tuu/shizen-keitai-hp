@@ -66,7 +66,7 @@ const out = process.env.QA_OUTPUT_DIR;
       await page.mouse.move(canvasBox.x + point.x + 20, canvasBox.y + point.y);
       await page.waitForTimeout(350);
       const displacement = await page.evaluate(p => Math.hypot(window.networkPoints[p.index].x - p.x, window.networkPoints[p.index].y - p.y), point);
-      assert(displacement > 0 && displacement < 12, 'pointer response stays subtle');
+      assert(displacement > 0 && displacement < 18, 'pointer response stays subtle alongside the faster drift');
       await page.mouse.move(1400, 10);
       const photoTransparent = await page.evaluate(() => {
         const canvas = document.querySelector('.hero-network'), ctx = canvas.getContext('2d');
@@ -102,8 +102,32 @@ const out = process.env.QA_OUTPUT_DIR;
       await page.setViewportSize({ width: 1024, height: 1000 });
       assert.equal(await rail.isVisible(), false);
       await page.setViewportSize({ width: 1440, height: 650 });
-      assert.equal(await rail.isVisible(), false);
-      report.pages.push({ route, destinations: hrefs.length, allMarkersAndKeyboard: true, firstAndLast: true, photoTransparent, reducedMotion: true, manualPause: true, hiddenTabSimulation: true, offscreenPause: true, smoothScroll: true, pointerDisplacement: displacement });
+      await page.waitForFunction(() => !document.querySelector('.section-rail').hidden);
+      assert.equal(await rail.isVisible(), true);
+      const notebook = [];
+      for (const [width, height] of [[1101,600], [1152,650], [1200,600], [1280,650], [1366,668], [1440,650]]) {
+        await page.setViewportSize({ width, height });
+        await page.evaluate(() => scrollTo({ top: 0, behavior: 'instant' }));
+        await page.waitForTimeout(120);
+        assert.equal(await rail.isVisible(), true, `notebook rail ${width}x${height}`);
+        const clear = await page.evaluate(() => {
+          const rail = document.querySelector('.section-rail').getBoundingClientRect();
+          const header = document.querySelector('.site-header').getBoundingClientRect();
+          const content = document.querySelector('.hero-statement, .cohort-hero-grid').getBoundingClientRect();
+          const name = document.querySelector('.section-rail a[aria-current] .section-rail-name').getBoundingClientRect();
+          return rail.right <= content.left && rail.top >= header.bottom && rail.bottom <= innerHeight && name.right <= content.left;
+        });
+        assert(clear, `rail stays in gutter and below header at ${width}x${height}`);
+        assert.equal(await rail.locator('.section-rail-name:visible').count(), 1);
+        notebook.push({ width, height, visible: true, clear: true });
+      }
+      await page.setViewportSize({ width: 1280, height: 650 });
+      await page.emulateMedia({ reducedMotion: 'reduce' });
+      for (const href of hrefs) {
+        await rail.locator(`a[href="${href}"]`).click();
+        await page.waitForFunction(href => document.querySelector('.section-rail a[aria-current]')?.getAttribute('href') === href, href);
+      }
+      report.pages.push({ route, destinations: hrefs.length, allMarkersAndKeyboard: true, firstAndLast: true, photoTransparent, reducedMotion: true, manualPause: true, hiddenTabSimulation: true, offscreenPause: true, smoothScroll: true, pointerDisplacement: displacement, notebook });
       await context.close();
     }
     assert.deepEqual(report.errors, []);

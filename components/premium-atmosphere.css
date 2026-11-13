@@ -6,20 +6,32 @@
 html[data-brand-intro] :is(.hero-network, .hero-network-toggle, .section-rail) { visibility: hidden; }
 .recruitment-hero > .hero-network-toggle { left: max(40px, calc((100% - 1280px) / 2)); bottom: 12px; }
 .section-rail { display: none; }
-@media (min-width: 1440px) and (min-height: 720px) {
-  .section-rail { display: block; position: fixed; z-index: 25; left: 4px; top: calc(50% + 46px); transform: translateY(-50%); width: 72px; color: #dbc79b; }
+@media (min-width: 1101px) {
+  .section-rail { --rail-step: clamp(22px, calc((100vh - var(--rail-header, 94px) - 76px) / var(--rail-count)), 32px); display: block; position: fixed; z-index: 25; left: 4px; top: calc((100vh + var(--rail-header, 94px)) / 2); transform: translateY(-50%); width: 72px; color: #dbc79b; }
   .section-rail[hidden] { display: none; }
   .section-rail ol { position: relative; margin: 0; padding: 0; list-style: none; }
-  .section-rail ol::before { content: ""; position: absolute; left: 12px; top: 16px; bottom: 16px; width: 1px; background: #a68b5866; pointer-events: none; }
+  .section-rail ol::before { content: ""; position: absolute; left: 12px; top: calc(var(--rail-step) / 2); bottom: calc(var(--rail-step) / 2); width: 1px; background: #a68b5866; pointer-events: none; }
   .section-rail li { margin: 0; padding: 0; }
-  .section-rail a { position: relative; display: flex; align-items: center; width: 72px; height: 32px; text-decoration: none; }
+  .section-rail a { position: relative; display: flex; align-items: center; width: 72px; height: var(--rail-step); text-decoration: none; }
   .section-rail-dot { position: absolute; left: 11px; width: 3px; height: 3px; background: #a68b58; transform: rotate(45deg); box-shadow: 0 0 0 1px #f8f7f24d; }
-  .section-rail-name { position: relative; margin-left: 26px; width: 46px; padding: 4px 2px; background: #102f28; color: #dbc79b; font: 10px/1.5 "Yu Gothic", sans-serif; text-align: center; overflow-wrap: anywhere; }
+  .section-rail-name { position: relative; margin-left: 26px; width: 46px; padding: 4px 2px; background: #102f28; color: #dbc79b; font: 10px/1.5 "Yu Gothic", sans-serif; text-align: center; overflow-wrap: anywhere; pointer-events: none; }
   .section-rail a:focus-visible { outline: 2px solid #806636; outline-offset: 1px; }
   .section-rail a[aria-current] .section-rail-dot { opacity: 0; }
-  .section-rail .section-rail-diamond { position: absolute; left: 8px; top: calc(12px + var(--rail-index) * 32px); width: 9px; height: 9px; background: #dbc79b; border: 1px solid #806636; transform: rotate(45deg); transition: top .35s cubic-bezier(.2,.65,.3,1); pointer-events: none; }
+  .section-rail .section-rail-diamond { position: absolute; left: 8px; top: calc(var(--rail-step) / 2 - 4px + var(--rail-index) * var(--rail-step)); width: 9px; height: 9px; background: #dbc79b; border: 1px solid #806636; transform: rotate(45deg); transition: top .35s cubic-bezier(.2,.65,.3,1); pointer-events: none; }
   .section-rail-progress { display: block; width: 24px; margin-top: 16px; color: #806636; background: #f8f7f2; text-align: center; font: 10px/1.6 "Yu Gothic", sans-serif; font-variant-numeric: tabular-nums; }
   .section-rail-progress small { font-size: 8px; margin-left: 1px; }
+}
+@media (min-width: 1101px) and (max-width: 1439px) {
+  /* Use the existing 40px gutter on notebooks; never take space from the page. */
+  .section-rail { left: 2px; width: 34px; }
+  .section-rail a { width: 34px; }
+  .section-rail ol::before { left: 8px; }
+  .section-rail-dot { left: 7px; }
+  .section-rail .section-rail-diamond { left: 4px; }
+  .section-rail-name { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); margin-left: 0; width: 20px; padding: 5px 3px; writing-mode: vertical-rl; text-orientation: upright; white-space: nowrap; }
+  .section-rail li:first-child .section-rail-name { top: 0; transform: none; }
+  .section-rail li:nth-last-child(2) .section-rail-name { top: auto; bottom: 0; transform: none; }
+  .section-rail-progress { width: 24px; }
 }
 @media (max-width: 1100px) { .hero-network-toggle { left: 28px; } }
 @media (max-width: 700px) {

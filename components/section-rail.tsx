@@ -7,10 +7,11 @@ import "./premium-atmosphere.css";
 export function SectionRail({ variant }: { variant: "home" | "cohort" }) {
   const links = variant === "home" ? homeSections : cohortSections;
   const [position, setPosition] = useState({ active: 0, progress: 0, visible: false });
+  const railRef = useRef<HTMLElement>(null);
   const navigate = useRef<(event: MouseEvent<HTMLAnchorElement>, index: number) => void>(() => {});
 
   useEffect(() => {
-    const desktop = matchMedia("(min-width: 1440px) and (min-height: 720px)");
+    const desktop = matchMedia("(min-width: 1101px)");
     const reduced = matchMedia("(prefers-reduced-motion: reduce)");
     const targets = links.map(link => document.querySelector<HTMLElement>(link.selector || `#${link.id}`));
     if (targets.some(target => !target)) return;
@@ -18,7 +19,7 @@ export function SectionRail({ variant }: { variant: "home" | "cohort" }) {
     const temporaryFocus = new Set<HTMLElement>();
     const update = () => {
       frame = 0;
-      const visible = desktop.matches && !document.documentElement.hasAttribute("data-brand-intro");
+      const visible = desktop.matches && innerHeight - header >= 300 && !document.documentElement.hasAttribute("data-brand-intro");
       if (!visible) { setPosition(old => old.visible ? { ...old, visible: false } : old); return; }
       active = sectionAtPosition(tops, scrollY + header + 56, active, maximum > 0 && scrollY >= maximum - 2);
       const progress = pageProgress(scrollY, maximum);
@@ -27,6 +28,7 @@ export function SectionRail({ variant }: { variant: "home" | "cohort" }) {
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
     const measure = () => {
       header = document.querySelector(".site-header")?.getBoundingClientRect().height || 94;
+      railRef.current?.style.setProperty("--rail-header", `${header}px`);
       tops = targets.map(target => target!.getBoundingClientRect().top + scrollY);
       maximum = Math.max(0, document.documentElement.scrollHeight - innerHeight);
       schedule();
@@ -59,7 +61,7 @@ export function SectionRail({ variant }: { variant: "home" | "cohort" }) {
     };
   }, [links]);
 
-  return <nav className="section-rail" aria-label={variant === "home" ? "プログラムの閲覧位置" : "第1期生募集の閲覧位置"} hidden={!position.visible}>
+  return <nav ref={railRef} className="section-rail" style={{ "--rail-count": links.length } as CSSProperties} aria-label={variant === "home" ? "プログラムの閲覧位置" : "第1期生募集の閲覧位置"} hidden={!position.visible}>
     <ol style={{ "--rail-index": position.active } as CSSProperties}>
       {links.map((link, index) => <li key={link.id}>
         <a href={`#${link.id}`} aria-label={`${link.label}へ移動`} aria-current={position.active === index ? "location" : undefined}
