@@ -1,4 +1,6 @@
 import "@/app/essential-perspectives.css";
+import { HeroNetwork } from "@/components/hero-network";
+import { SectionRail } from "@/components/section-rail";
 import { GrowthJourney } from "@/components/growth-journey";
 import { programCourses as courses } from "@/lib/program-courses";
 import "./learning-value.css";
@@ -109,10 +111,12 @@ export default function Home() {
         本文へ移動
       </a>
       <Header showFirstCohort splash />
+      <SectionRail variant="home" />
       <main id="main" tabIndex={-1} className="program-renewal cinematic-program homepage-quality">
         <PageMotion variant="home" />
         <section className="renewal-hero" aria-labelledby="hero-title">
           <div className="renewal-wrap hero-composition">
+            <HeroNetwork />
             <div className="hero-statement">
               <p className="renewal-kicker">01 / SHIZEN KEITAI EDUCATION</p>
               <p className="hero-for">自然形体療法 資格取得プログラム</p>

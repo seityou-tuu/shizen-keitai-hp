@@ -1,4 +1,6 @@
 import { PageMotion } from "@/components/page-motion";
+import { HeroNetwork } from "@/components/hero-network";
+import { SectionRail } from "@/components/section-rail";
 import { programCourses } from "@/lib/program-courses";
 import "@/app/learning-value.css";
 import Image from "next/image";
@@ -45,9 +47,11 @@ export default function FirstRecruitmentPage() {
     <>
       <a className="skip-link" href="#recruitment-main">本文へ移動</a>
       <Header variant="first-cohort" />
+      <SectionRail variant="cohort" />
       <main id="recruitment-main" tabIndex={-1} className="recruitment-page">
         <PageMotion variant="cohort" />
         <header className="recruitment-hero">
+          <HeroNetwork />
           <div className="recruitment-wrap cohort-hero-grid">
             <div className="cohort-hero-heading">
               <a className="recruitment-back" href="/">← プログラム全体のご案内</a>

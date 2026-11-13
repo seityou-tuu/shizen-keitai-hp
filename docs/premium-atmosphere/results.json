@@ -1,0 +1,182 @@
+{
+  "base": "d24dd05f413135b55b894f4b4464192977ba965f",
+  "conditions": "Local Production Build, Chromium, Lighthouse mobile default, one run per route; no Vercel production changes",
+  "lighthouse": {
+    "before": {
+      "home": {
+        "version": "13.6.0",
+        "time": "2026-11-13T06:29:08.793Z",
+        "scores": {
+          "performance": 93,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 66
+        },
+        "lcp": "2.6 s",
+        "cls": 0,
+        "warnings": []
+      },
+      "cohort": {
+        "version": "13.6.0",
+        "time": "2026-11-13T06:29:20.694Z",
+        "scores": {
+          "performance": 91,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 69
+        },
+        "lcp": "2.9 s",
+        "cls": 0,
+        "warnings": []
+      }
+    },
+    "after": {
+      "home": {
+        "version": "13.6.0",
+        "time": "2026-11-13T06:38:39.683Z",
+        "scores": {
+          "performance": 92,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 69
+        },
+        "lcp": "2.7 s",
+        "cls": 0,
+        "warnings": []
+      },
+      "cohort": {
+        "version": "13.6.0",
+        "time": "2026-11-13T06:38:52.101Z",
+        "scores": {
+          "performance": 95,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 69
+        },
+        "lcp": "2.9 s",
+        "cls": 0,
+        "warnings": []
+      }
+    }
+  },
+  "atmosphere": {
+    "conditions": "Local production build; Chromium; visibility change simulated; no external messages or calls",
+    "pages": [
+      {
+        "route": "/",
+        "destinations": 12,
+        "allMarkersAndKeyboard": true,
+        "firstAndLast": true,
+        "photoTransparent": true,
+        "reducedMotion": true,
+        "manualPause": true,
+        "hiddenTabSimulation": true,
+        "offscreenPause": true,
+        "smoothScroll": true,
+        "pointerDisplacement": 1.218200650912803
+      },
+      {
+        "route": "/recruitment/first",
+        "destinations": 10,
+        "allMarkersAndKeyboard": true,
+        "firstAndLast": true,
+        "photoTransparent": true,
+        "reducedMotion": true,
+        "manualPause": true,
+        "hiddenTabSimulation": true,
+        "offscreenPause": true,
+        "smoothScroll": true,
+        "pointerDisplacement": 0.8349674426368031
+      }
+    ],
+    "errors": []
+  },
+  "desktopAxe": [
+    {
+      "route": "/",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [
+        "aria-prohibited-attr",
+        "color-contrast"
+      ]
+    },
+    {
+      "route": "/recruitment/first",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [
+        "aria-prohibited-attr",
+        "color-contrast"
+      ]
+    }
+  ],
+  "crawl": {
+    "pages": [
+      {
+        "route": "/",
+        "status": 200,
+        "violations": [],
+        "manualReview": [
+          "aria-prohibited-attr",
+          "color-contrast"
+        ],
+        "overflow": false
+      },
+      {
+        "route": "/recruitment/first",
+        "status": 200,
+        "violations": [],
+        "manualReview": [
+          "aria-prohibited-attr",
+          "color-contrast"
+        ],
+        "overflow": false
+      },
+      {
+        "route": "/company",
+        "status": 200,
+        "violations": [],
+        "manualReview": [],
+        "overflow": false
+      },
+      {
+        "route": "/legal",
+        "status": 200,
+        "violations": [],
+        "manualReview": [],
+        "overflow": false
+      },
+      {
+        "route": "/privacy",
+        "status": 200,
+        "violations": [],
+        "manualReview": [],
+        "overflow": false
+      },
+      {
+        "route": "/terms",
+        "status": 200,
+        "violations": [],
+        "manualReview": [],
+        "overflow": false
+      }
+    ],
+    "failures": [],
+    "console": []
+  },
+  "comparison": {
+    "widths": [
+      320,
+      375,
+      390,
+      430,
+      768,
+      1024,
+      1440
+    ],
+    "copyAndExistingLinksUnchanged": true,
+    "maxImageGeometryDeltaPx": 0.0625,
+    "heroHeadingGeometryUnchanged": true
+  }
+}
