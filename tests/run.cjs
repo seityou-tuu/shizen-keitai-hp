@@ -11,3 +11,4 @@ require("./recruitment.test.cjs");
 require("./program-courses.test.cjs");
 require("./splash-bootstrap.test.cjs");
 require("./section-navigation.test.cjs");
+require("./hero-network-fade.test.cjs");

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { approachOpacity, boundaryOpacity, connectionOpacity, lineFadeStops } from "@/lib/hero-network-fade";
 import "./premium-atmosphere.css";
 
 type Particle = { x: number; y: number; vx: number; vy: number; radius: number; phase: number; age: number };
@@ -33,7 +34,8 @@ export function HeroNetwork() {
       glowContext.fillStyle = light; glowContext.fillRect(0, 0, 48, 48);
     }
     let width = 0, height = 0, ratio = 1, frame = 0, last = 0, clock = 0;
-    let userPaused = false, inView = false, particles: Particle[] = [], photos: Exclusion[] = [];
+    let userPaused = false, inView = false, particles: Particle[] = [], photos: Exclusion[] = [], text: Exclusion[] = [];
+    const connections = new Map<number, number>();
     let mouse: { x: number; y: number } | undefined;
     let pointerTarget: { x: number; y: number } | undefined;
     let pointerStrength = 0;
@@ -50,7 +52,7 @@ export function HeroNetwork() {
       const speed = 8 + Math.random() * 8;
       return { x, y, vx: (Math.cos(angle) * .7 + .3) * speed, vy: (Math.sin(angle) * .7 - .2) * speed, radius: .8 + Math.random() * 1.1, phase: Math.random() * Math.PI * 2, age: fresh ? 0 : 5 };
     };
-    const draw = () => {
+    const draw = (elapsed = 0) => {
       ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
       ctx.clearRect(0, 0, width, height);
       ctx.save(); ctx.beginPath(); ctx.rect(0, 0, width, height);
@@ -80,12 +82,22 @@ export function HeroNetwork() {
       points.forEach((p, i) => {
         for (let j = i + 1; j < points.length; j++) {
           const q = points[j], distance = Math.hypot(p.x - q.x, p.y - q.y);
-          if (distance >= reach) continue;
-          ctx.strokeStyle = `rgba(219,199,155,${(1 - distance / reach) * Math.min(p.alpha, q.alpha)})`;
+          const key = i * 64 + j;
+          const target = connectionOpacity(distance, reach) * Math.min(p.alpha, q.alpha);
+          const alpha = preference.matches ? target : approachOpacity(connections.get(key) || 0, target, elapsed);
+          if (distance === 0) { connections.delete(key); continue; }
+          connections.set(key, alpha);
+          if (alpha < .002) { if (target === 0) connections.delete(key); continue; }
+          const gradient = ctx.createLinearGradient(p.x, p.y, q.x, q.y);
+          lineFadeStops(p, q, width, height, photos, text).forEach(stop => {
+            gradient.addColorStop(stop.offset, `rgba(219,199,155,${alpha * stop.opacity})`);
+          });
+          ctx.strokeStyle = gradient;
           ctx.lineWidth = .75; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
         }
-        if (glowContext) { const size = p.radius * 10; ctx.globalAlpha = p.alpha; ctx.drawImage(glow, p.x - size / 2, p.y - size / 2, size, size); ctx.globalAlpha = 1; }
-        ctx.fillStyle = `rgba(230,208,160,${p.alpha})`; ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); ctx.fill();
+        const particleAlpha = p.alpha * boundaryOpacity(p, width, height, photos);
+        if (glowContext) { const size = p.radius * 10; ctx.globalAlpha = particleAlpha; ctx.drawImage(glow, p.x - size / 2, p.y - size / 2, size, size); ctx.globalAlpha = 1; }
+        ctx.fillStyle = `rgba(230,208,160,${particleAlpha})`; ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); ctx.fill();
       });
       ctx.restore();
     };
@@ -102,11 +114,15 @@ export function HeroNetwork() {
           mouse.x += (pointerTarget.x - mouse.x) * .12;
           mouse.y += (pointerTarget.y - mouse.y) * .12;
         }
-        particles = particles.map(p => {
+        particles = particles.map((p, index) => {
           p.x += p.vx * elapsed; p.y += p.vy * elapsed; p.age += elapsed;
-          return p.x < -18 || p.x > width + 18 || p.y < -18 || p.y > height + 18 ? spawn(true) : p;
+          if (p.x < -18 || p.x > width + 18 || p.y < -18 || p.y > height + 18) {
+            for (let other = 0; other < particles.length; other++) connections.delete(Math.min(index, other) * 64 + Math.max(index, other));
+            return spawn(true);
+          }
+          return p;
         });
-        draw();
+        draw(elapsed);
       }
       frame = requestAnimationFrame(tick);
     };
@@ -125,6 +141,10 @@ export function HeroNetwork() {
       photos = Array.from(root.querySelectorAll<HTMLElement>(".hero-photograph, .cohort-hero-photo")).map(photo => {
         const r = photo.getBoundingClientRect(); return { x: r.left - box.left, y: r.top - box.top, width: r.width, height: r.height };
       });
+      text = Array.from(root.querySelectorAll<HTMLElement>(".hero-statement h1, .hero-introduction, .hero-for, .renewal-kicker, .cohort-hero-heading, .cohort-hero-details, .cohort-launch-facts")).map(element => {
+        const r = element.getBoundingClientRect(); return { x: r.left - box.left, y: r.top - box.top, width: r.width, height: r.height };
+      });
+      connections.clear();
       const area = Math.max(0, width * height - photos.reduce((sum, p) => sum + p.width * p.height, 0));
       particles = Array.from({ length: Math.min(lowPower() ? 22 : 56, Math.max(10, Math.round(area / 11000))) }, () => spawn());
       inView = box.bottom > 0 && box.top < innerHeight;
