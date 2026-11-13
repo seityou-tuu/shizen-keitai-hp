@@ -1,0 +1,478 @@
+{
+  "base": "d24dd05f413135b55b894f4b4464192977ba965f",
+  "conditions": "Local Production Build, Chromium, Lighthouse mobile default, one run per route; no Vercel production changes",
+  "lighthouse": {
+    "before": {
+      "home": {
+        "version": "13.6.0",
+        "time": "2026-11-13T06:29:08.793Z",
+        "scores": {
+          "performance": 93,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 66
+        },
+        "lcp": "2.6 s",
+        "cls": 0,
+        "warnings": []
+      },
+      "cohort": {
+        "version": "13.6.0",
+        "time": "2026-11-13T06:29:20.694Z",
+        "scores": {
+          "performance": 91,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 69
+        },
+        "lcp": "2.9 s",
+        "cls": 0,
+        "warnings": []
+      }
+    },
+    "after": {
+      "home": {
+        "version": "13.6.0",
+        "time": "2026-11-13T07:01:07.448Z",
+        "scores": {
+          "performance": 96,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 69
+        },
+        "lcp": "2.2 s",
+        "cls": 0,
+        "warnings": []
+      },
+      "cohort": {
+        "version": "13.6.0",
+        "time": "2026-11-13T07:01:19.855Z",
+        "scores": {
+          "performance": 95,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 69
+        },
+        "lcp": "2.9 s",
+        "cls": 0,
+        "warnings": []
+      }
+    }
+  },
+  "atmosphere": {
+    "conditions": "Local production build; Chromium; visibility change simulated; no external messages or calls",
+    "pages": [
+      {
+        "route": "/",
+        "destinations": 12,
+        "allMarkersAndKeyboard": true,
+        "firstAndLast": true,
+        "photoTransparent": true,
+        "reducedMotion": true,
+        "manualPause": true,
+        "hiddenTabSimulation": true,
+        "offscreenPause": true,
+        "smoothScroll": true,
+        "pointerDisplacement": 4.223581301112271,
+        "notebook": [
+          {
+            "width": 1101,
+            "height": 600,
+            "visible": true,
+            "clear": true
+          },
+          {
+            "width": 1152,
+            "height": 650,
+            "visible": true,
+            "clear": true
+          },
+          {
+            "width": 1200,
+            "height": 600,
+            "visible": true,
+            "clear": true
+          },
+          {
+            "width": 1280,
+            "height": 650,
+            "visible": true,
+            "clear": true
+          },
+          {
+            "width": 1366,
+            "height": 668,
+            "visible": true,
+            "clear": true
+          },
+          {
+            "width": 1440,
+            "height": 650,
+            "visible": true,
+            "clear": true
+          }
+        ]
+      },
+      {
+        "route": "/recruitment/first",
+        "destinations": 10,
+        "allMarkersAndKeyboard": true,
+        "firstAndLast": true,
+        "photoTransparent": true,
+        "reducedMotion": true,
+        "manualPause": true,
+        "hiddenTabSimulation": true,
+        "offscreenPause": true,
+        "smoothScroll": true,
+        "pointerDisplacement": 4.628192092221912,
+        "notebook": [
+          {
+            "width": 1101,
+            "height": 600,
+            "visible": true,
+            "clear": true
+          },
+          {
+            "width": 1152,
+            "height": 650,
+            "visible": true,
+            "clear": true
+          },
+          {
+            "width": 1200,
+            "height": 600,
+            "visible": true,
+            "clear": true
+          },
+          {
+            "width": 1280,
+            "height": 650,
+            "visible": true,
+            "clear": true
+          },
+          {
+            "width": 1366,
+            "height": 668,
+            "visible": true,
+            "clear": true
+          },
+          {
+            "width": 1440,
+            "height": 650,
+            "visible": true,
+            "clear": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "desktopAxe": [
+    {
+      "route": "/",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [
+        "aria-prohibited-attr",
+        "color-contrast"
+      ]
+    },
+    {
+      "route": "/recruitment/first",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [
+        "aria-prohibited-attr",
+        "color-contrast"
+      ]
+    }
+  ],
+  "crawl": {
+    "pages": [
+      {
+        "route": "/",
+        "status": 200,
+        "violations": [],
+        "manualReview": [
+          "aria-prohibited-attr",
+          "color-contrast"
+        ],
+        "overflow": false
+      },
+      {
+        "route": "/recruitment/first",
+        "status": 200,
+        "violations": [],
+        "manualReview": [
+          "aria-prohibited-attr",
+          "color-contrast"
+        ],
+        "overflow": false
+      },
+      {
+        "route": "/company",
+        "status": 200,
+        "violations": [],
+        "manualReview": [],
+        "overflow": false
+      },
+      {
+        "route": "/legal",
+        "status": 200,
+        "violations": [],
+        "manualReview": [],
+        "overflow": false
+      },
+      {
+        "route": "/privacy",
+        "status": 200,
+        "violations": [],
+        "manualReview": [],
+        "overflow": false
+      },
+      {
+        "route": "/terms",
+        "status": 200,
+        "violations": [],
+        "manualReview": [],
+        "overflow": false
+      }
+    ],
+    "failures": [],
+    "console": []
+  },
+  "comparison": {
+    "widths": [
+      320,
+      375,
+      390,
+      430,
+      768,
+      1024,
+      1440
+    ],
+    "copyAndExistingLinksUnchanged": true,
+    "maxImageGeometryDeltaPx": 0,
+    "heroHeadingGeometryUnchanged": true
+  },
+  "initialAfter": {
+    "home": {
+      "version": "13.6.0",
+      "time": "2026-11-13T06:38:39.683Z",
+      "scores": {
+        "performance": 92,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "lcp": "2.7 s",
+      "cls": 0,
+      "warnings": []
+    },
+    "cohort": {
+      "version": "13.6.0",
+      "time": "2026-11-13T06:38:52.101Z",
+      "scores": {
+        "performance": 95,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "lcp": "2.9 s",
+      "cls": 0,
+      "warnings": []
+    }
+  },
+  "revision": {
+    "parent": "c0d428c337506bfbc90e71fdec6877c2844cec48",
+    "sidebar": {
+      "minWidth": 1101,
+      "compactWidth": 34,
+      "wideWidth": 72,
+      "minSpaceBelowHeader": 300,
+      "cause": "Both CSS and JS required width >=1440 and height >=720"
+    },
+    "visual": [
+      {
+        "route": "/",
+        "width": 1280,
+        "height": 650,
+        "changedPixelsInOneSecond": 15449,
+        "violations": [],
+        "errors": [],
+        "qaReadbackWarnings": [
+          "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+        ]
+      },
+      {
+        "route": "/",
+        "width": 1440,
+        "height": 1000,
+        "changedPixelsInOneSecond": 16530,
+        "violations": [],
+        "errors": [],
+        "qaReadbackWarnings": [
+          "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+        ]
+      },
+      {
+        "route": "/",
+        "width": 390,
+        "height": 1000,
+        "changedPixelsInOneSecond": 15078,
+        "violations": [],
+        "errors": [],
+        "qaReadbackWarnings": [
+          "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+        ]
+      },
+      {
+        "route": "/recruitment/first",
+        "width": 1280,
+        "height": 650,
+        "changedPixelsInOneSecond": 26817,
+        "violations": [],
+        "errors": [],
+        "qaReadbackWarnings": [
+          "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+        ]
+      },
+      {
+        "route": "/recruitment/first",
+        "width": 1440,
+        "height": 1000,
+        "changedPixelsInOneSecond": 28790,
+        "violations": [],
+        "errors": [],
+        "qaReadbackWarnings": [
+          "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+        ]
+      },
+      {
+        "route": "/recruitment/first",
+        "width": 390,
+        "height": 1000,
+        "changedPixelsInOneSecond": 12197,
+        "violations": [],
+        "errors": [],
+        "qaReadbackWarnings": [
+          "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+        ]
+      }
+    ],
+    "atmosphere": {
+      "conditions": "Local production build; Chromium; visibility change simulated; no external messages or calls",
+      "pages": [
+        {
+          "route": "/",
+          "destinations": 12,
+          "allMarkersAndKeyboard": true,
+          "firstAndLast": true,
+          "photoTransparent": true,
+          "reducedMotion": true,
+          "manualPause": true,
+          "hiddenTabSimulation": true,
+          "offscreenPause": true,
+          "smoothScroll": true,
+          "pointerDisplacement": 4.223581301112271,
+          "notebook": [
+            {
+              "width": 1101,
+              "height": 600,
+              "visible": true,
+              "clear": true
+            },
+            {
+              "width": 1152,
+              "height": 650,
+              "visible": true,
+              "clear": true
+            },
+            {
+              "width": 1200,
+              "height": 600,
+              "visible": true,
+              "clear": true
+            },
+            {
+              "width": 1280,
+              "height": 650,
+              "visible": true,
+              "clear": true
+            },
+            {
+              "width": 1366,
+              "height": 668,
+              "visible": true,
+              "clear": true
+            },
+            {
+              "width": 1440,
+              "height": 650,
+              "visible": true,
+              "clear": true
+            }
+          ]
+        },
+        {
+          "route": "/recruitment/first",
+          "destinations": 10,
+          "allMarkersAndKeyboard": true,
+          "firstAndLast": true,
+          "photoTransparent": true,
+          "reducedMotion": true,
+          "manualPause": true,
+          "hiddenTabSimulation": true,
+          "offscreenPause": true,
+          "smoothScroll": true,
+          "pointerDisplacement": 4.628192092221912,
+          "notebook": [
+            {
+              "width": 1101,
+              "height": 600,
+              "visible": true,
+              "clear": true
+            },
+            {
+              "width": 1152,
+              "height": 650,
+              "visible": true,
+              "clear": true
+            },
+            {
+              "width": 1200,
+              "height": 600,
+              "visible": true,
+              "clear": true
+            },
+            {
+              "width": 1280,
+              "height": 650,
+              "visible": true,
+              "clear": true
+            },
+            {
+              "width": 1366,
+              "height": 668,
+              "visible": true,
+              "clear": true
+            },
+            {
+              "width": 1440,
+              "height": 650,
+              "visible": true,
+              "clear": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "tests": 40,
+    "splash": {
+      "isolatedFiveWidths": "passed",
+      "concurrentAttempt": "timing assertion completed brand holds still failed at 1440px while other browser tests ran; no splash source changes"
+    },
+    "previewAccess": "HTTP CONNECT 403 from runtime proxy; web open unavailable; real Preview UI unverified"
+  }
+}

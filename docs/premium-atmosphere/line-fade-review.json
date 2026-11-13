@@ -1,0 +1,435 @@
+{
+  "parent": "abe018926f39fc5b1851429cd839c548f8849b76",
+  "cause": {
+    "rootLeft": 0,
+    "photoEdge": 448,
+    "letters": [
+      {
+        "letter": "な",
+        "left": 400.015625,
+        "right": 449.390625
+      },
+      {
+        "letter": "い",
+        "left": 449.375,
+        "right": 498.734375
+      }
+    ],
+    "crossing": [],
+    "controlledCrossingProfile": {
+      "before": [
+        {
+          "x": 350,
+          "alpha": 48
+        },
+        {
+          "x": 375,
+          "alpha": 48
+        },
+        {
+          "x": 390,
+          "alpha": 48
+        },
+        {
+          "x": 405,
+          "alpha": 48
+        },
+        {
+          "x": 420,
+          "alpha": 48
+        },
+        {
+          "x": 435,
+          "alpha": 48
+        },
+        {
+          "x": 442,
+          "alpha": 48
+        },
+        {
+          "x": 445,
+          "alpha": 48
+        },
+        {
+          "x": 446,
+          "alpha": 48
+        },
+        {
+          "x": 447,
+          "alpha": 0
+        },
+        {
+          "x": 448,
+          "alpha": 0
+        },
+        {
+          "x": 455,
+          "alpha": 0
+        }
+      ],
+      "after": [
+        {
+          "x": 350,
+          "alpha": 48
+        },
+        {
+          "x": 375,
+          "alpha": 48
+        },
+        {
+          "x": 390,
+          "alpha": 45
+        },
+        {
+          "x": 405,
+          "alpha": 33
+        },
+        {
+          "x": 420,
+          "alpha": 17
+        },
+        {
+          "x": 435,
+          "alpha": 4
+        },
+        {
+          "x": 442,
+          "alpha": 1
+        },
+        {
+          "x": 445,
+          "alpha": 0
+        },
+        {
+          "x": 446,
+          "alpha": 0
+        },
+        {
+          "x": 447,
+          "alpha": 0
+        },
+        {
+          "x": 448,
+          "alpha": 0
+        },
+        {
+          "x": 455,
+          "alpha": 0
+        }
+      ]
+    },
+    "finding": "Uniform line alpha reaches the photo safety clip without spatial fading; photo x=448 aligns with the boundary between な and い. Distance alpha already tended to zero and was not the main clipping cause."
+  },
+  "browser": {
+    "pages": [
+      {
+        "width": 390,
+        "route": "/",
+        "gradients": 1007,
+        "uniform": 0,
+        "moving": 38642,
+        "photoAlpha": 0,
+        "devicePixelRatio": 3,
+        "canvasRatio": 1.5,
+        "errors": []
+      },
+      {
+        "width": 390,
+        "route": "/recruitment/first",
+        "gradients": 916,
+        "uniform": 0,
+        "moving": 26605,
+        "photoAlpha": 0,
+        "devicePixelRatio": 3,
+        "canvasRatio": 1.5,
+        "errors": []
+      },
+      {
+        "width": 1280,
+        "route": "/",
+        "gradients": 621,
+        "uniform": 0,
+        "moving": 37613,
+        "photoAlpha": 0,
+        "devicePixelRatio": 2,
+        "canvasRatio": 1.5,
+        "errors": []
+      },
+      {
+        "width": 1280,
+        "route": "/recruitment/first",
+        "gradients": 243,
+        "uniform": 0,
+        "moving": 82177,
+        "photoAlpha": 0,
+        "devicePixelRatio": 2,
+        "canvasRatio": 1.5,
+        "errors": []
+      }
+    ],
+    "crossing": {
+      "before": [
+        {
+          "x": 375,
+          "alpha": 48
+        },
+        {
+          "x": 390,
+          "alpha": 48
+        },
+        {
+          "x": 405,
+          "alpha": 48
+        },
+        {
+          "x": 420,
+          "alpha": 48
+        },
+        {
+          "x": 435,
+          "alpha": 48
+        },
+        {
+          "x": 442,
+          "alpha": 48
+        },
+        {
+          "x": 445,
+          "alpha": 48
+        },
+        {
+          "x": 446,
+          "alpha": 48
+        },
+        {
+          "x": 447,
+          "alpha": 0
+        },
+        {
+          "x": 448,
+          "alpha": 0
+        }
+      ],
+      "after": [
+        {
+          "x": 375,
+          "alpha": 48
+        },
+        {
+          "x": 390,
+          "alpha": 45
+        },
+        {
+          "x": 405,
+          "alpha": 33
+        },
+        {
+          "x": 420,
+          "alpha": 17
+        },
+        {
+          "x": 435,
+          "alpha": 4
+        },
+        {
+          "x": 442,
+          "alpha": 1
+        },
+        {
+          "x": 445,
+          "alpha": 0
+        },
+        {
+          "x": 446,
+          "alpha": 0
+        },
+        {
+          "x": 447,
+          "alpha": 0
+        },
+        {
+          "x": 448,
+          "alpha": 0
+        }
+      ]
+    }
+  },
+  "regression": {
+    "conditions": "Local production build; Chromium; visibility change simulated; no external messages or calls",
+    "pages": [
+      {
+        "route": "/",
+        "destinations": 12,
+        "allMarkersAndKeyboard": true,
+        "firstAndLast": true,
+        "photoTransparent": true,
+        "reducedMotion": true,
+        "manualPause": true,
+        "hiddenTabSimulation": true,
+        "offscreenPause": true,
+        "smoothScroll": true,
+        "pointerDisplacement": 1.297771757320085,
+        "notebook": [
+          {
+            "width": 1101,
+            "height": 600,
+            "visible": true,
+            "clear": true
+          },
+          {
+            "width": 1152,
+            "height": 650,
+            "visible": true,
+            "clear": true
+          },
+          {
+            "width": 1200,
+            "height": 600,
+            "visible": true,
+            "clear": true
+          },
+          {
+            "width": 1280,
+            "height": 650,
+            "visible": true,
+            "clear": true
+          },
+          {
+            "width": 1366,
+            "height": 668,
+            "visible": true,
+            "clear": true
+          },
+          {
+            "width": 1440,
+            "height": 650,
+            "visible": true,
+            "clear": true
+          }
+        ]
+      },
+      {
+        "route": "/recruitment/first",
+        "destinations": 10,
+        "allMarkersAndKeyboard": true,
+        "firstAndLast": true,
+        "photoTransparent": true,
+        "reducedMotion": true,
+        "manualPause": true,
+        "hiddenTabSimulation": true,
+        "offscreenPause": true,
+        "smoothScroll": true,
+        "pointerDisplacement": 2.2579078977466,
+        "notebook": [
+          {
+            "width": 1101,
+            "height": 600,
+            "visible": true,
+            "clear": true
+          },
+          {
+            "width": 1152,
+            "height": 650,
+            "visible": true,
+            "clear": true
+          },
+          {
+            "width": 1200,
+            "height": 600,
+            "visible": true,
+            "clear": true
+          },
+          {
+            "width": 1280,
+            "height": 650,
+            "visible": true,
+            "clear": true
+          },
+          {
+            "width": 1366,
+            "height": 668,
+            "visible": true,
+            "clear": true
+          },
+          {
+            "width": 1440,
+            "height": 650,
+            "visible": true,
+            "clear": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "preserved": {
+    "sidebar": true,
+    "splash": true,
+    "photoGeometry": true,
+    "copyAndButtons": true,
+    "particleCountAndMotion": true,
+    "lightBandDrawingBlock": true,
+    "seoAndRecruitment": true
+  },
+  "tests": 44,
+  "typecheck": "passed",
+  "productionBuild": "passed",
+  "widths": [
+    320,
+    375,
+    390,
+    430,
+    768,
+    1024,
+    1440
+  ],
+  "geometry": {
+    "copyHeadingLinksUnchanged": true,
+    "maxImageDeltaPx": 0
+  },
+  "lighthouse": {
+    "home": {
+      "version": "13.6.0",
+      "time": "2026-11-13T07:33:24.953Z",
+      "scores": {
+        "performance": 95,
+        "accessibility": 100
+      },
+      "lcp": "2.2 s",
+      "cls": 0
+    },
+    "cohort": {
+      "version": "13.6.0",
+      "time": "2026-11-13T07:33:37.296Z",
+      "scores": {
+        "performance": 94,
+        "accessibility": 100
+      },
+      "lcp": "3.0 s",
+      "cls": 0
+    }
+  },
+  "lighthouseInitial": {
+    "home": {
+      "version": "13.6.0",
+      "time": "2026-11-13T07:25:56.370Z",
+      "scores": {
+        "performance": 87,
+        "accessibility": 100
+      },
+      "lcp": "2.8 s",
+      "cls": 0
+    },
+    "cohort": {
+      "version": "13.6.0",
+      "time": "2026-11-13T07:26:08.505Z",
+      "scores": {
+        "performance": 95,
+        "accessibility": 100
+      },
+      "lcp": "3.0 s",
+      "cls": 0
+    }
+  },
+  "performanceNote": "First measurement before rectangle-distance fast paths; final measurement after optimization. Single-run values are not a guaranteed improvement rate."
+}
