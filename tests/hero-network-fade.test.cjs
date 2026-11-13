@@ -2,6 +2,7 @@ require('./register-ts.cjs');
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const { boundaryOpacity, connectionOpacity, approachOpacity, lineFadeStops } = require('../lib/hero-network-fade.ts');
+const { backgroundPocket, expandRect, segmentClearanceOpacity, segmentIntersectsRect } = require('../lib/hero-network-fade.ts');
 const photo = { x: 448, y: 0, width: 832, height: 900 };
 
 test('photo boundary fades to zero before the safety clip, with full strength away from it', () => {
@@ -36,4 +37,27 @@ test('line emphasis near text is reduced through a soft transition', () => {
   const plain = lineFadeStops(a, b, 1280, 900, [], []);
   const protectedText = lineFadeStops(a, b, 1280, 900, [], [{ x: 90, y: 290, width: 120, height: 30 }]);
   assert.equal(protectedText[0].opacity, plain[0].opacity * .5);
+});
+test('a whole segment is rejected when it crosses protected copy, even with endpoints outside', () => {
+  const text = { x: 60, y: 80, width: 20, height: 40 };
+  assert(segmentIntersectsRect({ x: 10, y: 100 }, { x: 110, y: 100 }, text));
+  assert.equal(segmentClearanceOpacity({ x: 10, y: 100 }, { x: 110, y: 100 }, [text]), 0);
+  assert(segmentClearanceOpacity({ x: 10, y: 70 }, { x: 110, y: 70 }, [text]) < 1);
+  assert.equal(segmentClearanceOpacity({ x: 10, y: 20 }, { x: 110, y: 20 }, [text]), 1);
+});
+test('photo clearance is a no-line area before the actual photograph', () => {
+  const forbidden = [expandRect(photo, 56)];
+  assert.equal(segmentClearanceOpacity({ x: 350, y: 300 }, { x: 420, y: 300 }, forbidden), 0);
+  assert.equal(segmentClearanceOpacity({ x: 300, y: 300 }, { x: 350, y: 300 }, forbidden), 1);
+});
+test('ambient light pockets stay away from desktop and mobile photographs', () => {
+  const desktop = backgroundPocket(1280, 900, [photo]);
+  assert(desktop.x + desktop.width <= photo.x - 48);
+  const mobile = backgroundPocket(390, 900, [{ x: 0, y: 0, width: 390, height: 300 }]);
+  assert(mobile.y >= 348);
+  assert(mobile.width > 0 && mobile.height > 0);
+});
+test('fully covered backgrounds yield an empty safe pocket', () => {
+  const empty = backgroundPocket(100, 100, [{ x: 0, y: 0, width: 100, height: 100 }]);
+  assert.equal(empty.width * empty.height, 0);
 });

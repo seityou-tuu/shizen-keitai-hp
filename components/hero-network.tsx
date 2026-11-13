@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { approachOpacity, boundaryOpacity, connectionOpacity, lineFadeStops } from "@/lib/hero-network-fade";
+import { approachOpacity, backgroundPocket, boundaryOpacity, connectionOpacity, expandRect, lineFadeStops, segmentClearanceOpacity } from "@/lib/hero-network-fade";
 import "./premium-atmosphere.css";
 
 type Particle = { x: number; y: number; vx: number; vy: number; radius: number; phase: number; age: number };
@@ -35,6 +35,7 @@ export function HeroNetwork() {
     }
     let width = 0, height = 0, ratio = 1, frame = 0, last = 0, clock = 0;
     let userPaused = false, inView = false, particles: Particle[] = [], photos: Exclusion[] = [], text: Exclusion[] = [];
+    let forbidden: Exclusion[] = [], pocket: Exclusion = { x: 0, y: 0, width: 0, height: 0 };
     const connections = new Map<number, number>();
     let mouse: { x: number; y: number } | undefined;
     let pointerTarget: { x: number; y: number } | undefined;
@@ -58,16 +59,18 @@ export function HeroNetwork() {
       ctx.save(); ctx.beginPath(); ctx.rect(0, 0, width, height);
       photos.forEach(p => ctx.rect(p.x - 1, p.y - 1, p.width + 2, p.height + 2));
       ctx.clip("evenodd");
-      // Broad, feathered currents rise diagonally; no flashing or moving photographs.
+      // Moving light is a feathered surface, with no thin centerline to cross copy.
       for (let band = 0; band < (lowPower() ? 1 : 2); band++) {
-        const phase = clock * .18 + band * 2.8;
-        const y = height * (.76 - band * .3) + Math.sin(phase) * 48;
-        for (const [lineWidth, alpha] of [[76, .008], [42, .014], [18, .018], [3, .025]]) {
-          ctx.lineWidth = lineWidth; ctx.strokeStyle = `rgba(219,199,155,${alpha})`;
-          ctx.beginPath(); ctx.moveTo(-80, y + 80);
-          ctx.bezierCurveTo(width * .2, y - 60 + Math.cos(phase) * 45, width * .62, y + 35, width + 80, y - 190);
-          ctx.stroke();
-        }
+        const phase = clock * .24 + band * 2.8;
+        if (pocket.width < 40 || pocket.height < 40) continue;
+        ctx.save();
+        ctx.translate(pocket.x + pocket.width * (.5 + Math.sin(phase) * .08), pocket.y + pocket.height * (.33 + band * .34 + Math.cos(phase) * .08));
+        ctx.scale(pocket.width * .38, pocket.height * .16);
+        const light = ctx.createRadialGradient(0, 0, 0, 0, 0, 1);
+        light.addColorStop(0, `rgba(219,199,155,${.055 + Math.sin(phase) * .014})`);
+        light.addColorStop(.5, "rgba(219,199,155,.028)");
+        light.addColorStop(1, "rgba(219,199,155,0)");
+        ctx.fillStyle = light; ctx.beginPath(); ctx.arc(0, 0, 1, 0, Math.PI * 2); ctx.fill(); ctx.restore();
       }
       const points = particles.map(p => {
         let x = p.x, y = p.y;
@@ -78,19 +81,23 @@ export function HeroNetwork() {
         const edge = Math.max(0, Math.min(1, x / 28, (width - x) / 28, y / 28, (height - y) / 28));
         return { ...p, x, y, alpha: (.48 + Math.sin(clock * .45 + p.phase) * .16) * edge * Math.min(1, p.age / 3) };
       });
-      const reach = lowPower() ? 125 : 175;
+      const reach = lowPower() ? 64 : 88;
       points.forEach((p, i) => {
         for (let j = i + 1; j < points.length; j++) {
           const q = points[j], distance = Math.hypot(p.x - q.x, p.y - q.y);
           const key = i * 64 + j;
-          const target = connectionOpacity(distance, reach) * Math.min(p.alpha, q.alpha);
+          // Stable sparse topology, not a changing per-frame nearest-neighbour cap.
+          if ((i * 31 + j * 17) % 3 !== 0 || distance > reach) { connections.delete(key); continue; }
+          const clearance = segmentClearanceOpacity(p, q, forbidden);
+          if (clearance === 0) { connections.delete(key); continue; }
+          const target = connectionOpacity(distance, reach * .75) * Math.min(p.alpha, q.alpha) * .65;
           const alpha = preference.matches ? target : approachOpacity(connections.get(key) || 0, target, elapsed);
           if (distance === 0) { connections.delete(key); continue; }
           connections.set(key, alpha);
           if (alpha < .002) { if (target === 0) connections.delete(key); continue; }
           const gradient = ctx.createLinearGradient(p.x, p.y, q.x, q.y);
           lineFadeStops(p, q, width, height, photos, text).forEach(stop => {
-            gradient.addColorStop(stop.offset, `rgba(219,199,155,${alpha * stop.opacity})`);
+            gradient.addColorStop(stop.offset, `rgba(219,199,155,${alpha * clearance * stop.opacity})`);
           });
           ctx.strokeStyle = gradient;
           ctx.lineWidth = .75; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
@@ -141,9 +148,11 @@ export function HeroNetwork() {
       photos = Array.from(root.querySelectorAll<HTMLElement>(".hero-photograph, .cohort-hero-photo")).map(photo => {
         const r = photo.getBoundingClientRect(); return { x: r.left - box.left, y: r.top - box.top, width: r.width, height: r.height };
       });
-      text = Array.from(root.querySelectorAll<HTMLElement>(".hero-statement h1, .hero-introduction, .hero-for, .renewal-kicker, .cohort-hero-heading, .cohort-hero-details, .cohort-launch-facts")).map(element => {
+      text = Array.from(root.querySelectorAll<HTMLElement>(".hero-statement h1, .hero-introduction, .hero-for, .renewal-kicker, .hero-statement > a, .cohort-hero-heading, .cohort-hero-details, .cohort-launch-facts")).map(element => {
         const r = element.getBoundingClientRect(); return { x: r.left - box.left, y: r.top - box.top, width: r.width, height: r.height };
       });
+      forbidden = [...photos.map(photo => expandRect(photo, 56)), ...text.map(rect => expandRect(rect, 24))];
+      pocket = backgroundPocket(width, height, photos);
       connections.clear();
       const area = Math.max(0, width * height - photos.reduce((sum, p) => sum + p.width * p.height, 0));
       particles = Array.from({ length: Math.min(lowPower() ? 22 : 56, Math.max(10, Math.round(area / 11000))) }, () => spawn());

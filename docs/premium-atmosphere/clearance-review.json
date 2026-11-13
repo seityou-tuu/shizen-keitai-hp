@@ -1,0 +1,185 @@
+{
+  "parent": "60ecb730ef9b5b4b918e936415bbca5481c3ea6b",
+  "diagnosis": [
+    {
+      "mode": "all",
+      "photoEdge": 448,
+      "h1": {
+        "left": 56,
+        "top": 260.5,
+        "width": 742.390625,
+        "height": 311.25
+      },
+      "connectionStrokes": 372,
+      "connectionsCrossingHeading": 152,
+      "thinBandStrokes": 8,
+      "bandCrossingHeading": 16
+    },
+    {
+      "mode": "no-network",
+      "photoEdge": 448,
+      "h1": {
+        "left": 56,
+        "top": 260.5,
+        "width": 742.390625,
+        "height": 311.25
+      },
+      "connectionStrokes": 372,
+      "connectionsCrossingHeading": 152,
+      "thinBandStrokes": 8,
+      "bandCrossingHeading": 16
+    },
+    {
+      "mode": "no-bands",
+      "photoEdge": 448,
+      "h1": {
+        "left": 56,
+        "top": 260.5,
+        "width": 742.390625,
+        "height": 311.25
+      },
+      "connectionStrokes": 372,
+      "connectionsCrossingHeading": 152,
+      "thinBandStrokes": 8,
+      "bandCrossingHeading": 16
+    }
+  ],
+  "diagnosticCountsRecordedBeforeLayerSuppression": true,
+  "beforeAfter": {
+    "seed": 23,
+    "reducedMotion": true,
+    "pc": [
+      1280,
+      900
+    ],
+    "mobile": [
+      390,
+      900
+    ],
+    "photoAndCopyNotEdited": true
+  },
+  "policy": {
+    "textPadding": 24,
+    "photoPadding": 56,
+    "clearanceFeather": 24,
+    "maxLineLength": {
+      "desktop": 88,
+      "mobile": 64
+    },
+    "stableCandidateFraction": "1/3",
+    "noThinBandStroke": true,
+    "softLightPhotoClearance": 48
+  },
+  "browser": [
+    {
+      "width": 390,
+      "route": "/",
+      "lines": 0,
+      "maxLength": 0,
+      "textCrossings": 0,
+      "photoCrossings": 0,
+      "bandStrokes": 0,
+      "softLightFills": 51,
+      "changed": 2532,
+      "photoAlpha": 0,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "route": "/recruitment/first",
+      "lines": 0,
+      "maxLength": 0,
+      "textCrossings": 0,
+      "photoCrossings": 0,
+      "bandStrokes": 0,
+      "softLightFills": 50,
+      "changed": 1962,
+      "photoAlpha": 0,
+      "errors": []
+    },
+    {
+      "width": 1280,
+      "route": "/",
+      "lines": 0,
+      "maxLength": 0,
+      "textCrossings": 0,
+      "photoCrossings": 0,
+      "bandStrokes": 0,
+      "softLightFills": 118,
+      "changed": 4051,
+      "photoAlpha": 0,
+      "errors": []
+    },
+    {
+      "width": 1280,
+      "route": "/recruitment/first",
+      "lines": 55,
+      "maxLength": 41.83110497149147,
+      "textCrossings": 0,
+      "photoCrossings": 0,
+      "bandStrokes": 0,
+      "softLightFills": 118,
+      "changed": 6815,
+      "photoAlpha": 0,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "route": "/",
+      "lines": 0,
+      "maxLength": 0,
+      "textCrossings": 0,
+      "photoCrossings": 0,
+      "bandStrokes": 0,
+      "softLightFills": 118,
+      "changed": 5148,
+      "photoAlpha": 0,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "route": "/recruitment/first",
+      "lines": 44,
+      "maxLength": 42.427463874642626,
+      "textCrossings": 0,
+      "photoCrossings": 0,
+      "bandStrokes": 0,
+      "softLightFills": 120,
+      "changed": 6794,
+      "photoAlpha": 0,
+      "errors": []
+    }
+  ],
+  "tests": 48,
+  "typecheck": "passed",
+  "productionBuild": "passed",
+  "geometry": {
+    "widths": [
+      320,
+      375,
+      390,
+      430,
+      768,
+      1024,
+      1440
+    ],
+    "copyHeadingExistingLinksUnchanged": true,
+    "maxImageDeltaPx": 0,
+    "errors": [],
+    "overflow": false
+  },
+  "unchanged": [
+    "sidebar",
+    "splash",
+    "photographs",
+    "copy",
+    "buttons",
+    "page layout",
+    "SEO",
+    "recruitment",
+    "LINE",
+    "particle count",
+    "particle speed",
+    "particle glow"
+  ]
+}
