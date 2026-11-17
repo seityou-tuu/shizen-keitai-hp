@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { CSSProperties } from "react";
 import treatmentMain from "@/public/images/treatment-main.jpg";
 import treatmentDetail from "@/public/images/treatment-detail.jpg";
 import instructorPortrait from "@/public/images/instructor-portrait.jpg";
@@ -26,7 +27,8 @@ export function ProgramPhoto({ name, caption, priority = false, sizes = "(max-wi
   sizes?: string;
 }) {
   return (
-    <figure className="program-photo" data-photo={name}>
+    <figure className="program-photo" data-photo={name}
+      style={{ "--photo-aspect-ratio": `${photos[name].width} / ${photos[name].height}` } as CSSProperties}>
       <Image src={photos[name]} alt={caption}
         sizes={sizes} priority={priority} />
       <figcaption>{caption}</figcaption>

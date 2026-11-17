@@ -84,10 +84,12 @@ export function HeroNetwork() {
       const reach = lowPower() ? 64 : 88;
       points.forEach((p, i) => {
         for (let j = i + 1; j < points.length; j++) {
-          const q = points[j], distance = Math.hypot(p.x - q.x, p.y - q.y);
           const key = i * 64 + j;
           // Stable sparse topology, not a changing per-frame nearest-neighbour cap.
-          if ((i * 31 + j * 17) % 3 !== 0 || distance > reach) { connections.delete(key); continue; }
+          // Reject fixed non-candidates before computing their distance. Drawing is unchanged.
+          if ((i * 31 + j * 17) % 3 !== 0) { connections.delete(key); continue; }
+          const q = points[j], distance = Math.hypot(p.x - q.x, p.y - q.y);
+          if (distance > reach) { connections.delete(key); continue; }
           const clearance = segmentClearanceOpacity(p, q, forbidden);
           if (clearance === 0) { connections.delete(key); continue; }
           const target = connectionOpacity(distance, reach * .75) * Math.min(p.alpha, q.alpha) * .65;

@@ -1,0 +1,437 @@
+{
+  "date": "2026-11-17",
+  "baseline": "ed9fbc24bbf9f97dd899e6b2bc019eb25e645779",
+  "conditions": {
+    "browser": "Chromium headless, local Production Build",
+    "viewportHeight": 900,
+    "dpr": 1,
+    "staticComparison": "reduced motion, random seed 123; raw decoded screenshot pixel equality",
+    "canvas": "normal motion, same seed, 2-second window; call counts normalized per draw; not CPU/GPU power measurements",
+    "lighthouse": "Lighthouse default mobile simulated throttling, separate serial invocations, fresh browser, one run per page/revision; not field INP or statistical improvement"
+  },
+  "pages": [
+    {
+      "route": "/",
+      "width": 390,
+      "status": 200,
+      "overflow": false,
+      "errors": [],
+      "axeBefore": [],
+      "axeAfter": [],
+      "firstViewPixelsIdentical": true,
+      "hypotCallsPerDraw": {
+        "before": 279,
+        "after": 116.94736842105263
+      }
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "status": 200,
+      "overflow": false,
+      "errors": [],
+      "axeBefore": [],
+      "axeAfter": [],
+      "firstViewPixelsIdentical": true,
+      "hypotCallsPerDraw": {
+        "before": 237.77777777777777,
+        "after": 76.94736842105263
+      }
+    },
+    {
+      "route": "/",
+      "width": 1024,
+      "status": 200,
+      "overflow": false,
+      "errors": [],
+      "axeBefore": [],
+      "axeAfter": [],
+      "firstViewPixelsIdentical": true,
+      "hypotCallsPerDraw": {
+        "before": 231,
+        "after": 70
+      }
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "status": 200,
+      "overflow": false,
+      "errors": [],
+      "axeBefore": [],
+      "axeAfter": [],
+      "firstViewPixelsIdentical": true,
+      "hypotCallsPerDraw": {
+        "before": 231,
+        "after": 70
+      }
+    },
+    {
+      "route": "/recruitment/first",
+      "width": 390,
+      "status": 200,
+      "overflow": false,
+      "errors": [],
+      "axeBefore": [],
+      "axeAfter": [],
+      "firstViewPixelsIdentical": true,
+      "hypotCallsPerDraw": {
+        "before": 243.21052631578948,
+        "after": 82.44444444444444
+      }
+    },
+    {
+      "route": "/recruitment/first",
+      "width": 768,
+      "status": 200,
+      "overflow": false,
+      "errors": [],
+      "axeBefore": [],
+      "axeAfter": [],
+      "firstViewPixelsIdentical": true,
+      "hypotCallsPerDraw": {
+        "before": 243.55555555555554,
+        "after": 82.54054054054055
+      }
+    },
+    {
+      "route": "/recruitment/first",
+      "width": 1024,
+      "status": 200,
+      "overflow": false,
+      "errors": [],
+      "axeBefore": [],
+      "axeAfter": [],
+      "firstViewPixelsIdentical": true,
+      "hypotCallsPerDraw": {
+        "before": 237.15384615384616,
+        "after": 76.22222222222223
+      }
+    },
+    {
+      "route": "/recruitment/first",
+      "width": 1440,
+      "status": 200,
+      "overflow": false,
+      "errors": [],
+      "axeBefore": [],
+      "axeAfter": [],
+      "firstViewPixelsIdentical": true,
+      "hypotCallsPerDraw": {
+        "before": 261.10526315789474,
+        "after": 99.74358974358974
+      }
+    },
+    {
+      "route": "/missing-page",
+      "width": 390,
+      "status": 404,
+      "overflow": false,
+      "errors": [],
+      "axeBefore": [
+        "landmark-one-main",
+        "region"
+      ],
+      "axeAfter": []
+    },
+    {
+      "route": "/missing-page",
+      "width": 768,
+      "status": 404,
+      "overflow": false,
+      "errors": [],
+      "axeBefore": [
+        "landmark-one-main",
+        "region"
+      ],
+      "axeAfter": []
+    },
+    {
+      "route": "/missing-page",
+      "width": 1024,
+      "status": 404,
+      "overflow": false,
+      "errors": [],
+      "axeBefore": [
+        "landmark-one-main",
+        "region"
+      ],
+      "axeAfter": []
+    },
+    {
+      "route": "/missing-page",
+      "width": 1440,
+      "status": 404,
+      "overflow": false,
+      "errors": [],
+      "axeBefore": [
+        "landmark-one-main",
+        "region"
+      ],
+      "axeAfter": []
+    }
+  ],
+  "lighthouse": {
+    "home": {
+      "before": {
+        "version": "13.6.0",
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+        "scores": {
+          "performance": 92,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 69
+        },
+        "lcpMs": 2236.9307000000003,
+        "cls": 0,
+        "tbtMs": 216
+      },
+      "final": {
+        "version": "13.6.0",
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+        "scores": {
+          "performance": 89,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 69
+        },
+        "lcpMs": 2188.2129000000004,
+        "cls": 0,
+        "tbtMs": 329
+      }
+    },
+    "cohort": {
+      "before": {
+        "version": "13.6.0",
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+        "scores": {
+          "performance": 91,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 69
+        },
+        "lcpMs": 2863.34955,
+        "cls": 0,
+        "tbtMs": 237.5
+      },
+      "final": {
+        "version": "13.6.0",
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+        "scores": {
+          "performance": 94,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 69
+        },
+        "lcpMs": 2972.5571999999997,
+        "cls": 0,
+        "tbtMs": 62
+      }
+    }
+  },
+  "loadedLayout": [
+    {
+      "route": "/",
+      "width": 390,
+      "totalElements": 226,
+      "unchangedLeadingElements": 194,
+      "firstChangedText": "会社概要"
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "totalElements": 226,
+      "unchangedLeadingElements": 194,
+      "firstChangedText": "会社概要"
+    },
+    {
+      "route": "/",
+      "width": 1024,
+      "totalElements": 226,
+      "unchangedLeadingElements": 194,
+      "firstChangedText": "会社概要"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "totalElements": 226,
+      "unchangedLeadingElements": 194,
+      "firstChangedText": "会社概要"
+    },
+    {
+      "route": "/recruitment/first",
+      "width": 390,
+      "totalElements": 142,
+      "unchangedLeadingElements": 119,
+      "firstChangedText": "会社概要"
+    },
+    {
+      "route": "/recruitment/first",
+      "width": 768,
+      "totalElements": 142,
+      "unchangedLeadingElements": 119,
+      "firstChangedText": "会社概要"
+    },
+    {
+      "route": "/recruitment/first",
+      "width": 1024,
+      "totalElements": 142,
+      "unchangedLeadingElements": 119,
+      "firstChangedText": "会社概要"
+    },
+    {
+      "route": "/recruitment/first",
+      "width": 1440,
+      "totalElements": 142,
+      "unchangedLeadingElements": 119,
+      "firstChangedText": "会社概要"
+    }
+  ],
+  "repeatedLighthouse": {
+    "conditions": "PR #26 baseline worktree on :3101 and final build on :3100; same dependencies, local machine, Chromium/Lighthouse versions and default simulated mobile throttling; image optimizer caches warmed equally; fresh browser per call; 3 runs per page/revision, alternating AB/BA/AB; no concurrent browser tests",
+    "runs": [
+      {
+        "slug": "home",
+        "phase": "before",
+        "run": 1,
+        "performance": 88,
+        "lcpMs": 2805.5353,
+        "cls": 0,
+        "tbtMs": 255.5
+      },
+      {
+        "slug": "home",
+        "phase": "final",
+        "run": 1,
+        "performance": 93,
+        "lcpMs": 2648.1809999999996,
+        "cls": 0,
+        "tbtMs": 154
+      },
+      {
+        "slug": "home",
+        "phase": "final",
+        "run": 2,
+        "performance": 95,
+        "lcpMs": 2191.6183499999997,
+        "cls": 0,
+        "tbtMs": 142.5
+      },
+      {
+        "slug": "home",
+        "phase": "before",
+        "run": 2,
+        "performance": 85,
+        "lcpMs": 2646.9698,
+        "cls": 0,
+        "tbtMs": 357
+      },
+      {
+        "slug": "home",
+        "phase": "before",
+        "run": 3,
+        "performance": 82,
+        "lcpMs": 2674.5886,
+        "cls": 0,
+        "tbtMs": 424.5000000000002
+      },
+      {
+        "slug": "home",
+        "phase": "final",
+        "run": 3,
+        "performance": 93,
+        "lcpMs": 2643.1332,
+        "cls": 0,
+        "tbtMs": 129.5
+      },
+      {
+        "slug": "cohort",
+        "phase": "before",
+        "run": 1,
+        "performance": 97,
+        "lcpMs": 2265.0975,
+        "cls": 0,
+        "tbtMs": 150.5
+      },
+      {
+        "slug": "cohort",
+        "phase": "final",
+        "run": 1,
+        "performance": 97,
+        "lcpMs": 2491.9371,
+        "cls": 0,
+        "tbtMs": 47.5
+      },
+      {
+        "slug": "cohort",
+        "phase": "final",
+        "run": 2,
+        "performance": 93,
+        "lcpMs": 2987.6996999999997,
+        "cls": 0,
+        "tbtMs": 114
+      },
+      {
+        "slug": "cohort",
+        "phase": "before",
+        "run": 2,
+        "performance": 95,
+        "lcpMs": 2939.3170499999997,
+        "cls": 0,
+        "tbtMs": 46
+      },
+      {
+        "slug": "cohort",
+        "phase": "before",
+        "run": 3,
+        "performance": 94,
+        "lcpMs": 2940.5605,
+        "cls": 0,
+        "tbtMs": 85
+      },
+      {
+        "slug": "cohort",
+        "phase": "final",
+        "run": 3,
+        "performance": 94,
+        "lcpMs": 2955.2150500000007,
+        "cls": 0,
+        "tbtMs": 76.5
+      }
+    ],
+    "medians": {
+      "home": {
+        "before": {
+          "performance": 85,
+          "lcpMs": 2674.5886,
+          "cls": 0,
+          "tbtMs": 357
+        },
+        "final": {
+          "performance": 93,
+          "lcpMs": 2643.1332,
+          "cls": 0,
+          "tbtMs": 142.5
+        }
+      },
+      "cohort": {
+        "before": {
+          "performance": 95,
+          "lcpMs": 2939.3170499999997,
+          "cls": 0,
+          "tbtMs": 85
+        },
+        "final": {
+          "performance": 94,
+          "lcpMs": 2955.2150500000007,
+          "cls": 0,
+          "tbtMs": 76.5
+        }
+      }
+    }
+  },
+  "regressionProof": {
+    "baseline": "new regression check fails on baseline / at 390px: Image space must exist before responses",
+    "final": "all 8 page/viewport cases and 3 invalid URL recovery cases pass"
+  }
+}
