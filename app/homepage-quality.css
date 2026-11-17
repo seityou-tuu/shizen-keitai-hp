@@ -38,7 +38,7 @@
 .homepage-quality .format-plus { text-align: center; color: #806636; }
 .homepage-quality .training-story:not(.theory-story) { grid-template-columns: 1.4fr 1fr; gap: clamp(36px, 5vw, 72px); align-items: center; }
 .homepage-quality .training-main-photo { position: relative; padding-bottom: 64px; }
-.homepage-quality .training-main-photo > .program-photo img { height: auto; aspect-ratio: auto; object-fit: contain; }
+.homepage-quality .training-main-photo > .program-photo img { height: auto; aspect-ratio: auto var(--photo-aspect-ratio); object-fit: contain; }
 @media (min-width: 901px) {
   .homepage-quality .training-main-photo > .program-photo { display: flex; flex-direction: column; }
   .homepage-quality .training-main-photo > .program-photo figcaption { order: -1; padding: 0 0 12px; }
@@ -83,7 +83,7 @@
 .homepage-quality .instructor-introduction > .renewal-prose { grid-column: 2; grid-row: 2; padding: 0; }
 .homepage-quality .renewal-instructor-photos > :first-child { grid-column: 1; grid-row: 1 / span 2; max-width: 100%; align-self: start; position: relative; padding: 0 24px 24px 0; }
 .homepage-quality .renewal-instructor-photos > :first-child::after { content: ""; position: absolute; inset: 24px 0 0 24px; border: 1px solid #a68b5860; pointer-events: none; }
-.homepage-quality .renewal-instructor-photos > :first-child img { height: auto; aspect-ratio: auto; object-fit: contain; }
+.homepage-quality .renewal-instructor-photos > :first-child img { height: auto; aspect-ratio: auto var(--photo-aspect-ratio); object-fit: contain; }
 .homepage-quality .renewal-instructor-photos > :last-child { width: 78%; margin: 0; align-self: end; }
 .homepage-quality .instructor-name { border-top: 1px solid #a68b58; padding-top: 24px; font-size: 38px; }
 .homepage-quality .instructor-details > div { padding-block: 16px; }

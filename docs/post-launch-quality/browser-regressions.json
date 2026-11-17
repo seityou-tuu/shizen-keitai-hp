@@ -1,0 +1,71 @@
+{
+  "conditions": "Local production build; Chromium; DPR 1; reduced motion; image responses held until geometry is measured",
+  "pages": [
+    {
+      "route": "/",
+      "width": 390,
+      "reservedImages": 8,
+      "passed": true
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "reservedImages": 8,
+      "passed": true
+    },
+    {
+      "route": "/",
+      "width": 1024,
+      "reservedImages": 8,
+      "passed": true
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "reservedImages": 8,
+      "passed": true
+    },
+    {
+      "route": "/recruitment/first",
+      "width": 390,
+      "reservedImages": 4,
+      "passed": true
+    },
+    {
+      "route": "/recruitment/first",
+      "width": 768,
+      "reservedImages": 4,
+      "passed": true
+    },
+    {
+      "route": "/recruitment/first",
+      "width": 1024,
+      "reservedImages": 4,
+      "passed": true
+    },
+    {
+      "route": "/recruitment/first",
+      "width": 1440,
+      "reservedImages": 4,
+      "passed": true
+    }
+  ],
+  "invalidUrls": [
+    {
+      "route": "/missing-page",
+      "status": 404,
+      "keyboardRecovery": true
+    },
+    {
+      "route": "/recruitment/not-a-page",
+      "status": 404,
+      "keyboardRecovery": true
+    },
+    {
+      "route": "/%E0%A4%A",
+      "status": 404,
+      "keyboardRecovery": true
+    }
+  ],
+  "errors": []
+}

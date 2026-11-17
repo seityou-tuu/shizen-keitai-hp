@@ -5,7 +5,7 @@
 .recruitment-page .cohort-teacher-heading > p { max-width: 32em; color: #455b4b; }
 .recruitment-page .cohort-teacher-visual { min-width: 0; }
 .recruitment-page .cohort-teacher-portrait { padding: 16px; background: #eeeae0; border: 1px solid #c4c8b6; }
-.recruitment-page .cohort-teacher-portrait img { width: 100%; height: auto; aspect-ratio: auto; object-fit: contain; }
+.recruitment-page .cohort-teacher-portrait img { width: 100%; height: auto; aspect-ratio: auto var(--photo-aspect-ratio); object-fit: contain; }
 .recruitment-page .cohort-teacher-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: #c4c8b6; border: 1px solid #c4c8b6; margin: 24px 0 0; }
 .recruitment-page .cohort-teacher-metrics > div { padding: 20px; background: #f8f7f2; }
 .recruitment-page .cohort-teacher-metrics dt { font-size: 11px; color: #58675e; }
