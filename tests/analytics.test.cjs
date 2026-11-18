@@ -18,9 +18,15 @@ test("GA4 requires production, an approved enable flag and a valid measurement I
   assert.equal(getGa4MeasurementId({ VERCEL_ENV: "production", GA4_ENABLED: "true", GA4_MEASUREMENT_ID: id }), id);
 });
 
-test("Search Console emits no token for missing, invalid or preview settings", () => {
+test("Search Console uses the approved production default with environment override and opt-out", () => {
   const token = "verification_fixture_for_unit_test";
   assert.equal(getGoogleVerification({}), undefined);
+  assert.equal(getGoogleVerification({ VERCEL_ENV: "production" }), "CXdSC9XNyiLa8xhu5__h3wkcnVnNHAjGJ0BEU2JW3LU");
+  assert.equal(getGoogleVerification({ VERCEL_ENV: "production", GOOGLE_SITE_VERIFICATION: "" }), undefined);
+  assert.equal(getGoogleVerification({ VERCEL_ENV: "production", GOOGLE_SITE_VERIFICATION: "  " }), undefined);
+  for (const VERCEL_ENV of ["preview", "development"]) {
+    assert.equal(getGoogleVerification({ VERCEL_ENV }), undefined);
+  }
   assert.equal(getGoogleVerification({ VERCEL_ENV: "preview", GOOGLE_SITE_VERIFICATION: token }), undefined);
   assert.equal(getGoogleVerification({ VERCEL_ENV: "production", GOOGLE_SITE_VERIFICATION: '<meta name="google-site-verification">' }), undefined);
   assert.equal(getGoogleVerification({ VERCEL_ENV: "production", GOOGLE_SITE_VERIFICATION: token }), token);
