@@ -1,10 +1,11 @@
-nav[data-hero-action-visible] {
+/* Start hidden so server-rendered markup cannot cover the hero CTA. */
+nav:is(.mobile-consult-bar, .recruitment-contact-bar):not([data-consultation-available]) {
   visibility: hidden;
 }
 
 @media (scripting: none) {
-  nav.mobile-consult-bar,
-  nav.recruitment-contact-bar {
+  nav:is(.mobile-consult-bar, .recruitment-contact-bar):not([data-consultation-available]) {
     position: static;
+    visibility: visible;
   }
 }

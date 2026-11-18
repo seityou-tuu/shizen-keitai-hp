@@ -3,10 +3,11 @@
 import { useEffect, useRef } from "react";
 import type { ReactNode } from "react";
 
-export function ConsultationBarHandoff({ className, label, heroLinkSelector, children }: {
+export function ConsultationBarHandoff({ className, label, heroLinkSelector, maxWidth, children }: {
   className: string;
   label: string;
   heroLinkSelector: string;
+  maxWidth: number;
   children: ReactNode;
 }) {
   const ref = useRef<HTMLElement>(null);
@@ -17,38 +18,59 @@ export function ConsultationBarHandoff({ className, label, heroLinkSelector, chi
     const header = document.querySelector(".site-header");
     if (!bar || !link || !header || !window.IntersectionObserver) return;
 
-    let observer: IntersectionObserver | undefined;
+    const mobile = matchMedia(`(max-width: ${maxWidth}px)`);
+    let intersection: IntersectionObserver | undefined;
+    let resize: ResizeObserver | undefined;
     let margin = "";
+
     const observe = () => {
       const top = Math.ceil(header.getBoundingClientRect().height) + 44;
       const bottom = Math.ceil(parseFloat(getComputedStyle(bar).paddingBottom)) + 44;
       const nextMargin = `-${top}px 0px -${bottom}px`;
       if (nextMargin === margin) return;
       margin = nextMargin;
-      observer?.disconnect();
-      // Switch only when a 44px slice is reachable below the header
-      // and above the bottom inset, including the device safe area.
-      observer = new IntersectionObserver((entries, currentObserver) => {
+      intersection?.disconnect();
+      // Wait until the hero offers a reachable 44px slice before handing off.
+      intersection = new IntersectionObserver((entries, observer) => {
         const entry = entries[entries.length - 1];
-        if (!entry || currentObserver !== observer) return;
+        if (!entry || observer !== intersection) return;
         if (entry.isIntersecting && bar.contains(document.activeElement)) {
           link.focus({ preventScroll: true });
         }
-        bar.toggleAttribute("data-hero-action-visible", entry.isIntersecting);
+        // The first observation decides whether the fixed bar may be painted.
+        bar.toggleAttribute("data-consultation-available", !entry.isIntersecting);
       }, { rootMargin: margin });
-      observer.observe(link);
+      intersection.observe(link);
     };
-    observe();
-    const resize = window.ResizeObserver ? new ResizeObserver(observe) : undefined;
-    resize?.observe(header);
-    resize?.observe(bar, { box: "border-box" });
 
-    return () => {
+    const stop = () => {
+      intersection?.disconnect();
       resize?.disconnect();
-      observer?.disconnect();
-      bar.removeAttribute("data-hero-action-visible");
+      intersection = undefined;
+      margin = "";
+      bar.removeAttribute("data-consultation-available");
     };
-  }, [heroLinkSelector]);
+
+    const update = () => {
+      stop();
+      if (!mobile.matches) return;
+      if (window.ResizeObserver) {
+        // Read the header and safe-area padding after layout.
+        resize = new ResizeObserver(observe);
+        resize.observe(header);
+        resize.observe(bar, { box: "border-box" });
+      } else {
+        observe();
+      }
+    };
+
+    update();
+    mobile.addEventListener("change", update);
+    return () => {
+      mobile.removeEventListener("change", update);
+      stop();
+    };
+  }, [heroLinkSelector, maxWidth]);
 
   return <nav ref={ref} className={className} aria-label={label}>{children}</nav>;
 }

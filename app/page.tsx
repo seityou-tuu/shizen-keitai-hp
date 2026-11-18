@@ -832,7 +832,7 @@ export default function Home() {
         </div>
       </footer>
       {measurementId && <AnalyticsConsent measurementId={measurementId} />}
-      <ConsultationBarHandoff className="mobile-consult-bar" label="スマートフォンの受講相談" heroLinkSelector=".hero-statement .renewal-button">
+      <ConsultationBarHandoff maxWidth={600} className="mobile-consult-bar" label="スマートフォンの受講相談" heroLinkSelector=".hero-statement .renewal-button">
         {getOfficialLineUrl() ? <LineConsultationLink className="mobile-line-link" label="LINEで相談" /> : <a href="#contact">窓口案内を見る</a>}
         <a
           href={CONTACT_TEL}
