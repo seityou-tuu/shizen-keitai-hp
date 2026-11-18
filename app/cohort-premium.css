@@ -51,16 +51,14 @@
 .recruitment-page .recruitment-fees article + article,
 .recruitment-page .recruitment-fees article:nth-child(2) { padding-left: 28px; border-left: 1px solid #c4c8b6; }
 .recruitment-page .recruitment-fees article:last-child { padding-right: 0; }
-.recruitment-page .recruitment-fees article > .cohort-course-step,
-.recruitment-page .recruitment-fees article:nth-child(2) > .cohort-course-step { display: flex; width: 100%; align-items: baseline; gap: 12px; padding-bottom: 16px; border-bottom: 1px solid #a68b58; color: #806636; font-size: 10px; }
-.recruitment-page .cohort-course-step b { font: normal 48px/1 Georgia, serif; }
-.recruitment-page .cohort-course-english { font: 9px/1.6 Arial, sans-serif; letter-spacing: .12em; color: #58675e; margin-top: 24px; }
-.recruitment-page .recruitment-fees h3 { font-size: clamp(21px, 2.2vw, 26px); margin: 8px 0 20px; }
+.recruitment-page .cohort-course-heading { display: flex; align-items: baseline; gap: 8px 14px; padding-bottom: 12px; border-bottom: 1px solid #a68b58; flex-wrap: wrap; }
+.recruitment-page .cohort-course-step { display: inline-flex; align-items: baseline; gap: 5px; color: #806636; font-size: 9px; margin: 0; }
+.recruitment-page .cohort-course-step b { font: normal 24px/1 Georgia, serif; }
+.recruitment-page .cohort-course-english { font: 9px/1.6 Arial, sans-serif; letter-spacing: .12em; color: #58675e; margin-block: 12px 16px; }
+.recruitment-page .cohort-course-heading h3 { font-size: clamp(21px, 2.2vw, 26px); margin: 0; }
 .recruitment-page .cohort-course-description { margin-bottom: 28px; }
 .recruitment-page .cohort-course-description strong { display: block; font-weight: 500; margin-bottom: 8px; }
 .recruitment-page .cohort-course-price { margin-top: auto; width: 100%; padding-top: 18px; border-top: 1px solid #c4c8b6; }
-.recruitment-page .cohort-course-duration { font-size: 12px; color: #58675e; }
-.recruitment-page .cohort-course-duration strong { font-weight: 500; color: #263c34; margin-left: 12px; }
 .recruitment-page .recruitment-fee { display: flex; align-items: baseline; gap: 6px; font: clamp(34px, 3.5vw, 44px)/1.5 Georgia, serif; letter-spacing: -.035em; margin-top: 10px; }
 .recruitment-page .recruitment-fee small { font: 13px/1.6 "Yu Gothic", sans-serif; letter-spacing: 0; margin: 0; }
 .recruitment-page .recruitment-fee small span { display: block; font-size: 10px; }
@@ -106,10 +104,6 @@
   .recruitment-page .recruitment-fees article + article { padding: 0 0 28px; border: 0; }
   .recruitment-page .recruitment-fees article + article { padding-top: 16px; }
   .recruitment-page .recruitment-fees article:last-child { padding-bottom: 0; }
-  .recruitment-page .recruitment-fees article > .cohort-course-step { gap: 10px; padding-bottom: 12px; }
-  .recruitment-page .cohort-course-step b { font-size: 38px; }
-  .recruitment-page .cohort-course-english { margin-top: 18px; }
-  .recruitment-page .recruitment-fees h3 { font-size: 25px; margin: 8px 0 16px; }
   .recruitment-page .cohort-course-description { margin-bottom: 20px; }
   .recruitment-page .cohort-course-price { padding-top: 12px; }
   .recruitment-page .recruitment-fee { font-size: 42px; margin-top: 6px; }
@@ -148,16 +142,10 @@
   .recruitment-page .cohort-overview-price strong { margin-left: 0; font-size: 27px; }
   .recruitment-page .cohort-overview-price dd { font-size: 13px; }
   .recruitment-page .cohort-course-english { display: none; }
-  .recruitment-page .cohort-course-step b { font-size: 30px; }
-  .recruitment-page .recruitment-fees article > .cohort-course-step { padding-bottom: 8px; }
-  .recruitment-page .recruitment-fees h3 { margin: 12px 0 10px; font-size: 23px; }
+  .recruitment-page .cohort-course-heading { margin-bottom: 12px; }
   .recruitment-page .cohort-course-description { margin-bottom: 12px; }
   .recruitment-page .cohort-course-description strong { margin-bottom: 4px; }
-  .recruitment-page .cohort-course-price { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 0 12px; }
-  .recruitment-page .cohort-course-duration { grid-column: 2; grid-row: 1; }
-  .recruitment-page .cohort-course-duration strong { margin-left: 4px; }
-  .recruitment-page .recruitment-fee { grid-column: 1; grid-row: 1; font-size: 36px; }
-  .recruitment-page .cohort-course-tax { grid-column: 1 / -1; }
+  .recruitment-page .recruitment-fee { font-size: 36px; }
   .recruitment-page .recruitment-fees article,
   .recruitment-page .recruitment-fees article:nth-child(2),
   .recruitment-page .recruitment-fees article + article { padding-bottom: 18px; }

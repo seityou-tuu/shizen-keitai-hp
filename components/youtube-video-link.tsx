@@ -5,6 +5,11 @@ const videoUrls = {
   "132万回": "https://youtu.be/yudalXPijCk",
 } as const;
 
+export const videoIntroductions = {
+  "86万回": "技術への関心を、ここから。",
+  "132万回": "映像から、自分の学びへ。",
+} satisfies Record<keyof typeof videoUrls, string>;
+
 export function YoutubeVideoLink({ count, children }: {
   count: keyof typeof videoUrls;
   children: ReactNode;
@@ -14,11 +19,13 @@ export function YoutubeVideoLink({ count, children }: {
       rel="noopener noreferrer"
       aria-label={`表示再生数${count}の動画をYouTubeで見る（新しいタブで開きます）`}>
       {children}
-      <span className="evidence-video-action">YouTubeで見る <span aria-hidden="true">↗</span></span>
-      <span className="evidence-play" aria-hidden="true">
-        <svg viewBox="0 0 16 16" fill="currentColor" focusable="false">
-          <path d="M5 3.5 12 8l-7 4.5z" />
-        </svg>
+      <span className="evidence-video-action">
+        <span className="evidence-play" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="currentColor" focusable="false">
+            <path d="M5 3.5 12 8l-7 4.5z" />
+          </svg>
+        </span>
+        YouTubeで見る <span className="evidence-video-arrow" aria-hidden="true">↗</span>
       </span>
     </a>
   );

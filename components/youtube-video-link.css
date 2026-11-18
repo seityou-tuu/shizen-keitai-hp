@@ -1,0 +1,34 @@
+.evidence-video-introduction {
+  display: block;
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.recruitment-page .cohort-film .evidence-video-introduction {
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.evidence-video-action .evidence-play {
+  display: grid;
+  place-items: center;
+  flex: 0 0 26px;
+  width: 26px;
+  height: 26px;
+  border: 1px solid #dbc89a;
+  border-radius: 50%;
+  background: #102f28;
+  color: #fff;
+  pointer-events: none;
+}
+
+.evidence-play svg { width: 14px; height: 14px; }
+.evidence-video-action .evidence-video-arrow { margin-left: auto; }
+
+.homepage-quality .evidence-video-action {
+  justify-content: flex-start;
+}
+
+.cohort-film figcaption { margin-top: 10px; }

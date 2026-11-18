@@ -1,10 +1,13 @@
+import "@/components/consultation-bar-handoff.css";
+import "@/components/youtube-video-link.css";
+import { ConsultationBarHandoff } from "@/components/consultation-bar-handoff";
 import { PageMotion } from "@/components/page-motion";
 import { HeroNetwork } from "@/components/hero-network";
 import { SectionRail } from "@/components/section-rail";
 import { programCourses } from "@/lib/program-courses";
 import "@/app/learning-value.css";
 import Image from "next/image";
-import { YoutubeVideoLink } from "@/components/youtube-video-link";
+import { videoIntroductions, YoutubeVideoLink } from "@/components/youtube-video-link";
 import youtube860k from "@/public/images/homepage/youtube-860k.webp";
 import youtube1320k from "@/public/images/homepage/youtube-1320k.webp";
 import { ProgramPhoto } from "@/components/program-photo";
@@ -98,14 +101,15 @@ export default function FirstRecruitmentPage() {
             </div>
             <div className="cohort-film-grid">
               {([
-                { image: youtube860k, count: "86万回", title: "技術への関心を、ここから。", text: "まずは施術の映像から、技術に触れてみてください。" },
-                { image: youtube1320k, count: "132万回", title: "映像から、自分の学びへ。", text: "気になった技術を、これからの学びのきっかけに。" },
-              ] as const).map(({ image, count, title, text }) => (
+                { image: youtube860k, count: "86万回", text: "まずは施術の映像から、技術に触れてみてください。" },
+                { image: youtube1320k, count: "132万回", text: "気になった技術を、これからの学びのきっかけに。" },
+              ] as const).map(({ image, count, text }) => (
                 <figure className="cohort-film" key={count}>
+                  <p className="evidence-video-introduction">{videoIntroductions[count]}</p>
                   <YoutubeVideoLink count={count}>
                     <Image src={image} alt="Fann Channelの施術紹介動画の掲載画面" sizes="(max-width: 700px) calc(100vw - 40px), 560px" />
                   </YoutubeVideoLink>
-                  <figcaption><h3>{title}</h3><p>{text}</p></figcaption>
+                  <figcaption><p>{text}</p></figcaption>
                 </figure>
               ))}
             </div>
@@ -175,16 +179,18 @@ export default function FirstRecruitmentPage() {
             <div className="cohort-tuition-heading">
               <p className="recruitment-eyebrow">TUITION / LEARNING ROADMAP</p>
               <h2>学びを深める、3つのコース。</h2>
-              <p className="recruitment-section-lead">実技と理論を重ねる、各6ヶ月の学び。<br />それぞれの段階と受講料金をご案内します。</p>
+              <p className="recruitment-section-lead cohort-course-common">実技と理論を重ねる、各6ヶ月の学び。<br />それぞれの段階と受講料金をご案内します。</p>
             </div>
-            <div className="recruitment-fees">{programCourses.map((course, i) => <article key={course.title}>
-              <span className="recruitment-eyebrow cohort-course-step">STEP <b>0{i + 1}</b></span>
-              <p className="cohort-course-english">{course.english}</p>
-              <h3>{course.title}</h3>
-              <p className="cohort-course-description"><strong>{course.lead}</strong>{course.text}</p>
-              <div className="cohort-course-price"><p className="cohort-course-duration">受講期間 <strong>6ヶ月</strong></p><p className="recruitment-fee">990,000<small>円<span>（税込）</span></small></p><p className="cohort-course-tax">税抜900,000円</p></div>
-            </article>)}</div>
             <p className="recruitment-note cohort-roadmap-note">STEPは既存の3段階の構成を示しています。受講順序・受講資格・進級条件の詳細は確認後にご案内します。</p>
+            <div className="recruitment-fees">{programCourses.map((course) => <article key={course.title}>
+              <div className="cohort-course-heading">
+                <span className="recruitment-eyebrow cohort-course-step">STEP <b>{course.step}</b></span>
+                <h3>{course.title}</h3>
+              </div>
+              <p className="cohort-course-english">{course.english}</p>
+              <p className="cohort-course-description"><strong>{course.lead}</strong>{course.text}</p>
+              <div className="cohort-course-price"><p className="recruitment-fee">990,000<small>円<span>（税込）</span></small></p><p className="cohort-course-tax">税抜900,000円</p></div>
+            </article>)}</div>
             <div className="cohort-tuition-learning">
               <div><p className="recruitment-eyebrow">SIX MONTHS OF LEARNING</p><h3>6ヶ月の学びを支える環境。</h3></div>
               <div><ul><li>月1回の対面実技</li><li>月1回のオンライン理論</li><li>復習用動画</li><li>研修日以外の質問環境</li></ul><p>実技と理論を組み合わせた、既存プログラム共通の学習案内です。各コースとの対応や、第1期生の具体的な実施方法・条件は確認後にご案内します。</p><a className="recruitment-text-link" href="#cohort-learning">6ヶ月の学び方を見る ↓</a></div>
@@ -218,7 +224,7 @@ export default function FirstRecruitmentPage() {
         </section>
       </main>
       <footer className="recruitment-footer"><div className="recruitment-wrap"><InformationLinks /><p>{operator.name} · 代表取締役 {operator.representative}</p><p>掲載情報・各種方針には確認中の項目が含まれます。</p></div></footer>
-      <nav className="recruitment-contact-bar" aria-label="第1期生の相談窓口"><LineConsultationLink className="cohort-sticky-line" label="LINEで相談" /><a href={CONTACT_TEL} >電話相談<small>{CONTACT_PHONE}</small></a></nav>
+      <ConsultationBarHandoff maxWidth={700} className="recruitment-contact-bar" label="第1期生の相談窓口" heroLinkSelector=".cohort-hero-actions .recruitment-button"><LineConsultationLink className="cohort-sticky-line" label="LINEで相談" /><a href={CONTACT_TEL} >電話相談<small>{CONTACT_PHONE}</small></a></ConsultationBarHandoff>
     </>
   );
 }

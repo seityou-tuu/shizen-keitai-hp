@@ -86,10 +86,7 @@
 .recruitment-page .cohort-film { margin: 0; min-width: 0; }
 .recruitment-page .cohort-film .evidence-video-link { display: block; position: relative; color: #fff; border: 1px solid #897449; }
 .recruitment-page .cohort-film img { display: block; width: 100%; height: auto; }
-.recruitment-page .cohort-film .evidence-video-action { display: flex; justify-content: space-between; padding: 14px 18px; background: #183c32; font-size: 14px; }
-.recruitment-page .cohort-film .evidence-play { position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: #102f28; border: 1px solid #dbc89a; pointer-events: none; }
-.recruitment-page .cohort-film .evidence-play svg { width: 22px; height: 22px; }
-.recruitment-page .cohort-film h3 { color: #fff; font-size: 18px; margin: 20px 0 8px; line-height: 1.7; }
+.recruitment-page .cohort-film .evidence-video-action { display: flex; align-items: center; min-height: 48px; gap: 10px; padding: 8px 14px; background: #183c32; font-size: 14px; }
 .recruitment-page .cohort-film p, .recruitment-page .cohort-film-note { color: #d3dfd2; font-size: 14px; line-height: 1.9; }
 .recruitment-page .cohort-film-note { margin: 28px 0 0; font-size: 12px; }
 @media (max-width: 700px) {

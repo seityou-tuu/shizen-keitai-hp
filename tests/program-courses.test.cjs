@@ -17,9 +17,10 @@ test("home and recruitment compare the same approved stages, six-month duration 
     assert.deepEqual(headings.slice(0, 3), titles);
     assert.equal((fees.match(/990,000/g) || []).length, 3);
     assert.ok(fees.includes("税込"));
-    assert.equal((fees.match(/6ヶ月/g) || []).length >= 3, true);
     for (const stage of ["資格取得の第一歩", "準師範コースに続く", "3段階のロードマップの最終コース"]) assert.ok(fees.includes(stage), stage);
   }
+  assert.equal((homeFees.match(/6ヶ月/g) || []).length >= 3, true);
+  assert.match(first, /class="recruitment-section-lead cohort-course-common">実技と理論を重ねる、各6ヶ月の学び/);
   assert.ok(home.includes("技術を覚えるだけで終わらない。"));
   assert.ok(first.includes("受講前の疑問を相談する"));
   assert.ok(!home.includes("2024年FAN CHANNEL GP"));

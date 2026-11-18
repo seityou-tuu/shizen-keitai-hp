@@ -72,15 +72,14 @@
   .homepage-quality .renewal-step-grid li:nth-child(2),
   .homepage-quality .renewal-step-grid li:nth-child(3) { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 6px 16px; padding: 22px 0 22px 20px; }
   .homepage-quality .renewal-step-grid li::before { top: 29px; }
-  .homepage-quality .renewal-step-grid li > .renewal-kicker { grid-column: 1; grid-row: 1 / span 5; margin: 0; padding-top: 2px; }
+  .homepage-quality .renewal-step-grid li > .renewal-kicker { grid-column: 1; grid-row: 1 / span 4; margin: 0; padding-top: 2px; }
   .homepage-quality .renewal-step-grid .renewal-kicker span { display: block; font-size: 9px; }
   .homepage-quality .renewal-step-grid .renewal-kicker strong { display: block; font: 28px/1.3 Georgia, serif; }
   .homepage-quality .renewal-step-grid h3 { grid-column: 2; grid-row: 1; margin: 0; font-size: clamp(22px, 6vw, 26px); }
   .homepage-quality .renewal-step-grid .step-english { grid-column: 2; grid-row: 2; margin: 0; }
   .homepage-quality .renewal-step-grid .step-description { grid-column: 2; grid-row: 3; margin-top: 10px; font-size: 14px; }
   .homepage-quality .renewal-step-grid .step-description strong { margin-bottom: 6px; font-size: 15px; }
-  .homepage-quality .renewal-step-grid .step-period { grid-column: 2; grid-row: 4; margin-top: 10px; padding-top: 10px; }
-  .homepage-quality .renewal-step-grid .step-fee-link { grid-column: 2; grid-row: 5; min-height: 44px; }
+  .homepage-quality .renewal-step-grid .step-fee-link { grid-column: 2; grid-row: 4; min-height: 44px; }
 
   /* Emphasize the existing records once; their qualifiers remain beside them. */
   .homepage-quality #instructors .instructor-record-value { display: block; font: 44px/1.35 Georgia, "Yu Mincho", serif; color: #765e30; margin: 4px 0; }
@@ -94,4 +93,15 @@
   .homepage-quality .consultation-actions > .consultation-phone-link,
   .homepage-quality .consultation-actions > .consultation-details-link { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 48px; font-size: 12px; text-align: center; }
   .homepage-quality #contact .contact-by-line { padding: 24px 20px; }
+}
+
+
+.homepage-quality .roadmap-common + .renewal-note { margin-top: 12px; }
+.homepage-quality #future .growth-number { font-size: 20px; }
+.homepage-quality #future .growth-copy h3 { font-size: clamp(19px, 1.65vw, 24px); font-weight: 600; margin-bottom: 4px; }
+.homepage-quality #future .growth-copy .growth-label { margin-bottom: 8px; }
+
+@media (max-width: 700px) {
+  .homepage-quality #future .growth-stage { padding-bottom: 22px; }
+  .homepage-quality #future .growth-icon { margin-top: 4px; }
 }
