@@ -1,5 +1,7 @@
 # プレミアム学習体験の改善
 
+> このページは初版 `4d267da` 時点の記録です。最新のスマホ1列動画・コース・実績改善と再測定は [スマホ最終品質改善](mobile-final/README.md) を参照してください。
+
 基準: `bbd5a663bc0637761f83acac62bb6caf6b728a7d`（PR #25・#27反映後のmain）。ブランチ: `feat/premium-learning-experience`。2026-11-18。
 
 ## 調査と変更範囲

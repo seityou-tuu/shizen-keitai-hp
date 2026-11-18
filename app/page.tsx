@@ -510,7 +510,7 @@ export default function Home() {
             <ol className="renewal-step-grid">
               {courses.map((c) => (
                 <li key={c.step}>
-                  <p className="renewal-kicker">STEP {c.step}</p>
+                  <p className="renewal-kicker"><span>STEP</span> <strong>{c.step}</strong></p>
                   <h3>{c.title}</h3>
                   <p className="step-english">{c.english}</p>
                   <p className="step-description"><strong>{c.lead}</strong>{c.text}</p>

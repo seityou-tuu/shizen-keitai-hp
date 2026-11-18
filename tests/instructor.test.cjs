@@ -64,7 +64,7 @@ test("the confirmed profile facts and approved formal name are shown once", () =
 
 test("profile qualifies historical channel views without duplicating the separate award record", () => {
   const html = renderToStaticMarkup(InstructorProfile({}));
-  assert.match(html, /YouTube総再生回数220万回/);
+  assert.match(html.replace(/<[^>]*>/g, ""), /YouTube総再生回数220万回/);
   assert.match(html, /過去に確認された値/);
   assert.match(html, /最新の再生数ではありません/);
   assert.ok(!html.includes("2024年"));

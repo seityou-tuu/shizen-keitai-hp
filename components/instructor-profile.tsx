@@ -1,5 +1,6 @@
 import {
   instructorProfile,
+  historicalYouTubeRecord,
   type InstructorProfile as Profile,
 } from "@/lib/instructor";
 
@@ -65,9 +66,9 @@ export function InstructorProfile({
                 </div>
               )}
               {profile.practiceExperience.trim() && (
-                <div>
+                <div className="instructor-practice-record">
                   <dt>施術歴</dt>
-                  <dd>{profile.practiceExperience}</dd>
+                  <dd><strong className="instructor-record-value">{profile.practiceExperience}</strong></dd>
                 </div>
               )}
               {profile.role?.trim() && (
@@ -81,7 +82,13 @@ export function InstructorProfile({
                   <dt>実績</dt>
                   <dd>
                     <ul>
-                      {achievements.map((value, i) => <li key={i}>{value}</li>)}
+                      {achievements.map((value, i) => {
+                        const prefix = historicalYouTubeRecord.label;
+                        const total = historicalYouTubeRecord.total;
+                        return value.startsWith(`${prefix}${total}`)
+                          ? <li key={i} className="instructor-channel-record"><span>{prefix}</span><strong className="instructor-record-value">{total}</strong><span className="instructor-record-note">{value.slice(prefix.length + total.length)}</span></li>
+                          : <li key={i}>{value}</li>;
+                      })}
                     </ul>
                   </dd>
                 </div>

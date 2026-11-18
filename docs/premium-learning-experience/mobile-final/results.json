@@ -1,0 +1,579 @@
+{
+  "baseline": "4d267daf2b51872a3d04eb81f3b6e924082f6d7e",
+  "date": "2026-11-18",
+  "conditions": "Local production builds, Chromium, DPR 1, reduced motion, decoded images. Fixed UI hidden only for section captures; hero capture hides Canvas only. Normal motion and fixed CTA checked separately.",
+  "comparisons": [
+    {
+      "width": 320,
+      "textUnchanged": true,
+      "linksUnchanged": true,
+      "imagesAndAltUnchanged": true,
+      "heroPixelsIdenticalWithCanvasHidden": true,
+      "roadmapHeight": {
+        "before": 2423,
+        "after": 2132
+      }
+    },
+    {
+      "width": 375,
+      "textUnchanged": true,
+      "linksUnchanged": true,
+      "imagesAndAltUnchanged": true,
+      "heroPixelsIdenticalWithCanvasHidden": true,
+      "roadmapHeight": {
+        "before": 2337,
+        "after": 2020
+      }
+    },
+    {
+      "width": 390,
+      "textUnchanged": true,
+      "linksUnchanged": true,
+      "imagesAndAltUnchanged": true,
+      "heroPixelsIdenticalWithCanvasHidden": true,
+      "roadmapHeight": {
+        "before": 2340,
+        "after": 2027
+      }
+    },
+    {
+      "width": 400,
+      "textUnchanged": true,
+      "linksUnchanged": true,
+      "imagesAndAltUnchanged": true,
+      "heroPixelsIdenticalWithCanvasHidden": true,
+      "roadmapHeight": {
+        "before": 2343,
+        "after": 2033
+      }
+    },
+    {
+      "width": 430,
+      "textUnchanged": true,
+      "linksUnchanged": true,
+      "imagesAndAltUnchanged": true,
+      "heroPixelsIdenticalWithCanvasHidden": true,
+      "roadmapHeight": {
+        "before": 2322,
+        "after": 2049
+      }
+    },
+    {
+      "width": 768,
+      "textUnchanged": true,
+      "linksUnchanged": true,
+      "imagesAndAltUnchanged": true,
+      "heroPixelsIdenticalWithCanvasHidden": true,
+      "roadmapHeight": {
+        "before": 1404,
+        "after": 1404
+      }
+    },
+    {
+      "width": 1024,
+      "textUnchanged": true,
+      "linksUnchanged": true,
+      "imagesAndAltUnchanged": true,
+      "heroPixelsIdenticalWithCanvasHidden": true,
+      "roadmapHeight": {
+        "before": 1378,
+        "after": 1378
+      }
+    },
+    {
+      "width": 1440,
+      "textUnchanged": true,
+      "linksUnchanged": true,
+      "imagesAndAltUnchanged": true,
+      "heroPixelsIdenticalWithCanvasHidden": true,
+      "roadmapHeight": {
+        "before": 1439,
+        "after": 1439
+      }
+    }
+  ],
+  "axe": [
+    {
+      "width": 320,
+      "violations": []
+    },
+    {
+      "width": 375,
+      "violations": []
+    },
+    {
+      "width": 390,
+      "violations": []
+    },
+    {
+      "width": 400,
+      "violations": []
+    },
+    {
+      "width": 430,
+      "violations": []
+    },
+    {
+      "width": 768,
+      "violations": []
+    },
+    {
+      "width": 1024,
+      "violations": []
+    },
+    {
+      "width": 1440,
+      "violations": []
+    }
+  ],
+  "browser": {
+    "conditions": "Local production build; Chromium; DPR 1; reduced motion; external services not contacted",
+    "widths": [
+      {
+        "width": 320,
+        "growthStages": 5,
+        "comparableVideos": 2,
+        "videoColumns": 1,
+        "syntheticSafeAreasChecked": [
+          0,
+          34
+        ],
+        "finalCohortLink": true,
+        "passed": true
+      },
+      {
+        "width": 375,
+        "growthStages": 5,
+        "comparableVideos": 2,
+        "videoColumns": 1,
+        "syntheticSafeAreasChecked": [
+          0,
+          34
+        ],
+        "finalCohortLink": true,
+        "passed": true
+      },
+      {
+        "width": 390,
+        "growthStages": 5,
+        "comparableVideos": 2,
+        "videoColumns": 1,
+        "syntheticSafeAreasChecked": [
+          0,
+          34
+        ],
+        "finalCohortLink": true,
+        "passed": true
+      },
+      {
+        "width": 400,
+        "growthStages": 5,
+        "comparableVideos": 2,
+        "videoColumns": 1,
+        "syntheticSafeAreasChecked": [
+          0,
+          34
+        ],
+        "finalCohortLink": true,
+        "passed": true
+      },
+      {
+        "width": 430,
+        "growthStages": 5,
+        "comparableVideos": 2,
+        "videoColumns": 1,
+        "syntheticSafeAreasChecked": [
+          0,
+          34
+        ],
+        "finalCohortLink": true,
+        "passed": true
+      },
+      {
+        "width": 700,
+        "growthStages": 5,
+        "comparableVideos": 2,
+        "videoColumns": 1,
+        "syntheticSafeAreasChecked": [],
+        "finalCohortLink": true,
+        "passed": true
+      },
+      {
+        "width": 701,
+        "growthStages": 5,
+        "comparableVideos": 2,
+        "videoColumns": 2,
+        "syntheticSafeAreasChecked": [],
+        "finalCohortLink": true,
+        "passed": true
+      },
+      {
+        "width": 768,
+        "growthStages": 5,
+        "comparableVideos": 2,
+        "videoColumns": 2,
+        "syntheticSafeAreasChecked": [],
+        "finalCohortLink": true,
+        "passed": true
+      },
+      {
+        "width": 1024,
+        "growthStages": 5,
+        "comparableVideos": 2,
+        "videoColumns": 2,
+        "syntheticSafeAreasChecked": [],
+        "finalCohortLink": true,
+        "passed": true
+      },
+      {
+        "width": 1440,
+        "growthStages": 5,
+        "comparableVideos": 2,
+        "videoColumns": 2,
+        "syntheticSafeAreasChecked": [],
+        "finalCohortLink": true,
+        "passed": true
+      }
+    ],
+    "errors": []
+  },
+  "performance": [
+    {
+      "phase": "before",
+      "run": 1,
+      "performance": 91,
+      "lcpMs": 2781.5465999999997,
+      "cls": 0,
+      "tbtMs": 177.13559999999984,
+      "scriptCount": 10,
+      "scriptBytes": 515084,
+      "mainThread": [
+        {
+          "group": "Style & Layout",
+          "duration": 1332.4440000000013
+        },
+        {
+          "group": "Script Evaluation",
+          "duration": 832.1239999999977
+        },
+        {
+          "group": "Other",
+          "duration": 495.9280000000006
+        },
+        {
+          "group": "Parse HTML & CSS",
+          "duration": 150.252
+        },
+        {
+          "group": "Rendering",
+          "duration": 150.22400000000005
+        },
+        {
+          "group": "Script Parsing & Compilation",
+          "duration": 96.75200000000002
+        }
+      ]
+    },
+    {
+      "phase": "after",
+      "run": 1,
+      "performance": 82,
+      "lcpMs": 2663.2496,
+      "cls": 0,
+      "tbtMs": 462,
+      "scriptCount": 10,
+      "scriptBytes": 515084,
+      "mainThread": [
+        {
+          "group": "Script Evaluation",
+          "duration": 1049.0480000000002
+        },
+        {
+          "group": "Style & Layout",
+          "duration": 965.7200000000009
+        },
+        {
+          "group": "Other",
+          "duration": 528.3279999999987
+        },
+        {
+          "group": "Rendering",
+          "duration": 137.7720000000008
+        },
+        {
+          "group": "Script Parsing & Compilation",
+          "duration": 93.12400000000001
+        },
+        {
+          "group": "Parse HTML & CSS",
+          "duration": 56.672
+        }
+      ]
+    },
+    {
+      "phase": "after",
+      "run": 2,
+      "performance": 84,
+      "lcpMs": 2679.4504,
+      "cls": 0,
+      "tbtMs": 400,
+      "scriptCount": 10,
+      "scriptBytes": 515084,
+      "mainThread": [
+        {
+          "group": "Script Evaluation",
+          "duration": 1105.1879999999958
+        },
+        {
+          "group": "Style & Layout",
+          "duration": 947.5400000000005
+        },
+        {
+          "group": "Other",
+          "duration": 508.48399999999987
+        },
+        {
+          "group": "Rendering",
+          "duration": 169.98400000000026
+        },
+        {
+          "group": "Script Parsing & Compilation",
+          "duration": 88.26800000000004
+        },
+        {
+          "group": "Parse HTML & CSS",
+          "duration": 58.672000000000004
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "run": 2,
+      "performance": 88,
+      "lcpMs": 2202.4130999999998,
+      "cls": 0,
+      "tbtMs": 351.5,
+      "scriptCount": 10,
+      "scriptBytes": 515084,
+      "mainThread": [
+        {
+          "group": "Script Evaluation",
+          "duration": 1101.2359999999974
+        },
+        {
+          "group": "Style & Layout",
+          "duration": 1034.2359999999994
+        },
+        {
+          "group": "Other",
+          "duration": 576.0560000000007
+        },
+        {
+          "group": "Rendering",
+          "duration": 150.0640000000002
+        },
+        {
+          "group": "Script Parsing & Compilation",
+          "duration": 63.57999999999999
+        },
+        {
+          "group": "Parse HTML & CSS",
+          "duration": 50.936
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "run": 3,
+      "performance": 85,
+      "lcpMs": 2668.2684000000004,
+      "cls": 0,
+      "tbtMs": 384.0000000000002,
+      "scriptCount": 10,
+      "scriptBytes": 515084,
+      "mainThread": [
+        {
+          "group": "Style & Layout",
+          "duration": 1017.6399999999992
+        },
+        {
+          "group": "Script Evaluation",
+          "duration": 908.2159999999992
+        },
+        {
+          "group": "Other",
+          "duration": 503.31600000000066
+        },
+        {
+          "group": "Rendering",
+          "duration": 124.51600000000099
+        },
+        {
+          "group": "Script Parsing & Compilation",
+          "duration": 87.908
+        },
+        {
+          "group": "Parse HTML & CSS",
+          "duration": 33.535999999999994
+        }
+      ]
+    },
+    {
+      "phase": "after",
+      "run": 3,
+      "performance": 92,
+      "lcpMs": 2669.7492,
+      "cls": 0,
+      "tbtMs": 174.49999999999977,
+      "scriptCount": 10,
+      "scriptBytes": 515084,
+      "mainThread": [
+        {
+          "group": "Style & Layout",
+          "duration": 905.5239999999993
+        },
+        {
+          "group": "Script Evaluation",
+          "duration": 718.163999999998
+        },
+        {
+          "group": "Other",
+          "duration": 418.48800000000045
+        },
+        {
+          "group": "Rendering",
+          "duration": 98.46800000000025
+        },
+        {
+          "group": "Script Parsing & Compilation",
+          "duration": 57.54000000000001
+        },
+        {
+          "group": "Parse HTML & CSS",
+          "duration": 50.511999999999986
+        }
+      ]
+    }
+  ],
+  "performanceMedians": {
+    "before": {
+      "performance": 88,
+      "lcpMs": 2668.2684000000004,
+      "tbtMs": 351.5,
+      "cls": 0,
+      "scriptCount": 10,
+      "scriptBytes": 515084
+    },
+    "after": {
+      "performance": 84,
+      "lcpMs": 2669.7492,
+      "tbtMs": 400,
+      "cls": 0,
+      "scriptCount": 10,
+      "scriptBytes": 515084
+    }
+  },
+  "historicalTbtInvestigation": {
+    "before": {
+      "mainThreadGroups": {
+        "Style & Layout": {
+          "min": 974.044,
+          "median": 1036.0840000000007,
+          "max": 1291.5240000000015
+        },
+        "Script Evaluation": {
+          "min": 777.5640000000002,
+          "median": 895.2560000000014,
+          "max": 943.1839999999976
+        },
+        "Other": {
+          "min": 444.7440000000013,
+          "median": 492.29600000000073,
+          "max": 515.3639999999994
+        },
+        "Rendering": {
+          "min": 110.79200000000031,
+          "median": 114.74000000000088,
+          "max": 150.9600000000001
+        },
+        "Parse HTML & CSS": {
+          "min": 71.72800000000002,
+          "median": 102.088,
+          "max": 127.84799999999998
+        },
+        "Script Parsing & Compilation": {
+          "min": 66.46000000000001,
+          "median": 67.812,
+          "max": 73.976
+        }
+      },
+      "scriptDownloads": [
+        {
+          "count": 10,
+          "bytes": 515026
+        },
+        {
+          "count": 10,
+          "bytes": 515026
+        },
+        {
+          "count": 10,
+          "bytes": 515026
+        }
+      ]
+    },
+    "after": {
+      "mainThreadGroups": {
+        "Script Evaluation": {
+          "min": 804.803999999998,
+          "median": 932.0519999999963,
+          "max": 1022.5799999999992
+        },
+        "Style & Layout": {
+          "min": 933.5280000000004,
+          "median": 1052.0080000000007,
+          "max": 1079.2559999999999
+        },
+        "Other": {
+          "min": 412.21199999999976,
+          "median": 541.5720000000044,
+          "max": 579.82
+        },
+        "Rendering": {
+          "min": 116.81200000000045,
+          "median": 122.33200000000042,
+          "max": 125.72400000000103
+        },
+        "Parse HTML & CSS": {
+          "min": 32.58800000000001,
+          "median": 56.2,
+          "max": 124.76000000000002
+        },
+        "Script Parsing & Compilation": {
+          "min": 54.81199999999999,
+          "median": 76.32799999999999,
+          "max": 120.43200000000002
+        },
+        "Garbage Collection": {
+          "min": 24.956,
+          "median": 25.421999999999997,
+          "max": 25.88799999999999
+        }
+      },
+      "scriptDownloads": [
+        {
+          "count": 10,
+          "bytes": 515084
+        },
+        {
+          "count": 10,
+          "bytes": 515084
+        },
+        {
+          "count": 10,
+          "bytes": 515084
+        }
+      ]
+    }
+  }
+}

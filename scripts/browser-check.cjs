@@ -81,7 +81,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
       for (const fact of ["柔道整復師（2012年取得）", "2017年 ながとも整骨院開院", "15年", "自然形体療法 理事"]) {
         assert.equal(profileText.split(fact).length - 1, 1, `profile fact at ${width}: ${fact}`);
       }
-      assert.ok(profileText.includes("YouTube総再生回数220万回"));
+      assert.ok(profileText.replace(/\s/g, "").includes("YouTube総再生回数220万回"));
       assert.ok(profileText.includes("最新の再生数ではありません"));
       assert.ok(!profileText.includes("2024年"));
       assert.ok(await page.locator("#about .section-heading, #about h2").evaluateAll(nodes => nodes.every(el => getComputedStyle(el).animationName === "none")), "reduced-motion headings must not animate");
@@ -286,7 +286,7 @@ if (out) fs.mkdirSync(out, { recursive: true });
       assert.equal(sections.length, 13);
       const allNumbers = await page
         .locator(
-          ".future-list li > span,.support-list li > span,.learning-cycle li > span,.section-heading .eyebrow > span,.perspective-number,.renewal-step-grid .renewal-kicker,.renewal-flow li > .renewal-kicker",
+          ".future-list li > span,.support-list li > span,.learning-cycle li > span,.section-heading .eyebrow > span,.perspective-number,.renewal-step-grid .renewal-kicker strong,.renewal-flow li > .renewal-kicker",
         )
         .evaluateAll((nodes) =>
           nodes.map((node) => {
