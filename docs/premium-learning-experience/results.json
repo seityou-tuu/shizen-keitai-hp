@@ -1,0 +1,300 @@
+{
+  "baseline": "bbd5a663bc0637761f83acac62bb6caf6b728a7d",
+  "date": "2026-11-18",
+  "conditions": "Local production builds; Chromium; DPR 1; reduced motion; all images decoded. Screenshots hide fixed UI for section comparisons; hero comparisons hide Canvas only. Normal-motion Canvas/splash/rail checked separately.",
+  "comparisons": [
+    {
+      "width": 390,
+      "bodyTextUnchangedExceptMovedLink": true,
+      "linksUnchanged": true,
+      "imageSourcesAndAltUnchanged": true,
+      "heroPixelsIdenticalWithCanvasHidden": true,
+      "pageHeight": {
+        "before": 26241,
+        "after": 25669
+      },
+      "sections": {
+        "roadmap": {
+          "beforeHeight": 2396,
+          "afterHeight": 2340
+        },
+        "instructors": {
+          "beforeHeight": 2943,
+          "afterHeight": 2924
+        },
+        "future": {
+          "beforeHeight": 1811,
+          "afterHeight": 1521
+        },
+        "courses": {
+          "beforeHeight": 4117,
+          "afterHeight": 3772
+        },
+        "contact": {
+          "beforeHeight": 1305,
+          "afterHeight": 1443
+        }
+      }
+    },
+    {
+      "width": 768,
+      "bodyTextUnchangedExceptMovedLink": true,
+      "linksUnchanged": true,
+      "imageSourcesAndAltUnchanged": true,
+      "heroPixelsIdenticalWithCanvasHidden": true,
+      "pageHeight": {
+        "before": 21432,
+        "after": 22038
+      },
+      "sections": {
+        "roadmap": {
+          "beforeHeight": 1438,
+          "afterHeight": 1404
+        },
+        "instructors": {
+          "beforeHeight": 2179,
+          "afterHeight": 2498
+        },
+        "future": {
+          "beforeHeight": 1267,
+          "afterHeight": 1513
+        },
+        "courses": {
+          "beforeHeight": 2562,
+          "afterHeight": 2485
+        },
+        "contact": {
+          "beforeHeight": 1354,
+          "afterHeight": 1508
+        }
+      }
+    },
+    {
+      "width": 1024,
+      "bodyTextUnchangedExceptMovedLink": true,
+      "linksUnchanged": true,
+      "imageSourcesAndAltUnchanged": true,
+      "heroPixelsIdenticalWithCanvasHidden": true,
+      "pageHeight": {
+        "before": 18888,
+        "after": 19393
+      },
+      "sections": {
+        "roadmap": {
+          "beforeHeight": 1441,
+          "afterHeight": 1378
+        },
+        "instructors": {
+          "beforeHeight": 1965,
+          "afterHeight": 2365
+        },
+        "future": {
+          "beforeHeight": 1279,
+          "afterHeight": 1525
+        },
+        "courses": {
+          "beforeHeight": 2470,
+          "afterHeight": 2394
+        },
+        "contact": {
+          "beforeHeight": 1172,
+          "afterHeight": 1172
+        }
+      }
+    },
+    {
+      "width": 1440,
+      "bodyTextUnchangedExceptMovedLink": true,
+      "linksUnchanged": true,
+      "imageSourcesAndAltUnchanged": true,
+      "heroPixelsIdenticalWithCanvasHidden": true,
+      "pageHeight": {
+        "before": 19297,
+        "after": 19207
+      },
+      "sections": {
+        "roadmap": {
+          "beforeHeight": 1469,
+          "afterHeight": 1439
+        },
+        "instructors": {
+          "beforeHeight": 2063,
+          "afterHeight": 2079
+        },
+        "future": {
+          "beforeHeight": 1234,
+          "afterHeight": 1234
+        },
+        "courses": {
+          "beforeHeight": 2341,
+          "afterHeight": 2265
+        },
+        "contact": {
+          "beforeHeight": 1259,
+          "afterHeight": 1259
+        }
+      }
+    }
+  ],
+  "axe": [
+    {
+      "width": 320,
+      "violations": []
+    },
+    {
+      "width": 390,
+      "violations": []
+    },
+    {
+      "width": 768,
+      "violations": []
+    },
+    {
+      "width": 1024,
+      "violations": []
+    },
+    {
+      "width": 1440,
+      "violations": []
+    }
+  ],
+  "lighthouse": {
+    "before": [
+      {
+        "run": 1,
+        "version": "13.6.0",
+        "performance": 92,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 69,
+        "lcpMs": 2211.08295,
+        "cls": 0,
+        "tbtMs": 234
+      },
+      {
+        "run": 2,
+        "version": "13.6.0",
+        "performance": 84,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 69,
+        "lcpMs": 2682.04565,
+        "cls": 0,
+        "tbtMs": 402
+      },
+      {
+        "run": 3,
+        "version": "13.6.0",
+        "performance": 85,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 69,
+        "lcpMs": 2194.361250000001,
+        "cls": 0,
+        "tbtMs": 440.4999999999998
+      }
+    ],
+    "after": [
+      {
+        "run": 1,
+        "version": "13.6.0",
+        "performance": 91,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 69,
+        "lcpMs": 2657.86045,
+        "cls": 0,
+        "tbtMs": 189.5
+      },
+      {
+        "run": 2,
+        "version": "13.6.0",
+        "performance": 95,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 69,
+        "lcpMs": 2189.0181000000002,
+        "cls": 0,
+        "tbtMs": 154
+      },
+      {
+        "run": 3,
+        "version": "13.6.0",
+        "performance": 90,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 69,
+        "lcpMs": 2633.05275,
+        "cls": 0,
+        "tbtMs": 234.5
+      }
+    ]
+  },
+  "pairedLighthouse": {
+    "conditions": "Same local machine and dependencies; isolated baseline bbd5a663 on port 3131 and final build on 3130; Lighthouse default simulated mobile throttling, fresh browser per run; sequential AB/BA/AB; 3 runs per revision; no other browser checks during measurement",
+    "runs": [
+      {
+        "phase": "before",
+        "run": 1,
+        "performance": 89,
+        "lcpMs": 2794.0448000000006,
+        "cls": 0,
+        "tbtMs": 241
+      },
+      {
+        "phase": "after",
+        "run": 1,
+        "performance": 89,
+        "lcpMs": 2200.0687500000004,
+        "cls": 0,
+        "tbtMs": 310.00000000000045
+      },
+      {
+        "phase": "after",
+        "run": 2,
+        "performance": 88,
+        "lcpMs": 2645.6917000000003,
+        "cls": 0,
+        "tbtMs": 303.9999999999998
+      },
+      {
+        "phase": "before",
+        "run": 2,
+        "performance": 91,
+        "lcpMs": 2654.3068000000003,
+        "cls": 0,
+        "tbtMs": 182.00000000000023
+      },
+      {
+        "phase": "before",
+        "run": 3,
+        "performance": 90,
+        "lcpMs": 2197.3774500000004,
+        "cls": 0,
+        "tbtMs": 275.5
+      },
+      {
+        "phase": "after",
+        "run": 3,
+        "performance": 87,
+        "lcpMs": 2632.9049499999996,
+        "cls": 0,
+        "tbtMs": 317.0000000000002
+      }
+    ],
+    "medians": {
+      "before": {
+        "performance": 90,
+        "lcpMs": 2654.3068000000003,
+        "cls": 0,
+        "tbtMs": 241
+      },
+      "after": {
+        "performance": 88,
+        "lcpMs": 2632.9049499999996,
+        "cls": 0,
+        "tbtMs": 310.00000000000045
+      }
+    }
+  }
+}

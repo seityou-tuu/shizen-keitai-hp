@@ -36,7 +36,7 @@ export function InstructorEvidence() {
             <figure className="evidence-video" key={count}>
               <YoutubeVideoLink count={count}>
                 <Image src={image} alt={`Fann Channelの動画掲載画面（表示再生数${count}）`}
-                  sizes="(max-width: 700px) 128px, 160px" />
+                  sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1100px) calc((100vw - 76px) / 2), 280px" />
               </YoutubeVideoLink>
               <figcaption>
                 <span>画像に表示された再生数</span>

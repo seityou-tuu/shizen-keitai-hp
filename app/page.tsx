@@ -25,6 +25,7 @@ import { Header } from "@/components/header";
 import { InformationLinks } from "@/components/information-links";
 import { ProgramPhoto } from "@/components/program-photo";
 import { SectionHeading } from "@/components/ui";
+import "./premium-learning.css";
 
 const features = [
   ["身体にやさしい施術", "強い刺激を避け、身体の状態に合わせて施術する。"],
@@ -509,7 +510,7 @@ export default function Home() {
             <ol className="renewal-step-grid">
               {courses.map((c) => (
                 <li key={c.step}>
-                  <p className="renewal-kicker">STEP {c.step}</p>
+                  <p className="renewal-kicker"><span>STEP</span> <strong>{c.step}</strong></p>
                   <h3>{c.title}</h3>
                   <p className="step-english">{c.english}</p>
                   <p className="step-description"><strong>{c.lead}</strong>{c.text}</p>
@@ -665,7 +666,6 @@ export default function Home() {
               </ol>
               <p className="renewal-note">このサイトでは、正式な受講申込み・決済は受け付けていません。</p>
             </div>
-            <a className="home-cohort-section-link" href={`${FIRST_COHORT_PATH}#cohort-tuition`}>第1期生の募集詳細を見る <span aria-hidden="true">↗</span></a>
             <div className="tuition-information">
               <p>お申し込み前にご確認いただく情報</p>
               <InformationLinks label="受講検討時の運営情報・各種方針" />
@@ -724,6 +724,7 @@ export default function Home() {
                 <p>受講内容・研修の進め方・料金など、気になることをお聞かせください。</p>
                 <LineConsultationLink className="renewal-button" />
                 <p className="renewal-note">受講相談・お問い合わせの窓口です。LINEでの相談だけで正式な受講申込みや決済が行われることはありません。</p>
+                <a className="home-cohort-section-link contact-cohort-link" href={`${FIRST_COHORT_PATH}#cohort-tuition`}>第1期生の募集詳細を見る <span aria-hidden="true">↗</span></a>
               </div>
               <div className="contact-guidance">
                 <h3>電話でのご相談</h3>
