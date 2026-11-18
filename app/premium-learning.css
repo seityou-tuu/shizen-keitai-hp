@@ -1,0 +1,73 @@
+/* Home only. Reuse the existing story, artwork and course facts; no new motion. */
+
+/* A shared reading axis makes the three ordered courses easier to compare. */
+@media (min-width: 701px) {
+  .homepage-quality .renewal-step-grid { gap: 0; }
+  .homepage-quality .renewal-step-grid li,
+  .homepage-quality .renewal-step-grid li:nth-child(2),
+  .homepage-quality .renewal-step-grid li:nth-child(3) { margin-top: 0; padding-inline: 24px; }
+  .homepage-quality .renewal-step-grid li::before { left: 24px; }
+  .homepage-quality .renewal-step-grid h3 { min-height: 2.1em; }
+}
+
+/* Give each existing video its own complete, equally sized reading column. */
+.homepage-quality #instructors .evidence-videos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.homepage-quality #instructors .evidence-videos > h4 { grid-column: 1 / -1; margin-bottom: 0; }
+.homepage-quality #instructors .evidence-video { display: flex; flex-direction: column; align-items: stretch; gap: 14px; }
+.homepage-quality #instructors .evidence-video + .evidence-video { border: 0; padding: 0; margin: 0; }
+.homepage-quality #instructors .evidence-video img { aspect-ratio: 1179 / 904; object-fit: contain; background: #f5f3ec; }
+.homepage-quality #instructors .evidence-video strong { font-size: 28px; }
+.homepage-quality #instructors .evidence-video figcaption { border-top: 1px solid #c4c6b6; padding-top: 12px; }
+.homepage-quality #instructors .evidence-video-action { min-height: 48px; }
+
+/* The final invitation keeps one primary LINE action and a quiet detail link. */
+.homepage-quality #contact .contact-by-line { padding: 32px; border: 1px solid #dbc79b66; background: #173f35; }
+.homepage-quality #contact .contact-by-line > .renewal-note { margin-top: 20px; }
+.homepage-quality #contact .contact-cohort-link { display: flex; width: fit-content; gap: 24px; min-height: 44px; margin-top: 20px; color: #dbc79b; border-color: #dbc79b; font-size: 13px; }
+.homepage-quality #contact .contact-cohort-link:focus-visible { outline-color: #dbc79b; }
+
+/* At tablet sizes, five narrow ascending columns make the descriptions fragment.
+   Keep the same sequence as a set of wide rows; the desktop illustration stays. */
+@media (min-width: 701px) and (max-width: 1100px) {
+  .homepage-quality #future .growth-roadmap { grid-template-columns: 1fr; gap: 0; margin-top: 40px; }
+  .homepage-quality #future .growth-stage { display: grid; grid-template-columns: 56px 72px minmax(0, 1fr); gap: 24px; padding: 24px 0; border-top: 1px solid #a68b5866; }
+  .homepage-quality #future .growth-connector { display: none; }
+  .homepage-quality #future .growth-number { width: 56px; margin: 0; font-size: 28px; }
+  .homepage-quality #future .growth-icon { width: 64px; height: 64px; margin: 0; }
+  .homepage-quality #future .growth-copy h3 { font-size: 21px; }
+  .homepage-quality #future .growth-copy > p:last-child { font-size: 14px; }
+  .homepage-quality #future .growth-finish { margin-left: 176px; }
+  .homepage-quality #instructors .evidence-layout { grid-template-columns: 1fr; gap: 32px; }
+  .homepage-quality #instructors .evidence-award { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
+  .homepage-quality #instructors .evidence-award figcaption { padding-top: 0; }
+}
+
+@media (max-width: 700px) {
+  /* The icon sits under its number, beside the copy, instead of above the copy. */
+  .homepage-quality #future .growth-stage { grid-template-rows: auto 1fr; padding-bottom: 28px; }
+  .homepage-quality #future .growth-number { grid-row: 1; }
+  .homepage-quality #future .growth-icon { grid-column: 1; grid-row: 2; width: 48px; height: 48px; padding-block: 8px; margin: 8px 0 0; position: relative; z-index: 1; background: #e5e9de; box-sizing: content-box; }
+  .homepage-quality #future .growth-copy { grid-column: 2; grid-row: 1 / span 2; }
+  .homepage-quality #future .growth-copy .growth-label { margin-top: 0; }
+  .homepage-quality #future .growth-finish { margin-top: 12px; }
+
+  /* Preserve the large fee and all qualifications; align the label and course name. */
+  .homepage-quality #courses .tuition-course { gap: 14px; padding: 24px; }
+  .homepage-quality #courses .tuition-course > div:first-child { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 12px; align-items: center; }
+  .homepage-quality #courses .tuition-course .renewal-kicker { margin: 0; }
+  .homepage-quality #courses .tuition-course h3 { margin: 0; font-size: clamp(21px, 6vw, 25px); }
+  .homepage-quality #courses .tuition-course-purpose { margin: 0; }
+  .homepage-quality #courses .tuition-amount { padding-top: 14px; }
+
+  .homepage-quality #instructors .evidence-videos { gap: 16px; }
+  .homepage-quality #instructors .evidence-video { gap: 10px; }
+  .homepage-quality #instructors .evidence-video strong { font-size: 26px; }
+  .homepage-quality #instructors .evidence-video figcaption { gap: 6px; }
+
+  /* Keep both existing secondary actions, with less vertical competition. */
+  .homepage-quality .consultation-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 12px; }
+  .homepage-quality .consultation-actions > .renewal-button { grid-column: 1 / -1; }
+  .homepage-quality .consultation-actions > .consultation-phone-link,
+  .homepage-quality .consultation-actions > .consultation-details-link { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 48px; font-size: 12px; text-align: center; }
+  .homepage-quality #contact .contact-by-line { padding: 24px 20px; }
+}

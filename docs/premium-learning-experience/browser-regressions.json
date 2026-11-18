@@ -1,0 +1,55 @@
+{
+  "conditions": "Local production build; Chromium; DPR 1; reduced motion; external services not contacted",
+  "widths": [
+    {
+      "width": 320,
+      "growthStages": 5,
+      "comparableVideos": 2,
+      "finalCohortLink": true,
+      "passed": true
+    },
+    {
+      "width": 375,
+      "growthStages": 5,
+      "comparableVideos": 2,
+      "finalCohortLink": true,
+      "passed": true
+    },
+    {
+      "width": 390,
+      "growthStages": 5,
+      "comparableVideos": 2,
+      "finalCohortLink": true,
+      "passed": true
+    },
+    {
+      "width": 430,
+      "growthStages": 5,
+      "comparableVideos": 2,
+      "finalCohortLink": true,
+      "passed": true
+    },
+    {
+      "width": 768,
+      "growthStages": 5,
+      "comparableVideos": 2,
+      "finalCohortLink": true,
+      "passed": true
+    },
+    {
+      "width": 1024,
+      "growthStages": 5,
+      "comparableVideos": 2,
+      "finalCohortLink": true,
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "growthStages": 5,
+      "comparableVideos": 2,
+      "finalCohortLink": true,
+      "passed": true
+    }
+  ],
+  "errors": []
+}

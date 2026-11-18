@@ -31,13 +31,13 @@ assert.ok(["127.0.0.1", "localhost"].includes(base.hostname));
         await page.evaluate(() => scrollTo(0,0));
         await page.screenshot({ path: path.join(out, `hero-${width}.png`) });
       }
-      const selectors = [".hero-statement a[href='/recruitment/first']", ".home-cohort-notice a", "#training .home-cohort-section-link", "#courses .home-cohort-section-link"];
+      const selectors = [".hero-statement a[href='/recruitment/first']", ".home-cohort-notice a", "#training .home-cohort-section-link", "#contact .home-cohort-section-link"];
       for (const selector of selectors) {
         await page.locator(selector).click();
         assert.equal(new URL(page.url()).pathname, "/recruitment/first");
         assert.match(await page.locator(".recruitment-status").innerText(), /募集準備中/);
         if (selector.startsWith("#training")) assert.equal(new URL(page.url()).hash, "#cohort-schedule");
-        if (selector.startsWith("#courses")) assert.equal(new URL(page.url()).hash, "#cohort-tuition");
+        if (selector.startsWith("#contact")) assert.equal(new URL(page.url()).hash, "#cohort-tuition");
         await page.locator(".recruitment-back").click();
         assert.equal(new URL(page.url()).pathname, "/");
       }
