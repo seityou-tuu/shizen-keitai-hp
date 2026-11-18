@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import {
   instructorProfile,
   historicalYouTubeRecord,
@@ -6,8 +7,10 @@ import {
 
 export function InstructorProfile({
   profile = instructorProfile,
+  directLearning,
 }: {
   profile?: Profile;
+  directLearning?: ReactNode;
 }) {
   const background = profile.background.filter((value) => value.trim());
   const qualifications = profile.qualifications.filter((value) => value.trim());
@@ -27,6 +30,7 @@ export function InstructorProfile({
       <h3 className="instructor-name">{profile.displayName}</h3>
       <p className="instructor-learning-lead">技術を覚えるだけで終わらない。</p>
       <p>目の前の身体をどう捉え、どのように触れるか。{profile.displayName}の技術を見ながら、その背景にある考え方を学びます。</p>
+      {directLearning}
       <div className="instructor-teaching-view" aria-label="研修で学ぶ視点">
         <p><strong>実技で確かめる</strong><span>触れ方と力加減、身体の反応を観察する。</span></p>
         <p><strong>理論で考える</strong><span>なぜその施術を行うのか、理由への理解を深める。</span></p>

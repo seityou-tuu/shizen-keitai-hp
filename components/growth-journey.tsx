@@ -43,9 +43,9 @@ export function GrowthJourney() {
       <header className="growth-heading"><p className="growth-label">GROWTH JOURNEY</p><h2>技術を学ぶ。その先の自分へ。</h2><p>観察する力、触れる技術、理論的な理解。5つの視点を重ねながら、施術への向き合い方を深めていく。</p></header>
       <ol className="growth-roadmap">{stages.map(([label,title,text],i)=><li className="growth-stage" key={label} style={{"--stage":i} as React.CSSProperties}>
         <svg className="growth-connector" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path className="growth-segment" pathLength="1" d="M0 100 200 0"/></svg>
-        <svg className="growth-vertical" viewBox="0 0 2 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path className="growth-segment" pathLength="1" d="M1 0v100"/></svg><span className="growth-number"><small>STEP</small> 0{i+1}</span>
+        <svg className="growth-vertical" viewBox="0 0 2 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path className="growth-segment" pathLength="1" d="M1 0v100"/></svg><span className="growth-number" aria-hidden="true">0{i+1}</span>
         <svg className="growth-icon" viewBox="0 0 100 100" fill="none" aria-hidden="true" focusable="false">{drawings[i]}</svg>
-        <div className="growth-copy"><p className="growth-label">{label}</p><h3>{title}</h3><p>{text}</p></div>
+        <div className="growth-copy"><h3>{title}</h3><p className="growth-label">{label}</p><p>{text}</p></div>
       </li>)}</ol>
       <div className="growth-finish"><svg viewBox="0 0 200 2" aria-hidden="true" focusable="false"><path className="growth-finish-line" pathLength="1" d="M0 1h200"/></svg><p className="growth-label">BEYOND CERTIFICATION</p><h3>学びを、日々の施術へ。</h3><p>資格取得をゴールにせず、その後の実践につながる土台を育てる。</p></div>
       <p className="growth-note">5つの段階は学びの視点を表現したもので、正式な進級制度・達成保証・5ヶ月の固定カリキュラムを意味するものではありません。</p>

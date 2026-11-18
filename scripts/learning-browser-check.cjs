@@ -45,10 +45,10 @@ assert(["localhost", "127.0.0.1"].includes(base.hostname));
       assert(await page.locator(".renewal-step-grid li").evaluateAll(nodes => nodes.every(node => {
         const heading = node.querySelector("h3").getBoundingClientRect();
         const description = node.querySelector(".step-description").getBoundingClientRect();
-        const period = node.querySelector(".step-period").getBoundingClientRect();
         const link = node.querySelector(".step-fee-link").getBoundingClientRect();
-        return heading.bottom <= description.top + 1 && description.bottom <= period.top + 1 && period.bottom <= link.top + 1;
-      })), "Course title, description, period and fee link keep their visual order");
+        return heading.bottom <= description.top + 1 && description.bottom <= link.top + 1;
+      })), "Course title, description and fee link keep their visual order");
+      assert.match(await page.locator(".roadmap-common").innerText(), /受講期間：各6ヶ月/);
       const videos = await page.locator("#instructors .evidence-video img").evaluateAll(images => images.map(image => {
         const r = image.getBoundingClientRect();
         return { top: r.top, width: r.width, height: r.height, fit: getComputedStyle(image).objectFit };

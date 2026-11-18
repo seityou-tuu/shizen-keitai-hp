@@ -1,6 +1,6 @@
 import { instructorAward } from "@/lib/instructor";
 import Image from "next/image";
-import { YoutubeVideoLink } from "@/components/youtube-video-link";
+import { videoIntroductions, YoutubeVideoLink } from "@/components/youtube-video-link";
 import observation from "@/public/images/homepage/practical-peer-observation.webp";
 import guidance from "@/public/images/homepage/practical-guidance.webp";
 import youtube860k from "@/public/images/homepage/youtube-860k.webp";
@@ -34,6 +34,7 @@ export function InstructorEvidence() {
           <h4>Fann Channelでの動画紹介</h4>
           {([{ image: youtube860k, count: "86万回" }, { image: youtube1320k, count: "132万回" }] as const).map(({ image, count }) => (
             <figure className="evidence-video" key={count}>
+              <p className="evidence-video-introduction">{videoIntroductions[count]}</p>
               <YoutubeVideoLink count={count}>
                 <Image src={image} alt={`Fann Channelの動画掲載画面（表示再生数${count}）`}
                   sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1100px) calc((100vw - 76px) / 2), 280px" />

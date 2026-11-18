@@ -1,0 +1,10 @@
+nav[data-hero-action-visible] {
+  visibility: hidden;
+}
+
+@media (scripting: none) {
+  nav.mobile-consult-bar,
+  nav.recruitment-contact-bar {
+    position: static;
+  }
+}

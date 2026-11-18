@@ -1,3 +1,6 @@
+import "@/components/consultation-bar-handoff.css";
+import "@/components/youtube-video-link.css";
+import { ConsultationBarHandoff } from "@/components/consultation-bar-handoff";
 import "@/app/essential-perspectives.css";
 import { HeroNetwork } from "@/components/hero-network";
 import { SectionRail } from "@/components/section-rail";
@@ -507,6 +510,15 @@ export default function Home() {
                 理論と実技を重ねる3つのステップ。
               </p>
             </div>
+            <div className="roadmap-common">
+              <p>各コース共通</p>
+              <span>受講期間：各6ヶ月</span>
+              <span>実技：月1回・対面 9:00〜17:00</span>
+              <span>理論：月1回・オンライン 1回2時間</span>
+            </div>
+            <p className="renewal-note">
+              3コースの受講期間合計は18ヶ月ですが、連続開講時期は未確認のため、18ヶ月での資格取得を確約するものではありません。開催日程・振替、カリキュラム・認定基準・進級条件は確認後にご案内します。
+            </p>
             <ol className="renewal-step-grid">
               {courses.map((c) => (
                 <li key={c.step}>
@@ -514,9 +526,6 @@ export default function Home() {
                   <h3>{c.title}</h3>
                   <p className="step-english">{c.english}</p>
                   <p className="step-description"><strong>{c.lead}</strong>{c.text}</p>
-                  <p className="step-period">
-                    受講期間 <strong>6ヶ月</strong>
-                  </p>
                   <a className="step-fee-link" href={`#tuition-${c.step}`}>
                     {c.title}の料金を見る <span aria-hidden="true">↓</span>
                   </a>
@@ -524,14 +533,6 @@ export default function Home() {
               ))}
             </ol>
             <a className="roadmap-fee-link" href="#courses">各コースの料金を確認する <span aria-hidden="true">↓</span></a>
-            <div className="roadmap-common">
-              <p>各コース共通</p>
-              <span>実技：月1回・対面 9:00〜17:00</span>
-              <span>理論：月1回・オンライン 1回2時間</span>
-            </div>
-            <p className="renewal-note">
-              3コースの受講期間合計は18ヶ月ですが、連続開講時期は未確認のため、18ヶ月での資格取得を確約するものではありません。開催日程・振替、カリキュラム・認定基準・進級条件は確認後にご案内します。
-            </p>
             <ConsultationCallout text="ご自身の経験や学びたいことを、受講相談でお聞かせください。" />
           </div>
         </section>
@@ -544,7 +545,14 @@ export default function Home() {
               永友先生から学ぶ。
             </SectionHeading>
             <div className="instructor-introduction">
-              <InstructorProfile />
+              <InstructorProfile
+                directLearning={
+                  <div className="instructor-study-bridge">
+                    <p>永友先生から直接学ぶ、第1期生の6ヶ月。<br />実技・理論・復習の進め方をご紹介します。</p>
+                    <a className="home-cohort-section-link" href={`${FIRST_COHORT_PATH}#cohort-learning`}>第1期生の学び方を見る <span aria-hidden="true">↗</span></a>
+                  </div>
+                }
+              />
               <div className="renewal-instructor-photos">
                 <ProgramPhoto
                   name="instructor-portrait"
@@ -558,10 +566,6 @@ export default function Home() {
               </div>
             </div>
             <InstructorEvidence />
-            <div className="instructor-study-bridge">
-              <p>永友先生から直接学ぶ、第1期生の6ヶ月。<br />実技・理論・復習の進め方をご紹介します。</p>
-              <a className="home-cohort-section-link" href={`${FIRST_COHORT_PATH}#cohort-learning`}>第1期生の学び方を見る <span aria-hidden="true">↗</span></a>
-            </div>
           </div>
         </section>
 
@@ -828,7 +832,7 @@ export default function Home() {
         </div>
       </footer>
       {measurementId && <AnalyticsConsent measurementId={measurementId} />}
-      <nav className="mobile-consult-bar" aria-label="スマートフォンの受講相談">
+      <ConsultationBarHandoff className="mobile-consult-bar" label="スマートフォンの受講相談" heroLinkSelector=".hero-statement .renewal-button">
         {getOfficialLineUrl() ? <LineConsultationLink className="mobile-line-link" label="LINEで相談" /> : <a href="#contact">窓口案内を見る</a>}
         <a
           href={CONTACT_TEL}
@@ -839,7 +843,7 @@ export default function Home() {
           </svg>
           <span className="phone-action">電話相談<small>{CONTACT_PHONE}</small></span>
         </a>
-      </nav>
+      </ConsultationBarHandoff>
     </>
   );
 }
