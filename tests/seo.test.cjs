@@ -38,8 +38,53 @@ test("production indexing is opt-in and sitemap contains only canonical public p
   assert.equal(isSearchIndexingEnabled(), true);
   assert.equal(robots().sitemap, `${SITE_URL}/sitemap.xml`);
   const urls = sitemap().map((item) => item.url);
-  assert.equal(urls.length, PUBLIC_PATHS.length);
-  assert.ok(
-    urls.every((url) => url.startsWith(SITE_URL) && !url.includes("/api/")),
-  );
+  const expectedPaths = ["/", "/company", "/legal", "/privacy", "/terms"];
+  assert.deepEqual(PUBLIC_PATHS, expectedPaths);
+  assert.deepEqual(urls, expectedPaths.map(path => `${SITE_URL}${path}`));
+  assert.equal(new Set(urls).size, urls.length);
+  assert.deepEqual(robots().rules, {
+    userAgent: "*", allow: "/", disallow: ["/api/", "/recruitment/", "/first-cohort"],
+  });
+});
+test("missing or non-exact production approval keeps sitemap empty and robots closed", () => {
+  process.env.VERCEL_ENV = "production";
+  for (const flag of [undefined, "", "false", "TRUE", "1", " true "]) {
+    if (flag === undefined) delete process.env.SITE_INDEXING_ENABLED;
+    else process.env.SITE_INDEXING_ENABLED = flag;
+    assert.equal(isSearchIndexingEnabled(), false, `flag: ${flag}`);
+    assert.deepEqual(sitemap(), []);
+    assert.deepEqual(robots(), { rules: { userAgent: "*", disallow: "/" } });
+  }
+});
+test("ownership verification does not grant search publication approval", () => {
+  const previousVerification = process.env.GOOGLE_SITE_VERIFICATION;
+  try {
+    process.env.VERCEL_ENV = "production";
+    process.env.SITE_INDEXING_ENABLED = "false";
+    process.env.GOOGLE_SITE_VERIFICATION = "test-verification-token";
+    assert.equal(require("../lib/analytics-config.ts").getGoogleVerification(), "test-verification-token");
+    assert.equal(isSearchIndexingEnabled(), false);
+    assert.deepEqual(sitemap(), []);
+    assert.equal(robots().rules.disallow, "/");
+  } finally {
+    if (previousVerification === undefined) delete process.env.GOOGLE_SITE_VERIFICATION;
+    else process.env.GOOGLE_SITE_VERIFICATION = previousVerification;
+  }
+});
+test("HTTP noindex follows the same approval gate and always protects recruitment", async () => {
+  const config = require("../next.config.ts").default;
+  for (const [environment, flag, enabled] of [
+    ["production", "false", false], ["production", "true", true], ["preview", "true", false],
+  ]) {
+    process.env.VERCEL_ENV = environment;
+    process.env.SITE_INDEXING_ENABLED = flag;
+    const headers = await config.headers();
+    const hasNoindex = source => headers.find(rule => rule.source === source).headers
+      .some(header => header.key === "X-Robots-Tag" && header.value === "noindex, nofollow");
+    assert.equal(hasNoindex("/:path*"), !enabled);
+    assert.equal(hasNoindex("/recruitment/:path*"), true);
+    assert.equal(hasNoindex("/first-cohort"), true);
+    assert.equal(sitemap().length, enabled ? 5 : 0);
+    assert.equal(Boolean(robots().sitemap), enabled);
+  }
 });
